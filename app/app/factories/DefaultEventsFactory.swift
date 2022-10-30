@@ -5,8 +5,8 @@
 //  Created by Sergey Korney
 //
 
-import AfficeAttributionLib
 import Foundation
+import AfficeAttributionLib
 
 
 class DefaultEventsFactory: EventsFactory {

@@ -16,18 +16,17 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "AfficeAttributionLib"
-  spec.version      = "0.0.1"
-  spec.summary      = "A short description of AfficeAttributionLib."
+  spec.version      = "1.0.0"
+  spec.summary      = "Affise Attribution iOS library"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = <<-DESC
-                   DESC
+  spec.description  = "Affise SDK is a software you can use to collect app usage statistics, device identifiers, deeplink usage, track install referrer."
 
-  spec.homepage     = "http://EXAMPLE/AfficeAttributionLib"
+  spec.homepage     = "https://affise.com"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,7 +37,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT (example)"
+  spec.license      = "MIT"
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -52,7 +51,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "Sergey Korney" => "s.korney@affise.com" }
+  spec.author             = { "Affise" => "support@affise.com" }
   # Or just: spec.author    = "Sergey Korney"
   # spec.authors            = { "Sergey Korney" => "s.korney@affise.com" }
   # spec.social_media_url   = "https://twitter.com/Sergey Korney"
@@ -72,6 +71,7 @@ Pod::Spec.new do |spec|
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
 
+  spec.swift_version = '5.7'
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -79,7 +79,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://EXAMPLE/AfficeAttributionLib.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/affise/sdk-ios.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,9 +90,8 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Attribution", "Attribution/**/*.{h,m,swift}"
-  spec.exclude_files = "Attribution/Exclude"
-
+  spec.source_files  = "AfficeAttributionLib/AfficeAttributionLib/Attribution/**/*.{h,m,swift,js}"
+  spec.exclude_files = "AfficeAttributionLib/Exclude"
   # spec.public_header_files = "Classes/**/*.h"
 
 

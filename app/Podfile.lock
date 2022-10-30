@@ -1,0 +1,16 @@
+PODS:
+  - AfficeAttributionLib (1.0.0)
+
+DEPENDENCIES:
+  - AfficeAttributionLib
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AfficeAttributionLib
+
+SPEC CHECKSUMS:
+  AfficeAttributionLib: 559162d7675e44f988f89e90af09661837a81d25
+
+PODFILE CHECKSUM: 8c14e644e6bb2d41969aed03dac3144b968e0093
+
+COCOAPODS: 1.11.3

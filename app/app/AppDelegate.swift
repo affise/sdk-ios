@@ -8,8 +8,6 @@
 import UIKit
 import AfficeAttributionLib
 
-
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
