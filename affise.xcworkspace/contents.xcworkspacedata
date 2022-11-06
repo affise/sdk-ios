@@ -5,9 +5,12 @@
       location = "group:app/app.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:app/Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:app-obj-c/app-obj-c.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AfficeAttributionLib/AfficeAttributionLib.xcodeproj">
+      location = "group:AffiseAttributionLib/AffiseAttributionLib.xcodeproj">
    </FileRef>
 </Workspace>

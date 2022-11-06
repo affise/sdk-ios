@@ -7,7 +7,7 @@
 
 import UIKit
 import WebKit
-import AfficeAttributionLib
+import AffiseAttributionLib
 
 class ViewController: UIViewController, WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -25,6 +25,11 @@ class ViewController: UIViewController, WKScriptMessageHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            // Always adopt a light interface style.
+            overrideUserInterfaceStyle = .light
+        }
+        
         // Do any additional setup after loading the view.
         
         let buttons = listEvents.enumerated().map { (index, event) -> UIButton in
@@ -51,7 +56,7 @@ class ViewController: UIViewController, WKScriptMessageHandler {
         
         let config = WKWebViewConfiguration()
         webView = WKWebView(frame: CGRect(x: 0, y: 0,
-                                          width: eventsWrapper.frame.width - 32,
+                                          width: eventsWrapper.frame.width,
                                           height: eventsWrapper.bounds.height), configuration: config)
         if let webView = webView,
             let indexURL = Bundle.main.url(forResource: "index", withExtension: "html") {

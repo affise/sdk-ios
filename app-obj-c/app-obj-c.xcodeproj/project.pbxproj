@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10C8561329177B7F0003E24D /* AffiseAttributionLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */; };
+		10C8561429177B7F0003E24D /* AffiseAttributionLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C9789F62896605E009CE639 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9789F52896605E009CE639 /* AppDelegate.m */; };
 		7C9789FC2896605E009CE639 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9789FB2896605E009CE639 /* ViewController.m */; };
 		7C9789FF2896605E009CE639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C9789FD2896605E009CE639 /* Main.storyboard */; };
@@ -16,8 +18,6 @@
 		7C978A112896605F009CE639 /* app_obj_cTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C978A102896605F009CE639 /* app_obj_cTests.m */; };
 		7C978A1B2896605F009CE639 /* app_obj_cUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C978A1A2896605F009CE639 /* app_obj_cUITests.m */; };
 		7C978A1D2896605F009CE639 /* app_obj_cUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C978A1C2896605F009CE639 /* app_obj_cUITestsLaunchTests.m */; };
-		7C978A2B28966146009CE639 /* AfficeAttributionLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C978A2A28966146009CE639 /* AfficeAttributionLib.framework */; };
-		7C978A2C28966146009CE639 /* AfficeAttributionLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C978A2A28966146009CE639 /* AfficeAttributionLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7C978A2D28966146009CE639 /* Embed Frameworks */ = {
+		10C8561529177B7F0003E24D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7C978A2C28966146009CE639 /* AfficeAttributionLib.framework in Embed Frameworks */,
+				10C8561429177B7F0003E24D /* AffiseAttributionLib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AffiseAttributionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9789F12896605E009CE639 /* app-obj-c.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-obj-c.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9789F42896605E009CE639 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C9789F52896605E009CE639 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -75,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C978A2B28966146009CE639 /* AfficeAttributionLib.framework in Frameworks */,
+				10C8561329177B7F0003E24D /* AffiseAttributionLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +154,7 @@
 		7C978A2928966146009CE639 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */,
 				7C978A2A28966146009CE639 /* AfficeAttributionLib.framework */,
 			);
 			name = Frameworks;
@@ -168,7 +170,7 @@
 				7C9789ED2896605E009CE639 /* Sources */,
 				7C9789EE2896605E009CE639 /* Frameworks */,
 				7C9789EF2896605E009CE639 /* Resources */,
-				7C978A2D28966146009CE639 /* Embed Frameworks */,
+				10C8561529177B7F0003E24D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

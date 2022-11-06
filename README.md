@@ -32,21 +32,16 @@ referrer.
 
 ## Integration
 
-### Integrate as file dependency
-
-Download latest Affise SDK (`AfficeAttributionLib.framework`)
-from [releases page](https://github.com/clobucks/sdk-ios/releases) and сopy the .framework folder into your Xcode project.
-
 ### Integrate as Cocoapods
 
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```
 // Get pod from repository
-pod 'AfficeAttributionLib', '~> 1.0.0'
+pod 'AffiseAttributionLib', '~> 1.0.0'
 
 // Get source directly from GitHub
-pod 'AfficeAttributionLib', :git => 'https://github.com/clobucks/sdk-ios.git', :tag => '1.0.0'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.0.0'
 ```
 
 
@@ -57,7 +52,7 @@ After library is added as dependency sync project with gradle files and initiali
 For swift use:
 
 ```swift
-import AfficeAttributionLib
+import AffiseAttributionLib
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -84,7 +79,7 @@ For objective-c use:
 
 ```objective-c
 #import "AppDelegate.h"
-#import <AfficeAttributionLib/AfficeAttributionLib-Swift.h>
+#import <AffiseAttributionLib/AffiseAttributionLib-Swift.h>
 
 
 @implementation AppDelegate

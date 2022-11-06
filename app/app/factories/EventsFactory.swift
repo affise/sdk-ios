@@ -5,7 +5,7 @@
 //  Created by Sergey Korney
 //
 
-import AfficeAttributionLib
+import AffiseAttributionLib
 
 protocol EventsFactory {
     func createEvents() -> [Event]

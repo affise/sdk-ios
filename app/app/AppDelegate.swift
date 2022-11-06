@@ -6,9 +6,7 @@
 //
 
 import UIKit
-import AfficeAttributionLib
-
-
+import AffiseAttributionLib
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

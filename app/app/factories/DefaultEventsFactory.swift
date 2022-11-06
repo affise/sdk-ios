@@ -5,8 +5,8 @@
 //  Created by Sergey Korney
 //
 
-import AfficeAttributionLib
 import Foundation
+import AffiseAttributionLib
 
 
 class DefaultEventsFactory: EventsFactory {
@@ -85,7 +85,7 @@ class DefaultEventsFactory: EventsFactory {
         return ConvertedTrialFromRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -97,7 +97,7 @@ class DefaultEventsFactory: EventsFactory {
         return ConvertedOfferFromRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -109,7 +109,7 @@ class DefaultEventsFactory: EventsFactory {
         return RenewedSubscriptionFromRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -121,7 +121,7 @@ class DefaultEventsFactory: EventsFactory {
         return ReactivatedSubscriptionEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -133,7 +133,7 @@ class DefaultEventsFactory: EventsFactory {
         return FailedTrialEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -145,7 +145,7 @@ class DefaultEventsFactory: EventsFactory {
         return FailedOfferiseEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -157,7 +157,7 @@ class DefaultEventsFactory: EventsFactory {
         return FailedSubscriptionEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -169,7 +169,7 @@ class DefaultEventsFactory: EventsFactory {
         return FailedTrialFromRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -181,7 +181,7 @@ class DefaultEventsFactory: EventsFactory {
         return FailedOfferFromRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -193,7 +193,7 @@ class DefaultEventsFactory: EventsFactory {
         return FailedSubscriptionFromRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -205,7 +205,7 @@ class DefaultEventsFactory: EventsFactory {
         return RenewedSubscriptionEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -217,7 +217,7 @@ class DefaultEventsFactory: EventsFactory {
         return TrialInRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -229,7 +229,7 @@ class DefaultEventsFactory: EventsFactory {
         return OfferInRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -241,7 +241,7 @@ class DefaultEventsFactory: EventsFactory {
         return SubscriptionInRetryEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -253,7 +253,7 @@ class DefaultEventsFactory: EventsFactory {
         return InitialOfferEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -265,7 +265,7 @@ class DefaultEventsFactory: EventsFactory {
         return InitialTrialEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -277,7 +277,7 @@ class DefaultEventsFactory: EventsFactory {
         return InitialSubscriptionEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -289,7 +289,7 @@ class DefaultEventsFactory: EventsFactory {
         return ConvertedTrialEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {
@@ -301,7 +301,7 @@ class DefaultEventsFactory: EventsFactory {
         return ConvertedOfferEvent(
             data: [("affise_event_revenue", 2.99),
                    ("affise_event_currency", "USD"),
-                   ("affise_event_product_id", 278459628375)
+                   ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
         ).apply {

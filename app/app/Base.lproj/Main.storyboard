@@ -69,7 +69,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xRQ-wr-1cX">
                                 <rect key="frame" x="0.0" y="194" width="414" height="668"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fya-GQ-PUS">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fya-GQ-PUS">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="668"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RXo-Ka-RxP">
@@ -86,8 +86,6 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="RXo-Ka-RxP" secondAttribute="bottom" id="8eF-kB-Hkg"/>
-                                            <constraint firstItem="RXo-Ka-RxP" firstAttribute="leading" secondItem="Fya-GQ-PUS" secondAttribute="leading" constant="16" id="8jx-GY-UpV"/>
-                                            <constraint firstAttribute="trailing" secondItem="RXo-Ka-RxP" secondAttribute="trailing" constant="16" id="IMu-G3-NZo"/>
                                             <constraint firstItem="RXo-Ka-RxP" firstAttribute="top" secondItem="Fya-GQ-PUS" secondAttribute="top" id="eaY-FY-cnz"/>
                                         </constraints>
                                     </scrollView>
@@ -104,7 +102,9 @@
                             <constraint firstItem="ou5-aG-UjD" firstAttribute="leading" secondItem="Pn2-Bf-bDF" secondAttribute="leading" id="3tY-Bb-kxs"/>
                             <constraint firstItem="xRQ-wr-1cX" firstAttribute="top" secondItem="ou5-aG-UjD" secondAttribute="bottom" id="4ON-4d-7s8"/>
                             <constraint firstItem="xRQ-wr-1cX" firstAttribute="leading" secondItem="Pn2-Bf-bDF" secondAttribute="leading" id="4Yy-Dd-D4B"/>
+                            <constraint firstItem="RXo-Ka-RxP" firstAttribute="trailing" secondItem="sgi-1h-ehv" secondAttribute="trailing" id="BUb-xh-MHy"/>
                             <constraint firstItem="Pn2-Bf-bDF" firstAttribute="trailing" secondItem="ou5-aG-UjD" secondAttribute="trailing" id="CA8-mt-dy2"/>
+                            <constraint firstItem="RXo-Ka-RxP" firstAttribute="leading" secondItem="sgi-1h-ehv" secondAttribute="leading" id="IPK-I3-STH"/>
                             <constraint firstItem="Pn2-Bf-bDF" firstAttribute="trailing" secondItem="xRQ-wr-1cX" secondAttribute="trailing" id="Wcp-9b-nUO"/>
                             <constraint firstItem="Pn2-Bf-bDF" firstAttribute="bottom" secondItem="xRQ-wr-1cX" secondAttribute="bottom" id="ccw-OG-27a"/>
                             <constraint firstItem="ou5-aG-UjD" firstAttribute="top" secondItem="Pn2-Bf-bDF" secondAttribute="top" id="eSd-BT-Het"/>
