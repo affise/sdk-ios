@@ -16,25 +16,20 @@ import Foundation
 @objc
 public class TravelBookingEvent : NativeEvent {
     private let details: [Any]
-    private let timeStampMillis: Int64
     private let userData: String?
     
     public init(details: [Any],
-                timeStampMillis: Int64,
                 userData: String? = nil) {
         
         self.details = details
-        self.timeStampMillis = timeStampMillis
         self.userData = userData
     }
     
     @objc
     public init(details: [AnyObject],
-                timeStampMillis: Int64,
                 userData: String? = nil) {
         
         self.details = details
-        self.timeStampMillis = timeStampMillis
         self.userData = userData
     }
 

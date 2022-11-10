@@ -5,5 +5,5 @@ inhibit_all_warnings!
 workspace 'app'
 
 target 'app' do
-#pod 'AfficeAttributionLib'
+#pod 'AffiseAttributionLib'
 end

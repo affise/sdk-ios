@@ -677,7 +677,7 @@ class DefaultEventsFactory: EventsFactory {
     
     func createTravelBookingEvent() -> Event {
         let data = ["may", "august"]
-        return TravelBookingEvent(details: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "booking").apply {
+        return TravelBookingEvent(details: data, userData: "booking").apply {
             $0.addPredefinedParameter(parameter: PredefinedParameters.NUM_ADULTS, value: "1")
             $0.addPredefinedParameter(parameter: PredefinedParameters.NUM_CHILDREN, value: "2")
             $0.addPredefinedParameter(parameter: PredefinedParameters.NUM_INFANTS, value: "1")

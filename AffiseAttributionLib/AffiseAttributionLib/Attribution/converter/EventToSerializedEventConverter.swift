@@ -42,8 +42,7 @@ internal class EventToSerializedEventConverter : Converter {
             (Parameters.AFFISE_EVENT_DATA, from.serialize()),
             
             //Add predefined parameters
-            (Parameters.AFFISE_PARAMETERS, from.predefinedParameters
-                .map{ (key: String, value: Any?) in key }),
+            (Parameters.AFFISE_PARAMETERS, from.predefinedParameters),
         ]
 
         //Create SerializedEvent
