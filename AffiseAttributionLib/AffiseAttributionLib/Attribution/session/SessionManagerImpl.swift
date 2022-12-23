@@ -8,6 +8,18 @@
 import Foundation
 
 
+struct SessionData {
+    let lifetimeSessionCount: TimeInterval
+    let affiseSessionCount: Int64
+    init(
+        lifetimeSessionCount: TimeInterval,
+        affiseSessionCount: Int64
+    ) {
+        self.lifetimeSessionCount = lifetimeSessionCount
+        self.affiseSessionCount = affiseSessionCount
+    }
+}
+
 class SessionManagerImpl {
     
     static let TIME_TO_START_SESSION: TimeInterval = 15
@@ -21,16 +33,21 @@ class SessionManagerImpl {
         self.preferences = preferences
         self.appLifecycleEventsManager = appLifecycleEventsManager
     }
-    
+
+    private lazy var sessionData: SessionData = SessionData(
+        lifetimeSessionCount: self.preferences.value(forKey: Parameters.LIFETIME_SESSION_COUNT) as? TimeInterval ?? 0,
+        affiseSessionCount: Int64(self.preferences.integer(forKey: Parameters.AFFISE_SESSION_COUNT))
+    )
+
     /**
      * Time of start session
      */
     private var openAppTime: TimeInterval? = nil
 
     /**
-     * Last time of user active
+     * Last date time of user active
      */
-    private var closeAppTime: TimeInterval? = nil
+    private var closeAppDateTime: TimeInterval? = nil
 
     /**
      * Session active status
@@ -55,7 +72,7 @@ class SessionManagerImpl {
          */
         if (self.openAppTime == nil) {
             //open app time
-            self.openAppTime = Date().timeIntervalSince1970
+            self.openAppTime = uptime()
         }
         
         appLifecycleEventsManager.addDidEnterBackgroundListener { [weak self] userInfo in
@@ -66,7 +83,7 @@ class SessionManagerImpl {
             self.checkSessionToStart()
             
             //Save time of user quit or hide app
-            self.closeAppTime = Date().timeIntervalSince1970
+            self.closeAppDateTime = Date().timeIntervalSince1970
             
             //App is close
             self.isOpenApp = false
@@ -93,7 +110,7 @@ class SessionManagerImpl {
              */
             if (self.openAppTime == nil) {
                 //open app time
-                self.openAppTime = Date().timeIntervalSince1970
+                self.openAppTime = self.uptime()
             }
         }
     }
@@ -109,7 +126,7 @@ class SessionManagerImpl {
         //Check open app time
         if let startTime = openAppTime {
             //Time current session
-            let time = Date().timeIntervalSince1970 - startTime - SessionManagerImpl.TIME_TO_START_SESSION
+            let time = uptime() - startTime - SessionManagerImpl.TIME_TO_START_SESSION
             
             //if session started
             if (time > 0) {
@@ -125,22 +142,36 @@ class SessionManagerImpl {
      * Save session time
      */
     private func saveSessionTime() {
-        preferences.set(getLifetimeSessionTime(), forKey: Parameters.LIFETIME_SESSION_COUNT)
+        let lifetimeSessionTime = getLifetimeSessionTime()
+
+        sessionData = sessionData.copy(lifetimeSessionCount: lifetimeSessionTime)
+
+        preferences.set(lifetimeSessionTime, forKey: Parameters.LIFETIME_SESSION_COUNT)
     }
 
     /**
      * Get all old sessions time
      */
     private func getSaveSessionsTime() -> TimeInterval {
-        preferences.value(forKey: Parameters.LIFETIME_SESSION_COUNT) as? TimeInterval ?? 0
+        sessionData.lifetimeSessionCount
     }
 
     /**
      * Save new session count
      */
     private func addNewSession() {
-        let count = preferences.integer(forKey: Parameters.AFFISE_SESSION_COUNT)
-        preferences.set(count + 1, forKey: Parameters.AFFISE_SESSION_COUNT)
+        let count = sessionData.affiseSessionCount + 1
+
+        sessionData = sessionData.copy(affiseSessionCount: count)
+
+        preferences.set(count, forKey: Parameters.AFFISE_SESSION_COUNT)
+    }
+
+    /**
+     * The amount of time the system has been awake since the last time it was restarted.
+     */
+    private func uptime() -> TimeInterval {
+        return ProcessInfo.processInfo.systemUptime
     }
 }
 
@@ -166,13 +197,13 @@ extension SessionManagerImpl: SessionManager {
             return Date().timeIntervalSince1970
         } else {
             //lastInteractionTime is session is active
-            return closeAppTime
+            return closeAppDateTime
         }
     }
     
     func getSessionTime() -> TimeInterval {
         if let openAppTime = openAppTime{
-            return Date().timeIntervalSince1970 - openAppTime
+            return uptime() - openAppTime
         } else {
             return 0
         }
@@ -188,6 +219,26 @@ extension SessionManagerImpl: SessionManager {
             checkSessionToStart()
         }
 
-        return Int64(preferences.integer(forKey: Parameters.AFFISE_SESSION_COUNT))
+        return sessionData.affiseSessionCount
+    }
+}
+
+extension SessionData {
+    
+    func copy(lifetimeSessionCount: TimeInterval? = nil, affiseSessionCount: Int64? = nil) -> SessionData {
+        let copy = self
+        if let value = lifetimeSessionCount {
+            return SessionData(
+                lifetimeSessionCount: value,
+                affiseSessionCount: self.affiseSessionCount
+            )
+        }
+        if let value = affiseSessionCount {
+            return SessionData(
+                lifetimeSessionCount: self.lifetimeSessionCount,
+                affiseSessionCount: value
+            )
+        }
+        return copy
     }
 }

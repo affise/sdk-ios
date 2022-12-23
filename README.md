@@ -1,10 +1,10 @@
 # Affise Attribution iOS library
 
+- [Affise Attribution iOS library](#affise-attribution-ios-library)
 - [Description](#description)
-- [Quick start](#quick-start)
-- [Integration](#integration)
-    - [Integrate as file dependency](#integrate-as-file-dependency)
-    - [Integrate as Cocoapods](#integrate-as-сocoapods)
+  - [Quick start](#quick-start)
+  - [Integration](#integration)
+    - [Integrate as Cocoapods](#integrate-as-cocoapods)
     - [Initialize](#initialize)
 - [Features](#features)
     - [Device identifiers collection](#device-identifiers-collection)
@@ -15,13 +15,12 @@
     - [Push token tracking](#push-token-tracking)
     - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
     - [Deeplinks](#deeplinks)
-    - [Web view tracking](#webview-tracking)
-        - [Initialize webview](#initialize-webview) 
-        - [Events tracking JS](#events-tracking-js) 
-        - [Predefined event parameters JS](#predefined-event-parameters-js)
-        - [Custom events JS](#custom-events-js)
-- [Requirements](#requirements)
-- [Licence](#licence)
+    - [Webview tracking](#webview-tracking)
+      - [Initialize webview](#initialize-webview)
+      - [Events tracking JS](#events-tracking-js)
+      - [Predefined event parameters JS](#predefined-event-parameters-js)
+      - [Custom events JS](#custom-events-js)
+  - [Licence](#licence)
 
 # Description
 
@@ -38,10 +37,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.0.3'
+pod 'AffiseAttributionLib', '~> 1.0.5'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.0.3'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.0.5'
 ```
 
 
@@ -62,9 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let properties = AffiseInitProperties(affiseAppId: "Your appId", //Change to your app id
-                                              partParamName: "Your partParamName", //Change to your partParamName
-                                              partParamNameToken: "Your partParamNameToken", //Change to your partParamNameToken
-                                              appToken: "Your appToken", //Change to your appToken
+                                              partParamName: nil, //Change to your partParamName
+                                              partParamNameToken: nil, //Change to your partParamNameToken
+                                              appToken: nil, //Change to your appToken
                                               isProduction: false, // Add your custom rule to determine if this is a production build
                                               secretId: "Your secretId" //Change to your appToken
                                               )

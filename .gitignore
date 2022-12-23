@@ -13,8 +13,6 @@
 #####
 # OS X temporary files that should never be committed
 
-.DS_Store
-*.swp
 *.lock
 profile
 
@@ -138,3 +136,23 @@ Pods/
 !Podfile.lock
 xcodebuild/Logs/
 IDEWorkspaceChecks.plist
+
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/

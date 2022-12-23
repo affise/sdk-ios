@@ -44,6 +44,7 @@ class DefaultEventsFactory: EventsFactory {
             createRateEvent(),
             createReEngageEvent(),
             createReserveEvent(),
+            createSalesEvent(),
             createSearchEvent(),
             createShareEvent(),
             createSpendCreditsEvent(),
@@ -613,6 +614,19 @@ class DefaultEventsFactory: EventsFactory {
         }
     }
     
+    func createSalesEvent() -> Event {
+        let data = [
+            ("phone", 1),
+            ("case", 1)
+        ]
+        
+        return SalesEvent(salesData: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "apple").apply {
+            $0.addPredefinedParameter(parameter: PredefinedParameters.ORDER_ID, value: "23123")
+            $0.addPredefinedParameter(parameter: PredefinedParameters.PRICE, value: "2.19$")
+            $0.addPredefinedParameter(parameter: PredefinedParameters.QUANTITY, value: "1")
+        }
+    }
+
     func createSearchEvent() -> Event {
         let data = ["eco milk", "grass"]
         return SearchEvent(search: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "browser").apply {

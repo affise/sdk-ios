@@ -197,6 +197,7 @@
 		7CD757A028C50FC200AAA1D6 /* LogsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7579F28C50FC200AAA1D6 /* LogsRepository.swift */; };
 		7CD757A228C5104900AAA1D6 /* LogsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD757A128C5104900AAA1D6 /* LogsRepositoryImpl.swift */; };
 		7CD757A428C5124300AAA1D6 /* LogToSerializedLogConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */; };
+		84AA087D2955DB4F001FB3AB /* SalesEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA087C2955DB4F001FB3AB /* SalesEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -401,6 +402,7 @@
 		7CD7579F28C50FC200AAA1D6 /* LogsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsRepository.swift; sourceTree = "<group>"; };
 		7CD757A128C5104900AAA1D6 /* LogsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsRepositoryImpl.swift; sourceTree = "<group>"; };
 		7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToSerializedLogConverter.swift; sourceTree = "<group>"; };
+		84AA087C2955DB4F001FB3AB /* SalesEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalesEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -810,6 +812,7 @@
 				10C07E5328B7448600A903FD /* RateEvent.swift */,
 				10C07E5628B7448600A903FD /* ReEngageEvent.swift */,
 				10C07E5828B7448600A903FD /* ReserveEvent.swift */,
+				84AA087C2955DB4F001FB3AB /* SalesEvent.swift */,
 				10C07E3F28B7448500A903FD /* SearchEvent.swift */,
 				10C07E4A28B7448500A903FD /* ShareEvent.swift */,
 				10C07E5528B7448600A903FD /* SpendCreditsEvent.swift */,
@@ -1183,6 +1186,7 @@
 				10C07E2F28B6BA0E00A903FD /* SubscriptionFirstConversion.swift in Sources */,
 				10B173F128CF754000E96EA8 /* RegionProvider.swift in Sources */,
 				10C07DEE28A7D97200A903FD /* CreatedTimeProvider.swift in Sources */,
+				84AA087D2955DB4F001FB3AB /* SalesEvent.swift in Sources */,
 				7C9789BD289656FA009CE639 /* AffiseApi.swift in Sources */,
 				10C07E6B28B7448600A903FD /* SubscribeEvent.swift in Sources */,
 				10B173E128CF527E00E96EA8 /* CreatedTimeMilliProvider.swift in Sources */,
