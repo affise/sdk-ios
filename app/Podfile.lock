@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 52734e021d187f80f42a9b1af478d89b3199f4ab
+PODS:
+  - AffiseAttributionLib (1.0.6)
+
+DEPENDENCIES:
+  - AffiseAttributionLib (from `./../`)
+
+EXTERNAL SOURCES:
+  AffiseAttributionLib:
+    :path: "./../"
+
+SPEC CHECKSUMS:
+  AffiseAttributionLib: eefb1c5ef2281d4b19e25b4fb83914594c517af1
+
+PODFILE CHECKSUM: ea8b87fc23928a807924c3389d818eaea992bc2f
 
 COCOAPODS: 1.11.3
