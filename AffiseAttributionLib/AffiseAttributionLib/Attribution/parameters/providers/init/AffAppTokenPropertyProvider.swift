@@ -24,7 +24,7 @@ class AffAppTokenPropertyProvider: StringWithParamPropertyProvider {
     
     override func provideWithParam(_ param: String) -> String {
         return stringToSHA256Converter.convert(
-            from: storage.getProperties()?.affiseAppId ?? "" +
+            from: (storage.getProperties()?.affiseAppId ?? "") +
             param +
             (storage.getProperties()?.secretId ?? "")
         )

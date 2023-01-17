@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1022A071291D502A00C03E6A /* AffiseAttributionLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1022A070291D502A00C03E6A /* AffiseAttributionLib.framework */; };
-		1022A072291D502A00C03E6A /* AffiseAttributionLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1022A070291D502A00C03E6A /* AffiseAttributionLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1053B29028ECA1D9004FD4B3 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 1053B28F28ECA1D8004FD4B3 /* index.html */; };
 		10C07E3828B737D400A903FD /* EventsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C07E3728B737D400A903FD /* EventsFactory.swift */; };
 		10C07E3B28B7380C00A903FD /* DefaultEventsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C07E3A28B7380C00A903FD /* DefaultEventsFactory.swift */; };
@@ -40,20 +38,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		1022A073291D502A00C03E6A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1022A072291D502A00C03E6A /* AffiseAttributionLib.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		017266D1F8F4551443A721AF /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
 		1022A070291D502A00C03E6A /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AffiseAttributionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +58,7 @@
 		7C1399B0287F2FC200C28C32 /* appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1399B4287F2FC200C28C32 /* appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITests.swift; sourceTree = "<group>"; };
 		7C1399B6287F2FC200C28C32 /* appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		841DB1F02976C66E005A76EF /* libAffiseAttributionLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAffiseAttributionLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFC80A376C80968141DDD04 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1022A071291D502A00C03E6A /* AffiseAttributionLib.framework in Frameworks */,
 				9FF9F1B32FEA5AEF7687D500 /* libPods-app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +154,7 @@
 		7C9789B728965289009CE639 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				841DB1F02976C66E005A76EF /* libAffiseAttributionLib.a */,
 				1022A070291D502A00C03E6A /* AffiseAttributionLib.framework */,
 				10C8560E29177AE50003E24D /* AffiseAttributionLib.framework */,
 				6D4BCA27955E2E3BCD4F36F7 /* libPods-app.a */,
@@ -197,7 +182,6 @@
 				7C13998C287F2FC000C28C32 /* Sources */,
 				7C13998D287F2FC000C28C32 /* Frameworks */,
 				7C13998E287F2FC000C28C32 /* Resources */,
-				1022A073291D502A00C03E6A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
