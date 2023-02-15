@@ -37,10 +37,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.0.6'
+pod 'AffiseAttributionLib', '~> 1.0.8'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.0.6'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.0.8'
 ```
 
 
@@ -55,7 +55,7 @@ import AffiseAttributionLib
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                               secretId: "Your secretId" //Change to your appToken
                                               )
         Affise.shared.load(app: application, initProperties: properties, launchOptions: launchOptions)
-        
+
         return true
     }
 }
@@ -85,7 +85,7 @@ For objective-c use:
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+
     AffiseInitProperties *initProperties = [[AffiseInitProperties alloc] initWithAffiseAppId:@"Your appId" //Change to your app id
                                                                                partParamName:@"Your partParamName" //Change to your partParamName
                                                                           partParamNameToken:@"Your partParamNameToken" //Change to your partParamNameToken
@@ -94,12 +94,11 @@ For objective-c use:
                                                                                     secretId:@"Your secretId" //Change to your appToken
                                                                                     ];
     [Affise.shared loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
-    
+
     return YES;
 }
 @end
 ```
-
 
 # Features
 
@@ -213,12 +212,12 @@ For objective-c use:
     NSArray *items = @[
         @{"items", itemsToCart}
     ];
-    
+
     Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:items
                                                    timeStampMillis:NSDate.date.timeIntervalSince1970
                                                           userData:@"groceries"];
     [event addPredefinedParameterWithParameter:PredefinedParametersADREV_AD_TYPE value:@"best before 2029"];
-    
+
     [Affise.shared sendEventWithEvent: event];
 }
 ```
@@ -280,7 +279,7 @@ Use any of custom events if default doesn't fit your scenario:
 
 ### Predefined event parameters
 
-To enrich your event with another dimension, you can use predefined parameters for most common cases. 
+To enrich your event with another dimension, you can use predefined parameters for most common cases.
 Add it to any event:
 
 ```swift
@@ -303,16 +302,18 @@ For objective-c use:
     NSArray *items = @[
         @{"items", itemsToCart}
     ];
-    
+
     Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:items
                                                    timeStampMillis:NSDate.date.timeIntervalSince1970
                                                           userData:@"groceries"];
     [event addPredefinedParameterWithParameter:PredefinedParametersADREV_AD_TYPE value:@"best before 2029"];
-    
+
     [Affise.shared sendEventWithEvent: event];
 }
 ```
+
 In examples above `PredefinedParameters.DESCRIPTION` is used, but many others is available:
+
 - `ADREV_AD_TYPE`
 - `CITY`
 - `COUNTRY`
@@ -391,7 +392,6 @@ In examples above `PredefinedParameters.DESCRIPTION` is used, but many others is
 Affise library will send any pending events with first opportunity,
 but if there is no network connection or device is disabled, events are kept locally for 7 days before deletion.
 
-
 ### Push token tracking
 
 To let affise track push token you need to receive it from your push service provider, and pass to Affise library.
@@ -402,14 +402,16 @@ After you have done with firebase inegration, add to your cloud messaging servic
 ```swift
 func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
   print("Firebase registration token: \(String(describing: fcmToken))")
-  
+
   // New token generated
   Affise.share.addPushToken(fcmToken)
 }
 ```
+
 ### Reinstall Uninstall tracking
 
 Affise automaticly track reinstall events by using silent-push technology, to make this feature work, pass push token when it is recreated by user and on you application starts up
+
 ```kotlin
 Affise.share.addPushToken(token)
 ```
@@ -421,6 +423,7 @@ To integrate applink support You can find out how to set up deeplinks in the [of
 - register applink callback right after Affise.share.init(..)
 
 for swift:
+
 ```swift
 Affise.share.init(..)
 Affise.shared.registerDeeplinkCallback { url in
@@ -434,12 +437,12 @@ Affise.shared.registerDeeplinkCallback { url in
         }
 ```
 
-
 ### Webview tracking
+
 #### Initialize webview
+
 To integrate the library into the JavaScript environment, we added a bridge between JavaScript and the native SDK. Now you can send events and use the functionality of the native library directly from Webview.
 Here are step by step instructions:
-
 
 ```swift
 // retreive webview from view hierarhy
@@ -454,13 +457,14 @@ override func viewDidLoad() {
 
 // initialize webview with Affise native library
 Affise.shared.registerWebView(webView)
-    
+
 ```
-    
+
 Other Javascript enviroment features is described below.
 
 #### Events tracking JS
-after webview is initialized you send events from JavaScript enviroment 
+
+after webview is initialized you send events from JavaScript enviroment
 
 ```javascript
 var event = new AddPaymentInfoEvent(
@@ -472,11 +476,12 @@ var event = new AddPaymentInfoEvent(
 event.addPredefinedParameter('affise_p_purchase_currency', 'USD');
 
 Affise.sendEvent(event)
-            
+
 });
 ```
 
 Just like with native SDK, javascript enviroment also provides default events that can be passed from webview:
+
 - `AchieveLevelEvent`
 - `AddPaymentInfoEvent`
 - `AddToCartEvent`
@@ -546,14 +551,16 @@ Just like with native SDK, javascript enviroment also provides default events th
 - `ViewItemsEvent`
 
 #### Predefined event parameters JS
+
 Each event can be extended with custom event parameters. By calling `addPredefinedParameter` function you can pass predefined parameters name and value, for example:
+
 ```javascript
 var event = ...
 
 event.addPredefinedParameter('affise_p_purchase_currency', 'USD');
 
 Affise.sendEvent(event)
-            
+
 });
 ```
 

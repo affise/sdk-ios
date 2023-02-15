@@ -21,6 +21,11 @@ public class Event: NSObject {
     private(set) var predefinedParameters: [(String, Any?)] = []
 
     /**
+     * Is first for user, default false
+     */
+    private var firstForUser: Bool = false
+
+    /**
      * Serialize event to Dictionary
      *
      * @return Dictionary
@@ -53,7 +58,11 @@ public class Event: NSObject {
      *
      * @return is first for user or not
      */
-    func isFirstForUser() -> Bool { return false }
+    func isFirstForUser() -> Bool { return firstForUser }
+
+    func setFirstForUser(_ firstForUser: Bool) {
+        self.firstForUser = firstForUser
+    }
 
     /**
      * Add predefined [parameter] with [value] to event

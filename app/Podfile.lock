@@ -1,5 +1,5 @@
 PODS:
-  - AffiseAttributionLib (1.0.7)
+  - AffiseAttributionLib (1.0.8)
 
 DEPENDENCIES:
   - AffiseAttributionLib (from `./../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "./../"
 
 SPEC CHECKSUMS:
-  AffiseAttributionLib: 1d0e6ac1bbd817884038d0595225713d893c9d70
+  AffiseAttributionLib: a6ae0ce55a4ac76cfd1b6a96b2df987355bee11f
 
 PODFILE CHECKSUM: 289e27b61b6c2279bc69c21446a740bfef68ad42
 

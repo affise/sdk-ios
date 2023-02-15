@@ -198,6 +198,10 @@
 		7CD757A228C5104900AAA1D6 /* LogsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD757A128C5104900AAA1D6 /* LogsRepositoryImpl.swift */; };
 		7CD757A428C5124300AAA1D6 /* LogToSerializedLogConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */; };
 		84AA087D2955DB4F001FB3AB /* SalesEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA087C2955DB4F001FB3AB /* SalesEvent.swift */; };
+		84C08D73299BB0B200354746 /* IsFirstForUserStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08D71299BB0B200354746 /* IsFirstForUserStorageImpl.swift */; };
+		84C08D74299BB0B200354746 /* IsFirstForUserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08D72299BB0B200354746 /* IsFirstForUserStorage.swift */; };
+		84C08D77299BB0D000354746 /* IsFirstForUserUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08D75299BB0CF00354746 /* IsFirstForUserUseCaseImpl.swift */; };
+		84C08D78299BB0D000354746 /* IsFirstForUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08D76299BB0CF00354746 /* IsFirstForUserUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -403,6 +407,10 @@
 		7CD757A128C5104900AAA1D6 /* LogsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsRepositoryImpl.swift; sourceTree = "<group>"; };
 		7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToSerializedLogConverter.swift; sourceTree = "<group>"; };
 		84AA087C2955DB4F001FB3AB /* SalesEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalesEvent.swift; sourceTree = "<group>"; };
+		84C08D71299BB0B200354746 /* IsFirstForUserStorageImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsFirstForUserStorageImpl.swift; sourceTree = "<group>"; };
+		84C08D72299BB0B200354746 /* IsFirstForUserStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsFirstForUserStorage.swift; sourceTree = "<group>"; };
+		84C08D75299BB0CF00354746 /* IsFirstForUserUseCaseImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsFirstForUserUseCaseImpl.swift; sourceTree = "<group>"; };
+		84C08D76299BB0CF00354746 /* IsFirstForUserUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsFirstForUserUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +503,8 @@
 			children = (
 				7C7F5695289650E50062DA71 /* EventsStorage.swift */,
 				7C7F5696289650E50062DA71 /* EventsStorageImpl.swift */,
+				84C08D72299BB0B200354746 /* IsFirstForUserStorage.swift */,
+				84C08D71299BB0B200354746 /* IsFirstForUserStorageImpl.swift */,
 				10C07DDA28A11FFD00A903FD /* LogsStorage.swift */,
 				10C07DDC28A1208900A903FD /* LogsStorageImpl.swift */,
 				1053B28A28EB586D004FD4B3 /* EventsParams.swift */,
@@ -753,6 +763,8 @@
 			isa = PBXGroup;
 			children = (
 				7C7F5684289650E50062DA71 /* FirstAppOpenUseCase.swift */,
+				84C08D76299BB0CF00354746 /* IsFirstForUserUseCase.swift */,
+				84C08D75299BB0CF00354746 /* IsFirstForUserUseCaseImpl.swift */,
 				7C7F5685289650E50062DA71 /* StoreEventUseCase.swift */,
 				7C7F5686289650E50062DA71 /* StoreEventUseCaseImpl.swift */,
 				7C7F5687289650E50062DA71 /* SendDataToServerUseCase.swift */,
@@ -1067,6 +1079,7 @@
 				7C9789CB28965770009CE639 /* SessionManagerImpl.swift in Sources */,
 				7C9789CC28965770009CE639 /* LogsManager.swift in Sources */,
 				7C9789CD28965770009CE639 /* LogsManagerImpl.swift in Sources */,
+				84C08D73299BB0B200354746 /* IsFirstForUserStorageImpl.swift in Sources */,
 				7C9789CE28965770009CE639 /* SerializedLog.swift in Sources */,
 				10C07E7128B7448600A903FD /* RateEvent.swift in Sources */,
 				10C07E1428B6B9C300A903FD /* CustomId05Event.swift in Sources */,
@@ -1118,11 +1131,13 @@
 				10C07E5D28B7448600A903FD /* SearchEvent.swift in Sources */,
 				1053B27B28EB34D1004FD4B3 /* PreferencesUseCaseImpl.swift in Sources */,
 				7C9789DC28965770009CE639 /* SerializedEvent.swift in Sources */,
+				84C08D77299BB0D000354746 /* IsFirstForUserUseCaseImpl.swift in Sources */,
 				7C9789DD28965770009CE639 /* NativeEvent.swift in Sources */,
 				10C07E3228B6BA0E00A903FD /* SubscriptionRenewal.swift in Sources */,
 				10B173FD28CF7A2300E96EA8 /* PlatformNameProvider.swift in Sources */,
 				7C9789DE28965770009CE639 /* EventsManager.swift in Sources */,
 				10B173F328CF75E000E96EA8 /* CountryProvider.swift in Sources */,
+				84C08D74299BB0B200354746 /* IsFirstForUserStorage.swift in Sources */,
 				10C07E2E28B6BA0E00A903FD /* SubscriptionReactivation.swift in Sources */,
 				1053B27528E20CAA004FD4B3 /* AdidProvider.swift in Sources */,
 				10C07E7628B7448600A903FD /* ReserveEvent.swift in Sources */,
@@ -1132,6 +1147,7 @@
 				10C07E6F28B7448600A903FD /* StartTrialEvent.swift in Sources */,
 				10C07E6228B7448600A903FD /* StartRegistrationEvent.swift in Sources */,
 				1053B26028E01036004FD4B3 /* DeeplinkClickPropertyProvider.swift in Sources */,
+				84C08D78299BB0D000354746 /* IsFirstForUserUseCase.swift in Sources */,
 				7C9789DF28965770009CE639 /* EventsRepository.swift in Sources */,
 				7CD757A228C5104900AAA1D6 /* LogsRepositoryImpl.swift in Sources */,
 				7CD7579528BCDF2400AAA1D6 /* TimeSessionProvider.swift in Sources */,

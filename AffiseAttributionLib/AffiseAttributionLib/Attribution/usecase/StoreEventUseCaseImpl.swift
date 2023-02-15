@@ -14,18 +14,21 @@ class StoreEventUseCaseImpl {
     private let preferencesUseCase: PreferencesUseCase
     private let appLifecycleEventsManager: AppLifecycleEventsManager
     private let logsManager: LogsManager
+    private let isFirstForUserUseCase: IsFirstForUserUseCase
     
     init(repository: EventsRepository,
          eventsManager: EventsManager,
          preferencesUseCase: PreferencesUseCase,
          appLifecycleEventsManager: AppLifecycleEventsManager,
-         logsManager: LogsManager) {
+         logsManager: LogsManager,
+         isFirstForUserUseCase: IsFirstForUserUseCase) {
         
         self.repository = repository
         self.eventsManager = eventsManager
         self.preferencesUseCase = preferencesUseCase
         self.appLifecycleEventsManager = appLifecycleEventsManager
         self.logsManager = logsManager
+        self.isFirstForUserUseCase = isFirstForUserUseCase
     }
     
     
@@ -54,6 +57,9 @@ extension StoreEventUseCaseImpl: StoreEventUseCase {
         
         if (isTrackingEnabled()) {
             DispatchQueue.global(qos:.background).async { [weak self] in
+                //Update event for isFirstForUser
+                self?.isFirstForUserUseCase.updateEvent(event)
+                
                 //Save event
                 self?.repository.storeEvent(event: event, urls: CloudConfig.urls)
 

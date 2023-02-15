@@ -66,8 +66,11 @@ internal class AffiseComponent: AffiseApi {
                                                                          eventsManager: eventsManager,
                                                                          preferencesUseCase: preferencesUseCase,
                                                                          appLifecycleEventsManager: appLifecycleEventsManager,
-                                                                         logsManager: logsManager)
+                                                                         logsManager: logsManager,
+                                                                         isFirstForUserUseCase: isFirstForUserUseCase)
     lazy var storeLogsUseCase:StoreLogsUseCase = StoreLogsUseCaseImpl(repository: logsRepository)
+    lazy var isFirstForUserStorage:IsFirstForUserStorage = IsFirstForUserStorageImpl(logsManager: logsManager, fileManager: fileManager)
+    lazy var isFirstForUserUseCase:IsFirstForUserUseCase = IsFirstForUserUseCaseImpl(isFirstForUserStorage: isFirstForUserStorage)
     lazy var initPropertiesStorage: InitPropertiesStorage = InitPropertiesStorageImpl()
     lazy var setPropertiesWhenInitUseCase: SetPropertiesWhenAppInitializedUseCase = SetPropertiesWhenAppInitializedUseCaseImpl(storage: initPropertiesStorage)
     lazy var sendDataToServerUseCase: SendDataToServerUseCase = SendDataToServerUseCaseImpl(postBackModelFactory: postBackModelFactory,
