@@ -18,6 +18,7 @@
 		7C1399AB287F2FC200C28C32 /* appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1399AA287F2FC200C28C32 /* appTests.swift */; };
 		7C1399B5287F2FC200C28C32 /* appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1399B4287F2FC200C28C32 /* appUITests.swift */; };
 		7C1399B7287F2FC200C28C32 /* appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1399B6287F2FC200C28C32 /* appUITestsLaunchTests.swift */; };
+		84A7CA53299EA10000150EFA /* affise.js in Resources */ = {isa = PBXBuildFile; fileRef = 84A7CA52299EA10000150EFA /* affise.js */; };
 		9FF9F1B32FEA5AEF7687D500 /* libPods-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4BCA27955E2E3BCD4F36F7 /* libPods-app.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		7C1399B4287F2FC200C28C32 /* appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITests.swift; sourceTree = "<group>"; };
 		7C1399B6287F2FC200C28C32 /* appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		841DB1F02976C66E005A76EF /* libAffiseAttributionLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAffiseAttributionLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A7CA52299EA10000150EFA /* affise.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = affise.js; path = ../AffiseAttributionLib/AffiseAttributionLib/Attribution/assets/affise.js; sourceTree = "<group>"; };
 		DEFC80A376C80968141DDD04 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 		7C139987287F2FC000C28C32 = {
 			isa = PBXGroup;
 			children = (
+				84A7CA52299EA10000150EFA /* affise.js */,
 				7C139992287F2FC000C28C32 /* app */,
 				7C1399A9287F2FC200C28C32 /* appTests */,
 				7C1399B3287F2FC200C28C32 /* appUITests */,
@@ -276,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A7CA53299EA10000150EFA /* affise.js in Resources */,
 				7C1399A0287F2FC100C28C32 /* LaunchScreen.storyboard in Resources */,
 				1053B29028ECA1D9004FD4B3 /* index.html in Resources */,
 				7C13999D287F2FC100C28C32 /* Assets.xcassets in Resources */,

@@ -71,9 +71,12 @@ extension StoreEventUseCaseImpl: StoreEventUseCase {
     
     func storeWebEvent(event: String) {
         if (isTrackingEnabled() || event != GDPREvent.EVENT_NAME) {
-            DispatchQueue.global(qos:.background).async { [weak self] in
+            DispatchQueue.global(qos:.background).async { [weak self] in  
+                //Update event for isFirstForUser
+                let updatedEvent = self?.isFirstForUserUseCase.updateWebEvent(event) ?? event
+
                 //Save event
-                self?.repository.storeWebEvent(event: event, urls: CloudConfig.urls)
+                self?.repository.storeWebEvent(event: updatedEvent, urls: CloudConfig.urls)
 
                 //Send events
                 self?.eventsManager.sendEvents()

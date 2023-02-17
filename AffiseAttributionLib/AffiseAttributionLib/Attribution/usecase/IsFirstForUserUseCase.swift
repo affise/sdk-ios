@@ -9,4 +9,9 @@ protocol IsFirstForUserUseCase {
      * Update IsFirstForUser
      */
     func updateEvent(_ event: Event)
+    
+    /**
+     * Update IsFirstForUser for webBridge
+     */
+    func updateWebEvent(_ event: String) -> String
 }
