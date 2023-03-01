@@ -88,7 +88,10 @@ class EventsManager {
                       selector: #selector(fireTimer),
                       userInfo: nil,
                       repeats: true)
-        RunLoop.current.add(timer!, forMode: .common)
+
+        DispatchQueue.main.async {
+            RunLoop.current.add(self.timer!, forMode: .common)
+        }
     }
 
     /**

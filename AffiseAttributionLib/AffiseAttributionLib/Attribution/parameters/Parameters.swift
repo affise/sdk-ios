@@ -81,6 +81,7 @@ struct Parameters {
     static let DEVICE_TYPE = "device_type"
     static let OS_NAME = "os_name"
     static let PLATFORM = "platform"
+    static let SDK_PLATFORM = "sdk_platform"
     static let API_LEVEL_OS = "api_level_os"
     static let AFFISE_SDK_VERSION = "affise_sdk_version"
     static let OS_VERSION = "os_version"

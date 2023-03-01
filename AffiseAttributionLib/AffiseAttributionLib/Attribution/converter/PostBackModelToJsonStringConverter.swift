@@ -98,6 +98,7 @@ class PostBackModelToJsonStringConverter : Converter {
         (Parameters.DEVICE_TYPE, obj.deviceType),
         (Parameters.OS_NAME, obj.osName),
         (Parameters.PLATFORM, obj.platform),
+        (Parameters.SDK_PLATFORM, obj.sdkPlatform),
         (Parameters.API_LEVEL_OS, obj.apiLevelOs),
         (Parameters.AFFISE_SDK_VERSION, obj.affSdkVersion),
         (Parameters.OS_VERSION, obj.osVersion),

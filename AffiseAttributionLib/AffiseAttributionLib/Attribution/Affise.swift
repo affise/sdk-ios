@@ -134,4 +134,38 @@ public class Affise: NSObject {
      * Returns current tracking state
      */
     public func isTrackingEnabled() -> Bool { return api?.preferencesUseCase.isTrackingEnabled() ?? false }
+
+    /**
+     * Call deeplink handle manually
+     */
+    public func handleDeeplink(url: URL) {
+        Affise.shared.api?.deeplinkManager.handleDeeplink(url: url)
+    }
+
+    public class _crossPlatform {
+        /**
+         * Handle Deeplink [uri] for cross platform
+         */
+        static public func handleDeeplink(uri: String) {
+            if let url = URL(string: uri){
+                Affise.shared.handleDeeplink(url: url)
+            }
+        }
+
+        static public func start() {
+            Affise.shared.api?.sessionManager.sessionStart()
+        }
+
+        static public func react() {
+            SdkPlatform.react()
+        }
+
+        static public func flutter() {
+            SdkPlatform.flutter()
+        }
+
+        static public func unity() {
+            SdkPlatform.unity()
+        }
+    }
 }

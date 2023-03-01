@@ -64,16 +64,7 @@ class SessionManagerImpl {
      */
     private func subscribeToActivityEvents() {
         
-        //App is open
-        self.isOpenApp = true
-        
-        /**
-         * Check create open app time
-         */
-        if (self.openAppTime == nil) {
-            //open app time
-            self.openAppTime = uptime()
-        }
+        self.startSession()
         
         appLifecycleEventsManager.addDidEnterBackgroundListener { [weak self] userInfo in
             guard let self = self else {
@@ -102,16 +93,20 @@ class SessionManagerImpl {
             guard let self = self else {
                 return
             }
-            //App is open
-            self.isOpenApp = true
-            
-            /**
-             * Check create open app time
-             */
-            if (self.openAppTime == nil) {
-                //open app time
-                self.openAppTime = self.uptime()
-            }
+            self.startSession()
+        }
+    }
+
+    private func startSession() {
+        //App is open
+        self.isOpenApp = true
+        
+        /**
+         * Check create open app time
+         */
+        if (self.openAppTime == nil) {
+            //open app time
+            self.openAppTime = self.uptime()
         }
     }
 
@@ -181,7 +176,10 @@ extension SessionManagerImpl: SessionManager {
     func initialize() {
         subscribeToActivityEvents()
     }
-    
+
+    func sessionStart() {
+        startSession()
+    }
     
     func isSessionActive() -> Bool {
         //Check session status
@@ -202,8 +200,8 @@ extension SessionManagerImpl: SessionManager {
     }
     
     func getSessionTime() -> TimeInterval {
-        if let openAppTime = openAppTime{
-            return uptime() - openAppTime
+        if let startTime = openAppTime{
+            return uptime() - startTime
         } else {
             return 0
         }

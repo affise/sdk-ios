@@ -64,6 +64,7 @@ internal class PostBackModelFactory {
     let deviceTypeProvider: DeviceTypeProvider
     let osNameProvider: OsNameProvider
     let platformProvider: PlatformNameProvider
+    let sdkPlatformProvider: SdkPlatformNameProvider
     let apiLevelOsProvider: String //: ApiLevelOSProvider,
     let affSdkVersionProvider: AffSDKVersionProvider
     let osVersionProvider: OSVersionProvider
@@ -138,6 +139,7 @@ internal class PostBackModelFactory {
          deviceTypeProvider: DeviceTypeProvider,
          osNameProvider: OsNameProvider,
          platformProvider: PlatformNameProvider,
+         sdkPlatformProvider: SdkPlatformNameProvider,
          apiLevelOsProvider: String,
          affSdkVersionProvider: AffSDKVersionProvider,
          osVersionProvider: OSVersionProvider,
@@ -211,6 +213,7 @@ internal class PostBackModelFactory {
         self.deviceTypeProvider = deviceTypeProvider
         self.osNameProvider = osNameProvider
         self.platformProvider = platformProvider
+        self.sdkPlatformProvider = sdkPlatformProvider
         self.apiLevelOsProvider = apiLevelOsProvider
         self.affSdkVersionProvider = affSdkVersionProvider
         self.osVersionProvider = osVersionProvider
@@ -305,6 +308,7 @@ internal class PostBackModelFactory {
             deviceType: deviceTypeProvider.provideWithDefault(),
             osName: osNameProvider.provideWithDefault(),
             platform: platformProvider.provideWithDefault(),
+            sdkPlatform: sdkPlatformProvider.provideWithDefault(),
             apiLevelOs: apiLevelOsProvider,// TODO .provideWithDefault(),
             affSdkVersion: affSdkVersionProvider.provideWithDefault(),
             osVersion: osVersionProvider.provideWithDefault(),

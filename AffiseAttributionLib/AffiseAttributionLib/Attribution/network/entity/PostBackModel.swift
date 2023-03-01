@@ -63,6 +63,7 @@ struct PostBackModel {
     let deviceType: String
     let osName: String
     let platform: String
+    let sdkPlatform: String
     let apiLevelOs: String
     let affSdkVersion: String
     let osVersion: String

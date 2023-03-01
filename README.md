@@ -37,10 +37,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.0.8'
+pod 'AffiseAttributionLib', '~> 1.1.0'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.0.8'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.0'
 ```
 
 
@@ -418,23 +418,52 @@ Affise.share.addPushToken(token)
 
 ### Deeplinks
 
-To integrate applink support You can find out how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
+To integrate deeplink support You can find out how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
-- register applink callback right after Affise.share.init(..)
-
-for swift:
+Register deeplink callback right after Affise.share.init(..)
 
 ```swift
 Affise.share.init(..)
 Affise.shared.registerDeeplinkCallback { url in
-            let component = URLComponents(string: url.absoluteString)!
-            let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
-            if let screen = screen, screen == "special_offer" {
-                // open special offer activity
-            } else {
-                // open another activity
-            }
-        }
+    let component = URLComponents(string: url.absoluteString)!
+    let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
+    if let screen = screen, screen == "special_offer" {
+        // open special offer activity
+    } else {
+        // open another activity
+    }
+}
+```
+
+Add deeplink handler to `AppDelegate.swift` as in `app/app/AppDelegate.swift`
+
+```swift
+func application(
+    _ app: UIApplication,
+    open url: URL,
+    options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+) -> Bool {
+    Affise.shared.handleDeeplink(url: url)
+    return true
+}
+```
+
+Add key `CFBundleURLTypes` to `Info.plist` as in `app/app/Info.plist`
+
+```html
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>YOUR_AFFISE_APP_ID.affattr.com</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>affise</string>
+        </array>
+    </dict>
+</array>
 ```
 
 ### Webview tracking

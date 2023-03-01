@@ -9,11 +9,11 @@ import Foundation
 
 
 /**
- *  Provider for parameter [Parameters.PLATFORM]
+ *  Provider for parameter [Parameters.SDK_PLATFORM]
  */
-class PlatformNameProvider: StringPropertyProvider {
+class SdkPlatformNameProvider: StringPropertyProvider {
     
     override func provide() -> String? {
-        return SdkPlatform.IOS
+        return SdkPlatform.info
     }
 }

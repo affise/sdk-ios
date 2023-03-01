@@ -114,6 +114,7 @@ internal class PropertiesProviderFactory {
             deviceTypeProvider: DeviceTypeProvider(),
             osNameProvider: OsNameProvider(),
             platformProvider: PlatformNameProvider(),
+            sdkPlatformProvider: SdkPlatformNameProvider(),
             apiLevelOsProvider: "", //TODOApiLevelOSProvider(buildConfigPropertiesProvider),
             affSdkVersionProvider: AffSDKVersionProvider(),
             osVersionProvider: OSVersionProvider(),

@@ -48,4 +48,6 @@ protocol SessionManager {
      * @return session count
      */
     func getSessionCount()->Int64
+
+    func sessionStart()
 }
