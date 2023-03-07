@@ -244,7 +244,8 @@ internal class PostBackModelFactory {
     func create(
         events: Array<SerializedEvent> = [],
         logs: Array<SerializedLog> = [],
-        metrics: Array<SerializedEvent> = []
+        metrics: Array<SerializedEvent> = [],
+        internalEvents: Array<SerializedEvent> = []
     ) -> PostBackModel {
         let createdTime = createdTimeProvider.provideWithDefault()
         
@@ -330,7 +331,8 @@ internal class PostBackModelFactory {
             pushtoken: pushtokenProvider.provideWithDefault(),
             events: events,
             logs: logs,
-            metrics: metrics
+            metrics: metrics,
+            internalEvents: internalEvents
         )
     }
 }

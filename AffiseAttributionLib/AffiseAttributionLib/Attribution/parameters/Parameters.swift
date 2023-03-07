@@ -105,4 +105,5 @@ struct Parameters {
     static let AFFISE_EVENTS_COUNT = "affise_events_count"
     static let AFFISE_SDK_EVENTS_COUNT = "affise_sdk_events_count"
     static let AFFISE_METRICS_EVENTS_COUNT = "affise_metrics_events_count"
+    static let AFFISE_INTERNAL_EVENTS_COUNT = "affise_internal_events_count"
 }

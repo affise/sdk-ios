@@ -5,16 +5,16 @@ class IsFirstForUserStorageImpl {
     
     private let logsManager: LogsManager
     private let fileManager: FileManager
-
+    
     private let FILE_NAME = "first-for-user"
     
     private lazy var applicationSupportURL: URL = {
-            let urls = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-            return urls[0]
+        let urls = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        return urls[0]
     }()
     
     private lazy var eventsDirectory: URL = {
-            return applicationSupportURL.appendingPathComponent(EventsParams.EVENTS_DIR_NAME)
+        return applicationSupportURL.appendingPathComponent(EventsParams.EVENTS_DIR_NAME)
     }()
     
     init(logsManager: LogsManager, fileManager: FileManager) {
@@ -56,12 +56,18 @@ class IsFirstForUserStorageImpl {
                                             attributes: nil)
         }
         
+        if !fileManager.fileExists(atPath: fileDir.path) {
+            try fileManager.createFile(atPath: fileDir.path,
+                                       contents : nil,
+                                       attributes: nil)
+        }
+        
         return fileDir
     }
 }
 
 extension IsFirstForUserStorageImpl: IsFirstForUserStorage {
-
+    
     func add(_ eventClass: String) {
         do {
             let fileUrl = try getEventsFile()
@@ -76,7 +82,7 @@ extension IsFirstForUserStorageImpl: IsFirstForUserStorage {
             logsManager.addSdkError(error: error)
         }
     }
-
+    
     func getEventsNames() -> Array<String> {
         do {
             let fileUrl = try getEventsFile()

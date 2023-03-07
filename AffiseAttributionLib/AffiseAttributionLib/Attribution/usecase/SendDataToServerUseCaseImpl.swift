@@ -15,6 +15,7 @@ internal class SendDataToServerUseCaseImpl {
     private let postBackModelFactory: PostBackModelFactory
     private let cloudRepository: CloudRepository
     private let eventsRepository: EventsRepository
+    private let internalEventsRepository: InternalEventsRepository
 //    private let sendServiceProvider: ExecutorServiceProvider
     private let logsRepository: LogsRepository
 //    private let metricsRepository: MetricsRepository
@@ -24,6 +25,7 @@ internal class SendDataToServerUseCaseImpl {
     init(postBackModelFactory: PostBackModelFactory,
          cloudRepository: CloudRepository,
          eventsRepository: EventsRepository,
+         internalEventsRepository: InternalEventsRepository,
          logsRepository: LogsRepository,
          logsManager: LogsManager,
          preferencesUseCase: PreferencesUseCase) {
@@ -31,6 +33,7 @@ internal class SendDataToServerUseCaseImpl {
         self.postBackModelFactory = postBackModelFactory
         self.cloudRepository = cloudRepository
         self.eventsRepository = eventsRepository
+        self.internalEventsRepository = internalEventsRepository
         self.logsRepository = logsRepository
         self.logsManager = logsManager
         self.preferencesUseCase = preferencesUseCase
@@ -50,6 +53,7 @@ internal class SendDataToServerUseCaseImpl {
         var events: Array<SerializedEvent> = []
         var logs: Array<SerializedLog> = []
         var metrics: Array<SerializedEvent> = []
+        var internalEvents: Array<SerializedEvent> = []
         
         repeat {
             //Get events
@@ -61,8 +65,11 @@ internal class SendDataToServerUseCaseImpl {
             //Get metrics
 //          metrics = metricsRepository.getMetrics(url)
             
+            //Get internal events
+            internalEvents = internalEventsRepository.getEvents(url: url)
+
             //Generate data
-            let data = [postBackModelFactory.create(events: events, logs: logs, metrics: metrics)]
+            let data = [postBackModelFactory.create(events: events, logs: logs, metrics: metrics, internalEvents: internalEvents)]
             
             do {
                 //Send data for single url
@@ -76,6 +83,9 @@ internal class SendDataToServerUseCaseImpl {
                 
                 //Remove sent metrics
 //              metricsRepository.deleteMetrics(url)
+
+                //Remove sent internal events
+                internalEventsRepository.deleteEvent(ids: internalEvents.map { it in it.id }, url: url)
             } catch {
                 //Log error
                 logsManager.addNetworkError(error: error)

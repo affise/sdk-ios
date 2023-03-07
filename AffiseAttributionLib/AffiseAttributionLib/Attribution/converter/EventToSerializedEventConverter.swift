@@ -22,7 +22,7 @@ internal class EventToSerializedEventConverter : Converter {
      */
     func convert(from: Event) -> SerializedEvent {
         //Generate id
-        let id = UUID().uuidString
+        let id = generateUUID().uuidString.lowercased()
 
         //Create
         let dict: [(String, Any?)] = [

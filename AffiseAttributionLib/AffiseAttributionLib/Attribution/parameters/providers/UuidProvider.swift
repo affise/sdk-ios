@@ -14,6 +14,6 @@ import Foundation
 class UuidProvider: StringPropertyProvider {
     
     override func provide() -> String? {
-        return UUID().uuidString
+        return generateUUID().uuidString.lowercased()
     }
 }

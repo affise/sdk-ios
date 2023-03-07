@@ -22,7 +22,7 @@ class LogToSerializedLogConverter : Converter {
      */
     func convert(from: AffiseLog) -> SerializedLog {
         //Generate id
-        let id = UUID().uuidString
+        let id = generateUUID().uuidString.lowercased()
 
         //Type of log
         let type = from.name.rawValue

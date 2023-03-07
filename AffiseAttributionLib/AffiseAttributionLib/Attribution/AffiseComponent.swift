@@ -57,17 +57,25 @@ internal class AffiseComponent: AffiseApi {
                                                                       converterToSerializedEvent: EventToSerializedEventConverter(),
                                                                       logsManager: logsManager,
                                                                       eventsStorage: eventsStorage)
+    lazy var internalEventsStorage:InternalEventsStorage = InternalEventsStorageImpl(logsManager: logsManager,       fileManager: fileManager)
+    lazy var internalEventsRepository:InternalEventsRepository = InternalEventsRepositoryImpl(converterToBase64: ConverterToBase64(),
+                                                                                              converterToSerializedEvent: InternalEventToSerializedEventConverter(),
+                                                                                              logsManager: logsManager,
+                                                                                              eventsStorage: internalEventsStorage)
     lazy var networkService:NetworkService = NetworkServiceImpl(urlSession: urlSession)
     lazy var cloudRepository:CloudRepository = CloudRepositoryImpl(networkService: networkService,
                                                                    userAgentProvider: postBackModelFactory.userAgentProvider,
                                                                    converter: PostBackModelToJsonStringConverter())
-    lazy var sessionManager:SessionManager = SessionManagerImpl(preferences: preferences, appLifecycleEventsManager: appLifecycleEventsManager)
+    lazy var sessionManager:SessionManager = SessionManagerImpl(preferences: preferences,
+                                                                appLifecycleEventsManager: appLifecycleEventsManager,
+                                                                internalEventUseCase: storeInternalEventUseCase)
     lazy var storeEventUseCase:StoreEventUseCase = StoreEventUseCaseImpl(repository: eventsRepository,
                                                                          eventsManager: eventsManager,
                                                                          preferencesUseCase: preferencesUseCase,
                                                                          appLifecycleEventsManager: appLifecycleEventsManager,
                                                                          logsManager: logsManager,
                                                                          isFirstForUserUseCase: isFirstForUserUseCase)
+    lazy var storeInternalEventUseCase:StoreInternalEventUseCase = StoreInternalEventUseCaseImpl(repository: internalEventsRepository)
     lazy var storeLogsUseCase:StoreLogsUseCase = StoreLogsUseCaseImpl(repository: logsRepository)
     lazy var isFirstForUserStorage:IsFirstForUserStorage = IsFirstForUserStorageImpl(logsManager: logsManager, fileManager: fileManager)
     lazy var isFirstForUserUseCase:IsFirstForUserUseCase = IsFirstForUserUseCaseImpl(isFirstForUserStorage: isFirstForUserStorage)
@@ -76,6 +84,7 @@ internal class AffiseComponent: AffiseApi {
     lazy var sendDataToServerUseCase: SendDataToServerUseCase = SendDataToServerUseCaseImpl(postBackModelFactory: postBackModelFactory,
                                                                                             cloudRepository: cloudRepository,
                                                                                             eventsRepository: eventsRepository,
+                                                                                            internalEventsRepository: internalEventsRepository,
                                                                                             logsRepository: logsRepository,
                                                                                             logsManager: logsManager,
                                                                                             preferencesUseCase: preferencesUseCase)

@@ -19,6 +19,7 @@ class PostBackModelToJsonStringConverter : Converter {
     private let EVENTS_KEY = "events"
     private let SDK_EVENTS_KEY = "sdk_events"
     private let METRICS_EVENTS_KEY = "metrics_events"
+    private let INTERNAL_EVENTS_KEY = "internal_events"
     
     /**
      * Convert [from] list of PostBackModel to json string
@@ -125,6 +126,11 @@ class PostBackModelToJsonStringConverter : Converter {
         let eventsArray = obj.events?.map { event in event.data } ?? []
         dict.append((Parameters.AFFISE_EVENTS_COUNT, eventsArray.count))
         dict.append((EVENTS_KEY, eventsArray))
+
+        //Events
+        let sdkEventsArray = obj.internalEvents?.map { event in event.data } ?? []
+        dict.append((Parameters.AFFISE_INTERNAL_EVENTS_COUNT, sdkEventsArray.count))
+        dict.append((INTERNAL_EVENTS_KEY, sdkEventsArray))
 
         //Logs
         let logsArray = obj.logs?.map { log in log.data } ?? []

@@ -38,13 +38,13 @@ internal class FirstAppOpenUseCase {
         let firstOpenDate = Date().timeIntervalSince1970
 
         //Create affDevId
-        let affDevId = UUID().uuidString
+        let affDevId = generateUUID().uuidString.lowercased()
 
         //Create affAltDevId
-        let affAltDevId = UUID().uuidString
+        let affAltDevId = generateUUID().uuidString.lowercased()
 
         //Create randomUserId
-        let randomUserId = UUID().uuidString
+        let randomUserId = generateUUID().uuidString.lowercased()
 
         //Save properties
         preferences.set(firstOpenDate, forKey: FIRST_OPENED_DATE_KEY)

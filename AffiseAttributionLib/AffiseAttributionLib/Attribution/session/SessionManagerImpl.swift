@@ -26,12 +26,15 @@ class SessionManagerImpl {
 
     private let preferences: UserDefaults
     private let appLifecycleEventsManager: AppLifecycleEventsManager
+    private let internalEventUseCase: StoreInternalEventUseCase
     
     init(preferences: UserDefaults,
-         appLifecycleEventsManager: AppLifecycleEventsManager) {
+         appLifecycleEventsManager: AppLifecycleEventsManager,
+         internalEventUseCase: StoreInternalEventUseCase) {
         
         self.preferences = preferences
         self.appLifecycleEventsManager = appLifecycleEventsManager
+        self.internalEventUseCase = internalEventUseCase
     }
 
     private lazy var sessionData: SessionData = SessionData(
@@ -108,6 +111,23 @@ class SessionManagerImpl {
             //open app time
             self.openAppTime = self.uptime()
         }
+
+        delayRun(delay: SessionManagerImpl.TIME_TO_START_SESSION) {
+            if self.sessionTime() > 0 {
+                var count = self.getSessionCount();
+                if count == 0 {
+                    count = 1
+                }
+
+                //Send sdk events
+                self.internalEventUseCase.storeInternalEvent(
+                    event: SessionStartInternalEvent(
+                        affiseSessionCount: count,
+                        lifetimeSessionCount: self.getLifetimeSessionTime().timeInMillis
+                    )
+                )
+            }
+        }
     }
 
     /**
@@ -118,6 +138,20 @@ class SessionManagerImpl {
             return
         }
         
+        //if session started
+        if (sessionTime() > 0) {
+            sessionActive = true
+            
+            //Save new session
+            addNewSession()
+        }
+    }
+
+     private func sessionTime() -> TimeInterval {
+        if sessionActive {
+            return 0
+        }
+
         //Check open app time
         if let startTime = openAppTime {
             //Time current session
@@ -125,13 +159,11 @@ class SessionManagerImpl {
             
             //if session started
             if (time > 0) {
-                sessionActive = true
-                
-                //Save new session
-                addNewSession()
+                return time
             }
         }
-    }
+        return 0
+     }
 
     /**
      * Save session time

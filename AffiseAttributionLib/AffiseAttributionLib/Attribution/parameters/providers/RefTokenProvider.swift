@@ -28,7 +28,7 @@ class RefTokenProvider: StringPropertyProvider {
         if let token = preferences.value(forKey: KEY) {
             return token as? String
         } else {
-            let newToken = UUID().uuidString
+            let newToken = generateUUID().uuidString.lowercased()
             //Save token to preferences
             preferences.set(newToken, forKey: KEY)
             return newToken

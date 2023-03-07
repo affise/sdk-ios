@@ -199,6 +199,20 @@
 		7CD757A428C5124300AAA1D6 /* LogToSerializedLogConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */; };
 		840FFEA729A655E000CCB719 /* JsonEventClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FFEA629A655E000CCB719 /* JsonEventClass.swift */; };
 		840FFEAC29A6575100CCB719 /* SdkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FFEAB29A6575100CCB719 /* SdkPlatform.swift */; };
+		841C4CA829B7639A0029D071 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C4CA729B7639A0029D071 /* UUID.swift */; };
+		8481C9D429B632B200FAAE4B /* AffiseFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9D329B632B200FAAE4B /* AffiseFlag.swift */; };
+		8481C9D629B636F700FAAE4B /* InternalEventsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9D529B636F700FAAE4B /* InternalEventsStorage.swift */; };
+		8481C9D829B6371100FAAE4B /* InternalEventsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9D729B6371100FAAE4B /* InternalEventsStorageImpl.swift */; };
+		8481C9DB29B637B400FAAE4B /* InternalEventsParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9DA29B637B400FAAE4B /* InternalEventsParams.swift */; };
+		8481C9DD29B639FF00FAAE4B /* InternalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9DC29B639FF00FAAE4B /* InternalEvent.swift */; };
+		8481C9DF29B63B5900FAAE4B /* InternalEventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9DE29B63B5900FAAE4B /* InternalEventsRepository.swift */; };
+		8481C9E129B63B6B00FAAE4B /* InternalEventsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9E029B63B6B00FAAE4B /* InternalEventsRepositoryImpl.swift */; };
+		8481C9E329B63B7C00FAAE4B /* InternalEventToSerializedEventConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9E229B63B7C00FAAE4B /* InternalEventToSerializedEventConverter.swift */; };
+		8481C9E529B63B8C00FAAE4B /* InternalParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9E429B63B8C00FAAE4B /* InternalParameters.swift */; };
+		8481C9E729B63B9C00FAAE4B /* StoreInternalEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9E629B63B9C00FAAE4B /* StoreInternalEventUseCase.swift */; };
+		8481C9E929B63BAB00FAAE4B /* StoreInternalEventUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9E829B63BAB00FAAE4B /* StoreInternalEventUseCaseImpl.swift */; };
+		8481C9EC29B63C3A00FAAE4B /* SessionStartInternalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9EB29B63C3A00FAAE4B /* SessionStartInternalEvent.swift */; };
+		8481C9EE29B6619E00FAAE4B /* DelayRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9ED29B6619E00FAAE4B /* DelayRun.swift */; };
 		84AA087D2955DB4F001FB3AB /* SalesEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA087C2955DB4F001FB3AB /* SalesEvent.swift */; };
 		84C08D73299BB0B200354746 /* IsFirstForUserStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08D71299BB0B200354746 /* IsFirstForUserStorageImpl.swift */; };
 		84C08D74299BB0B200354746 /* IsFirstForUserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08D72299BB0B200354746 /* IsFirstForUserStorage.swift */; };
@@ -411,6 +425,20 @@
 		7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToSerializedLogConverter.swift; sourceTree = "<group>"; };
 		840FFEA629A655E000CCB719 /* JsonEventClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonEventClass.swift; sourceTree = "<group>"; };
 		840FFEAB29A6575100CCB719 /* SdkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SdkPlatform.swift; sourceTree = "<group>"; };
+		841C4CA729B7639A0029D071 /* UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
+		8481C9D329B632B200FAAE4B /* AffiseFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffiseFlag.swift; sourceTree = "<group>"; };
+		8481C9D529B636F700FAAE4B /* InternalEventsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventsStorage.swift; sourceTree = "<group>"; };
+		8481C9D729B6371100FAAE4B /* InternalEventsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventsStorageImpl.swift; sourceTree = "<group>"; };
+		8481C9DA29B637B400FAAE4B /* InternalEventsParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventsParams.swift; sourceTree = "<group>"; };
+		8481C9DC29B639FF00FAAE4B /* InternalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEvent.swift; sourceTree = "<group>"; };
+		8481C9DE29B63B5900FAAE4B /* InternalEventsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventsRepository.swift; sourceTree = "<group>"; };
+		8481C9E029B63B6B00FAAE4B /* InternalEventsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventsRepositoryImpl.swift; sourceTree = "<group>"; };
+		8481C9E229B63B7C00FAAE4B /* InternalEventToSerializedEventConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventToSerializedEventConverter.swift; sourceTree = "<group>"; };
+		8481C9E429B63B8C00FAAE4B /* InternalParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalParameters.swift; sourceTree = "<group>"; };
+		8481C9E629B63B9C00FAAE4B /* StoreInternalEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInternalEventUseCase.swift; sourceTree = "<group>"; };
+		8481C9E829B63BAB00FAAE4B /* StoreInternalEventUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInternalEventUseCaseImpl.swift; sourceTree = "<group>"; };
+		8481C9EB29B63C3A00FAAE4B /* SessionStartInternalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStartInternalEvent.swift; sourceTree = "<group>"; };
+		8481C9ED29B6619E00FAAE4B /* DelayRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayRun.swift; sourceTree = "<group>"; };
 		84AA087C2955DB4F001FB3AB /* SalesEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalesEvent.swift; sourceTree = "<group>"; };
 		84C08D71299BB0B200354746 /* IsFirstForUserStorageImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsFirstForUserStorageImpl.swift; sourceTree = "<group>"; };
 		84C08D72299BB0B200354746 /* IsFirstForUserStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsFirstForUserStorage.swift; sourceTree = "<group>"; };
@@ -507,6 +535,8 @@
 		10C07DD928A0FFF100A903FD /* storages */ = {
 			isa = PBXGroup;
 			children = (
+				8481C9D529B636F700FAAE4B /* InternalEventsStorage.swift */,
+				8481C9D729B6371100FAAE4B /* InternalEventsStorageImpl.swift */,
 				7C7F5695289650E50062DA71 /* EventsStorage.swift */,
 				7C7F5696289650E50062DA71 /* EventsStorageImpl.swift */,
 				84C08D72299BB0B200354746 /* IsFirstForUserStorage.swift */,
@@ -567,6 +597,8 @@
 			children = (
 				10C07DF728ABBEC500A903FD /* Array+Serialized.swift */,
 				10B173D328CF360E00E96EA8 /* TimeInterval+Utils.swift */,
+				8481C9ED29B6619E00FAAE4B /* DelayRun.swift */,
+				841C4CA729B7639A0029D071 /* UUID.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -878,6 +910,7 @@
 		7C7F569D289650E50062DA71 /* init */ = {
 			isa = PBXGroup;
 			children = (
+				8481C9D329B632B200FAAE4B /* AffiseFlag.swift */,
 				7C7F5698289650E50062DA71 /* AffiseInitProperties.swift */,
 				7C7F5699289650E50062DA71 /* InitPropertiesStorage.swift */,
 				7C7F569A289650E50062DA71 /* InitPropertiesStorageImpl.swift */,
@@ -908,6 +941,7 @@
 				7C7F5689289650E50062DA71 /* usecase */,
 				7C7F5697289650E50062DA71 /* events */,
 				7C7F569D289650E50062DA71 /* init */,
+				8481C9D929B6379B00FAAE4B /* internal */,
 				7C7F569E289650E50062DA71 /* Affise.swift */,
 				7C7F569F289650E50062DA71 /* AffiseApi.swift */,
 				7C7F56A0289650E50062DA71 /* AffiseComponent.swift */,
@@ -921,6 +955,30 @@
 				840FFEAB29A6575100CCB719 /* SdkPlatform.swift */,
 			);
 			path = platform;
+			sourceTree = "<group>";
+		};
+		8481C9D929B6379B00FAAE4B /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				8481C9EA29B63C2800FAAE4B /* predefined */,
+				8481C9DC29B639FF00FAAE4B /* InternalEvent.swift */,
+				8481C9DA29B637B400FAAE4B /* InternalEventsParams.swift */,
+				8481C9DE29B63B5900FAAE4B /* InternalEventsRepository.swift */,
+				8481C9E029B63B6B00FAAE4B /* InternalEventsRepositoryImpl.swift */,
+				8481C9E229B63B7C00FAAE4B /* InternalEventToSerializedEventConverter.swift */,
+				8481C9E429B63B8C00FAAE4B /* InternalParameters.swift */,
+				8481C9E629B63B9C00FAAE4B /* StoreInternalEventUseCase.swift */,
+				8481C9E829B63BAB00FAAE4B /* StoreInternalEventUseCaseImpl.swift */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
+		8481C9EA29B63C2800FAAE4B /* predefined */ = {
+			isa = PBXGroup;
+			children = (
+				8481C9EB29B63C3A00FAAE4B /* SessionStartInternalEvent.swift */,
+			);
+			path = predefined;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1044,6 +1102,7 @@
 				10C07E7728B7448600A903FD /* UnlockAchievementEvent.swift in Sources */,
 				10C07E6828B7448600A903FD /* ShareEvent.swift in Sources */,
 				10C07DDB28A11FFD00A903FD /* LogsStorage.swift in Sources */,
+				8481C9EC29B63C3A00FAAE4B /* SessionStartInternalEvent.swift in Sources */,
 				10C07E3128B6BA0E00A903FD /* SubscriptionActivation.swift in Sources */,
 				1053B24828D9AB2C004FD4B3 /* TimezoneDeviceProvider.swift in Sources */,
 				10C07DDD28A1208900A903FD /* LogsStorageImpl.swift in Sources */,
@@ -1052,6 +1111,7 @@
 				10B173E928CF597C00E96EA8 /* RandomUserIdProvider.swift in Sources */,
 				7C9789BF28965770009CE639 /* Converter.swift in Sources */,
 				1053B28E28EB5A7C004FD4B3 /* WebBridgeManager.swift in Sources */,
+				8481C9E729B63B9C00FAAE4B /* StoreInternalEventUseCase.swift in Sources */,
 				7C9789C028965770009CE639 /* PostBackModelToJsonStringConverter.swift in Sources */,
 				10C07DE228A7BE0400A903FD /* IsProductionPropertyProvider.swift in Sources */,
 				10C07E1F28B6B9C300A903FD /* AchieveLevelEvent.swift in Sources */,
@@ -1060,8 +1120,11 @@
 				7C9789C228965770009CE639 /* EventToSerializedEventConverter.swift in Sources */,
 				10C07E6E28B7448600A903FD /* LogEvent.swift in Sources */,
 				10B173DF28CF524F00E96EA8 /* CreatedTimeHourProvider.swift in Sources */,
+				8481C9D829B6371100FAAE4B /* InternalEventsStorageImpl.swift in Sources */,
 				7C9789C328965770009CE639 /* Errors.swift in Sources */,
 				1053B25928DEE35E004FD4B3 /* InstallReferrerToDeeplinkUriConverter.swift in Sources */,
+				8481C9E129B63B6B00FAAE4B /* InternalEventsRepositoryImpl.swift in Sources */,
+				8481C9D629B636F700FAAE4B /* InternalEventsStorage.swift in Sources */,
 				10C07E1628B6B9C300A903FD /* CompleteTutorialEvent.swift in Sources */,
 				10C07E1C28B6B9C300A903FD /* CustomId10Event.swift in Sources */,
 				10B173F528CF760500E96EA8 /* LanguageProvider.swift in Sources */,
@@ -1072,6 +1135,7 @@
 				10B173F728CF779300E96EA8 /* DeviceNameProvider.swift in Sources */,
 				7C9789C628965770009CE639 /* CloudRepository.swift in Sources */,
 				10C07E7428B7448600A903FD /* ReEngageEvent.swift in Sources */,
+				841C4CA829B7639A0029D071 /* UUID.swift in Sources */,
 				7C9789C728965770009CE639 /* CloudRepositoryImpl.swift in Sources */,
 				10C07DF028A7DB0700A903FD /* AffSDKSecretIdProvider.swift in Sources */,
 				10B173ED28CF6F2100E96EA8 /* RefTokensProvider.swift in Sources */,
@@ -1093,6 +1157,7 @@
 				1053B24C28DCDC28004FD4B3 /* PushTokenProvider.swift in Sources */,
 				7C9789C928965770009CE639 /* NetworkServiceImpl.swift in Sources */,
 				7C9789CA28965770009CE639 /* SessionManager.swift in Sources */,
+				8481C9D429B632B200FAAE4B /* AffiseFlag.swift in Sources */,
 				7C9789CB28965770009CE639 /* SessionManagerImpl.swift in Sources */,
 				84E6211029A8EB1B00138CFB /* SdkPlatformNameProvider.swift in Sources */,
 				7C9789CC28965770009CE639 /* LogsManager.swift in Sources */,
@@ -1113,7 +1178,9 @@
 				7C9789D228965770009CE639 /* UserAgentProvider.swift in Sources */,
 				10C07E0D28B6B9C300A903FD /* AddToCartEvent.swift in Sources */,
 				7C9789D328965770009CE639 /* Parameters.swift in Sources */,
+				8481C9DF29B63B5900FAAE4B /* InternalEventsRepository.swift in Sources */,
 				7C9789D428965770009CE639 /* FirstAppOpenUseCase.swift in Sources */,
+				8481C9E529B63B8C00FAAE4B /* InternalParameters.swift in Sources */,
 				7C9789D528965770009CE639 /* StoreEventUseCase.swift in Sources */,
 				10C07E1128B6B9C300A903FD /* ContentItemsViewEvent.swift in Sources */,
 				1053B25B28E008DA004FD4B3 /* DeeplinkManagerImpl.swift in Sources */,
@@ -1150,6 +1217,7 @@
 				10C07E5D28B7448600A903FD /* SearchEvent.swift in Sources */,
 				1053B27B28EB34D1004FD4B3 /* PreferencesUseCaseImpl.swift in Sources */,
 				7C9789DC28965770009CE639 /* SerializedEvent.swift in Sources */,
+				8481C9E329B63B7C00FAAE4B /* InternalEventToSerializedEventConverter.swift in Sources */,
 				84C08D77299BB0D000354746 /* IsFirstForUserUseCaseImpl.swift in Sources */,
 				7C9789DD28965770009CE639 /* NativeEvent.swift in Sources */,
 				10C07E3228B6BA0E00A903FD /* SubscriptionRenewal.swift in Sources */,
@@ -1220,12 +1288,16 @@
 				7CD7579728BCDF7100AAA1D6 /* AffiseSessionCountProvider.swift in Sources */,
 				10B173E528CF58BF00E96EA8 /* AffiseDeviceIdProvider.swift in Sources */,
 				10C07E2F28B6BA0E00A903FD /* SubscriptionFirstConversion.swift in Sources */,
+				8481C9DD29B639FF00FAAE4B /* InternalEvent.swift in Sources */,
 				10B173F128CF754000E96EA8 /* RegionProvider.swift in Sources */,
 				10C07DEE28A7D97200A903FD /* CreatedTimeProvider.swift in Sources */,
 				84AA087D2955DB4F001FB3AB /* SalesEvent.swift in Sources */,
+				8481C9DB29B637B400FAAE4B /* InternalEventsParams.swift in Sources */,
 				7C9789BD289656FA009CE639 /* AffiseApi.swift in Sources */,
+				8481C9E929B63BAB00FAAE4B /* StoreInternalEventUseCaseImpl.swift in Sources */,
 				10C07E6B28B7448600A903FD /* SubscribeEvent.swift in Sources */,
 				10B173E128CF527E00E96EA8 /* CreatedTimeMilliProvider.swift in Sources */,
+				8481C9EE29B6619E00FAAE4B /* DelayRun.swift in Sources */,
 				10C07E5E28B7448600A903FD /* ListViewEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
