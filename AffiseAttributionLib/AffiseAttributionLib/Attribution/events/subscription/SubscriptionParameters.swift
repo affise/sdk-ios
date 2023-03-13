@@ -46,4 +46,7 @@ public enum SubscriptionParameters: String {
 
     case AFFISE_SUBSCRIPTION_REACTIVATION = "affise_subscription_reactivation"
     case AFFISE_SUB_REACTIVATED_SUBSCRIPTION = "affise_sub_reactivated_subscription"
+
+    case AFFISE_UNSUBSCRIPTION = "affise_unsubscription"
+    case AFFISE_SUB_UNSUBSCRIPTION = "affise_sub_unsubscription"
 }

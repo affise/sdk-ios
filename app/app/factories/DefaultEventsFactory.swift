@@ -78,8 +78,21 @@ class DefaultEventsFactory: EventsFactory {
             createReactivatedSubscriptionEvent(),
             createRenewedSubscriptionFromRetryEvent(),
             createConvertedOfferFromRetryEvent(),
-            createConvertedTrialFromRetryEvent()
+            createConvertedTrialFromRetryEvent(),
+            createUnsubscriptionEvent()
         ]
+    }
+    
+    func createUnsubscriptionEvent() -> Event {
+        return UnsubscriptionEvent(
+            data: [("affise_event_revenue", 2.99),
+                   ("affise_event_currency", "USD"),
+                   ("affise_event_product_id", 278459628375 as Int64)
+                  ],
+            userData: "Unsubscription"
+        ).apply {
+            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+        }
     }
     
     func createConvertedTrialFromRetryEvent() -> Event {

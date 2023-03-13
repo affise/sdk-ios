@@ -53,6 +53,7 @@ internal func classOfEvent(_ map: [String: Any?]) -> Event.Type? {
         case "ViewCart": return ViewCartEvent.self
         case "ViewItem": return ViewItemEvent.self
         case "ViewItems": return ViewItemsEvent.self
+        case SubscriptionParameters.AFFISE_UNSUBSCRIPTION.rawValue: return subscriptionEventClass(subtype)
         case SubscriptionParameters.AFFISE_SUBSCRIPTION_ACTIVATION.rawValue: return subscriptionEventClass(subtype)
         case SubscriptionParameters.AFFISE_SUBSCRIPTION_CANCELLATION.rawValue: return subscriptionEventClass(subtype)
         case SubscriptionParameters.AFFISE_SUBSCRIPTION_ENTERED_BILLING_RETRY.rawValue: return subscriptionEventClass(subtype)
@@ -87,6 +88,7 @@ private func subscriptionEventClass(_ subtype: String?) -> Event.Type? {
         case SubscriptionParameters.AFFISE_SUB_CONVERTED_TRIAL_FROM_RETRY.rawValue: return ConvertedTrialFromRetryEvent.self
         case SubscriptionParameters.AFFISE_SUB_CONVERTED_OFFER_FROM_RETRY.rawValue: return ConvertedOfferFromRetryEvent.self
         case SubscriptionParameters.AFFISE_SUB_RENEWED_SUBSCRIPTION_FROM_RETRY.rawValue: return RenewedSubscriptionFromRetryEvent.self
+        case SubscriptionParameters.AFFISE_SUB_UNSUBSCRIPTION.rawValue: return UnsubscriptionEvent.self
         
         default:
             return nil
