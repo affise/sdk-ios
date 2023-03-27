@@ -200,6 +200,7 @@
 		840FFEA729A655E000CCB719 /* JsonEventClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FFEA629A655E000CCB719 /* JsonEventClass.swift */; };
 		840FFEAC29A6575100CCB719 /* SdkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FFEAB29A6575100CCB719 /* SdkPlatform.swift */; };
 		841C4CA829B7639A0029D071 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C4CA729B7639A0029D071 /* UUID.swift */; };
+		84478BFC29D1E0A900AF7439 /* Unsubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84478BFB29D1E0A900AF7439 /* Unsubscription.swift */; };
 		8481C9D429B632B200FAAE4B /* AffiseFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9D329B632B200FAAE4B /* AffiseFlag.swift */; };
 		8481C9D629B636F700FAAE4B /* InternalEventsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9D529B636F700FAAE4B /* InternalEventsStorage.swift */; };
 		8481C9D829B6371100FAAE4B /* InternalEventsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C9D729B6371100FAAE4B /* InternalEventsStorageImpl.swift */; };
@@ -426,6 +427,7 @@
 		840FFEA629A655E000CCB719 /* JsonEventClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonEventClass.swift; sourceTree = "<group>"; };
 		840FFEAB29A6575100CCB719 /* SdkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SdkPlatform.swift; sourceTree = "<group>"; };
 		841C4CA729B7639A0029D071 /* UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
+		84478BFB29D1E0A900AF7439 /* Unsubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unsubscription.swift; sourceTree = "<group>"; };
 		8481C9D329B632B200FAAE4B /* AffiseFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffiseFlag.swift; sourceTree = "<group>"; };
 		8481C9D529B636F700FAAE4B /* InternalEventsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventsStorage.swift; sourceTree = "<group>"; };
 		8481C9D729B6371100FAAE4B /* InternalEventsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEventsStorageImpl.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 		10C07E2328B6BA0E00A903FD /* subscription */ = {
 			isa = PBXGroup;
 			children = (
+				84478BFB29D1E0A900AF7439 /* Unsubscription.swift */,
 				10C07E2428B6BA0E00A903FD /* SubscriptionParameters.swift */,
 				10C07E2B28B6BA0E00A903FD /* BaseSubscriptionEvent.swift */,
 				10C07E2528B6BA0E00A903FD /* SubscriptionReactivation.swift */,
@@ -1195,6 +1198,7 @@
 				10C07E2028B6B9C300A903FD /* AddPaymentInfoEvent.swift in Sources */,
 				10C07E6D28B7448600A903FD /* PurchaseEvent.swift in Sources */,
 				10C07DF528AA060A00A903FD /* AppLifecycleEventsManagerImpl.swift in Sources */,
+				84478BFC29D1E0A900AF7439 /* Unsubscription.swift in Sources */,
 				10B173CA28CF225F00E96EA8 /* AffisePackageAppNameProvider.swift in Sources */,
 				1053B28328EB38AB004FD4B3 /* ApplicationLifecyclePreferencesRepository.swift in Sources */,
 				840FFEAC29A6575100CCB719 /* SdkPlatform.swift in Sources */,
