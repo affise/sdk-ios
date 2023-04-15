@@ -232,6 +232,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		10EE5FFD29E286CC00174ED3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		103AC06028EDD1A900470072 /* affise.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = affise.js; sourceTree = "<group>"; };
 		1053B24528D9A835004FD4B3 /* StoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProvider.swift; sourceTree = "<group>"; };
@@ -534,6 +547,13 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		10966A3F29CA37010007E074 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		10C07DD928A0FFF100A903FD /* storages */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +659,7 @@
 				7C7F564D289650AA0062DA71 /* AffiseAttributionLib */,
 				7C7F5659289650AA0062DA71 /* AffiseAttributionLibTests */,
 				7C7F564C289650AA0062DA71 /* Products */,
+				10966A3F29CA37010007E074 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1006,6 +1027,7 @@
 				7C7F5647289650AA0062DA71 /* Sources */,
 				7C7F5648289650AA0062DA71 /* Frameworks */,
 				7C7F5649289650AA0062DA71 /* Resources */,
+				10EE5FFD29E286CC00174ED3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1451,6 +1473,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_OBJC_GENERICS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1483,6 +1506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_OBJC_GENERICS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

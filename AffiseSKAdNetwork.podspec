@@ -15,16 +15,16 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "AffiseAttributionLib"
+  spec.name         = "AffiseSKAdNetwork"
   spec.version      = "1.1.4"
-  spec.summary      = "Affise Attribution iOS library"
+  spec.summary      = "AffiseSKAdNetwork iOS library"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "Affise SDK is a software you can use to collect app usage statistics, device identifiers, deeplink usage, track install referrer."
+  spec.description  = "AffiseSKAdNetwork."
 
   spec.homepage     = "https://affise.com"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -90,10 +90,8 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "AffiseAttributionLib/AffiseAttributionLib/Attribution/**/*.{h,m,swift,js}"
-
-  # spec.source_files  = "framework/**/*.{xcframework}"
-  # spec.exclude_files = "AffiseAttributionLib/Exclude"
+  spec.source_files  = "AffiseSKAdNetwork/AffiseSKAdNetwork/Classes/**/*.{h,m,swift,js}"
+  # spec.exclude_files = "AffiseSKAdNetwork/Exclude"
   # spec.public_header_files = "Classes/**/*.h"
 
 
@@ -117,9 +115,6 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  # spec.static_framework = true
-  # spec.preserve_path = "AffiseAttributionLib/Frameworks/*"
-  # spec.vendored_frameworks  = "framework/AffiseAttributionLib.xcframework"
   # spec.framework  = "SomeFramework"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 

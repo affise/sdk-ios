@@ -31,7 +31,7 @@ extension LogsManagerImpl: LogsManager {
             
         default:
             log = [
-                ("network_error", error.localizedDescription)
+                ("network_error", error.localizedDescription.replacingOccurrences(of: "\"", with: "\\\""))
             ]
         }
         
@@ -48,7 +48,7 @@ extension LogsManagerImpl: LogsManager {
         //Create DevicedataLog
         storeLog(
             event: AffiseLog.DevicedataLog(
-                value: error.localizedDescription
+                value: error.localizedDescription.replacingOccurrences(of: "\"", with: "\\\"")
             )
         )
     }
@@ -60,7 +60,7 @@ extension LogsManagerImpl: LogsManager {
         //Create UserdataLog
         storeLog(
             event: AffiseLog.UserdataLog(
-                value: error.localizedDescription
+                value: error.localizedDescription.replacingOccurrences(of: "\"", with: "\\\"")
             )
         )
     }
@@ -72,7 +72,7 @@ extension LogsManagerImpl: LogsManager {
         //Create SdkLog
         storeLog(
             event: AffiseLog.SdkLog(
-                value: error.localizedDescription
+                value: error.localizedDescription.replacingOccurrences(of: "\"", with: "\\\"")
             )
         )
     }

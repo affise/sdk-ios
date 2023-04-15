@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10C8561329177B7F0003E24D /* AffiseAttributionLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */; };
-		10C8561429177B7F0003E24D /* AffiseAttributionLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C9789F62896605E009CE639 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9789F52896605E009CE639 /* AppDelegate.m */; };
 		7C9789FC2896605E009CE639 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9789FB2896605E009CE639 /* ViewController.m */; };
 		7C9789FF2896605E009CE639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C9789FD2896605E009CE639 /* Main.storyboard */; };
@@ -44,7 +42,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				10C8561429177B7F0003E24D /* AffiseAttributionLib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +49,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AffiseAttributionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9789F12896605E009CE639 /* app-obj-c.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-obj-c.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9789F42896605E009CE639 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C9789F52896605E009CE639 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -68,7 +64,6 @@
 		7C978A162896605F009CE639 /* app-obj-cUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "app-obj-cUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C978A1A2896605F009CE639 /* app_obj_cUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = app_obj_cUITests.m; sourceTree = "<group>"; };
 		7C978A1C2896605F009CE639 /* app_obj_cUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = app_obj_cUITestsLaunchTests.m; sourceTree = "<group>"; };
-		7C978A2A28966146009CE639 /* AfficeAttributionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AfficeAttributionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C8561329177B7F0003E24D /* AffiseAttributionLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,8 +148,6 @@
 		7C978A2928966146009CE639 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				10C8561229177B7F0003E24D /* AffiseAttributionLib.framework */,
-				7C978A2A28966146009CE639 /* AfficeAttributionLib.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

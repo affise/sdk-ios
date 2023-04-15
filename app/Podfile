@@ -2,8 +2,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '9.0'
 inhibit_all_warnings!
+use_frameworks!
 workspace 'app'
 
 target 'app' do
-    pod 'AffiseAttributionLib', :path => './../'
+    # pod 'AffiseAttributionLib'
+    # pod 'AffiseSKAdNetwork'
 end
