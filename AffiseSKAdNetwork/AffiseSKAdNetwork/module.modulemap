@@ -1,0 +1,4 @@
+module AffiseSKAdNetwork {
+  umbrella header "AffiseSKAdNetwork.h"
+  export *
+}

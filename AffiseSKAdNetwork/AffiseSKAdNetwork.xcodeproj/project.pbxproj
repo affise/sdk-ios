@@ -17,6 +17,7 @@
 		109BCD5F29EABBF20069C8F5 /* AffiseSKAdNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AffiseSKAdNetwork.h; sourceTree = "<group>"; };
 		109BCD6729EABC2C0069C8F5 /* AffiseSKAdNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffiseSKAdNetwork.h; sourceTree = "<group>"; };
 		109BCD6829EABC2C0069C8F5 /* AffiseSKAdNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffiseSKAdNetwork.m; sourceTree = "<group>"; };
+		841048AF2A02644200629E1F /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 			children = (
 				109BCD6629EABC2C0069C8F5 /* Classes */,
 				109BCD5F29EABBF20069C8F5 /* AffiseSKAdNetwork.h */,
+				841048AF2A02644200629E1F /* module.modulemap */,
 			);
 			path = AffiseSKAdNetwork;
 			sourceTree = "<group>";
@@ -186,6 +188,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -203,6 +206,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -247,6 +251,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -258,6 +263,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -286,6 +292,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.affise.skadnetwork.AffiseSKAdNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -313,6 +320,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.affise.skadnetwork.AffiseSKAdNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

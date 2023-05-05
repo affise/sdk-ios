@@ -37,10 +37,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.1.4'
+pod 'AffiseAttributionLib', '~> 1.1.5'
+// Optional
+pod 'AffiseSKAdNetwork', '~> 1.1.5'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.4'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
+// Optional
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
 ```
 
 
