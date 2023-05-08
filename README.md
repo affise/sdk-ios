@@ -6,6 +6,7 @@
   - [Integration](#integration)
     - [Integrate as Cocoapods](#integrate-as-cocoapods)
     - [Initialize](#initialize)
+  - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
     - [Device identifiers collection](#device-identifiers-collection)
     - [Events tracking](#events-tracking)
@@ -20,7 +21,7 @@
       - [Events tracking JS](#events-tracking-js)
       - [Predefined event parameters JS](#predefined-event-parameters-js)
       - [Custom events JS](#custom-events-js)
-  - [Licence](#licence)
+
 
 # Description
 
@@ -35,16 +36,12 @@ referrer.
 
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
-```
+```ruby
 // Get pod from repository
 pod 'AffiseAttributionLib', '~> 1.1.5'
-// Optional
-pod 'AffiseSKAdNetwork', '~> 1.1.5'
 
 // Get source directly from GitHub
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
-// Optional
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
 ```
 
 
@@ -102,6 +99,54 @@ For objective-c use:
     return YES;
 }
 @end
+```
+
+## StoreKit Ad Network
+
+To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
+
+```ruby
+// Get pod from repository
+pod 'AffiseSKAdNetwork', '~> 1.1.5'
+
+// Get source directly from GitHub
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
+```
+
+For use:
+
+For ios prior `15.4`
+
+```swift
+import AffiseSKAdNetwork
+
+AffiseSKAdNetwork.shared()?.registerAppForAdNetworkAttribution(completionHandler: { error in                
+
+})
+
+AffiseSKAdNetwork.shared()?.updateConversionValue(conversionValue, completionHandler: { error in
+
+})
+```
+
+For ios `15.4`
+
+```swift
+import AffiseSKAdNetwork
+
+AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, completionHandler: { error in
+
+})
+```
+
+For ios `16.1`
+
+```swift
+import AffiseSKAdNetwork
+
+AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, coarseValue, completionHandler: { error in
+
+})
 ```
 
 # Features
@@ -530,9 +575,7 @@ var event = new AddPaymentInfoEvent(
 
 event.addPredefinedParameter('affise_p_purchase_currency', 'USD');
 
-Affise.sendEvent(event)
-
-});
+Affise.sendEvent(event);
 ```
 
 Just like with native SDK, javascript enviroment also provides default events that can be passed from webview:
@@ -616,9 +659,7 @@ var event = ...
 
 event.addPredefinedParameter('affise_p_purchase_currency', 'USD');
 
-Affise.sendEvent(event)
-
-});
+Affise.sendEvent(event);
 ```
 
 #### Custom events JS
@@ -637,15 +678,5 @@ class AchieveLevelEvent extends Event {
             affise_event_achieve_level_timestamp: timeStampMillis
         };
     }
-}});
+};
 ```
-
-## Licence
-
-Copyright 2022 Affise
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
