@@ -8,20 +8,19 @@
     - [Initialize](#initialize)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
-    - [Device identifiers collection](#device-identifiers-collection)
-    - [Events tracking](#events-tracking)
-    - [Custom events tracking](#custom-events-tracking)
-    - [Predefined event parameters](#predefined-event-parameters)
-    - [Events buffering](#events-buffering)
-    - [Push token tracking](#push-token-tracking)
-    - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
-    - [Deeplinks](#deeplinks)
-    - [Webview tracking](#webview-tracking)
-      - [Initialize webview](#initialize-webview)
-      - [Events tracking JS](#events-tracking-js)
-      - [Predefined event parameters JS](#predefined-event-parameters-js)
-      - [Custom events JS](#custom-events-js)
-
+  - [Device identifiers collection](#device-identifiers-collection)
+  - [Events tracking](#events-tracking)
+  - [Custom events tracking](#custom-events-tracking)
+  - [Predefined event parameters](#predefined-event-parameters)
+  - [Events buffering](#events-buffering)
+  - [Push token tracking](#push-token-tracking)
+  - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
+  - [Deeplinks](#deeplinks)
+  - [Webview tracking](#webview-tracking)
+    - [Initialize webview](#initialize-webview)
+    - [Events tracking JS](#events-tracking-js)
+    - [Predefined event parameters JS](#predefined-event-parameters-js)
+    - [Custom events JS](#custom-events-js)
 
 # Description
 
@@ -43,7 +42,6 @@ pod 'AffiseAttributionLib', '~> 1.1.5'
 // Get source directly from GitHub
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
 ```
-
 
 ### Initialize
 
@@ -121,11 +119,11 @@ For ios prior `15.4`
 import AffiseSKAdNetwork
 
 AffiseSKAdNetwork.shared()?.registerAppForAdNetworkAttribution(completionHandler: { error in                
-
+    // Handle error
 })
 
 AffiseSKAdNetwork.shared()?.updateConversionValue(conversionValue, completionHandler: { error in
-
+    // Handle error
 })
 ```
 
@@ -135,7 +133,7 @@ For ios `15.4`
 import AffiseSKAdNetwork
 
 AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, completionHandler: { error in
-
+    // Handle error
 })
 ```
 
@@ -145,13 +143,30 @@ For ios `16.1`
 import AffiseSKAdNetwork
 
 AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, coarseValue, completionHandler: { error in
-
+    // Handle error
 })
+```
+
+Configure your app to send postback copies to Affise:
+
+Add key `NSAdvertisingAttributionReportEndpoint` to `Info.plist`
+Set key value to `https://affise-skadnetwork.com/`
+
+Example: `example/ios/Runner/Info.plist`
+
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+      <key>NSAdvertisingAttributionReportEndpoint</key>
+      <string>https://affise-skadnetwork.com/</string>
+    </dict>
+</array>
 ```
 
 # Features
 
-### Device identifiers collection
+## Device identifiers collection
 
 To match users with events and data library is sending, these identifiers are collected:
 
@@ -236,7 +251,7 @@ To match users with events and data library is sending, these identifiers are co
 - `EVENTS`
 - `AFFISE_EVENTS_COUNT`
 
-### Events tracking
+## Events tracking
 
 For example, we want to track what items usually user adds to shopping cart. To send event first create it with
 following code
@@ -333,7 +348,7 @@ With above example you can implement other events:
 - `ViewItemEvent`
 - `ViewItemsEvent`
 
-### Custom events tracking
+## Custom events tracking
 
 Use any of custom events if default doesn't fit your scenario:
 
@@ -348,7 +363,7 @@ Use any of custom events if default doesn't fit your scenario:
 - `CustomId09Event`
 - `CustomId10Event`
 
-### Predefined event parameters
+## Predefined event parameters
 
 To enrich your event with another dimension, you can use predefined parameters for most common cases.
 Add it to any event:
@@ -458,12 +473,12 @@ In examples above `PredefinedParameters.DESCRIPTION` is used, but many others is
 - `PARAM_08`
 - `PARAM_09`
 
-### Events buffering
+## Events buffering
 
 Affise library will send any pending events with first opportunity,
 but if there is no network connection or device is disabled, events are kept locally for 7 days before deletion.
 
-### Push token tracking
+## Push token tracking
 
 To let affise track push token you need to receive it from your push service provider, and pass to Affise library.
 First add firebase integration to your app completing theese steps: https://firebase.google.com/docs/cloud-messaging/ios/client
@@ -479,7 +494,7 @@ func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: Str
 }
 ```
 
-### Reinstall Uninstall tracking
+## Reinstall Uninstall tracking
 
 Affise automaticly track reinstall events by using silent-push technology, to make this feature work, pass push token when it is recreated by user and on you application starts up
 
@@ -487,7 +502,7 @@ Affise automaticly track reinstall events by using silent-push technology, to ma
 Affise.share.addPushToken(token)
 ```
 
-### Deeplinks
+## Deeplinks
 
 To integrate deeplink support You can find out how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
@@ -519,9 +534,11 @@ func application(
 }
 ```
 
-Add key `CFBundleURLTypes` to `Info.plist` as in `app/app/Info.plist`
+Add key `CFBundleURLTypes` to `Info.plist`
 
-```html
+Example: `app/app/Info.plist`
+
+```xml
 <key>CFBundleURLTypes</key>
 <array>
     <dict>
@@ -537,9 +554,9 @@ Add key `CFBundleURLTypes` to `Info.plist` as in `app/app/Info.plist`
 </array>
 ```
 
-### Webview tracking
+## Webview tracking
 
-#### Initialize webview
+### Initialize webview
 
 To integrate the library into the JavaScript environment, we added a bridge between JavaScript and the native SDK. Now you can send events and use the functionality of the native library directly from Webview.
 Here are step by step instructions:
@@ -562,7 +579,7 @@ Affise.shared.registerWebView(webView)
 
 Other Javascript enviroment features is described below.
 
-#### Events tracking JS
+### Events tracking JS
 
 after webview is initialized you send events from JavaScript enviroment
 
@@ -650,7 +667,7 @@ Just like with native SDK, javascript enviroment also provides default events th
 - `ViewItemEvent`
 - `ViewItemsEvent`
 
-#### Predefined event parameters JS
+### Predefined event parameters JS
 
 Each event can be extended with custom event parameters. By calling `addPredefinedParameter` function you can pass predefined parameters name and value, for example:
 
@@ -662,7 +679,7 @@ event.addPredefinedParameter('affise_p_purchase_currency', 'USD');
 Affise.sendEvent(event);
 ```
 
-#### Custom events JS
+### Custom events JS
 
 If above event functionality still limits your usecase, you can allways extend `Event` class to override fields you are missing
 
