@@ -1,5 +1,10 @@
 # Affise Attribution iOS library
 
+| Pod  | Version |
+| ---- |:-------:|
+| AffiseAttributionLib  | [1.1.6](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| AffiseSKAdNetwork  | [1.1.6](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+
 - [Affise Attribution iOS library](#affise-attribution-ios-library)
 - [Description](#description)
   - [Quick start](#quick-start)
@@ -37,10 +42,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.1.5'
+pod 'AffiseAttributionLib', '~> 1.1.6'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.6'
 ```
 
 ### Initialize

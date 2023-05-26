@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "AffiseSKAdNetwork"
-  spec.version      = "1.1.5"
+  spec.version      = ENV['LIB_VERSION'] || "1.1.6"
   spec.summary      = "AffiseSKAdNetwork iOS library"
 
   # This description is used to generate tags and improve search results.
@@ -37,8 +37,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = { :file => 'LICENSE' }
-  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  spec.license      = { :type => "MIT", :file => 'LICENSE' }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

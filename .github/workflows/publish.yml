@@ -1,0 +1,58 @@
+name: Publish
+run-name: Publish ${{ github.ref_name }}
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  publish:
+    name: Publish Affise SDK CocoaPods
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Info
+        if: ${{ success() || failure() }}
+        env:
+          LIB_VERSION: ${{ github.ref_name }}
+        run: |
+          pod --version
+          pod ipc spec AffiseAttributionLib.podspec
+          pod ipc spec AffiseSKAdNetwork.podspec
+
+      - name: Publish AffiseAttributionLib Release
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
+          LIB_VERSION: ${{ github.ref_name }}
+        run: |
+          pod trunk push AffiseAttributionLib.podspec --allow-warnings
+
+      - name: Publish AffiseSKAdNetwork Release
+        id: skad
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
+          LIB_VERSION: ${{ github.ref_name }}
+        run: |
+          pod trunk push AffiseSKAdNetwork.podspec --allow-warnings
+
+      - name: Delete AffiseAttributionLib Pod
+        if: ${{ failure() && steps.skad.conclusion == 'failure' }}
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
+        run: |
+          pod trunk delete AffiseAttributionLib ${{ github.ref_name }}
+
+      - name: Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Affise Attribution iOS SDK ${{ github.ref }}
+          draft: false
+          prerelease: false
