@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "AffiseSKAdNetwork"
-  spec.version      = ENV['LIB_VERSION'] || "1.1.6"
+  spec.version      = ENV['LIB_VERSION'] || "1.1.7"
   spec.summary      = "AffiseSKAdNetwork iOS library"
 
   # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = "Affise library for StoreKit Ad Network (SKAdNetwork)"
 
-  spec.homepage     = "https://affise.com"
+  spec.homepage     = "https://github.com/affise/sdk-ios"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 

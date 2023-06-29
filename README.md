@@ -1,11 +1,11 @@
-# Affise Attribution iOS library
+# Affise Attribution iOS Library
 
 | Pod  | Version |
 | ---- |:-------:|
-| AffiseAttributionLib  | [1.1.6](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| AffiseSKAdNetwork  | [1.1.6](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| AffiseAttributionLib  | [1.1.7](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| AffiseSKAdNetwork  | [1.1.7](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
 
-- [Affise Attribution iOS library](#affise-attribution-ios-library)
+- [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
   - [Quick start](#quick-start)
   - [Integration](#integration)
@@ -21,6 +21,8 @@
   - [Push token tracking](#push-token-tracking)
   - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
   - [Deeplinks](#deeplinks)
+  - [Get random user Id](#get-random-user-id)
+  - [Get random device Id](#get-random-device-id)
   - [Webview tracking](#webview-tracking)
     - [Initialize webview](#initialize-webview)
     - [Events tracking JS](#events-tracking-js)
@@ -42,10 +44,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.1.6'
+pod 'AffiseAttributionLib', '~> 1.1.7'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.6'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.7'
 ```
 
 ### Initialize
@@ -557,6 +559,22 @@ Example: `app/app/Info.plist`
         </array>
     </dict>
 </array>
+```
+
+## Get random user Id
+
+Use the next public method of SDK
+
+```swift
+Affise.shared.getRandomUserId()
+```
+
+## Get random device Id
+
+Use the next public method of SDK
+
+```swift
+Affise.shared.getRandomDeviceId()
 ```
 
 ## Webview tracking

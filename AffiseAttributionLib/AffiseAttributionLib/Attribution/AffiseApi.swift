@@ -18,4 +18,5 @@ internal protocol AffiseApi {
     var deeplinkManager: DeeplinkManager {get}
     var initPropertiesStorage: InitPropertiesStorage {get}
     var preferencesUseCase: PreferencesUseCase {get}
+    var postBackModelFactory: PostBackModelFactory {get}
 }

@@ -136,6 +136,20 @@ public class Affise: NSObject {
     public func isTrackingEnabled() -> Bool { return api?.preferencesUseCase.isTrackingEnabled() ?? false }
 
     /**
+     * Returns random User Id
+     */
+    public func getRandomUserId() -> String? { 
+        return api?.postBackModelFactory.randomUserIdProvider.provide()
+    }
+
+    /**
+     * Returns random Device Id
+     */
+    public func getRandomDeviceId() -> String? { 
+        return api?.postBackModelFactory.affDeviceIdProvider.provide()
+    }
+
+    /**
      * Call deeplink handle manually
      */
     public func handleDeeplink(url: URL) {

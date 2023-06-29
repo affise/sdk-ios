@@ -6,6 +6,6 @@ use_frameworks!
 workspace 'app'
 
 target 'app' do
-    # pod 'AffiseAttributionLib'
-    # pod 'AffiseSKAdNetwork'
+    pod 'AffiseAttributionLib', :path => '../'
+    pod 'AffiseSKAdNetwork', :path => '../'
 end
