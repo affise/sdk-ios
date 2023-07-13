@@ -15,50 +15,17 @@ import Foundation
  */
 @objc
 public class ListViewEvent : NativeEvent {
-    private let list: [(String, Any?)]
-    private let userData: String?
-    
-    public init(list: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(list: [(String, Any?)],
                 userData: String? = nil) {
-        
-        self.list = list
-        self.userData = userData
+        self.init(userData)
+        self.anyData = list
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(list: [[String: AnyObject]],
+    public convenience init(list: [[String: AnyObject]],
                 userData: String? = nil) {
-        
-        self.list = list.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.userData = userData
+        self.init(list: list.toFlatList(), userData: userData)
     }
-
-    /**
-     * Serialize ListViewEvent to JSONObject
-     *
-     * @return JSONObject of ListViewEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_list_view", list)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "ListView" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

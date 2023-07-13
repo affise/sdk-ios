@@ -16,4 +16,12 @@ class OSVersionProvider: StringPropertyProvider {
     override func provide() -> String? {
         return UIDevice.current.systemVersion
     }
+    
+    override func getOrder() -> Float {
+        48.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.OS_VERSION
+    }
 }

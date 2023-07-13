@@ -21,4 +21,12 @@ class AppVersionProvider: StringPropertyProvider {
     override func provide() -> String? {
         return bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
+    
+    override func getOrder() -> Float {
+        3.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.APP_VERSION
+    }
 }

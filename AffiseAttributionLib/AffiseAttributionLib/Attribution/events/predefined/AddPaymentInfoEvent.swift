@@ -17,57 +17,20 @@ import Foundation
  */
 @objc
 public class AddPaymentInfoEvent : NativeEvent {
-    private let paymentInfo: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
     
-    
-    public init(paymentInfo: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")   
+    public convenience init(paymentInfo: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.paymentInfo = paymentInfo
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = paymentInfo
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(paymentInfo: [[String: AnyObject]],
+    public convenience init(paymentInfo: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.paymentInfo = paymentInfo.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(paymentInfo: paymentInfo.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-    
-    /**
-     * Serialize AddPaymentInfoEvent to JSONObject
-     *
-     * @return JSONObject of AddPaymentInfoEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_add_payment_info", paymentInfo),
-            ("affise_event_add_payment_info_timestamp", timeStampMillis)
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "AddPaymentInfo" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

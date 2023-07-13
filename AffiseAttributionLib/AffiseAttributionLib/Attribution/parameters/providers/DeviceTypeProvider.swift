@@ -32,4 +32,12 @@ class DeviceTypeProvider: StringPropertyProvider {
             return "smartphone"
         }
     }
+    
+    override func getOrder() -> Float {
+        42.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.DEVICE_TYPE
+    }
 }

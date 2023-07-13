@@ -21,4 +21,12 @@ class AppVersionRawProvider: StringPropertyProvider {
     override func provide() -> String? {
         return bundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
     }
+    
+    override func getOrder() -> Float {
+        4.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.APP_VERSION_RAW
+    }
 }

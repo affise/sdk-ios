@@ -13,69 +13,50 @@ import Foundation
  */
 @objc
 public class BaseSubscriptionEvent : NativeEvent {
-    private let data: [(String, Any?)]
-    private let userData: String?
+    private var data: [(String, Any?)] = []
     
-    
-    public init(data: [(String, Any?)],
-                userData: String? = nil) {
-        
+    public convenience init(
+        data: [(String, Any?)],
+        userData: String? = nil
+    ) {
+        self.init(userData)
         self.data = data
-        self.userData = userData
     }
     
     @objc
-    public init(data: [[String: AnyObject]],
-                userData: String? = nil) {
-        
-        self.data = data.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.userData = userData
+    public convenience init(
+        data: [[String: AnyObject]],
+        userData: String? = nil
+    ) {
+        self.init(data: data.toFlatList(), userData: userData)
     }
-
+    
     /**
      * Type of subscription
      *
      */
     func type() -> String { return "" }
-
+    
     /**
      * Subtype of subscription
      */
     public func subtype() -> String { return "" }
-
-    /**
-     * Serialize SubscriptionEvent to JSONObject
-     *
-     * @return JSONObject of SubscriptionEvent
-     */
-    override func serialize() -> [(String, Any?)] {
+     
+    override func serializeBuilder() -> AffisePropertyBuilder {
+        let result = super.serializeBuilder()
+            .addRaw(SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue, value: subtype())
         
-        //Add subtype
-        var dict: [(String, Any?)] = [
-            (SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue, subtype())
-        ]
+        for item in data {
+            result.addRaw(item.0, value: item.1)
+        }
         
-        //Add data
-        dict.append(contentsOf: data)
-        
-        return dict
+        return result
     }
-
+    
     /**
      * Name of event
      *
      * @return name
      */
     public override func getName() -> String { return type() }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

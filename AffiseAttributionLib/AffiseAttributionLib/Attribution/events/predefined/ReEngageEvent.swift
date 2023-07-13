@@ -15,39 +15,12 @@ import Foundation
  */
 @objc
 public class ReEngageEvent : NativeEvent {
-    private let reEngage: String
-    private let userData: String?
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(reEngage: String,
+    public convenience init(reEngage: String,
                 userData: String? = nil) {
-        
-        self.reEngage = reEngage
-        self.userData = userData
+        self.init(userData)
+        self.anyData = reEngage
     }
-    
-    /**
-     * Serialize ReEngageEvent to JSONObject
-     *
-     * @return JSONObject of ReEngageEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_re_engage", reEngage)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "ReEngage" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

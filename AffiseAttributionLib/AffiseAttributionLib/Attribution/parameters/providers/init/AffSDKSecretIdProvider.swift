@@ -21,6 +21,14 @@ class AffSDKSecretIdProvider: StringPropertyProvider {
     }
     
     override func provide() -> String? {
-        return storage.getProperties()?.secretId
+        return storage.getProperties()?.secretKey
+    }
+    
+    override func getOrder() -> Float {
+        63.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_SDK_SECRET_ID
     }
 }

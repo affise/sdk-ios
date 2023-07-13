@@ -22,4 +22,12 @@ class DeeplinkClickPropertyProvider : BooleanPropertyProvider {
    override func provide() -> Bool? {
        return deeplinkClickRepository.isDeeplinkClick()
    }
+   
+    override func getOrder() -> Float {
+        25.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.DEEPLINK_CLICK
+    }
 }

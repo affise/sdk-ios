@@ -86,4 +86,12 @@ class NetworkTypeProvider: StringPropertyProvider {
             return nil
         }
     }
+    
+    override func getOrder() -> Float {
+        23.1
+    }
+
+    override func getKey() -> String? {
+        Parameters.NETWORK_TYPE
+    }
 }

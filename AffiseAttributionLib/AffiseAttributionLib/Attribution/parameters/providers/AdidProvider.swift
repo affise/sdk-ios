@@ -21,4 +21,11 @@ internal class AdidProvider : StringPropertyProvider {
         return advertisingIdManager.getAdvertisingId()
     }
     
+    override func getOrder() -> Float {
+        29.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.ADID
+    }
 }

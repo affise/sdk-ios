@@ -25,4 +25,12 @@ class InstallFinishTimeProvider : LongPropertyProvider {
         }
         return time.timeInMillis
     }
+    
+    override func getOrder() -> Float {
+        12.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.INSTALL_FINISH_TIME
+    }
 }

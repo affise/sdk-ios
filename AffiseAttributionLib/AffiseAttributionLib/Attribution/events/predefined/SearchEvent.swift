@@ -16,52 +16,19 @@ import Foundation
  */
 @objc
 public class SearchEvent : NativeEvent {
-    private let search: [Any]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(search: [Any],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(search: [Any],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.search = search
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = search
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(search: [AnyObject],
+    public convenience init(search: [AnyObject],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.search = search
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(search: search.toAnyList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-    
-    /**
-     * Serialize SearchEvent to JSONObject
-     *
-     * @return JSONObject of SearchEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_search", search),
-            ("affise_event_search_timestamp", timeStampMillis)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "Search" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

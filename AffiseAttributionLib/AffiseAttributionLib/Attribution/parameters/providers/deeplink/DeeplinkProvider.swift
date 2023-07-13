@@ -23,4 +23,12 @@ class DeeplinkProvider : StringPropertyProvider {
     override func provide() -> String? {
         return deeplinkClickRepository.getDeeplink()
     }
+    
+    override func getOrder() -> Float {
+        58.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_DEEPLINK
+    }
 }

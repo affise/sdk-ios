@@ -10,7 +10,7 @@ import CoreTelephony
 
 
 /**
- * Provider for parameter [Parameters.MCCODE
+ * Provider for parameter [Parameters.MCCODE]
  */
 class MCCProvider: StringPropertyProvider {
     
@@ -21,5 +21,13 @@ class MCCProvider: StringPropertyProvider {
         // Get carrier name
         let carrierName = carrier?.mobileCountryCode
         return carrierName
+    }
+    
+    override func getOrder() -> Float {
+        36.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.MCCODE
     }
 }

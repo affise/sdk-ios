@@ -17,73 +17,32 @@ import Foundation
  */
 @objc
 public class LastAttributedTouchEvent : NativeEvent {
-    private let touchType: TouchType
-    private let timeStampMillis: Int64
-    private let touchData: [(String, Any?)]
-    private let userData: String?
-    
-    public init(touchType: TouchType,
+    private var touchType: TouchType? = nil
+    private var touchData: [(String, Any?)] = []
+
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(touchType: TouchType,
                 timeStampMillis: Int64,
                 touchData: [(String, Any?)],
                 userData: String? = nil) {
-        
+        self.init(userData, timeStampMillis: timeStampMillis)
+
         self.touchType = touchType
         self.touchData = touchData
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(touchType: TouchType,
+    public convenience init(touchType: TouchType,
                 timeStampMillis: Int64,
                 touchData: [[String: AnyObject]],
-                userData: String? = nil) {
-        
-        self.touchType = touchType
-        self.touchData = touchData.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+                userData: String? = nil) { 
+        self.init(touchType: touchType, timeStampMillis: timeStampMillis, touchData: touchData.toFlatList(), userData: userData)
     }
 
-    /**
-     * Serialize LastAttributedTouchEvent to JSONObject
-     *
-     * @return JSONObject of LastAttributedTouchEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        
-        var touchType: String
-        switch self.touchType {
-        case .CLICK:
-            touchType = "CLICK"
-        case .WEB_TO_APP_AUTO_REDIRECT:
-            touchType = "WEB_TO_APP_AUTO_REDIRECT"
-        case .IMPRESSION:
-            touchType = "IMPRESSION"
-        }
-        
-        return [
-            ("affise_event_last_attributed_touch_type", touchType),
-            ("affise_event_last_attributed_touch_timestamp", timeStampMillis),
-            ("affise_event_last_attributed_touch_data", touchData)
-        ]
+    override func serializeBuilder() -> AffisePropertyBuilder {
+        return super.serializeBuilder()
+            .add("type", value: touchType?.rawValue)
+            .add("data", value: touchData)
     }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "LastAttributedTouch" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

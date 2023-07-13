@@ -23,4 +23,12 @@ class AffPartParamNameTokenPropertyProvider: StringPropertyProvider {
     override func provide() -> String? {
         return storage.getProperties()?.partParamNameToken
     }
+    
+    override func getOrder() -> Float {
+        60.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_PART_PARAM_NAME_TOKEN
+    }
 }

@@ -11,7 +11,15 @@ import Foundation
 /**
  * Base property provider
  */
-internal class PropertyProvider<T> {
+internal class PropertyProvider<T> : Provider {
+    func getOrder() -> Float {
+        0
+    }
+    
+    func getKey() -> String? {
+        nil
+    }
+    
     /**
      * Default value of provider
      */
@@ -64,7 +72,15 @@ class LongPropertyProvider : PropertyProvider<Int64> {
 /**
  * Base string property provider with param
  */
-class StringWithParamPropertyProvider {
+class StringWithParamPropertyProvider : Provider {
+    func getOrder() -> Float {
+        0
+    }
+    
+    func getKey() -> String? {
+        nil
+    }
+    
     /**
      * Default value of provider
      */

@@ -64,7 +64,7 @@ internal class AffiseComponent: AffiseApi {
                                                                                               eventsStorage: internalEventsStorage)
     lazy var networkService:NetworkService = NetworkServiceImpl(urlSession: urlSession)
     lazy var cloudRepository:CloudRepository = CloudRepositoryImpl(networkService: networkService,
-                                                                   userAgentProvider: postBackModelFactory.userAgentProvider,
+                                                                   userAgentProvider: postBackModelFactory.getProvider(),
                                                                    converter: PostBackModelToJsonStringConverter())
     lazy var sessionManager:SessionManager = SessionManagerImpl(preferences: preferences,
                                                                 appLifecycleEventsManager: appLifecycleEventsManager,

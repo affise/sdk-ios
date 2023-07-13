@@ -23,4 +23,12 @@ class AffiseAltDeviceIdProvider: StringPropertyProvider {
     override func provide() -> String? {
         return useCase.getAffiseAltDeviseId()
     }
+    
+    override func getOrder() -> Float {
+        28.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_ALT_DEVICE_ID
+    }
 }

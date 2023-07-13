@@ -16,56 +16,19 @@ import Foundation
  */
 @objc
 public class StartRegistrationEvent : NativeEvent {
-    private let registration: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(registration: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(registration: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.registration = registration
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = registration
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(registration: [[String: AnyObject]],
+    public convenience init(registration: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.registration = registration.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(registration: registration.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-    
-    /**
-     * Serialize StartRegistrationEvent to JSONObject
-     *
-     * @return JSONObject of StartRegistrationEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_start_registration", registration),
-            ("affise_event_start_registration_timestamp", timeStampMillis)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "StartRegistration" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

@@ -16,4 +16,12 @@ class HardwareNameProvider: StringPropertyProvider {
     override func provide() -> String? {
         return UIDevice.current.model
     }
+    
+    override func getOrder() -> Float {
+        23.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.HARDWARE_NAME
+    }
 }

@@ -38,16 +38,16 @@ extension InitPropertiesStorageImpl: InitPropertiesStorage {
     }
 
     /**
-     * Update SecretId in Affise init properties
+     * Update SecretKey in Affise init properties
      */
-    func updateSecretId(secretId: String) {
+    func updateSecretKey(secretKey: String) {
         if let properties = properties {
             self.properties = AffiseInitProperties(affiseAppId: properties.affiseAppId,
                                                    partParamName: properties.partParamName,
                                                    partParamNameToken: properties.partParamNameToken,
                                                    appToken: properties.appToken,
                                                    isProduction: properties.isProduction,
-                                                   secretId: secretId)
+                                                   secretKey: secretKey)
         }
     }
 }

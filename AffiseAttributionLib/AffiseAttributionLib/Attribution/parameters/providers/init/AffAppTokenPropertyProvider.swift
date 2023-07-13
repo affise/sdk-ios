@@ -26,7 +26,15 @@ class AffAppTokenPropertyProvider: StringWithParamPropertyProvider {
         return stringToSHA256Converter.convert(
             from: (storage.getProperties()?.affiseAppId ?? "") +
             param +
-            (storage.getProperties()?.secretId ?? "")
+            (storage.getProperties()?.secretKey ?? "")
         )
+    }   
+
+    override func getOrder() -> Float {
+        61.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_APP_TOKEN
     }
 }

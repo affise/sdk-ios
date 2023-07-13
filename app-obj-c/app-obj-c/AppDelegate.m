@@ -19,7 +19,7 @@
                                                                           partParamNameToken:nil
                                                                                     appToken:nil
                                                                                 isProduction:NO
-                                                                                    secretId:nil];
+                                                                                    secretKey:nil];
     [Affise.shared loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
     
     return YES;

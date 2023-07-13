@@ -16,56 +16,19 @@ import Foundation
  */
 @objc
 public class ShareEvent : NativeEvent {
-    private let share: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(share: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(share: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.share = share
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = share
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(share: [[String: AnyObject]],
+    public convenience init(share: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.share = share.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(share: share.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-    
-    /**
-     * Serialize ShareEvent to JSONObject
-     *
-     * @return JSONObject of ShareEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_share", share),
-            ("affise_event_share_timestamp", timeStampMillis)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "Share" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

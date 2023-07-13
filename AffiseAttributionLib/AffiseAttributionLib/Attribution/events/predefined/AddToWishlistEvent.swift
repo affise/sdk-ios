@@ -17,56 +17,19 @@ import Foundation
  */
 @objc
 public class AddToWishlistEvent : NativeEvent {
-    private let wishList: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(wishList: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(wishList: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.wishList = wishList
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = wishList
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(wishList: [[String: AnyObject]],
+    public convenience init(wishList: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.wishList = wishList.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(wishList: wishList.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-
-    /**
-     * Serialize AddToWishlistEvent to JSONObject
-     *
-     * @return JSONObject of AddToWishlistEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_add_to_wishlist", wishList),
-            ("affise_event_add_to_wishlist_timestamp", timeStampMillis)
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "AddToWishlist" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

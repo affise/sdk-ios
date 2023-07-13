@@ -16,56 +16,19 @@ import Foundation
  */
 @objc
 public class LoginEvent : NativeEvent {
-    private let login: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(login: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(login: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.login = login
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = login
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(login: [[String: AnyObject]],
+    public convenience init(login: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.login = login.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(login: login.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-
-    /**
-     * Serialize LoginEvent to JSONObject
-     *
-     * @return JSONObject of LoginEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_login", login),
-            ("affise_event_login_timestamp", timeStampMillis)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "Login" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

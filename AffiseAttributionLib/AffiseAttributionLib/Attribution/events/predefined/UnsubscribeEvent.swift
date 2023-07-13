@@ -16,56 +16,19 @@ import Foundation
  */
 @objc
 public class UnsubscribeEvent : NativeEvent {
-    private let unsubscribe: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(unsubscribe: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(unsubscribe: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.unsubscribe = unsubscribe
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = unsubscribe
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(unsubscribe: [[String: AnyObject]],
+    public convenience init(unsubscribe: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.unsubscribe = unsubscribe.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(unsubscribe: unsubscribe.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-    
-    /**
-     * Serialize UnsubscribeEvent to JSONObject
-     *
-     * @return JSONObject of UnsubscribeEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_unsubscribe", unsubscribe),
-            ("affise_event_unsubscribe_timestamp", timeStampMillis)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "Unsubscribe" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

@@ -17,43 +17,13 @@ import Foundation
  */
 @objc
 public class CustomId06Event : NativeEvent {
-    private let custom: String
-    private let timeStampMillis: Int64
-    private let userData: String?
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(custom: String,
+    public convenience init(custom: String,
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.custom = custom
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = custom
     }
-
-    /**
-     * Serialize CustomId06Event to JSONObject
-     *
-     * @return JSONObject of CustomId06Event
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_custom_id_06", custom),
-            ("affise_event_custom_id_06_timestamp", timeStampMillis)
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "CustomId06" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

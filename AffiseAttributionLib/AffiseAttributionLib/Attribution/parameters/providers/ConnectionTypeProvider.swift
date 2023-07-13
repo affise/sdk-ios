@@ -39,4 +39,12 @@ class ConnectionTypeProvider: StringPropertyProvider {
             return nil
         }
     }
+    
+    override func getOrder() -> Float {
+        21.1
+    }
+
+    override func getKey() -> String? {
+        Parameters.CONNECTION_TYPE
+    }
 }

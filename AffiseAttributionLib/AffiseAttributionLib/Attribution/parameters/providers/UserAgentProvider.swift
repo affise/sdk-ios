@@ -22,4 +22,11 @@ internal class UserAgentProvider : StringPropertyProvider {
         return useCase.getUserAgent()
     }
     
+    override func getOrder() -> Float {
+        35.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.USER_AGENT
+    }
 }

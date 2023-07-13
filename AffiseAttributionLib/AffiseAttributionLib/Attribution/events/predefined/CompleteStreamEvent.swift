@@ -17,56 +17,19 @@ import Foundation
  */
 @objc
 public class CompleteStreamEvent : NativeEvent {
-    private let stream: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(stream: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(stream: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.stream = stream
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = stream
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(stream: [[String: AnyObject]],
+    public convenience init(stream: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.stream = stream.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(stream: stream.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-
-    /**
-     * Serialize CompleteStreamEvent to JSONObject
-     *
-     * @return JSONObject of CompleteStreamEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_complete_stream", stream),
-            ("affise_event_complete_stream_timestamp", timeStampMillis)
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "CompleteStream" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

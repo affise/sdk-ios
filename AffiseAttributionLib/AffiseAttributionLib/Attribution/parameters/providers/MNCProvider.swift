@@ -10,7 +10,7 @@ import CoreTelephony
 
 
 /**
- * Provider for parameter [Parameters.MNCODE
+ * Provider for parameter [Parameters.MNCODE]
  */
 class MNCProvider: StringPropertyProvider {
     
@@ -21,5 +21,13 @@ class MNCProvider: StringPropertyProvider {
         // Get carrier name
         let carrierName = carrier?.mobileNetworkCode
         return carrierName
+    }
+    
+    override func getOrder() -> Float {
+        37.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.MNCODE
     }
 }

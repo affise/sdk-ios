@@ -26,4 +26,12 @@ internal class AffiseSessionCountProvider : LongPropertyProvider {
         }
         return count
     }
+    
+    override func getOrder() -> Float {
+        56.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_SESSION_COUNT
+    }
 }

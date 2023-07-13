@@ -22,4 +22,12 @@ class AffisePackageAppNameProvider: StringPropertyProvider {
     override func provide() -> String? {
         return bundle.bundleIdentifier
     }
+    
+    override func getOrder() -> Float {
+        2.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_PKG_APP_NAME
+    }
 }

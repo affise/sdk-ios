@@ -19,7 +19,6 @@
 		7C1399AB287F2FC200C28C32 /* appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1399AA287F2FC200C28C32 /* appTests.swift */; };
 		7C1399B5287F2FC200C28C32 /* appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1399B4287F2FC200C28C32 /* appUITests.swift */; };
 		7C1399B7287F2FC200C28C32 /* appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1399B6287F2FC200C28C32 /* appUITestsLaunchTests.swift */; };
-		84A7CA53299EA10000150EFA /* affise.js in Resources */ = {isa = PBXBuildFile; fileRef = 84A7CA52299EA10000150EFA /* affise.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,7 +294,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A7CA53299EA10000150EFA /* affise.js in Resources */,
 				7C1399A0287F2FC100C28C32 /* LaunchScreen.storyboard in Resources */,
 				1053B29028ECA1D9004FD4B3 /* index.html in Resources */,
 				7C13999D287F2FC100C28C32 /* Assets.xcassets in Resources */,

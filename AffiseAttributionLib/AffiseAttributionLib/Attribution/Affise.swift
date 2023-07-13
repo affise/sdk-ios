@@ -85,10 +85,10 @@ public class Affise: NSObject {
     }
     
     /**
-     * Set new secretId
+     * Set new secretKey
      */
-    public func setSecretId(secretId: String) {
-        api?.initPropertiesStorage.updateSecretId(secretId: secretId)
+    public func setSecretId(secretKey: String) {
+        api?.initPropertiesStorage.updateSecretKey(secretKey: secretKey)
     }
     
     /**
@@ -138,15 +138,17 @@ public class Affise: NSObject {
     /**
      * Returns random User Id
      */
-    public func getRandomUserId() -> String? { 
-        return api?.postBackModelFactory.randomUserIdProvider.provide()
+    public func getRandomUserId() -> String? {
+        let provider : RandomUserIdProvider? = api?.postBackModelFactory.getProvider()
+        return provider?.provide()
     }
 
     /**
      * Returns random Device Id
      */
-    public func getRandomDeviceId() -> String? { 
-        return api?.postBackModelFactory.affDeviceIdProvider.provide()
+    public func getRandomDeviceId() -> String? {
+        let provider : AffiseDeviceIdProvider? = api?.postBackModelFactory.getProvider()
+        return provider?.provide()
     }
 
     /**

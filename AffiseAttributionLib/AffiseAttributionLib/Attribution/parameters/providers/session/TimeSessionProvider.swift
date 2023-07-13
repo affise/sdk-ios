@@ -23,4 +23,12 @@ class TimeSessionProvider : LongPropertyProvider {
     override func provide() -> Int64? {
         return sessionManager.getSessionTime().timeInMillis
     }
+    
+    override func getOrder() -> Float {
+        55.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.TIME_SESSION
+    }
 }

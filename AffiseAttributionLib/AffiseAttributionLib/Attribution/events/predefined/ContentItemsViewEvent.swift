@@ -16,50 +16,17 @@ import Foundation
  */
 @objc
 public class ContentItemsViewEvent : NativeEvent {
-    private let objects: [[(String, Any?)]]
-    private let userData: String?
-    
-    public init(objects: [[(String, Any?)]],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(objects: [[(String, Any?)]],
                 userData: String? = nil) {
-        
-        self.objects = objects
-        self.userData = userData
+        self.init(userData)
+        self.anyData = objects.map { $0.jsonString() }
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(objects: [[String: AnyObject]],
-                userData: String? = nil) {
-        
-        self.objects = objects.map { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.userData = userData
+    public convenience init(objects: [[String: AnyObject]],
+                userData: String? = nil) {  
+        self.init(objects: objects.toListOfList(), userData: userData)
     }
-
-    /**
-     * Serialize ContentItemsViewEvent to JSONObject
-     *
-     * @return JSONObject of ContentItemsViewEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_content_items_view", objects.map { $0.jsonString() } )
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "ContentItemsView" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

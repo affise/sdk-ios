@@ -13,8 +13,7 @@ import Foundation
  *
  * @property initProperties to retrieve is production
  */
-class IsProductionPropertyProvider: StringPropertyProvider {
-    
+class IsProductionPropertyProvider: StringPropertyProvider {    
     private static let TYPE_SANDBOX = "Sandbox"
     private static let TYPE_PRODUCTION = "Production"
     
@@ -30,5 +29,13 @@ class IsProductionPropertyProvider: StringPropertyProvider {
         } else {
             return IsProductionPropertyProvider.TYPE_SANDBOX
         }
+    }
+    
+    override func getOrder() -> Float {
+        50.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.AFFISE_SDK_POS
     }
 }

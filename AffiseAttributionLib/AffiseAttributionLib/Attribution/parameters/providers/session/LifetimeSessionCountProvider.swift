@@ -22,4 +22,12 @@ class LifetimeSessionCountProvider : LongPropertyProvider {
     override func provide() -> Int64? {
         return sessionManager.getLifetimeSessionTime().timeInMillis
     }
+    
+    override func getOrder() -> Float {
+        57.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.LIFETIME_SESSION_COUNT
+    }
 }

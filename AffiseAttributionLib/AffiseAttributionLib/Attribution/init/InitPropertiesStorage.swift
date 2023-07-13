@@ -25,7 +25,7 @@ protocol InitPropertiesStorage {
     func setProperties(_ properties: AffiseInitProperties)
 
     /**
-     * Update secretId in Affise init properties
+     * Update secretKey in Affise init properties
      */
-    func updateSecretId(secretId: String)
+    func updateSecretKey(secretKey: String)
 }

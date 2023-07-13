@@ -11,7 +11,7 @@ import Foundation
  * Provider for parameter [Parameters.CPU_TYPE]
  */
 class CpuTypeProvider: StringPropertyProvider {
-    
+
     override func provide() -> String? {
         return getCPUName()
     }
@@ -35,5 +35,13 @@ class CpuTypeProvider: StringPropertyProvider {
         }
 #endif
         return identifier
+    }
+    
+    override func getOrder() -> Float {
+        22.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.CPU_TYPE
     }
 }

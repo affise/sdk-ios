@@ -23,4 +23,12 @@ class InstallFirstEventProvider : BooleanPropertyProvider {
     override func provide() -> Bool? {
         return useCase.isFirstOpen()
     }
+    
+    override func getOrder() -> Float {
+        10.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.INSTALL_FIRST_EVENT
+    }
 }

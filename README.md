@@ -2,8 +2,8 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| AffiseAttributionLib  | [1.1.7](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| AffiseSKAdNetwork  | [1.1.7](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| AffiseAttributionLib  | [1.6.0](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| AffiseSKAdNetwork  | [1.6.0](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -17,14 +17,20 @@
   - [Events tracking](#events-tracking)
   - [Custom events tracking](#custom-events-tracking)
   - [Predefined event parameters](#predefined-event-parameters)
+    - [PredefinedString](#predefinedstring)
+    - [PredefinedLong](#predefinedlong)
+    - [PredefinedFloat](#predefinedfloat)
+    - [PredefinedObject](#predefinedobject)
+    - [PredefinedListObject](#predefinedlistobject)
+    - [PredefinedListString](#predefinedliststring)
   - [Events buffering](#events-buffering)
   - [Push token tracking](#push-token-tracking)
   - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
   - [Deeplinks](#deeplinks)
   - [Get random user Id](#get-random-user-id)
   - [Get random device Id](#get-random-device-id)
-  - [Webview tracking](#webview-tracking)
-    - [Initialize webview](#initialize-webview)
+  - [WebView tracking](#webview-tracking)
+    - [Initialize WebView](#initialize-webview)
     - [Events tracking JS](#events-tracking-js)
     - [Predefined event parameters JS](#predefined-event-parameters-js)
     - [Custom events JS](#custom-events-js)
@@ -44,15 +50,17 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.1.7'
+pod 'AffiseAttributionLib', '~> 1.6.0'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.7'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.0'
 ```
 
 ### Initialize
 
 After library is added as dependency sync project with gradle files and initialize.
+
+> Demo app [AppDelegate.swift](app/app/AppDelegate.swift)
 
 For swift use:
 
@@ -66,13 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let properties = AffiseInitProperties(affiseAppId: "Your appId", //Change to your app id
-                                              partParamName: nil, //Change to your partParamName
-                                              partParamNameToken: nil, //Change to your partParamNameToken
-                                              appToken: nil, //Change to your appToken
-                                              isProduction: false, // Add your custom rule to determine if this is a production build
-                                              secretId: "Your secretId" //Change to your appToken
-                                              )
+        let properties = AffiseInitProperties(
+            affiseAppId: "Your appId", //Change to your app id
+            secretKey: "Your secretKey" //Change to your appToken
+        )
         Affise.shared.load(app: application, initProperties: properties, launchOptions: launchOptions)
 
         return true
@@ -92,13 +97,10 @@ For objective-c use:
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-    AffiseInitProperties *initProperties = [[AffiseInitProperties alloc] initWithAffiseAppId:@"Your appId" //Change to your app id
-                                                                               partParamName:@"Your partParamName" //Change to your partParamName
-                                                                          partParamNameToken:@"Your partParamNameToken" //Change to your partParamNameToken
-                                                                                    appToken:@"Your appToken" //Change to your appToken
-                                                                                isProduction:NO // Add your custom rule to determine if this is a production build
-                                                                                    secretId:@"Your secretId" //Change to your appToken
-                                                                                    ];
+    AffiseInitProperties *initProperties = [[AffiseInitProperties alloc] 
+        initWithAffiseAppId:@"Your appId" //Change to your app id
+        secretKey:@"Your secretKey" //Change to your appToken
+    ];
     [Affise.shared loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
 
     return YES;
@@ -112,10 +114,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseSKAdNetwork', '~> 1.1.5'
+pod 'AffiseSKAdNetwork', '~> 1.6.0'
 
 // Get source directly from GitHub
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.1.5'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.0'
 ```
 
 For use:
@@ -269,8 +271,9 @@ class Presenter {
         let items = [
             ("items", "cookies, potato, milk")
         ]
-        Affise.shared.sendEvent(event: AddToCartEvent(addToCartObject: items, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "groceries").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DESCRIPTION, value: "best before 2029")
+        Affise.shared.sendEvent(event: AddToCartEvent("groceries").apply {
+            $0.addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
+            $0.addPredefinedParameter(PredefinedObject.CONTENT, object: items)
         })
     }
 }
@@ -284,10 +287,9 @@ For objective-c use:
         @{"items", itemsToCart}
     ];
 
-    Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:items
-                                                   timeStampMillis:NSDate.date.timeIntervalSince1970
-                                                          userData:@"groceries"];
-    [event addPredefinedParameterWithParameter:PredefinedParametersADREV_AD_TYPE value:@"best before 2029"];
+    Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:@"groceries"];
+    [event addPredefinedParameterWithParameter:PredefinedString.ADREV_AD_TYPE value:@"best before 2029"];
+    [event addPredefinedParameterWithParameter:PredefinedObject.CONTENT object:items];
 
     [Affise.shared sendEventWithEvent: event];
 }
@@ -304,56 +306,64 @@ With above example you can implement other events:
 - `CompleteStream`
 - `CompleteTrial`
 - `CompleteTutorial`
+- `Contact`
 - `ContentItemsView`
-- `ConvertedOffer`
-- `ConvertedOfferFromRetry`
-- `ConvertedTrial`
-- `ConvertedTrialFromRetry`
+- `CustomizeProduct`
 - `DeepLinked`
-- `FailedOfferFromRetry`
-- `FailedOfferise`
-- `FailedSubscription`
-- `FailedSubscriptionFromRetry`
-- `FailedTrial`
-- `FailedTrialFromRetry`
-- `InitialOffer`
-- `InitialSubscription`
-- `InitialTrial`
+- `Donate`
+- `FindLocation`
+- `InitiateCheckout`
 - `InitiatePurchase`
 - `InitiateStream`
 - `Invite`
 - `LastAttributedTouch`
+- `Lead`
 - `ListView`
 - `Login`
-- `OfferInRetry`
 - `OpenedFromPushNotification`
 - `Purchase`
 - `Rate`
 - `ReEngage`
-- `ReactivatedSubscription`
-- `RenewedSubscription`
-- `RenewedSubscriptionFromRetry`
 - `Reserve`
 - `Sales`
+- `Schedule`
 - `Search`
 - `Share`
 - `SpendCredits`
 - `StartRegistration`
 - `StartTrial`
 - `StartTutorial`
+- `SubmitApplication`
 - `Subscribe`
-- `Subscription`
-- `SubscriptionInRetry`
 - `TravelBooking`
-- `TrialInRetry`
 - `UnlockAchievement`
 - `Unsubscribe`
-- `Unsubscription`
 - `Update`
 - `ViewAdv`
 - `ViewCart`
+- `ViewContent`
 - `ViewItem`
 - `ViewItems`
+- `InitialSubscription`
+- `InitialTrial`
+- `InitialOffer`
+- `ConvertedTrial`
+- `ConvertedOffer`
+- `TrialInRetry`
+- `OfferInRetry`
+- `SubscriptionInRetry`
+- `RenewedSubscription`
+- `FailedSubscriptionFromRetry`
+- `FailedOfferFromRetry`
+- `FailedTrialFromRetry`
+- `FailedSubscription`
+- `FailedOfferise`
+- `FailedTrial`
+- `ReactivatedSubscription`
+- `RenewedSubscriptionFromRetry`
+- `ConvertedOfferFromRetry`
+- `ConvertedTrialFromRetry`
+- `Unsubscription`
 
 ## Custom events tracking
 
@@ -381,8 +391,9 @@ class Presenter {
         let items = [
             ("items", "cookies, potato, milk")
         ]
-        Affise.shared.sendEvent(event: AddToCartEvent(addToCartObject: items, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "groceries").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DESCRIPTION, value: "best before 2029")
+        Affise.shared.sendEvent(event: AddToCartEvent("groceries", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000)).apply {
+            $0.addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
+            $0.addPredefinedParameter(PredefinedObject.CONTENT, object: items)
         })
     }
 }
@@ -396,80 +407,59 @@ For objective-c use:
         @{"items", itemsToCart}
     ];
 
-    Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:items
-                                                   timeStampMillis:NSDate.date.timeIntervalSince1970
-                                                          userData:@"groceries"];
-    [event addPredefinedParameterWithParameter:PredefinedParametersADREV_AD_TYPE value:@"best before 2029"];
+    Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:@"groceries"
+                                                   timeStampMillis:NSDate.date.timeIntervalSince1970];
+    [event addPredefinedParameterWithParameter:PredefinedString.ADREV_AD_TYPE value:@"best before 2029"];
+    [event addPredefinedParameterWithParameter:PredefinedObject.CONTENT object:items];
 
     [Affise.shared sendEventWithEvent: event];
 }
 ```
 
-In examples above `PredefinedParameters.DESCRIPTION` is used, but many others is available:
+In examples above `PredefinedParameters.DESCRIPTION` and `PredefinedObject.CONTENT` is used, but many others is available:
+
+| PredefinedParameter                           | Type             |
+|-----------------------------------------------|------------------|
+| [PredefinedString](#predefinedstring)         | String           |
+| [PredefinedLong](#predefinedlong)             | Int64            |
+| [PredefinedFloat](#predefinedfloat)           | Float            |
+| [PredefinedObject](#predefinedobject)         | [(String, Any)]  |
+| [PredefinedListObject](#predefinedlistobject) | [[(String, Any)]]|
+| [PredefinedListString](#predefinedliststring) | [String]         |
+
+### PredefinedString
 
 - `ADREV_AD_TYPE`
 - `CITY`
 - `COUNTRY`
 - `REGION`
 - `CLASS`
-- `CONTENT`
 - `CONTENT_ID`
-- `CONTENT_LIST`
 - `CONTENT_TYPE`
 - `CURRENCY`
 - `CUSTOMER_USER_ID`
-- `DATE_A`
-- `DATE_B`
-- `DEPARTING_ARRIVAL_DATE`
-- `DEPARTING_DEPARTURE_DATE`
 - `DESCRIPTION`
 - `DESTINATION_A`
 - `DESTINATION_B`
 - `DESTINATION_LIST`
-- `HOTEL_SCORE`
-- `LEVEL`
-- `MAX_RATING_VALUE`
-- `NUM_ADULTS`
-- `NUM_CHILDREN`
-- `NUM_INFANTS`
 - `ORDER_ID`
 - `PAYMENT_INFO_AVAILABLE`
 - `PREFERRED_NEIGHBORHOODS`
-- `PREFERRED_NUM_STOPS`
-- `PREFERRED_PRICE_RANGE`
-- `PREFERRED_STAR_RATINGS`
-- `PRICE`
 - `PURCHASE_CURRENCY`
-- `QUANTITY`
-- `RATING_VALUE`
 - `RECEIPT_ID`
 - `REGISTRATION_METHOD`
-- `RETURNING_ARRIVAL_DATE`
-- `RETURNING_DEPARTURE_DATE`
-- `REVENUE`
-- `SCORE`
 - `SEARCH_STRING`
 - `SUBSCRIPTION_ID`
 - `SUCCESS`
 - `SUGGESTED_DESTINATIONS`
 - `SUGGESTED_HOTELS`
-- `TRAVEL_START`
-- `TRAVEL_END`
-- `USER_SCORE`
 - `VALIDATED`
 - `ACHIEVEMENT_ID`
 - `COUPON_CODE`
 - `CUSTOMER_SEGMENT`
 - `DEEP_LINK`
-- `EVENT_START`
-- `EVENT_END`
-- `LAT`
-- `LONG`
 - `NEW_VERSION`
 - `OLD_VERSION`
-- `REVIEW_TEXT`
-- `TUTORIAL_ID`
-- `VIRTUAL_CURRENCY_NAME`
 - `PARAM_01`
 - `PARAM_02`
 - `PARAM_03`
@@ -479,6 +469,56 @@ In examples above `PredefinedParameters.DESCRIPTION` is used, but many others is
 - `PARAM_07`
 - `PARAM_08`
 - `PARAM_09`
+- `PARAM_10`
+- `REVIEW_TEXT`
+- `TUTORIAL_ID`
+- `VIRTUAL_CURRENCY_NAME`
+- `STATUS`
+
+### PredefinedLong
+
+- `DATE_A`
+- `DATE_B`
+- `DEPARTING_ARRIVAL_DATE`
+- `DEPARTING_DEPARTURE_DATE`
+- `HOTEL_SCORE`
+- `LEVEL`
+- `MAX_RATING_VALUE`
+- `NUM_ADULTS`
+- `NUM_CHILDREN`
+- `NUM_INFANTS`
+- `PREFERRED_NUM_STOPS`
+- `PREFERRED_STAR_RATINGS`
+- `QUANTITY`
+- `RATING_VALUE`
+- `RETURNING_ARRIVAL_DATE`
+- `RETURNING_DEPARTURE_DATE`
+- `SCORE`
+- `TRAVEL_START`
+- `TRAVEL_END`
+- `USER_SCORE`
+- `EVENT_START`
+- `EVENT_END`
+
+### PredefinedFloat
+
+- `PREFERRED_PRICE_RANGE`
+- `PRICE`
+- `REVENUE`
+- `LAT`
+- `LONG`
+
+### PredefinedObject
+
+- `CONTENT`
+
+### PredefinedListObject
+
+- `CONTENT_LIST`
+
+### PredefinedListString
+
+- `CONTENT_IDS`
 
 ## Events buffering
 
@@ -488,7 +528,7 @@ but if there is no network connection or device is disabled, events are kept loc
 ## Push token tracking
 
 To let affise track push token you need to receive it from your push service provider, and pass to Affise library.
-First add firebase integration to your app completing theese steps: https://firebase.google.com/docs/cloud-messaging/ios/client
+First add firebase integration to your app completing theese steps: [Firebase Docs](https://firebase.google.com/docs/cloud-messaging/ios/client)
 
 After you have done with firebase inegration, add to your cloud messaging service `onNewToken` method `Affise.share.addPushToken(token)`
 
@@ -577,15 +617,15 @@ Use the next public method of SDK
 Affise.shared.getRandomDeviceId()
 ```
 
-## Webview tracking
+## WebView tracking
 
-### Initialize webview
+### Initialize WebView
 
 To integrate the library into the JavaScript environment, we added a bridge between JavaScript and the native SDK. Now you can send events and use the functionality of the native library directly from Webview.
 Here are step by step instructions:
 
 ```swift
-// retreive webview from view hierarhy
+// retreive WebView from view hierarhy
 @IBOutlet weak var webView: WKWebView!
 
 // make sure javascript is enabled
@@ -595,7 +635,7 @@ override func viewDidLoad() {
     webView.configuration.preferences.javaScriptEnabled = true
 }
 
-// initialize webview with Affise native library
+// initialize WebView with Affise native library
 Affise.shared.registerWebView(webView)
 
 ```
@@ -604,21 +644,24 @@ Other Javascript enviroment features is described below.
 
 ### Events tracking JS
 
-after webview is initialized you send events from JavaScript enviroment
+> Demo app [index.html](app/app/index.html)
+
+After WebView is initialized you send events from JavaScript enviroment
 
 ```javascript
-var event = new AddPaymentInfoEvent(
-    { card: 4138, type: 'phone' },
-     Date.now(),
-    'taxi'
-);
+let data = { card: 4138, type: 'phone' };
+let event = new AddPaymentInfoEvent({
+  userData: 'taxi',
+};
 
-event.addPredefinedParameter('affise_p_purchase_currency', 'USD');
+event.addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, 'USD');
+event.addPredefinedParameter(PredefinedFloat.PRICE, 2.19);
+event.addPredefinedParameter(PredefinedObject.CONTENT, data);
 
 Affise.sendEvent(event);
 ```
 
-Just like with native SDK, javascript enviroment also provides default events that can be passed from webview:
+Just like with native SDK, javascript enviroment also provides default events that can be passed from WebView:
 
 - `AchieveLevelEvent`
 - `AddPaymentInfoEvent`
@@ -629,11 +672,8 @@ Just like with native SDK, javascript enviroment also provides default events th
 - `CompleteStreamEvent`
 - `CompleteTrialEvent`
 - `CompleteTutorialEvent`
+- `ContactEvent`
 - `ContentItemsViewEvent`
-- `ConvertedOfferEvent`
-- `ConvertedOfferFromRetryEvent`
-- `ConvertedTrialEvent`
-- `ConvertedTrialFromRetryEvent`
 - `CustomId01Event`
 - `CustomId02Event`
 - `CustomId03Event`
@@ -644,60 +684,77 @@ Just like with native SDK, javascript enviroment also provides default events th
 - `CustomId08Event`
 - `CustomId09Event`
 - `CustomId10Event`
+- `CustomizeProductEvent`
 - `DeepLinkedEvent`
-- `FailedOfferFromRetryEvent`
-- `FailedOfferiseEvent`
-- `FailedSubscriptionEvent`
-- `FailedSubscriptionFromRetryEvent`
-- `FailedTrialEvent`
-- `FailedTrialFromRetryEvent`
-- `InitialOfferEvent`
-- `InitialSubscriptionEvent`
-- `InitialTrialEvent`
+- `DonateEvent`
+- `FindLocationEvent`
+- `InitiateCheckoutEvent`
 - `InitiatePurchaseEvent`
 - `InitiateStreamEvent`
 - `InviteEvent`
 - `LastAttributedTouchEvent`
+- `LeadEvent`
 - `ListViewEvent`
 - `LoginEvent`
-- `OfferInRetryEvent`
 - `OpenedFromPushNotificationEvent`
 - `PurchaseEvent`
 - `RateEvent`
 - `ReEngageEvent`
-- `ReactivatedSubscriptionEvent`
-- `RenewedSubscriptionEvent`
-- `RenewedSubscriptionFromRetryEvent`
 - `ReserveEvent`
 - `SalesEvent`
+- `ScheduleEvent`
 - `SearchEvent`
 - `ShareEvent`
 - `SpendCreditsEvent`
 - `StartRegistrationEvent`
 - `StartTrialEvent`
 - `StartTutorialEvent`
+- `SubmitApplicationEvent`
 - `SubscribeEvent`
-- `SubscriptionEvent`
-- `SubscriptionInRetryEvent`
 - `TravelBookingEvent`
-- `TrialInRetryEvent`
 - `UnlockAchievementEvent`
 - `UnsubscribeEvent`
-- `UnsubscriptionEvent`
 - `UpdateEvent`
 - `ViewAdvEvent`
 - `ViewCartEvent`
+- `ViewContentEvent`
 - `ViewItemEvent`
 - `ViewItemsEvent`
+- `InitialSubscriptionEvent`
+- `InitialTrialEvent`
+- `InitialOfferEvent`
+- `ConvertedTrialEvent`
+- `ConvertedOfferEvent`
+- `TrialInRetryEvent`
+- `OfferInRetryEvent`
+- `SubscriptionInRetryEvent`
+- `RenewedSubscriptionEvent`
+- `FailedSubscriptionFromRetryEvent`
+- `FailedOfferFromRetryEvent`
+- `FailedTrialFromRetryEvent`
+- `FailedSubscriptionEvent`
+- `FailedOfferiseEvent`
+- `FailedTrialEvent`
+- `ReactivatedSubscriptionEvent`
+- `RenewedSubscriptionFromRetryEvent`
+- `ConvertedOfferFromRetryEvent`
+- `ConvertedTrialFromRetryEvent`
+- `UnsubscriptionEvent`
 
 ### Predefined event parameters JS
 
-Each event can be extended with custom event parameters. By calling `addPredefinedParameter` function you can pass predefined parameters name and value, for example:
+Each event can be extended with custom event parameters. By calling `addPredefinedParameter` function you can pass  [predefined parameters](#predefinedstring)
+
+For example:
 
 ```javascript
-var event = ...
+let event = ...
 
-event.addPredefinedParameter('affise_p_purchase_currency', 'USD');
+event.addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, 'USD');
+event.addPredefinedParameter(PredefinedFloat.PRICE, 2.19);
+event.addPredefinedParameter(PredefinedLong.QUANTITY, 1);
+event.addPredefinedParameter(PredefinedObject.CONTENT, { card: 4138, type: 'phone' });
+event.addPredefinedParameter(PredefinedListObject.CONTENT_LIST, [{content:'songs'}, {content:'videos'}]);
 
 Affise.sendEvent(event);
 ```
@@ -707,16 +764,9 @@ Affise.sendEvent(event);
 If above event functionality still limits your usecase, you can allways extend `Event` class to override fields you are missing
 
 ```javascript
-class AchieveLevelEvent extends Event {
-    constructor(level, timeStampMillis, userData) {
-        super('AchieveLevel');
-
-        this.affise_event_first_for_user = false;
-        this.affise_event_user_data = userData;
-        this.affise_event_data = {
-            affise_event_achieve_level: level,
-            affise_event_achieve_level_timestamp: timeStampMillis
-        };
+class MyCustomEvent extends Event {
+    constructor(args) {
+        super('MyCustom', args)
     }
-};
+}
 ```

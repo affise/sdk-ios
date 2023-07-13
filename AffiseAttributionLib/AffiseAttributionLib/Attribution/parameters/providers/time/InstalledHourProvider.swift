@@ -25,4 +25,12 @@ class InstalledHourProvider : LongPropertyProvider {
         }
         return time.stripTimestampToHours.timeInMillis
     }
+    
+    override func getOrder() -> Float {
+        8.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.INSTALLED_HOUR
+    }
 }

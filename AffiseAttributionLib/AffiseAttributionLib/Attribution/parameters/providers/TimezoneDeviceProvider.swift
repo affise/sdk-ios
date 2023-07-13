@@ -20,4 +20,12 @@ class TimezoneDeviceProvider : StringPropertyProvider {
         formatter.dateFormat = "XXXXX"
         return "UTC\(formatter.string(from: Date()))"
     }
+    
+    override func getOrder() -> Float {
+        51.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.TIMEZONE_DEV
+    }
 }

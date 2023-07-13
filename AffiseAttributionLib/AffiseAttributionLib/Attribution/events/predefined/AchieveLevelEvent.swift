@@ -17,57 +17,20 @@ import Foundation
  */
 @objc
 public class AchieveLevelEvent : NativeEvent {
-    private let level: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    
-    public init(level: [(String, Any?)],
+
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(level: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.level = level
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = level
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(level: [[String: AnyObject]],
+    public convenience init(level: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.level = level.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(level: level.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-
-    /**
-     * Serialize AchieveLevelEvent to JSONObject
-     *
-     * @return JSONObject of AchieveLevelEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_achieve_level", level),
-            ("affise_event_achieve_level_timestamp", timeStampMillis)
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "AchieveLevel" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

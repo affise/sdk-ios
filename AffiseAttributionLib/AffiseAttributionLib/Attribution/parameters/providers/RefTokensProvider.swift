@@ -34,5 +34,13 @@ class RefTokensProvider: StringPropertyProvider {
             return newToken
         }
     }
+    
+    override func getOrder() -> Float {
+        33.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.REFTOKENS
+    }
 }
 

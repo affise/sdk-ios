@@ -25,4 +25,12 @@ class PushTokenProvider: StringPropertyProvider {
     override func provide() -> String? {
         return preferences.value(forKey: PushTokenProvider.KEY) as? String
     }
+    
+    override func getOrder() -> Float {
+        65.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.PUSHTOKEN
+    }
 }

@@ -16,36 +16,12 @@ import Foundation
 public class GDPREvent : NativeEvent {
     
     public static let EVENT_NAME = "GDPR"
-    
-    private let userData: String?
-    
+        
     @objc
-    public init(userData: String? = nil) {
-        self.userData = userData
-    }
-
-    /**
-     * Serialize DeepLinkedEvent to JSONObject
-     *
-     * @return JSONObject of DeepLinkedEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_gpdr", true)
-            ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
+    public convenience init(userData: String? = nil) {
+        self.init(userData)
+        self.anyData = true
+    } 
+    
     public override func getName() -> String { return GDPREvent.EVENT_NAME }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

@@ -16,39 +16,12 @@ import Foundation
  */
 @objc
 public class DeepLinkedEvent : NativeEvent {
-    private let isLinked: Bool
-    private let userData: String?
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(isLinked: Bool,
+    public convenience init(isLinked: Bool,
                 userData: String? = nil) {
-        
-        self.isLinked = isLinked
-        self.userData = userData
+        self.init(userData)
+        self.anyData = isLinked
     }
-
-    /**
-     * Serialize DeepLinkedEvent to JSONObject
-     *
-     * @return JSONObject of DeepLinkedEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_deep_linked", isLinked)
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "DeepLinked" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

@@ -10,7 +10,7 @@ import CoreTelephony
 
 
 /**
- * Provider for parameter [Parameters.ISP
+ * Provider for parameter [Parameters.ISP]
  */
 class IspNameProvider: StringPropertyProvider {
     
@@ -21,5 +21,13 @@ class IspNameProvider: StringPropertyProvider {
         // Get carrier name
         let carrierName = carrier?.carrierName
         return carrierName
+    }
+    
+    override func getOrder() -> Float {
+        37.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.ISP
     }
 }

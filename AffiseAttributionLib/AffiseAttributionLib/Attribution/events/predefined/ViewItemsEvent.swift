@@ -15,46 +15,18 @@ import Foundation
  */
 @objc
 public class ViewItemsEvent : NativeEvent {
-    private let items: [Any]
-    private let userData: String?
-    
-    public init(items: [Any],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(items: [Any],
                 userData: String? = nil) {
-        
-        self.items = items
-        self.userData = userData
+        self.init(userData)
+        self.anyData = items
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(items: [AnyObject],
+    public convenience init(items: [AnyObject],
                 userData: String? = nil) {
-        
-        self.items = items
-        self.userData = userData
+        self.init(userData)
+        self.anyData = items
     }
-
-    /**
-     * Serialize ViewItemsEvent to JSONObject
-     *
-     * @return JSONObject of ViewItemsEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_view_items", items)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "ViewItems" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

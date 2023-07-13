@@ -27,4 +27,12 @@ class LastSessionTimeProvider : LongPropertyProvider {
             return nil
         }
     }
+    
+    override func getOrder() -> Float {
+        21.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.LAST_SESSION_TIME
+    }
 }

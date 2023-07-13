@@ -16,56 +16,19 @@ import Foundation
  */
 @objc
 public class InviteEvent : NativeEvent {
-    private let invite: [(String, Any?)]
-    private let timeStampMillis: Int64
-    private let userData: String?
-    
-    public init(invite: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(invite: [(String, Any?)],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.invite = invite
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = invite
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(invite: [[String: AnyObject]],
+    public convenience init(invite: [[String: AnyObject]],
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.invite = invite.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(invite: invite.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
-
-    /**
-     * Serialize InviteEvent to JSONObject
-     *
-     * @return JSONObject of InviteEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_invite", invite),
-            ("affise_event_invite_timestamp", timeStampMillis)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "Invite" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

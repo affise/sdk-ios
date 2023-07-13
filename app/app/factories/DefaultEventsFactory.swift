@@ -91,7 +91,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Unsubscription"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -103,7 +103,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -115,7 +115,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -127,7 +127,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -139,7 +139,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -151,7 +151,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -163,7 +163,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -175,7 +175,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -187,7 +187,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -199,7 +199,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -211,7 +211,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -223,7 +223,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -235,7 +235,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -247,7 +247,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -259,7 +259,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -271,7 +271,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -283,7 +283,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -295,7 +295,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -307,7 +307,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -319,7 +319,7 @@ class DefaultEventsFactory: EventsFactory {
                   ],
             userData: "Subscription Plus"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -329,11 +329,11 @@ class DefaultEventsFactory: EventsFactory {
             ("new_level", 70)
         ]
         return AchieveLevelEvent(level: level, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "warlock").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DEEP_LINK, value: "https://new-game.lt")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.SCORE, value: "25013")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.LEVEL, value: "70")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.SUCCESS, value: "true")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.TUTORIAL_ID, value: "12")
+            $0.addPredefinedParameter(PredefinedString.DEEP_LINK, string: "https://new-game.lt")
+            $0.addPredefinedParameter(PredefinedLong.SCORE, long: 25013)
+            $0.addPredefinedParameter(PredefinedLong.LEVEL, long: 70)
+            $0.addPredefinedParameter(PredefinedString.SUCCESS, string: "true")
+            $0.addPredefinedParameter(PredefinedString.TUTORIAL_ID, string: "12")
         }
     }
     
@@ -343,7 +343,7 @@ class DefaultEventsFactory: EventsFactory {
             ("type", "phone")
         ] as [(String, Any?)]
         return AddPaymentInfoEvent(paymentInfo: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "taxi").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PURCHASE_CURRENCY, value: "USD")
+            $0.addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, string: "USD")
         }
     }
     
@@ -354,7 +354,7 @@ class DefaultEventsFactory: EventsFactory {
             ("items", products)
         ]
         return AddToCartEvent(addToCartObject: items, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000)).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DESCRIPTION, value: "best before 2029")
+            $0.addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
         }
     }
     
@@ -364,25 +364,25 @@ class DefaultEventsFactory: EventsFactory {
             ("items", wishes)
         ]
         return AddToWishlistEvent(wishList: items, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "next year").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.COUNTRY, value: "Russia")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CITY, value: "Voronezh")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.LAT, value: "42")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.LONG, value: "24")
+            $0.addPredefinedParameter(PredefinedString.COUNTRY, string: "Russia")
+            $0.addPredefinedParameter(PredefinedString.CITY, string: "Voronezh")
+            $0.addPredefinedParameter(PredefinedFloat.LAT, float: 42)
+            $0.addPredefinedParameter(PredefinedFloat.LONG, float: 24)
         }
     }
     
     func createClickAdvEvent() -> Event {
         return ClickAdvEvent(advertisement: "facebook-meta", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "header").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "PARAM_01")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_02, value: "PARAM_02")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_03, value: "PARAM_03")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_04, value: "PARAM_04")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_05, value: "PARAM_05")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_06, value: "PARAM_06")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_07, value: "PARAM_07")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_08, value: "PARAM_08")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_09, value: "PARAM_09")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_10, value: "PARAM_10")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "PARAM_01")
+            $0.addPredefinedParameter(PredefinedString.PARAM_02, string: "PARAM_02")
+            $0.addPredefinedParameter(PredefinedString.PARAM_03, string: "PARAM_03")
+            $0.addPredefinedParameter(PredefinedString.PARAM_04, string: "PARAM_04")
+            $0.addPredefinedParameter(PredefinedString.PARAM_05, string: "PARAM_05")
+            $0.addPredefinedParameter(PredefinedString.PARAM_06, string: "PARAM_06")
+            $0.addPredefinedParameter(PredefinedString.PARAM_07, string: "PARAM_07")
+            $0.addPredefinedParameter(PredefinedString.PARAM_08, string: "PARAM_08")
+            $0.addPredefinedParameter(PredefinedString.PARAM_09, string: "PARAM_09")
+            $0.addPredefinedParameter(PredefinedString.PARAM_10, string: "PARAM_10")
         }
     }
     
@@ -391,9 +391,9 @@ class DefaultEventsFactory: EventsFactory {
             ("email", "dog@gmail.com")
         ]
         return CompleteRegistrationEvent(registration: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "promo").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.VALIDATED, value: "02.11.2021")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVIEW_TEXT, value: "approve")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CUSTOMER_SEGMENT, value: "DOG")
+            $0.addPredefinedParameter(PredefinedString.VALIDATED, string: "02.11.2021")
+            $0.addPredefinedParameter(PredefinedString.REVIEW_TEXT, string: "approve")
+            $0.addPredefinedParameter(PredefinedString.CUSTOMER_SEGMENT, string: "DOG")
         }
     }
     
@@ -403,7 +403,7 @@ class DefaultEventsFactory: EventsFactory {
             ("max_viewers", "29")
         ]
         return CompleteStreamEvent(stream: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "23 hours").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REVENUE, value: "225522 $")
+            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
         }
     }
     
@@ -412,7 +412,7 @@ class DefaultEventsFactory: EventsFactory {
             ("player", "ghost")
         ]
         return CompleteTrialEvent(trial: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "time").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REGISTRATION_METHOD, value: "SMS")
+            $0.addPredefinedParameter(PredefinedString.REGISTRATION_METHOD, string: "SMS")
         }
     }
     
@@ -421,7 +421,7 @@ class DefaultEventsFactory: EventsFactory {
             ("name", "intro")
         ]
         return CompleteTutorialEvent(tutorial: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "intro").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REGISTRATION_METHOD, value: "SMS")
+            $0.addPredefinedParameter(PredefinedString.REGISTRATION_METHOD, string: "SMS")
         }
     }
     
@@ -431,79 +431,79 @@ class DefaultEventsFactory: EventsFactory {
             [("item", "guitar")]
         ]
         return ContentItemsViewEvent(objects: data, userData: "personal").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CONTENT, value: "Greatest Hits")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CONTENT_ID, value: "2561")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CONTENT_LIST, value: "songs, videos")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CONTENT_TYPE, value: "MATURE")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CURRENCY, value: "USD")
+            $0.addPredefinedParameter(PredefinedObject.CONTENT, object: [("collection", "Greatest Hits")])
+            $0.addPredefinedParameter(PredefinedString.CONTENT_ID, string: "2561")
+            $0.addPredefinedParameter(PredefinedListObject.CONTENT_LIST, listObject: [[("content", "songs, videos")]])
+            $0.addPredefinedParameter(PredefinedString.CONTENT_TYPE, string: "MATURE")
+            $0.addPredefinedParameter(PredefinedString.CURRENCY, string: "USD")
         }
     }
     
     func createCustomId01Event() -> Event {
         return CustomId01Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId02Event() -> Event {
         return CustomId02Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId03Event() -> Event {
         return CustomId03Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId04Event() -> Event {
         return CustomId04Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId05Event() -> Event {
         return CustomId05Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId06Event() -> Event {
         return CustomId06Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId07Event() -> Event {
         return CustomId07Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId08Event() -> Event {
         return CustomId08Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId09Event() -> Event {
         return CustomId09Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createCustomId10Event() -> Event {
         return CustomId10Event(custom: "custom", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "custom").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createDeepLinkedEvent() -> Event {
         return DeepLinkedEvent(isLinked: true, userData: "referrer: google").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.ADREV_AD_TYPE, value: "interstitial")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.REGION, value: "ASIA")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CLASS, value: "student")
+            $0.addPredefinedParameter(PredefinedString.ADREV_AD_TYPE, string: "interstitial")
+            $0.addPredefinedParameter(PredefinedString.REGION, string: "ASIA")
+            $0.addPredefinedParameter(PredefinedString.CLASS, string: "student")
         }
     }
     
@@ -512,9 +512,9 @@ class DefaultEventsFactory: EventsFactory {
             ("payment", "card")
         ]
         return InitiatePurchaseEvent(purchaseData: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "best price").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.ORDER_ID, value: "23123")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PRICE, value: "2.19$")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.QUANTITY, value: "1")
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
         }
     }
     
@@ -524,8 +524,8 @@ class DefaultEventsFactory: EventsFactory {
             ("date", "02.03.2021")
         ]
         return InitiateStreamEvent(stream: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "shooter").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.COUPON_CODE, value: "25XLKM")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.VIRTUAL_CURRENCY_NAME, value: "BTC")
+            $0.addPredefinedParameter(PredefinedString.COUPON_CODE, string: "25XLKM")
+            $0.addPredefinedParameter(PredefinedString.VIRTUAL_CURRENCY_NAME, string: "BTC")
         }
     }
     
@@ -535,7 +535,7 @@ class DefaultEventsFactory: EventsFactory {
             ("date", "02.03.2021")
         ]
         return InviteEvent(invite: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "dancing").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -549,7 +549,7 @@ class DefaultEventsFactory: EventsFactory {
             touchData: touchData,
             userData: "tablet"
         ).apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.SUBSCRIPTION_ID, value: "lasAK22")
+            $0.addPredefinedParameter(PredefinedString.SUBSCRIPTION_ID, string: "lasAK22")
         }
     }
     
@@ -558,13 +558,10 @@ class DefaultEventsFactory: EventsFactory {
             ("clothes", 2)
         ]
         return ListViewEvent(list: data, userData: "items").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PAYMENT_INFO_AVAILABLE, value: "card")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.SEARCH_STRING, value: "best car wash")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.SUGGESTED_DESTINATIONS, value: "crete, spain")
-            $0.addPredefinedParameter(
-                parameter: PredefinedParameters.SUGGESTED_HOTELS,
-                value: "beach resort, marina spa"
-            )
+            $0.addPredefinedParameter(PredefinedString.PAYMENT_INFO_AVAILABLE, string: "card")
+            $0.addPredefinedParameter(PredefinedString.SEARCH_STRING, string: "best car wash")
+            $0.addPredefinedParameter(PredefinedString.SUGGESTED_DESTINATIONS, string: "crete, spain")
+            $0.addPredefinedParameter(PredefinedString.SUGGESTED_HOTELS, string: "beach resort, marina spa")
         }
     }
     
@@ -573,13 +570,13 @@ class DefaultEventsFactory: EventsFactory {
             ("email", "cat@gmail.com")
         ]
         return LoginEvent(login: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "web").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createOpenedFromPushNotificationEvent() -> Event {
         return OpenedFromPushNotificationEvent(details: "silent", userData: "active").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -589,9 +586,9 @@ class DefaultEventsFactory: EventsFactory {
             ("case", 1)
         ]
         return PurchaseEvent(purchaseData: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "apple").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.ORDER_ID, value: "23123")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PRICE, value: "2.19$")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.QUANTITY, value: "1")
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
         }
     }
     
@@ -600,16 +597,16 @@ class DefaultEventsFactory: EventsFactory {
             ("rating", 5)
         ]
         return RateEvent(rate: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "no bugs").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PREFERRED_NEIGHBORHOODS, value: "2")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PREFERRED_NUM_STOPS, value: "4")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PREFERRED_PRICE_RANGE, value: "10-22")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PREFERRED_STAR_RATINGS, value: "4.6")
+            $0.addPredefinedParameter(PredefinedString.PREFERRED_NEIGHBORHOODS, string: "2")
+            $0.addPredefinedParameter(PredefinedLong.PREFERRED_NUM_STOPS, long: 4)
+            $0.addPredefinedParameter(PredefinedFloat.PREFERRED_PRICE_RANGE, float: 10.22)
+            $0.addPredefinedParameter(PredefinedLong.PREFERRED_STAR_RATINGS, long: 6)
         }
     }
     
     func createReEngageEvent() -> Event {
         return ReEngageEvent(reEngage: "data", userData: "web").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.CUSTOMER_USER_ID, value: "4")
+            $0.addPredefinedParameter(PredefinedString.CUSTOMER_USER_ID, string: "4")
         }
     }
     
@@ -621,9 +618,9 @@ class DefaultEventsFactory: EventsFactory {
             ("food", "coke")
         ]
         return ReserveEvent(reserve: [data, data2], timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "discount").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.ORDER_ID, value: "23123")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PRICE, value: "2.19$")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.QUANTITY, value: "1")
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
         }
     }
     
@@ -634,16 +631,16 @@ class DefaultEventsFactory: EventsFactory {
         ]
         
         return SalesEvent(salesData: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "apple").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.ORDER_ID, value: "23123")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PRICE, value: "2.19$")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.QUANTITY, value: "1")
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
         }
     }
 
     func createSearchEvent() -> Event {
         let data = ["eco milk", "grass"]
         return SearchEvent(search: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "browser").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -654,13 +651,13 @@ class DefaultEventsFactory: EventsFactory {
         ]
         
         return ShareEvent(share: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "telegram").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.RECEIPT_ID, value: "22")
+            $0.addPredefinedParameter(PredefinedString.RECEIPT_ID, string: "22")
         }
     }
     
     func createSpendCreditsEvent() -> Event {
         return SpendCreditsEvent(credits: 2142, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "boosters").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -669,7 +666,7 @@ class DefaultEventsFactory: EventsFactory {
             ("time", "19:22:11")
         ]
         return StartRegistrationEvent(registration: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "referrer").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -678,7 +675,7 @@ class DefaultEventsFactory: EventsFactory {
             ("time", "19:22:11")
         ]
         return StartTrialEvent(trial: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "30-days").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -689,7 +686,7 @@ class DefaultEventsFactory: EventsFactory {
         ]
         
         return StartTutorialEvent(tutorial: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "video-feature").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -698,26 +695,26 @@ class DefaultEventsFactory: EventsFactory {
             ("streamer", "cat")
         ]
         return SubscribeEvent(subscribe: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "wire").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createTravelBookingEvent() -> Event {
         let data = ["may", "august"]
         return TravelBookingEvent(details: data, userData: "booking").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.NUM_ADULTS, value: "1")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.NUM_CHILDREN, value: "2")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.NUM_INFANTS, value: "1")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DATE_A, value: "30.12.2020")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DATE_B, value: "01.01.2021")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DEPARTING_ARRIVAL_DATE, value: "01.01.2021")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DEPARTING_DEPARTURE_DATE, value: "30.12.2020")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DESTINATION_A, value: "usa")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DESTINATION_B, value: "mexico")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.DESTINATION_LIST, value: "usa, mexico")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.HOTEL_SCORE, value: "5")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.TRAVEL_START, value: "01.12.2020")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.TRAVEL_END, value: "01.12.2021")
+            $0.addPredefinedParameter(PredefinedLong.NUM_ADULTS, long: 1)
+            $0.addPredefinedParameter(PredefinedLong.NUM_CHILDREN, long: 2)
+            $0.addPredefinedParameter(PredefinedLong.NUM_INFANTS, long: 1)
+            $0.addPredefinedParameter(PredefinedLong.DATE_A, long: 1609268400000)
+            $0.addPredefinedParameter(PredefinedLong.DATE_B, long: 1609441200000)
+            $0.addPredefinedParameter(PredefinedLong.DEPARTING_ARRIVAL_DATE, long: 1609441200000)
+            $0.addPredefinedParameter(PredefinedLong.DEPARTING_DEPARTURE_DATE, long: 1609268400000)
+            $0.addPredefinedParameter(PredefinedString.DESTINATION_A, string: "usa")
+            $0.addPredefinedParameter(PredefinedString.DESTINATION_B, string: "mexico")
+            $0.addPredefinedParameter(PredefinedString.DESTINATION_LIST, string: "usa, mexico")
+            $0.addPredefinedParameter(PredefinedLong.HOTEL_SCORE, long: 5)
+            $0.addPredefinedParameter(PredefinedLong.TRAVEL_START, long: 1606762800000)
+            $0.addPredefinedParameter(PredefinedLong.TRAVEL_END, long: 1638298800000)
         }
     }
     
@@ -726,8 +723,8 @@ class DefaultEventsFactory: EventsFactory {
             ("achievement", "new level")
         ]
         return UnlockAchievementEvent(achievement: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "best damage").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.USER_SCORE, value: "12552")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.ACHIEVEMENT_ID, value: "1334-1225-ASDZ")
+            $0.addPredefinedParameter(PredefinedLong.USER_SCORE, long: 12552)
+            $0.addPredefinedParameter(PredefinedString.ACHIEVEMENT_ID, string: "1334-1225-ASDZ")
         }
     }
     
@@ -736,17 +733,17 @@ class DefaultEventsFactory: EventsFactory {
             ("reason", "span")
         ]
         return UnsubscribeEvent(unsubscribe: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "02.01.2021").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
     func createUpdateEvent() -> Event {
         let data = ["com.facebook"]
         return UpdateEvent(details: data, userData: "firmware").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.EVENT_START, value: "01.02.2021")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.EVENT_END, value: "01.01.2022")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.NEW_VERSION, value: "8")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.OLD_VERSION, value: "1.8")
+            $0.addPredefinedParameter(PredefinedLong.EVENT_START, long: 1612119600000)
+            $0.addPredefinedParameter(PredefinedLong.EVENT_END, long: 1640977200000)
+            $0.addPredefinedParameter(PredefinedString.NEW_VERSION, string: "8")
+            $0.addPredefinedParameter(PredefinedString.OLD_VERSION, string: "1.8")
         }
     }
     
@@ -755,8 +752,8 @@ class DefaultEventsFactory: EventsFactory {
             ("source", "amazon")
         ]
         return ViewAdvEvent(ad: data, timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000), userData: "skip").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.RETURNING_ARRIVAL_DATE, value: "01.12.2021")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.RETURNING_DEPARTURE_DATE, value: "01.12.2020")
+            $0.addPredefinedParameter(PredefinedLong.RETURNING_ARRIVAL_DATE, long: 1638298800000)
+            $0.addPredefinedParameter(PredefinedLong.RETURNING_DEPARTURE_DATE, long: 1669834800000)
         }
     }
     
@@ -766,7 +763,7 @@ class DefaultEventsFactory: EventsFactory {
             ("cart_items", "2")
         ]
         return ViewCartEvent(objects: data, userData: "main").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.PARAM_01, value: "param1")
+            $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
         }
     }
     
@@ -775,8 +772,8 @@ class DefaultEventsFactory: EventsFactory {
             ("section_name", "header")
         ]
         return ViewItemEvent(item: data, userData: "main").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.MAX_RATING_VALUE, value: "5")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.RATING_VALUE, value: "4.9")
+            $0.addPredefinedParameter(PredefinedLong.MAX_RATING_VALUE, long: 5)
+            $0.addPredefinedParameter(PredefinedLong.RATING_VALUE, long: 9)
         }
     }
     
@@ -787,8 +784,8 @@ class DefaultEventsFactory: EventsFactory {
                     [("section_name", "footer")]
         ]
         return ViewItemsEvent(items: data, userData: "main").apply {
-            $0.addPredefinedParameter(parameter: PredefinedParameters.MAX_RATING_VALUE, value: "5")
-            $0.addPredefinedParameter(parameter: PredefinedParameters.RATING_VALUE, value: "4.9")
+            $0.addPredefinedParameter(PredefinedLong.MAX_RATING_VALUE, long: 5)
+            $0.addPredefinedParameter(PredefinedLong.RATING_VALUE, long: 9)
         }
     }
 }

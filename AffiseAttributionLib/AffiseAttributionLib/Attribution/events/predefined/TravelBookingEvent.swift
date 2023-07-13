@@ -15,46 +15,17 @@ import Foundation
  */
 @objc
 public class TravelBookingEvent : NativeEvent {
-    private let details: [Any]
-    private let userData: String?
-    
-    public init(details: [Any],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(details: [Any],
                 userData: String? = nil) {
-        
-        self.details = details
-        self.userData = userData
+        self.init(userData)
+        self.anyData = details
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(details: [AnyObject],
+    public convenience init(details: [AnyObject],
                 userData: String? = nil) {
-        
-        self.details = details
-        self.userData = userData
+        self.init(details: details.toAnyList(), userData: userData)
     }
-
-    /**
-     * Serialize TravelBookingEvent to JSONObject
-     *
-     * @return JSONObject of TravelBookingEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_travel_booking", details)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "TravelBooking" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

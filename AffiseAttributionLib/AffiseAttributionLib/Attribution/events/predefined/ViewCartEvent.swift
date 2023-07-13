@@ -15,50 +15,17 @@ import Foundation
  */
 @objc
 public class ViewCartEvent : NativeEvent {
-    private let objects: [(String, Any?)]
-    private let userData: String?
-    
-    public init(objects: [(String, Any?)],
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
+    public convenience init(objects: [(String, Any?)],
                 userData: String? = nil) {
-        
-        self.objects = objects
-        self.userData = userData
+        self.init(userData)
+        self.anyData = objects
     }
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(objects: [[String: AnyObject]],
+    public convenience init(objects: [[String: AnyObject]],
                 userData: String? = nil) {
-        
-        self.objects = objects.flatMap { dict in
-            return dict.map { (key, value) in
-                return (key, value as Any)
-            }
-        }
-        self.userData = userData
+        self.init(objects: objects.toFlatList(), userData: userData)
     }
-    
-    /**
-     * Serialize ViewCartEvent to JSONObject
-     *
-     * @return JSONObject of ViewCartEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_view_cart", objects)
-        ]
-    }
-    
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "ViewCart" }
-    
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

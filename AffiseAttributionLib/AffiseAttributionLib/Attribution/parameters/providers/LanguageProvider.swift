@@ -15,4 +15,12 @@ class LanguageProvider: StringPropertyProvider {
     override func provide() -> String? {
         return Locale.current.identifier
     }
+    
+    override func getOrder() -> Float {
+        40.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.LANGUAGE
+    }
 }

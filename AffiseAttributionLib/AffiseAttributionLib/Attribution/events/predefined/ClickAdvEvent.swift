@@ -17,43 +17,13 @@ import Foundation
  */
 @objc
 public class ClickAdvEvent : NativeEvent {
-    private let advertisement: String
-    private let timeStampMillis: Int64
-    private let userData: String?
     
+    @available(*, deprecated, message: "use init(_ userData:timeStampMillis:)")
     @objc
-    public init(advertisement: String,
+    public convenience init(advertisement: String,
                 timeStampMillis: Int64,
                 userData: String? = nil) {
-        
-        self.advertisement = advertisement
-        self.timeStampMillis = timeStampMillis
-        self.userData = userData
+        self.init(userData, timeStampMillis: timeStampMillis)
+        self.anyData = advertisement
     }
-
-    /**
-     * Serialize ClickAdvEvent to JSONObject
-     *
-     * @return JSONObject of ClickAdvEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            ("affise_event_click_adv", advertisement),
-            ("affise_event_click_adv_timestamp", timeStampMillis)
-        ]
-    }
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    public override func getName() -> String { return "ClickAdv" }
-
-    /**
-     * User data
-     *
-     * @return userData
-     */
-    override func getUserData() -> String? { return userData }
 }

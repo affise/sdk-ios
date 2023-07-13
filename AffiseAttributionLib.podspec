@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "AffiseAttributionLib"
-  spec.version      = ENV['LIB_VERSION'] || "1.1.7"
+  spec.version      = ENV['LIB_VERSION'] || "1.6.0"
   spec.summary      = "Affise Attribution iOS library"
 
   # This description is used to generate tags and improve search results.
@@ -106,6 +106,7 @@ Pod::Spec.new do |spec|
 
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"
+  spec.resources = "AffiseAttributionLib/AffiseAttributionLib/Attribution/assets/*.js"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

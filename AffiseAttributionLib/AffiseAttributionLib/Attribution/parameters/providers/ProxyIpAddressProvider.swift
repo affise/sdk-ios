@@ -27,4 +27,12 @@ class ProxyIpAddressProvider: StringPropertyProvider {
         }
         return nil;
     }
+    
+    override func getOrder() -> Float {
+        24.1
+    }
+
+    override func getKey() -> String? {
+        Parameters.PROXY_IP_ADDRESS
+    }
 }

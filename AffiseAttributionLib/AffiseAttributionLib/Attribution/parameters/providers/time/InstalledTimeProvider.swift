@@ -25,4 +25,12 @@ class InstalledTimeProvider : LongPropertyProvider {
         }
         return time.timeInMillis
     }
+    
+    override func getOrder() -> Float {
+        6.0
+    }
+
+    override func getKey() -> String? {
+        Parameters.INSTALLED_TIME
+    }
 }

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                               partParamNameToken: "partParamNameToken",
                                               appToken: "app-token",
                                               isProduction: false,
-                                              secretId: "be07d122-3f3c-11ec-9bbc-0242ac130002")
+                                              secretKey: "be07d122-3f3c-11ec-9bbc-0242ac130002")
         Affise.shared.load(app: application, initProperties: properties, launchOptions: launchOptions)
         Affise.shared.registerDeeplinkCallback { url in
             let component = URLComponents(string: url.absoluteString)!

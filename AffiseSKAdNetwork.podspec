@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "AffiseSKAdNetwork"
-  spec.version      = ENV['LIB_VERSION'] || "1.1.7"
+  spec.version      = ENV['LIB_VERSION'] || "1.6.0"
   spec.summary      = "AffiseSKAdNetwork iOS library"
 
   # This description is used to generate tags and improve search results.
