@@ -99,7 +99,7 @@ public class Event: NSObject {
     /**
      * Add predefined [parameter] with [value] type JSON to event
      */
-    public func addPredefinedParameter(_ parameter: PredefinedObject, object: [(String, Any)]) {
+    public func addPredefinedParameter(_ parameter: PredefinedObject, object: [(String, Any?)]) {
         predefinedParameters.append((parameter.value(), object))
     }
     /**
@@ -113,7 +113,7 @@ public class Event: NSObject {
     /**
      * Add predefined [parameter] with [value] type Array of JSON to event
      */
-    public func addPredefinedParameter(_ parameter: PredefinedListObject, listObject: [[(String, Any)]]) {
+    public func addPredefinedParameter(_ parameter: PredefinedListObject, listObject: [[(String, Any?)]]) {
         predefinedParameters.append((parameter.value(), listObject))
     }
 

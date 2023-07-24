@@ -35,16 +35,16 @@ public class BaseSubscriptionEvent : NativeEvent {
      * Type of subscription
      *
      */
-    func type() -> String { return "" }
+    func type() -> SubscriptionEventName? { return nil }
     
     /**
      * Subtype of subscription
      */
-    public func subtype() -> String { return "" }
+    public func subtype() -> SubscriptionSubType? { return nil }
      
     override func serializeBuilder() -> AffisePropertyBuilder {
         let result = super.serializeBuilder()
-            .addRaw(SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue, value: subtype())
+            .addRaw(SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue, value: subtype()?.typeName ?? "")
         
         for item in data {
             result.addRaw(item.0, value: item.1)
@@ -58,5 +58,5 @@ public class BaseSubscriptionEvent : NativeEvent {
      *
      * @return name
      */
-    public override func getName() -> String { return type() }
+    public override func getName() -> String { return type()?.eventName ?? "" }
 }

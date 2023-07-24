@@ -31,4 +31,8 @@ public class StartTrialEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(trial: trial.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.START_TRIAL.eventName
+    }
 }

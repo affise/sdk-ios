@@ -6,4 +6,8 @@
  */
 @objc
 public class ScheduleEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.SCHEDULE.eventName
+    }
 }

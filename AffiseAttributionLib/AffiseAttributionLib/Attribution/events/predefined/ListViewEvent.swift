@@ -28,4 +28,8 @@ public class ListViewEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(list: list.toFlatList(), userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.LIST_VIEW.eventName
+    }
 }

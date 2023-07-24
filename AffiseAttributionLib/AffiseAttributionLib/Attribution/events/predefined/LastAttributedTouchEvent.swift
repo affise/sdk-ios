@@ -42,7 +42,11 @@ public class LastAttributedTouchEvent : NativeEvent {
 
     override func serializeBuilder() -> AffisePropertyBuilder {
         return super.serializeBuilder()
-            .add("type", value: touchType?.rawValue)
-            .add("data", value: touchData)
+            .add(AffiseProperty.TYPE, value: touchType?.type)
+            .add(AffiseProperty.DATA, value: touchData)
+    }
+
+    override public func getName() -> String {
+        return EventName.LAST_ATTRIBUTED_TOUCH.eventName
     }
 }

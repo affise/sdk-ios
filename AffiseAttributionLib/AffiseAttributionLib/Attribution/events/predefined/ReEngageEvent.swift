@@ -23,4 +23,8 @@ public class ReEngageEvent : NativeEvent {
         self.init(userData)
         self.anyData = reEngage
     }
+
+    override public func getName() -> String {
+        return EventName.RE_ENGAGE.eventName
+    }
 }

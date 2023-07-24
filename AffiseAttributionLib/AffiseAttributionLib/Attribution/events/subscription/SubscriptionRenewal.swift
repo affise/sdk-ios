@@ -17,10 +17,10 @@ public class RenewedSubscriptionEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> String { return SubscriptionParameters.AFFISE_SUBSCRIPTION_RENEWAL.rawValue }
+    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_RENEWAL }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> String { return SubscriptionParameters.AFFISE_SUB_RENEWED_SUBSCRIPTION.rawValue }
+    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_RENEWED_SUBSCRIPTION }
 }

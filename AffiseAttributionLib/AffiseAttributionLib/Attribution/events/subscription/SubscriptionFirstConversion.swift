@@ -17,12 +17,12 @@ public class ConvertedTrialEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> String { return SubscriptionParameters.AFFISE_SUBSCRIPTION_FIRST_CONVERSION.rawValue }
+    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_FIRST_CONVERSION }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> String { return SubscriptionParameters.AFFISE_SUB_CONVERTED_TRIAL.rawValue }
+    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_CONVERTED_TRIAL }
 }
 
 /**
@@ -34,10 +34,10 @@ public class ConvertedOfferEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> String { return SubscriptionParameters.AFFISE_SUBSCRIPTION_FIRST_CONVERSION.rawValue }
+    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_FIRST_CONVERSION }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> String { return SubscriptionParameters.AFFISE_SUB_CONVERTED_OFFER.rawValue }
+    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_CONVERTED_OFFER }
 }

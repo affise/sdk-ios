@@ -31,4 +31,8 @@ public class ViewAdvEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(ad: ad.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.VIEW_ADV.eventName
+    }
 }

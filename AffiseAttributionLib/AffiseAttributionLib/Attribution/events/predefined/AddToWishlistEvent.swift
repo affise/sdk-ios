@@ -32,4 +32,8 @@ public class AddToWishlistEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(wishList: wishList.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.ADD_TO_WISHLIST.eventName
+    }
 }

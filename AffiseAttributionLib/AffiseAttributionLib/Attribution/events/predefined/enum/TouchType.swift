@@ -10,12 +10,12 @@
  */
 
 @objc
-public enum TouchType: Int, CustomStringConvertible {
+public enum TouchType: Int, CaseIterable {
     case CLICK
     case WEB_TO_APP_AUTO_REDIRECT
     case IMPRESSION
 
-    public var description: String {
+    public var type: String {
         switch self {
         case .CLICK:
             return "CLICK"
@@ -24,5 +24,9 @@ public enum TouchType: Int, CustomStringConvertible {
         case .IMPRESSION:
             return "IMPRESSION"
         }
+    }
+
+    public static func from(_ name: String) -> TouchType? {
+        return allCases.first { name == $0.type }
     }
 }

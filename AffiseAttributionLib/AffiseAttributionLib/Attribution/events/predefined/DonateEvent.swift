@@ -6,4 +6,8 @@
  */
 @objc
 public class DonateEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.DONATE.eventName
+    }
 }

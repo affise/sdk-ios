@@ -31,4 +31,8 @@ public class InitiatePurchaseEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(purchaseData: purchaseData.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.INITIATE_PURCHASE.eventName
+    }
 }

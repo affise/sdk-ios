@@ -560,7 +560,7 @@ class DefaultEventsFactory: EventsFactory {
         return ListViewEvent(list: data, userData: "items").apply {
             $0.addPredefinedParameter(PredefinedString.PAYMENT_INFO_AVAILABLE, string: "card")
             $0.addPredefinedParameter(PredefinedString.SEARCH_STRING, string: "best car wash")
-            $0.addPredefinedParameter(PredefinedString.SUGGESTED_DESTINATIONS, string: "crete, spain")
+            $0.addPredefinedParameter(PredefinedString.SUGGESTED_DESTINATIONS, string: "create, spain")
             $0.addPredefinedParameter(PredefinedString.SUGGESTED_HOTELS, string: "beach resort, marina spa")
         }
     }

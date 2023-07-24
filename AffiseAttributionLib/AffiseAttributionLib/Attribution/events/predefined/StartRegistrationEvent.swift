@@ -31,4 +31,8 @@ public class StartRegistrationEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(registration: registration.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.START_REGISTRATION.eventName
+    }
 }

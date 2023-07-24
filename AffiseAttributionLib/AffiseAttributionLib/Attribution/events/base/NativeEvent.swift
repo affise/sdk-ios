@@ -40,16 +40,6 @@ public class NativeEvent : Event {
     override func serialize() -> [(String, Any?)] {
         return serializeBuilder().build()
     }
-
-
-    /**
-     * Name of event
-     *
-     * @return name
-     */
-    override public func getName() -> String {
-        return toEventName(self)
-    }
     
     /**
      * User data

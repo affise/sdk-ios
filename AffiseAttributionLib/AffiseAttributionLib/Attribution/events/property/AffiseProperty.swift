@@ -1,5 +1,7 @@
 import Foundation
 
-enum AffiseProperty: String {
+public enum AffiseProperty: String {
     case TIMESTAMP = "timestamp"
+    case TYPE = "type"
+    case DATA = "data"
 }

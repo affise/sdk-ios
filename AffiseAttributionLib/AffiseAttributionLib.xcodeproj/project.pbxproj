@@ -153,10 +153,22 @@
 		2B5128312A5F158900FA1F52 /* PredefinedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51282A2A5F158800FA1F52 /* PredefinedString.swift */; };
 		2B5128322A5F158900FA1F52 /* PredefinedListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51282B2A5F158900FA1F52 /* PredefinedListObject.swift */; };
 		2B5128342A5F161400FA1F52 /* Provider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5128332A5F161300FA1F52 /* Provider+Extension.swift */; };
+		2B7A55A92A6EBED5003780DA /* ScheduleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A02A6EBED4003780DA /* ScheduleEvent.swift */; };
+		2B7A55AA2A6EBED5003780DA /* InitiateCheckoutEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A12A6EBED4003780DA /* InitiateCheckoutEvent.swift */; };
+		2B7A55AB2A6EBED5003780DA /* CustomizeProductEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A22A6EBED4003780DA /* CustomizeProductEvent.swift */; };
+		2B7A55AC2A6EBED5003780DA /* ViewContentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A32A6EBED4003780DA /* ViewContentEvent.swift */; };
+		2B7A55AD2A6EBED5003780DA /* FindLocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A42A6EBED5003780DA /* FindLocationEvent.swift */; };
+		2B7A55AE2A6EBED5003780DA /* LeadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A52A6EBED5003780DA /* LeadEvent.swift */; };
+		2B7A55AF2A6EBED5003780DA /* ContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A62A6EBED5003780DA /* ContactEvent.swift */; };
+		2B7A55B02A6EBED5003780DA /* DonateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A72A6EBED5003780DA /* DonateEvent.swift */; };
+		2B7A55B12A6EBED5003780DA /* SubmitApplicationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55A82A6EBED5003780DA /* SubmitApplicationEvent.swift */; };
+		2B7A55B32A6EBF21003780DA /* InternalCrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55B22A6EBF21003780DA /* InternalCrossPlatform.swift */; };
+		2B7A55B62A6EBF86003780DA /* SubscriptionEventName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55B42A6EBF86003780DA /* SubscriptionEventName.swift */; };
+		2B7A55B72A6EBF86003780DA /* SubscriptionSubType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A55B52A6EBF86003780DA /* SubscriptionSubType.swift */; };
 		2B9FA7A52A5C35BC00942EA5 /* AffisePropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA7A42A5C35BC00942EA5 /* AffisePropertyBuilder.swift */; };
 		2B9FA7A72A5C36D300942EA5 /* ToSnakeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA7A62A5C36D300942EA5 /* ToSnakeCase.swift */; };
 		2B9FA7A92A5C3A0000942EA5 /* AffiseProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA7A82A5C3A0000942EA5 /* AffiseProperty.swift */; };
-		2B9FA7AB2A5C3DF600942EA5 /* AffiseEvent+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA7AA2A5C3DF600942EA5 /* AffiseEvent+Utils.swift */; };
+		2BE995682A6C4559001E4060 /* EventName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE995672A6C4559001E4060 /* EventName.swift */; };
 		7C1642D728BCDB6E007A1FAB /* LastSessionTimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1642D628BCDB6E007A1FAB /* LastSessionTimeProvider.swift */; };
 		7C7F5650289650AA0062DA71 /* AffiseAttributionLib.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F564F289650AA0062DA71 /* AffiseAttributionLib.docc */; };
 		7C7F5656289650AA0062DA71 /* AffiseAttributionLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7F564B289650AA0062DA71 /* AffiseAttributionLib.framework */; };
@@ -213,7 +225,6 @@
 		7CD757A028C50FC200AAA1D6 /* LogsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7579F28C50FC200AAA1D6 /* LogsRepository.swift */; };
 		7CD757A228C5104900AAA1D6 /* LogsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD757A128C5104900AAA1D6 /* LogsRepositoryImpl.swift */; };
 		7CD757A428C5124300AAA1D6 /* LogToSerializedLogConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */; };
-		840FFEA729A655E000CCB719 /* JsonEventClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FFEA629A655E000CCB719 /* JsonEventClass.swift */; };
 		840FFEAC29A6575100CCB719 /* SdkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FFEAB29A6575100CCB719 /* SdkPlatform.swift */; };
 		841C4CA829B7639A0029D071 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C4CA729B7639A0029D071 /* UUID.swift */; };
 		84478BFC29D1E0A900AF7439 /* Unsubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84478BFB29D1E0A900AF7439 /* Unsubscription.swift */; };
@@ -408,10 +419,22 @@
 		2B51282A2A5F158800FA1F52 /* PredefinedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredefinedString.swift; path = parameters/PredefinedString.swift; sourceTree = "<group>"; };
 		2B51282B2A5F158900FA1F52 /* PredefinedListObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredefinedListObject.swift; path = parameters/PredefinedListObject.swift; sourceTree = "<group>"; };
 		2B5128332A5F161300FA1F52 /* Provider+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Provider+Extension.swift"; sourceTree = "<group>"; };
+		2B7A55A02A6EBED4003780DA /* ScheduleEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleEvent.swift; sourceTree = "<group>"; };
+		2B7A55A12A6EBED4003780DA /* InitiateCheckoutEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiateCheckoutEvent.swift; sourceTree = "<group>"; };
+		2B7A55A22A6EBED4003780DA /* CustomizeProductEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeProductEvent.swift; sourceTree = "<group>"; };
+		2B7A55A32A6EBED4003780DA /* ViewContentEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContentEvent.swift; sourceTree = "<group>"; };
+		2B7A55A42A6EBED5003780DA /* FindLocationEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindLocationEvent.swift; sourceTree = "<group>"; };
+		2B7A55A52A6EBED5003780DA /* LeadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadEvent.swift; sourceTree = "<group>"; };
+		2B7A55A62A6EBED5003780DA /* ContactEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactEvent.swift; sourceTree = "<group>"; };
+		2B7A55A72A6EBED5003780DA /* DonateEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateEvent.swift; sourceTree = "<group>"; };
+		2B7A55A82A6EBED5003780DA /* SubmitApplicationEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitApplicationEvent.swift; sourceTree = "<group>"; };
+		2B7A55B22A6EBF21003780DA /* InternalCrossPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalCrossPlatform.swift; sourceTree = "<group>"; };
+		2B7A55B42A6EBF86003780DA /* SubscriptionEventName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionEventName.swift; sourceTree = "<group>"; };
+		2B7A55B52A6EBF86003780DA /* SubscriptionSubType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionSubType.swift; sourceTree = "<group>"; };
 		2B9FA7A42A5C35BC00942EA5 /* AffisePropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffisePropertyBuilder.swift; sourceTree = "<group>"; };
 		2B9FA7A62A5C36D300942EA5 /* ToSnakeCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSnakeCase.swift; sourceTree = "<group>"; };
 		2B9FA7A82A5C3A0000942EA5 /* AffiseProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiseProperty.swift; sourceTree = "<group>"; };
-		2B9FA7AA2A5C3DF600942EA5 /* AffiseEvent+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AffiseEvent+Utils.swift"; sourceTree = "<group>"; };
+		2BE995672A6C4559001E4060 /* EventName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventName.swift; sourceTree = "<group>"; };
 		7C1642D628BCDB6E007A1FAB /* LastSessionTimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSessionTimeProvider.swift; sourceTree = "<group>"; };
 		7C7F564B289650AA0062DA71 /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AffiseAttributionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C7F564E289650AA0062DA71 /* AffiseAttributionLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AffiseAttributionLib.h; sourceTree = "<group>"; };
@@ -469,7 +492,6 @@
 		7CD7579F28C50FC200AAA1D6 /* LogsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsRepository.swift; sourceTree = "<group>"; };
 		7CD757A128C5104900AAA1D6 /* LogsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsRepositoryImpl.swift; sourceTree = "<group>"; };
 		7CD757A328C5124300AAA1D6 /* LogToSerializedLogConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToSerializedLogConverter.swift; sourceTree = "<group>"; };
-		840FFEA629A655E000CCB719 /* JsonEventClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonEventClass.swift; sourceTree = "<group>"; };
 		840FFEAB29A6575100CCB719 /* SdkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SdkPlatform.swift; sourceTree = "<group>"; };
 		841C4CA729B7639A0029D071 /* UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
 		84478BFB29D1E0A900AF7439 /* Unsubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unsubscription.swift; sourceTree = "<group>"; };
@@ -656,7 +678,6 @@
 				8481C9ED29B6619E00FAAE4B /* DelayRun.swift */,
 				841C4CA729B7639A0029D071 /* UUID.swift */,
 				2B9FA7A62A5C36D300942EA5 /* ToSnakeCase.swift */,
-				2B9FA7AA2A5C3DF600942EA5 /* AffiseEvent+Utils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -664,6 +685,8 @@
 		10C07E2328B6BA0E00A903FD /* subscription */ = {
 			isa = PBXGroup;
 			children = (
+				2B7A55B42A6EBF86003780DA /* SubscriptionEventName.swift */,
+				2B7A55B52A6EBF86003780DA /* SubscriptionSubType.swift */,
 				84478BFB29D1E0A900AF7439 /* Unsubscription.swift */,
 				10C07E2428B6BA0E00A903FD /* SubscriptionParameters.swift */,
 				10C07E2B28B6BA0E00A903FD /* BaseSubscriptionEvent.swift */,
@@ -925,6 +948,7 @@
 				10C07DFF28B6B9C200A903FD /* CompleteStreamEvent.swift */,
 				10C07E0328B6B9C200A903FD /* CompleteTrialEvent.swift */,
 				10C07E0228B6B9C200A903FD /* CompleteTutorialEvent.swift */,
+				2B7A55A62A6EBED5003780DA /* ContactEvent.swift */,
 				10C07DFD28B6B9C200A903FD /* ContentItemsViewEvent.swift */,
 				7C7F568C289650E50062DA71 /* CustomId01Event.swift */,
 				10C07DFA28B6B9C200A903FD /* CustomId02Event.swift */,
@@ -936,12 +960,17 @@
 				10C07DFE28B6B9C200A903FD /* CustomId08Event.swift */,
 				10C07E0A28B6B9C300A903FD /* CustomId09Event.swift */,
 				10C07E0828B6B9C300A903FD /* CustomId10Event.swift */,
+				2B7A55A22A6EBED4003780DA /* CustomizeProductEvent.swift */,
 				10C07E0928B6B9C300A903FD /* DeepLinkedEvent.swift */,
+				2B7A55A72A6EBED5003780DA /* DonateEvent.swift */,
+				2B7A55A42A6EBED5003780DA /* FindLocationEvent.swift */,
 				10C07E4828B7448500A903FD /* GDPREvent.swift */,
+				2B7A55A12A6EBED4003780DA /* InitiateCheckoutEvent.swift */,
 				10C07E4728B7448500A903FD /* InitiatePurchaseEvent.swift */,
 				10C07E4B28B7448500A903FD /* InitiateStreamEvent.swift */,
 				10C07E4E28B7448500A903FD /* InviteEvent.swift */,
 				10C07E4328B7448500A903FD /* LastAttributedTouchEvent.swift */,
+				2B7A55A52A6EBED5003780DA /* LeadEvent.swift */,
 				10C07E4028B7448500A903FD /* ListViewEvent.swift */,
 				10C07E4228B7448500A903FD /* LoginEvent.swift */,
 				10C07E3C28B7448500A903FD /* OpenedFromPushNotificationEvent.swift */,
@@ -950,12 +979,14 @@
 				10C07E5628B7448600A903FD /* ReEngageEvent.swift */,
 				10C07E5828B7448600A903FD /* ReserveEvent.swift */,
 				84AA087C2955DB4F001FB3AB /* SalesEvent.swift */,
+				2B7A55A02A6EBED4003780DA /* ScheduleEvent.swift */,
 				10C07E3F28B7448500A903FD /* SearchEvent.swift */,
 				10C07E4A28B7448500A903FD /* ShareEvent.swift */,
 				10C07E5528B7448600A903FD /* SpendCreditsEvent.swift */,
 				10C07E4428B7448500A903FD /* StartRegistrationEvent.swift */,
 				10C07E5128B7448600A903FD /* StartTrialEvent.swift */,
 				10C07E4128B7448500A903FD /* StartTutorialEvent.swift */,
+				2B7A55A82A6EBED5003780DA /* SubmitApplicationEvent.swift */,
 				10C07E4D28B7448500A903FD /* SubscribeEvent.swift */,
 				10C07E4928B7448500A903FD /* TravelBookingEvent.swift */,
 				10C07E5928B7448600A903FD /* UnlockAchievementEvent.swift */,
@@ -963,6 +994,7 @@
 				10C07E4528B7448500A903FD /* UpdateEvent.swift */,
 				10C07E5428B7448600A903FD /* ViewAdvEvent.swift */,
 				10C07E3D28B7448500A903FD /* ViewCartEvent.swift */,
+				2B7A55A32A6EBED4003780DA /* ViewContentEvent.swift */,
 				10C07E3E28B7448500A903FD /* ViewItemEvent.swift */,
 				10C07E4C28B7448500A903FD /* ViewItemsEvent.swift */,
 			);
@@ -984,10 +1016,10 @@
 			children = (
 				2B5128242A5F157600FA1F52 /* parameters */,
 				2B9FA7A32A5C358B00942EA5 /* property */,
-				840FFEA629A655E000CCB719 /* JsonEventClass.swift */,
 				10C07E2328B6BA0E00A903FD /* subscription */,
 				7C7F568D289650E50062DA71 /* predefined */,
 				7C7F5691289650E50062DA71 /* base */,
+				2BE995672A6C4559001E4060 /* EventName.swift */,
 				7C7F5692289650E50062DA71 /* EventsManager.swift */,
 				7C7F5693289650E50062DA71 /* EventsRepository.swift */,
 				7C7F5694289650E50062DA71 /* EventsRepositoryImpl.swift */,
@@ -1011,28 +1043,29 @@
 		7C7F56A1289650E50062DA71 /* Attribution */ = {
 			isa = PBXGroup;
 			children = (
-				1053B29328ECB418004FD4B3 /* assets */,
 				1053B26F28E20A9D004FD4B3 /* advertising */,
-				1053B25128DEDF93004FD4B3 /* deeplink */,
-				10C07DF628ABBEA100A903FD /* utils */,
 				10C07DF128AA036400A903FD /* app */,
-				10C07DD928A0FFF100A903FD /* storages */,
+				1053B29328ECB418004FD4B3 /* assets */,
 				7C7F5669289650E50062DA71 /* converter */,
+				1053B25128DEDF93004FD4B3 /* deeplink */,
 				7C7F566B289650E50062DA71 /* errors */,
-				7C7F5673289650E50062DA71 /* network */,
-				1053B28C28EB5A22004FD4B3 /* webbridge */,
-				7C7F5676289650E50062DA71 /* session */,
-				7C7F567A289650E50062DA71 /* logs */,
-				7C7F5683289650E50062DA71 /* parameters */,
-				840FFEAA29A6572900CCB719 /* platform */,
-				1053B27C28EB3565004FD4B3 /* preferences */,
-				7C7F5689289650E50062DA71 /* usecase */,
 				7C7F5697289650E50062DA71 /* events */,
 				7C7F569D289650E50062DA71 /* init */,
 				8481C9D929B6379B00FAAE4B /* internal */,
+				7C7F567A289650E50062DA71 /* logs */,
+				7C7F5673289650E50062DA71 /* network */,
+				7C7F5683289650E50062DA71 /* parameters */,
+				840FFEAA29A6572900CCB719 /* platform */,
+				1053B27C28EB3565004FD4B3 /* preferences */,
+				7C7F5676289650E50062DA71 /* session */,
+				10C07DD928A0FFF100A903FD /* storages */,
+				7C7F5689289650E50062DA71 /* usecase */,
+				10C07DF628ABBEA100A903FD /* utils */,
+				1053B28C28EB5A22004FD4B3 /* webbridge */,
 				7C7F569E289650E50062DA71 /* Affise.swift */,
 				7C7F569F289650E50062DA71 /* AffiseApi.swift */,
 				7C7F56A0289650E50062DA71 /* AffiseComponent.swift */,
+				2B7A55B22A6EBF21003780DA /* InternalCrossPlatform.swift */,
 			);
 			path = Attribution;
 			sourceTree = "<group>";
@@ -1206,6 +1239,7 @@
 				10C07E1F28B6B9C300A903FD /* AchieveLevelEvent.swift in Sources */,
 				7C9789C128965770009CE639 /* ConverterToBase64.swift in Sources */,
 				1053B27128E20AAC004FD4B3 /* AdvertisingIdManager.swift in Sources */,
+				2B7A55AB2A6EBED5003780DA /* CustomizeProductEvent.swift in Sources */,
 				7C9789C228965770009CE639 /* EventToSerializedEventConverter.swift in Sources */,
 				10C07E6E28B7448600A903FD /* LogEvent.swift in Sources */,
 				10B173DF28CF524F00E96EA8 /* CreatedTimeHourProvider.swift in Sources */,
@@ -1232,7 +1266,6 @@
 				10B173ED28CF6F2100E96EA8 /* RefTokensProvider.swift in Sources */,
 				10C07E3528B6BA0E00A903FD /* SubscriptionCancellation.swift in Sources */,
 				1053B25328DEDF9D004FD4B3 /* DeeplinkManager.swift in Sources */,
-				2B9FA7AB2A5C3DF600942EA5 /* AffiseEvent+Utils.swift in Sources */,
 				7CD757A028C50FC200AAA1D6 /* LogsRepository.swift in Sources */,
 				10C07E7028B7448600A903FD /* UnsubscribeEvent.swift in Sources */,
 				10C07E1828B6B9C300A903FD /* CompleteRegistrationEvent.swift in Sources */,
@@ -1250,6 +1283,7 @@
 				1053B24C28DCDC28004FD4B3 /* PushTokenProvider.swift in Sources */,
 				7C9789C928965770009CE639 /* NetworkServiceImpl.swift in Sources */,
 				7C9789CA28965770009CE639 /* SessionManager.swift in Sources */,
+				2B7A55B32A6EBF21003780DA /* InternalCrossPlatform.swift in Sources */,
 				8481C9D429B632B200FAAE4B /* AffiseFlag.swift in Sources */,
 				7C9789CB28965770009CE639 /* SessionManagerImpl.swift in Sources */,
 				84E6211029A8EB1B00138CFB /* SdkPlatformNameProvider.swift in Sources */,
@@ -1276,6 +1310,8 @@
 				7C9789D328965770009CE639 /* Parameters.swift in Sources */,
 				8481C9DF29B63B5900FAAE4B /* InternalEventsRepository.swift in Sources */,
 				7C9789D428965770009CE639 /* FirstAppOpenUseCase.swift in Sources */,
+				2B7A55AA2A6EBED5003780DA /* InitiateCheckoutEvent.swift in Sources */,
+				2B7A55A92A6EBED5003780DA /* ScheduleEvent.swift in Sources */,
 				8481C9E529B63B8C00FAAE4B /* InternalParameters.swift in Sources */,
 				7C9789D528965770009CE639 /* StoreEventUseCase.swift in Sources */,
 				10C07E1128B6B9C300A903FD /* ContentItemsViewEvent.swift in Sources */,
@@ -1304,7 +1340,9 @@
 				10C07DF828ABBEC500A903FD /* Array+Serialized.swift in Sources */,
 				7C9789D728965770009CE639 /* SendDataToServerUseCase.swift in Sources */,
 				7C9789D828965770009CE639 /* SendDataToServerUseCaseImpl.swift in Sources */,
+				2B7A55AD2A6EBED5003780DA /* FindLocationEvent.swift in Sources */,
 				10B173D228CF2BFB00E96EA8 /* FirstOpenTimeProvider.swift in Sources */,
+				2B7A55B72A6EBF86003780DA /* SubscriptionSubType.swift in Sources */,
 				10B173CC28CF25F800E96EA8 /* AppVersionProvider.swift in Sources */,
 				7C9789DA28965770009CE639 /* CustomId01Event.swift in Sources */,
 				10C07E3328B6BA0E00A903FD /* SubscriptionEnteredBillingRetry.swift in Sources */,
@@ -1319,21 +1357,23 @@
 				1053B27B28EB34D1004FD4B3 /* PreferencesUseCaseImpl.swift in Sources */,
 				7C9789DC28965770009CE639 /* SerializedEvent.swift in Sources */,
 				8481C9E329B63B7C00FAAE4B /* InternalEventToSerializedEventConverter.swift in Sources */,
+				2B7A55AC2A6EBED5003780DA /* ViewContentEvent.swift in Sources */,
 				84C08D77299BB0D000354746 /* IsFirstForUserUseCaseImpl.swift in Sources */,
 				7C9789DD28965770009CE639 /* NativeEvent.swift in Sources */,
+				2B7A55AF2A6EBED5003780DA /* ContactEvent.swift in Sources */,
 				10C07E3228B6BA0E00A903FD /* SubscriptionRenewal.swift in Sources */,
 				10B173FD28CF7A2300E96EA8 /* PlatformNameProvider.swift in Sources */,
 				7C9789DE28965770009CE639 /* EventsManager.swift in Sources */,
 				10B173F328CF75E000E96EA8 /* CountryProvider.swift in Sources */,
 				84C08D74299BB0B200354746 /* IsFirstForUserStorage.swift in Sources */,
 				10C07E2E28B6BA0E00A903FD /* SubscriptionReactivation.swift in Sources */,
+				2B7A55B12A6EBED5003780DA /* SubmitApplicationEvent.swift in Sources */,
 				1053B27528E20CAA004FD4B3 /* AdidProvider.swift in Sources */,
 				10C07E7628B7448600A903FD /* ReserveEvent.swift in Sources */,
 				7CD757A428C5124300AAA1D6 /* LogToSerializedLogConverter.swift in Sources */,
 				10C07E3028B6BA0E00A903FD /* SubscriptionRenewalFromBillingRetry.swift in Sources */,
 				10C07DE728A7C75D00A903FD /* AffPartParamNameTokenPropertyProvider.swift in Sources */,
 				10C07E6F28B7448600A903FD /* StartTrialEvent.swift in Sources */,
-				840FFEA729A655E000CCB719 /* JsonEventClass.swift in Sources */,
 				10C07E6228B7448600A903FD /* StartRegistrationEvent.swift in Sources */,
 				1053B26028E01036004FD4B3 /* DeeplinkClickPropertyProvider.swift in Sources */,
 				84C08D78299BB0D000354746 /* IsFirstForUserUseCase.swift in Sources */,
@@ -1355,6 +1395,7 @@
 				10B173EB28CF6D8000E96EA8 /* RefTokenProvider.swift in Sources */,
 				7C9789E228965770009CE639 /* EventsStorageImpl.swift in Sources */,
 				10B173C828CF217800E96EA8 /* UuidProvider.swift in Sources */,
+				2B7A55AE2A6EBED5003780DA /* LeadEvent.swift in Sources */,
 				10C07E7228B7448600A903FD /* ViewAdvEvent.swift in Sources */,
 				10C07E1A28B6B9C300A903FD /* ClickAdvEvent.swift in Sources */,
 				10C07E1028B6B9C300A903FD /* CustomId06Event.swift in Sources */,
@@ -1376,6 +1417,7 @@
 				10B173D428CF360E00E96EA8 /* TimeInterval+Utils.swift in Sources */,
 				1053B26428E018A2004FD4B3 /* HardwareNameProvider.swift in Sources */,
 				1053B25528DEE0F1004FD4B3 /* DeeplinkClickRepository.swift in Sources */,
+				2B7A55B02A6EBED5003780DA /* DonateEvent.swift in Sources */,
 				10C07DDF28A7925400A903FD /* AffiseAppIdProvider.swift in Sources */,
 				10C07E5A28B7448600A903FD /* OpenedFromPushNotificationEvent.swift in Sources */,
 				7C7F5650289650AA0062DA71 /* AffiseAttributionLib.docc in Sources */,
@@ -1391,6 +1433,7 @@
 				7CD7579728BCDF7100AAA1D6 /* AffiseSessionCountProvider.swift in Sources */,
 				10B173E528CF58BF00E96EA8 /* AffiseDeviceIdProvider.swift in Sources */,
 				10C07E2F28B6BA0E00A903FD /* SubscriptionFirstConversion.swift in Sources */,
+				2B7A55B62A6EBF86003780DA /* SubscriptionEventName.swift in Sources */,
 				8481C9DD29B639FF00FAAE4B /* InternalEvent.swift in Sources */,
 				10B173F128CF754000E96EA8 /* RegionProvider.swift in Sources */,
 				2B9FA7A92A5C3A0000942EA5 /* AffiseProperty.swift in Sources */,
@@ -1401,6 +1444,7 @@
 				8481C9E929B63BAB00FAAE4B /* StoreInternalEventUseCaseImpl.swift in Sources */,
 				10C07E6B28B7448600A903FD /* SubscribeEvent.swift in Sources */,
 				10B173E128CF527E00E96EA8 /* CreatedTimeMilliProvider.swift in Sources */,
+				2BE995682A6C4559001E4060 /* EventName.swift in Sources */,
 				8481C9EE29B6619E00FAAE4B /* DelayRun.swift in Sources */,
 				2B51282C2A5F158900FA1F52 /* PredefinedListString.swift in Sources */,
 				2B5128312A5F158900FA1F52 /* PredefinedString.swift in Sources */,

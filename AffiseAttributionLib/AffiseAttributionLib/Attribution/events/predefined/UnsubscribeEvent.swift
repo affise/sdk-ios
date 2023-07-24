@@ -31,4 +31,8 @@ public class UnsubscribeEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(unsubscribe: unsubscribe.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.UNSUBSCRIBE.eventName
+    }
 }

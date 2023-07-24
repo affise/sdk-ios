@@ -31,4 +31,8 @@ public class ShareEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(share: share.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.SHARE.eventName
+    }
 }

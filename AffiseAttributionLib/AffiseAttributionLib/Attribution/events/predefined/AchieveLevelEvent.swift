@@ -33,4 +33,8 @@ public class AchieveLevelEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(level: level.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.ACHIEVE_LEVEL.eventName
+    }
 }

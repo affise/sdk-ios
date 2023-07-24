@@ -29,4 +29,8 @@ public class ContentItemsViewEvent : NativeEvent {
                 userData: String? = nil) {  
         self.init(objects: objects.toListOfList(), userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.CONTENT_ITEMS_VIEW.eventName
+    }
 }

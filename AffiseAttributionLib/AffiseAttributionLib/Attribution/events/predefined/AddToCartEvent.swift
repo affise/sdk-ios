@@ -33,4 +33,8 @@ public class AddToCartEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(addToCartObject: addToCartObject.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.ADD_TO_CART.eventName
+    }
 }

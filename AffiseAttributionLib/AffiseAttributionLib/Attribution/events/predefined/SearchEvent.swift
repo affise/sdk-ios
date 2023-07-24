@@ -31,4 +31,8 @@ public class SearchEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(search: search.toAnyList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.SEARCH.eventName
+    }
 }

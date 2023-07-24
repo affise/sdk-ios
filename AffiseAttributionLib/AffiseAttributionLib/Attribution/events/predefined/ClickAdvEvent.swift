@@ -26,4 +26,8 @@ public class ClickAdvEvent : NativeEvent {
         self.init(userData, timeStampMillis: timeStampMillis)
         self.anyData = advertisement
     }
+
+    override public func getName() -> String {
+        return EventName.CLICK_ADV.eventName
+    }
 }

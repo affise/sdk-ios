@@ -28,4 +28,8 @@ public class ViewCartEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(objects: objects.toFlatList(), userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.VIEW_CART.eventName
+    }
 }

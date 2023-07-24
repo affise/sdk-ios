@@ -6,4 +6,8 @@
  */
 @objc
 public class ViewContentEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.VIEW_CONTENT.eventName
+    }
 }

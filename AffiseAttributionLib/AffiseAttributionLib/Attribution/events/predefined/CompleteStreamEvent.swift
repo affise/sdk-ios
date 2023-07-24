@@ -32,4 +32,8 @@ public class CompleteStreamEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(stream: stream.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.COMPLETE_STREAM.eventName
+    }
 }

@@ -31,4 +31,8 @@ public class InitiateStreamEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(stream: stream.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.INITIATE_STREAM.eventName
+    }
 }

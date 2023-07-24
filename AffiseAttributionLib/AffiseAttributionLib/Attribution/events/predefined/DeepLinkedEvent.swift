@@ -24,4 +24,8 @@ public class DeepLinkedEvent : NativeEvent {
         self.init(userData)
         self.anyData = isLinked
     }
+
+    override public func getName() -> String {
+        return EventName.DEEP_LINKED.eventName
+    }
 }

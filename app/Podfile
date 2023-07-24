@@ -8,4 +8,5 @@ workspace 'app'
 target 'app' do
     pod 'AffiseAttributionLib', :path => '../'
     pod 'AffiseSKAdNetwork', :path => '../'
+    pod 'AffiseInternal', :path => '../'
 end

@@ -28,4 +28,8 @@ public class TravelBookingEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(details: details.toAnyList(), userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.TRAVEL_BOOKING.eventName
+    }
 }

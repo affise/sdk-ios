@@ -31,4 +31,8 @@ public class ReserveEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(reserve: reserve.toListOfList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.RESERVE.eventName
+    }
 }

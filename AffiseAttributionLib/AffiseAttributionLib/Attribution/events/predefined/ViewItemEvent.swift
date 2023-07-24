@@ -29,4 +29,8 @@ public class ViewItemEvent : NativeEvent {
         self.init(userData)
         self.anyData = item.toFlatList()
     }
+
+    override public func getName() -> String {
+        return EventName.VIEW_ITEM.eventName
+    }
 }

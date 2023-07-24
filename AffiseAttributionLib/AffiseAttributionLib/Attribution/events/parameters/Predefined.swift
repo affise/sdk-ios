@@ -1,3 +1,3 @@
-protocol Predefined {
+public protocol Predefined {
     func value() -> String
 }

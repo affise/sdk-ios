@@ -6,4 +6,8 @@
  */
 @objc
 public class InitiateCheckoutEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.INITIATE_CHECKOUT.eventName
+    }
 }

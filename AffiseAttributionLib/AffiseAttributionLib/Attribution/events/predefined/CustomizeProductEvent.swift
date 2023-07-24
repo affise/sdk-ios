@@ -6,4 +6,8 @@
  */
 @objc
 public class CustomizeProductEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.CUSTOMIZE_PRODUCT.eventName
+    }
 }

@@ -6,4 +6,8 @@
  */
 @objc
 public class LeadEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.LEAD.eventName
+    }
 }

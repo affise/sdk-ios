@@ -31,4 +31,8 @@ public class SubscribeEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(subscribe: subscribe.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.SUBSCRIBE.eventName
+    }
 }

@@ -23,7 +23,9 @@ jobs:
           pod --version
           pod ipc spec AffiseAttributionLib.podspec
           pod ipc spec AffiseSKAdNetwork.podspec
+          pod ipc spec AffiseInternal.podspec
 
+      # Publish
       - name: Publish AffiseAttributionLib Release
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
@@ -31,6 +33,7 @@ jobs:
         run: |
           pod trunk push AffiseAttributionLib.podspec --allow-warnings
 
+      # Publish
       - name: Publish AffiseSKAdNetwork Release
         id: skad
         env:
@@ -39,6 +42,7 @@ jobs:
         run: |
           pod trunk push AffiseSKAdNetwork.podspec --allow-warnings
 
+      # Rollback
       - name: Delete AffiseAttributionLib Pod
         if: ${{ failure() && steps.skad.conclusion == 'failure' }}
         env:
@@ -46,6 +50,25 @@ jobs:
         run: |
           pod trunk delete AffiseAttributionLib ${{ github.ref_name }}
 
+      # Publish
+      - name: Publish AffiseInternal Release
+        id: internal
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
+          LIB_VERSION: ${{ github.ref_name }}
+        run: |
+          pod trunk push AffiseInternal.podspec --allow-warnings
+
+      # Rollback
+      - name: Delete AffiseInternal Pod
+        if: ${{ failure() && steps.internal.conclusion == 'failure' }}
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
+        run: |
+          pod trunk delete AffiseAttributionLib ${{ github.ref_name }}
+          pod trunk delete AffiseSKAdNetwork ${{ github.ref_name }}
+
+      # Release
       - name: Release
         id: create_release
         uses: actions/create-release@v1

@@ -1,5 +1,5 @@
 @objc
-public enum PredefinedString: Int, Predefined {
+public enum PredefinedString: Int, Predefined, CaseIterable {
     case ADREV_AD_TYPE
     case CITY
     case COUNTRY
@@ -46,7 +46,7 @@ public enum PredefinedString: Int, Predefined {
     case VIRTUAL_CURRENCY_NAME
     case STATUS
 
-    func value() -> String {
+    public func value() -> String {
         switch self {
         case .ADREV_AD_TYPE: return "affise_p_adrev_ad_type"
         case .CITY: return "affise_p_city"
@@ -94,5 +94,9 @@ public enum PredefinedString: Int, Predefined {
         case .VIRTUAL_CURRENCY_NAME: return "affise_p_virtual_currency_name"
         case .STATUS: return "affise_p_status"
         }
+    }
+
+    public static func from(_ name: String) -> PredefinedString? {
+        return allCases.first { name == $0.value() }
     }
 }

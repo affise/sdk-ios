@@ -32,4 +32,8 @@ public class CompleteTutorialEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(tutorial: tutorial.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.COMPLETE_TUTORIAL.eventName
+    }
 }

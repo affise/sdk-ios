@@ -26,4 +26,8 @@ public class CustomId03Event : NativeEvent {
         self.init(userData, timeStampMillis: timeStampMillis)
         self.anyData = custom
     }
+
+    override public func getName() -> String {
+        return EventName.CUSTOM_ID_03.eventName
+    }
 }

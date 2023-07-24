@@ -8,7 +8,7 @@
 import Foundation
 
 /**
- * Provider for parameter [Parameters.CREATED_TIME_HOUR]
+ * Provider for parameter [Parameters.CREATED_TIME_MILLI]
  */
 class CreatedTimeMilliProvider : LongPropertyProvider {
     override func provide() -> Int64? {
@@ -20,6 +20,6 @@ class CreatedTimeMilliProvider : LongPropertyProvider {
     }
 
     override func getKey() -> String? {
-        Parameters.CREATED_TIME_HOUR
+        Parameters.CREATED_TIME_MILLI
     }
 }

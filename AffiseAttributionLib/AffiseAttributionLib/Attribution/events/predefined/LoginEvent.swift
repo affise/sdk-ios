@@ -31,4 +31,8 @@ public class LoginEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(login: login.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.LOGIN.eventName
+    }
 }

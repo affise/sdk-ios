@@ -25,4 +25,8 @@ public class SpendCreditsEvent : NativeEvent {
         self.init(userData, timeStampMillis: timeStampMillis)
         self.anyData = credits
     }
+
+    override public func getName() -> String {
+        return EventName.SPEND_CREDITS.eventName
+    }
 }

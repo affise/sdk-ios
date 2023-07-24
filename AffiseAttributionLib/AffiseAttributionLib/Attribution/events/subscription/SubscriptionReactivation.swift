@@ -8,10 +8,10 @@ public class ReactivatedSubscriptionEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> String { return SubscriptionParameters.AFFISE_SUBSCRIPTION_REACTIVATION.rawValue }
+    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_REACTIVATION }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> String { return SubscriptionParameters.AFFISE_SUB_REACTIVATED_SUBSCRIPTION.rawValue }
+    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_REACTIVATED_SUBSCRIPTION }
 }

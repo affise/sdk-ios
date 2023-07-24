@@ -31,4 +31,8 @@ public class InviteEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(invite: invite.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.INVITE.eventName
+    }
 }

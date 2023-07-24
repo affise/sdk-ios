@@ -10,10 +10,10 @@ public class UnsubscriptionEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> String { return SubscriptionParameters.AFFISE_UNSUBSCRIPTION.rawValue }
+    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_UNSUBSCRIPTION }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> String { return SubscriptionParameters.AFFISE_SUB_UNSUBSCRIPTION.rawValue }
+    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_UNSUBSCRIPTION }
 }

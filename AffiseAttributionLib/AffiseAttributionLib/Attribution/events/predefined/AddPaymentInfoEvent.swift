@@ -33,4 +33,8 @@ public class AddPaymentInfoEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(paymentInfo: paymentInfo.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.ADD_PAYMENT_INFO.eventName
+    }
 }

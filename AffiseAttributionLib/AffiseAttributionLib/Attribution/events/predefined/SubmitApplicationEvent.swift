@@ -6,4 +6,8 @@
  */
 @objc
 public class SubmitApplicationEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.SUBMIT_APPLICATION.eventName
+    }
 }

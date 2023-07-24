@@ -16,4 +16,7 @@
    <FileRef
       location = "group:AffiseSKAdNetwork/AffiseSKAdNetwork.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:AffiseInternal/AffiseInternal.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -31,4 +31,8 @@ public class UnlockAchievementEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(achievement: achievement.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.UNLOCK_ACHIEVEMENT.eventName
+    }
 }

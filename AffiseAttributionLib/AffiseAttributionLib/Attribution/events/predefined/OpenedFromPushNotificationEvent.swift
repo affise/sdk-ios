@@ -22,4 +22,8 @@ public class OpenedFromPushNotificationEvent : NativeEvent {
         self.init(userData)
         self.anyData = details
     }
+
+    override public func getName() -> String {
+        return EventName.OPENED_FROM_PUSH_NOTIFICATION.eventName
+    }
 }

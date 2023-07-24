@@ -6,4 +6,8 @@
  */
 @objc
 public class FindLocationEvent : NativeEvent {
+
+    override public func getName() -> String {
+        return EventName.FIND_LOCATION.eventName
+    }
 }

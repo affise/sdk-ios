@@ -31,4 +31,8 @@ public class SalesEvent : NativeEvent {
                 userData: String? = nil) {
         self.init(salesData: salesData.toFlatList(), timeStampMillis: timeStampMillis, userData: userData)
     }
+
+    override public func getName() -> String {
+        return EventName.SALES.eventName
+    }
 }

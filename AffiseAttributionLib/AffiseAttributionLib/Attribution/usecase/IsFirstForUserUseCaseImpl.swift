@@ -42,12 +42,18 @@ extension IsFirstForUserUseCaseImpl: IsFirstForUserUseCase {
      */
     func updateWebEvent(_ event: String) -> String {
         do {
-            var eventClass = ""
+            var eventClass: String? = nil
             var dict = try JSONSerialization.jsonObject(with: event.data(using: .utf8)!, options: .mutableContainers) as! [String: Any?]
-            let eventType = classOfEvent(dict)
-            if let ti = eventType {
-                eventClass = String(describing: ti)
+            
+            let subtype = (dict[Parameters.AFFISE_EVENT_DATA] as? [String: Any?])?[SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue] as? String
+  
+            if let subtype = subtype {
+                eventClass = subtype
             } else {
+                eventClass = dict[Parameters.AFFISE_EVENT_NAME] as? String
+            }
+
+            guard let eventClass = eventClass else {
                 return event
             }
             
