@@ -1,8 +1,8 @@
 PODS:
-  - AffiseAttributionLib (1.6.1)
-  - AffiseInternal (1.6.1):
-    - AffiseAttributionLib (~> 1.6.1)
-  - AffiseSKAdNetwork (1.6.1)
+  - AffiseAttributionLib (1.6.2)
+  - AffiseInternal (1.6.2):
+    - AffiseAttributionLib (~> 1.6.2)
+  - AffiseSKAdNetwork (1.6.2)
 
 DEPENDENCIES:
   - AffiseAttributionLib (from `../`)
