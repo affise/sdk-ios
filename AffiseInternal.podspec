@@ -20,5 +20,5 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = "9.0"
   spec.swift_version = '5.7'
   
-  spec.dependency "AffiseAttributionLib", "#{spec.version}"
+  spec.dependency "AffiseAttributionLib"
 end
