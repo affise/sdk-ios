@@ -1,6 +1,6 @@
 import Foundation
 
-extension String {
+public extension String {
     public func toSnakeCase() -> String? {
         let pattern = "(?<=.)([A-Z]|\\d+)"
         let regex = try? NSRegularExpression(pattern: pattern, options: [])

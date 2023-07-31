@@ -40,6 +40,10 @@ class DefaultEventsFactory: EventsFactory {
             createListViewEvent(),
             createLoginEvent(),
             createOpenedFromPushNotificationEvent(),
+            createOrderEvent(),
+            createOrderCancelEvent(),
+            createOrderReturnRequestEvent(),
+            createOrderReturnRequestCancelEvent(),
             createPurchaseEvent(),
             createRateEvent(),
             createReEngageEvent(),
@@ -577,6 +581,38 @@ class DefaultEventsFactory: EventsFactory {
     func createOpenedFromPushNotificationEvent() -> Event {
         return OpenedFromPushNotificationEvent(details: "silent", userData: "active").apply {
             $0.addPredefinedParameter(PredefinedString.PARAM_01, string: "param1")
+        }
+    }
+
+    func createOrderEvent() -> Event {
+        return OrderEvent("apple").apply {
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
+        }
+    }
+
+    func createOrderCancelEvent() -> Event {
+        return OrderCancelEvent("apple").apply {
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
+        }
+    }
+
+    func createOrderReturnRequestEvent() -> Event {
+        return OrderReturnRequestEvent("apple").apply {
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
+        }
+    }
+
+    func createOrderReturnRequestCancelEvent() -> Event {
+        return OrderReturnRequestCancelEvent("apple").apply {
+            $0.addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            $0.addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            $0.addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
         }
     }
     

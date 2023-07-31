@@ -2,8 +2,8 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| AffiseAttributionLib  | [1.6.2](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| AffiseSKAdNetwork  | [1.6.2](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| AffiseAttributionLib  | [1.6.3](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| AffiseSKAdNetwork  | [1.6.3](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -50,10 +50,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.6.2'
+pod 'AffiseAttributionLib', '~> 1.6.3'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.2'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.3'
 ```
 
 ### Initialize
@@ -114,10 +114,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseSKAdNetwork', '~> 1.6.2'
+pod 'AffiseSKAdNetwork', '~> 1.6.3'
 
 // Get source directly from GitHub
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.2'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.3'
 ```
 
 For use:
@@ -181,17 +181,9 @@ To match users with events and data library is sending, these identifiers are co
 
 - `AFFISE_APP_ID`
 - `AFFISE_PKG_APP_NAME`
-- `AFFISE_APP_NAME_DASHBOARD`
 - `APP_VERSION`
 - `APP_VERSION_RAW`
 - `STORE`
-- `TRACKER_TOKEN`
-- `TRACKER_NAME`
-- `FIRST_TRACKER_TOKEN`
-- `FIRST_TRACKER_NAME`
-- `LAST_TRACKER_TOKEN`
-- `LAST_TRACKER_NAME`
-- `OUTDATED_TRACKER_TOKEN`
 - `INSTALLED_TIME`
 - `FIRST_OPEN_TIME`
 - `INSTALLED_HOUR`
@@ -321,6 +313,10 @@ With above example you can implement other events:
 - `ListView`
 - `Login`
 - `OpenedFromPushNotification`
+- `Order`
+- `OrderCancel`
+- `OrderReturnRequest`
+- `OrderReturnRequestCancel`
 - `Purchase`
 - `Rate`
 - `ReEngage`
@@ -697,6 +693,10 @@ Just like with native SDK, javascript enviroment also provides default events th
 - `ListViewEvent`
 - `LoginEvent`
 - `OpenedFromPushNotificationEvent`
+- `OrderEvent`
+- `OrderCancelEvent`
+- `OrderReturnRequestEvent`
+- `OrderReturnRequestCancelEvent`
 - `PurchaseEvent`
 - `RateEvent`
 - `ReEngageEvent`

@@ -140,6 +140,15 @@ internal class PredefinedEventSecondary {
             return SubmitApplicationEvent(userData, timeStampMillis: timeStamp)
         case .VIEW_CONTENT:
             return ViewContentEvent(userData, timeStampMillis: timeStamp)
+
+        case .ORDER:
+            return OrderEvent(userData, timeStampMillis: timeStamp)
+        case .ORDER_CANCEL: 
+            return OrderCancelEvent(userData, timeStampMillis: timeStamp)
+        case .ORDER_RETURN_REQUEST: 
+            return OrderReturnRequestEvent(userData, timeStampMillis: timeStamp)
+        case .ORDER_RETURN_REQUEST_CANCEL: 
+            return OrderReturnRequestCancelEvent(userData, timeStampMillis: timeStamp)
         }
     }
 }

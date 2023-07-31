@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension Array where Element == (String, Any?) {
+public extension Array where Element == (String, Any?) {
     public func jsonString() -> String {
         let array: [String] = compactMap { (key, value) in
             guard let value = value else {
