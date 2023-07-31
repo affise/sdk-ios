@@ -52,7 +52,7 @@ jobs:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
           LIB_VERSION: ${{ github.ref_name }}
         run: |
-          pod trunk push AffiseInternal.podspec --allow-warnings
+          pod trunk push AffiseInternal.podspec --allow-warnings --synchronous
 
       # Release
       - name: Release
