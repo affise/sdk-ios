@@ -6,7 +6,7 @@ internal extension Array where Element == Provider {
     func mapProviders() -> [(String, Any?)] {
         var result: [(String, Any?)] = []
         let createdTimeProvider: CreatedTimeProvider? = self.getProvider()
-        let createdTime  = createdTimeProvider?.provideWithDefault()
+        let createdTime  = createdTimeProvider?.provideWithDefault() ?? 0
         let sortedArray = self.filter{ $0.getKey() != nil}.sorted(by: {$0.getOrder() < $1.getOrder()})
         
         for provider in sortedArray {
@@ -21,12 +21,12 @@ internal extension Array where Element == Provider {
 }
 
 internal extension Provider {
-    func getValue(createdTime: Int64?) -> Any? {
+    func getValue(createdTime: Int64) -> Any? {
         switch self {
         case is CreatedTimeProvider:
             return createdTime
         case is AffAppTokenPropertyProvider:
-            return (self as? AffAppTokenPropertyProvider)?.provideWithParamAndDefault(param: "\(createdTime)")
+            return (self as? AffAppTokenPropertyProvider)?.provideWithParamAndDefault(param: String(createdTime))
 
         case is StringPropertyProvider:
             return (self as? StringPropertyProvider)?.provideWithDefault()
