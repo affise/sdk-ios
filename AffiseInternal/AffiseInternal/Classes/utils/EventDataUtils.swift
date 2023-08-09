@@ -65,17 +65,7 @@ internal extension Dictionary where Key == String, Value == Any? {
     func getSerializeArrayOfObject() -> [[(String, Any?)]] {
         return self.getArrayOfAny().toArrayOfObject()
     }
-    
-    func toArray() -> [(String, Any?)] {
-        return map {
-            var value = $0.value
-            if let subMap = value as? [String: Any?] {
-                value = subMap.toArray()
-            }
-            return ($0.key, value)
-        }
-    }
-    
+        
     func getPropertyByKey<T>(_ key: String? = nil) -> T? {
         guard let key = self.getEventName()?.toAffiseEventProperty(key) else {
             return nil

@@ -23,6 +23,8 @@ public enum AffiseApiMethod: Int, CaseIterable {
     case GET_REFERRER_VALUE_CALLBACK
     case GET_STATUS_CALLBACK
     case REGISTER_DEEPLINK_CALLBACK
+    case SKAD_REGISTER_ERROR_CALLBACK
+    case SKAD_POSTBACK_ERROR_CALLBACK
 
     public var method: String {
         return value()
@@ -53,6 +55,8 @@ public enum AffiseApiMethod: Int, CaseIterable {
         case .GET_REFERRER_VALUE_CALLBACK: return "get_referrer_value_callback"
         case .GET_STATUS_CALLBACK: return "get_status_callback"
         case .REGISTER_DEEPLINK_CALLBACK: return "register_deeplink_callback"
+        case .SKAD_REGISTER_ERROR_CALLBACK: return "skad_register_error_callback"
+        case .SKAD_POSTBACK_ERROR_CALLBACK: return "skad_postback_error_callback"
         }
     }
 

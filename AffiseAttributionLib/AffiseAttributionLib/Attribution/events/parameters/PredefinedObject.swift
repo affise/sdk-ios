@@ -2,9 +2,13 @@
 public enum PredefinedObject: Int, Predefined, CaseIterable {
     case CONTENT
     
-    public func value() -> String {
+    public func value() -> String { 
+        return "\(PredefinedConstants.PREFIX)\(enumValue())"
+    }
+
+    func enumValue() -> String {
         switch self {
-        case .CONTENT: return "affise_p_content"
+        case .CONTENT: return "content"
         }
     }
 

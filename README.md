@@ -2,8 +2,8 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| AffiseAttributionLib  | [1.6.4](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| AffiseSKAdNetwork  | [1.6.4](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| AffiseAttributionLib  | [1.6.5](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| AffiseSKAdNetwork  | [1.6.5](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -50,10 +50,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.6.4'
+pod 'AffiseAttributionLib', '~> 1.6.5'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.4'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.5'
 ```
 
 ### Initialize
@@ -114,10 +114,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseSKAdNetwork', '~> 1.6.4'
+pod 'AffiseSKAdNetwork', '~> 1.6.5'
 
 // Get source directly from GitHub
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.4'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.5'
 ```
 
 For use:
@@ -425,37 +425,30 @@ In examples above `PredefinedParameters.DESCRIPTION` and `PredefinedObject.CONTE
 
 ### PredefinedString
 
+- `ACHIEVEMENT_ID`
 - `ADREV_AD_TYPE`
+- `BRAND`
+- `BRICK`
+- `CATALOGUE_ID`
+- `CHANNEL_TYPE`
 - `CITY`
-- `COUNTRY`
-- `REGION`
 - `CLASS`
 - `CONTENT_ID`
 - `CONTENT_TYPE`
+- `COUNTRY`
+- `COUPON_CODE`
 - `CURRENCY`
+- `CUSTOMER_SEGMENT`
+- `CUSTOMER_TYPE`
 - `CUSTOMER_USER_ID`
+- `DEEP_LINK`
 - `DESCRIPTION`
 - `DESTINATION_A`
 - `DESTINATION_B`
 - `DESTINATION_LIST`
-- `ORDER_ID`
-- `PAYMENT_INFO_AVAILABLE`
-- `PREFERRED_NEIGHBORHOODS`
-- `PURCHASE_CURRENCY`
-- `RECEIPT_ID`
-- `REGISTRATION_METHOD`
-- `SEARCH_STRING`
-- `SUBSCRIPTION_ID`
-- `SUCCESS`
-- `SUGGESTED_DESTINATIONS`
-- `SUGGESTED_HOTELS`
-- `VALIDATED`
-- `ACHIEVEMENT_ID`
-- `COUPON_CODE`
-- `CUSTOMER_SEGMENT`
-- `DEEP_LINK`
 - `NEW_VERSION`
 - `OLD_VERSION`
+- `ORDER_ID`
 - `PARAM_01`
 - `PARAM_02`
 - `PARAM_03`
@@ -466,13 +459,32 @@ In examples above `PredefinedParameters.DESCRIPTION` and `PredefinedObject.CONTE
 - `PARAM_08`
 - `PARAM_09`
 - `PARAM_10`
+- `PAYMENT_INFO_AVAILABLE`
+- `PREFERRED_NEIGHBORHOODS`
+- `PURCHASE_CURRENCY`
+- `RECEIPT_ID`
+- `REGION`
+- `REGISTRATION_METHOD`
 - `REVIEW_TEXT`
-- `TUTORIAL_ID`
-- `VIRTUAL_CURRENCY_NAME`
+- `SEARCH_STRING`
+- `SEGMENT`
 - `STATUS`
+- `SUBSCRIPTION_ID`
+- `SUCCESS`
+- `SUGGESTED_DESTINATIONS`
+- `SUGGESTED_HOTELS`
+- `TUTORIAL_ID`
+- `UTM_CAMPAIGN`
+- `UTM_MEDIUM`
+- `UTM_SOURCE`
+- `VALIDATED`
+- `VERTICAL`
+- `VIRTUAL_CURRENCY_NAME`
+- `VOUCHER_CODE`
 
 ### PredefinedLong
 
+- `AMOUNT`
 - `DATE_A`
 - `DATE_B`
 - `DEPARTING_ARRIVAL_DATE`

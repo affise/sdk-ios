@@ -12,22 +12,11 @@
 		109BCD6A29EABC2C0069C8F5 /* AffiseSKAdNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 109BCD6829EABC2C0069C8F5 /* AffiseSKAdNetwork.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2B76FCB32A6C3FA500F01272 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2B76FCAF2A6C3FA500F01272 /* AffiseInternal.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2B76FCA32A6C3E4800F01272;
-			remoteInfo = AffiseInternal;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		109BCD5C29EABBF10069C8F5 /* AffiseSKAdNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AffiseSKAdNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		109BCD5F29EABBF20069C8F5 /* AffiseSKAdNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AffiseSKAdNetwork.h; sourceTree = "<group>"; };
 		109BCD6729EABC2C0069C8F5 /* AffiseSKAdNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffiseSKAdNetwork.h; sourceTree = "<group>"; };
 		109BCD6829EABC2C0069C8F5 /* AffiseSKAdNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffiseSKAdNetwork.m; sourceTree = "<group>"; };
-		2B76FCAF2A6C3FA500F01272 /* AffiseInternal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AffiseInternal.xcodeproj; path = ../AffiseInternal/AffiseInternal.xcodeproj; sourceTree = "<group>"; };
 		841048AF2A02644200629E1F /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +34,6 @@
 		109BCD5229EABBF10069C8F5 = {
 			isa = PBXGroup;
 			children = (
-				2B76FCAF2A6C3FA500F01272 /* AffiseInternal.xcodeproj */,
 				109BCD5E29EABBF20069C8F5 /* AffiseSKAdNetwork */,
 				109BCD5D29EABBF10069C8F5 /* Products */,
 			);
@@ -76,14 +64,6 @@
 				109BCD6829EABC2C0069C8F5 /* AffiseSKAdNetwork.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		2B76FCB02A6C3FA500F01272 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2B76FCB42A6C3FA500F01272 /* libAffiseInternal.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,28 +124,12 @@
 			mainGroup = 109BCD5229EABBF10069C8F5;
 			productRefGroup = 109BCD5D29EABBF10069C8F5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2B76FCB02A6C3FA500F01272 /* Products */;
-					ProjectRef = 2B76FCAF2A6C3FA500F01272 /* AffiseInternal.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				109BCD5B29EABBF10069C8F5 /* AffiseSKAdNetwork */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		2B76FCB42A6C3FA500F01272 /* libAffiseInternal.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAffiseInternal.a;
-			remoteRef = 2B76FCB32A6C3FA500F01272 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		109BCD5A29EABBF10069C8F5 /* Resources */ = {

@@ -1,5 +1,6 @@
 @objc
 public enum PredefinedLong: Int, Predefined, CaseIterable {
+    case AMOUNT
     case DATE_A
     case DATE_B
     case DEPARTING_ARRIVAL_DATE
@@ -23,30 +24,35 @@ public enum PredefinedLong: Int, Predefined, CaseIterable {
     case EVENT_START
     case EVENT_END
     
-    public func value() -> String {
+    public func value() -> String { 
+        return "\(PredefinedConstants.PREFIX)\(enumValue())"
+    }
+
+    func enumValue() -> String {
         switch self {
-        case .DATE_A: return "affise_p_date_a"
-        case .DATE_B: return "affise_p_date_b"
-        case .DEPARTING_ARRIVAL_DATE: return "affise_p_departing_arrival_date"
-        case .DEPARTING_DEPARTURE_DATE: return "affise_p_departing_departure_date"
-        case .HOTEL_SCORE: return "affise_p_hotel_score"
-        case .LEVEL: return "affise_p_level"
-        case .MAX_RATING_VALUE: return "affise_p_max_rating_value"
-        case .NUM_ADULTS: return "affise_p_num_adults"
-        case .NUM_CHILDREN: return "affise_p_num_children"
-        case .NUM_INFANTS: return "affise_p_num_infants"
-        case .PREFERRED_NUM_STOPS: return "affise_p_preferred_num_stops"
-        case .PREFERRED_STAR_RATINGS: return "affise_p_preferred_star_ratings"
-        case .QUANTITY: return "affise_p_quantity"
-        case .RATING_VALUE: return "affise_p_rating_value"
-        case .RETURNING_ARRIVAL_DATE: return "affise_p_returning_arrival_date"
-        case .RETURNING_DEPARTURE_DATE: return "affise_p_returning_departure_date"
-        case .SCORE: return "affise_p_score"
-        case .TRAVEL_START: return "affise_p_travel_start"
-        case .TRAVEL_END: return "affise_p_travel_end"
-        case .USER_SCORE: return "affise_p_user_score"
-        case .EVENT_START: return "affise_p_event_start"
-        case .EVENT_END: return "affise_p_event_end"
+        case .AMOUNT: return "amount"
+        case .DATE_A: return "date_a"
+        case .DATE_B: return "date_b"
+        case .DEPARTING_ARRIVAL_DATE: return "departing_arrival_date"
+        case .DEPARTING_DEPARTURE_DATE: return "departing_departure_date"
+        case .HOTEL_SCORE: return "hotel_score"
+        case .LEVEL: return "level"
+        case .MAX_RATING_VALUE: return "max_rating_value"
+        case .NUM_ADULTS: return "num_adults"
+        case .NUM_CHILDREN: return "num_children"
+        case .NUM_INFANTS: return "num_infants"
+        case .PREFERRED_NUM_STOPS: return "preferred_num_stops"
+        case .PREFERRED_STAR_RATINGS: return "preferred_star_ratings"
+        case .QUANTITY: return "quantity"
+        case .RATING_VALUE: return "rating_value"
+        case .RETURNING_ARRIVAL_DATE: return "returning_arrival_date"
+        case .RETURNING_DEPARTURE_DATE: return "returning_departure_date"
+        case .SCORE: return "score"
+        case .TRAVEL_START: return "travel_start"
+        case .TRAVEL_END: return "travel_end"
+        case .USER_SCORE: return "user_score"
+        case .EVENT_START: return "event_start"
+        case .EVENT_END: return "event_end"
         }
     }
 

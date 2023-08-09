@@ -6,7 +6,7 @@ public class AffiseApiWrapper: NSObject {
 
     private let factory = AffiseEventFactory()
 
-    private var callback: ((_ api: String, _ data: String) -> Void)? = nil
+    private var callback: ((_ api: String, _ data: [String: Any?]) -> Void)? = nil
 
     private var app: UIApplication? = nil
     private var launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
@@ -19,7 +19,15 @@ public class AffiseApiWrapper: NSObject {
 
     @objc(callback:)
     public func setCallback(_ callback: @escaping (_ api: String, _ data: String) -> Void) {
-        self.callback = callback
+        self.callback = { apiName, map in
+            callback(apiName, map.toArray().jsonString())
+        }
+    }
+
+    public func setCallback(_ callback: @escaping (_ api: String, _ map: [String: Any?]) -> Void) {
+        self.callback = { apiName, map in
+            callback(apiName, map)
+        }
     }
 
     @objc(deeplink:)
@@ -76,6 +84,8 @@ public class AffiseApiWrapper: NSObject {
         case .GET_REFERRER_VALUE_CALLBACK: callGetReferrerValue(api, map: map, result: result)
         case .GET_STATUS_CALLBACK: callGetStatusCallback(api, map: map, result: result)
         case .REGISTER_DEEPLINK_CALLBACK: callRegisterDeeplinkCallback(api, map: map, result: result)
+        case .SKAD_REGISTER_ERROR_CALLBACK: callSkadRegisterErrorCallback(api, map: map, result: result)
+        case .SKAD_POSTBACK_ERROR_CALLBACK: callSkadPostbackErrorCallback(api, map: map, result: result)
 
         default:
             result?.notImplemented()
@@ -236,11 +246,11 @@ public class AffiseApiWrapper: NSObject {
 //        }
 //
 //        Affise.shared.getStatus(module) { status in
-//            let data: [(String, Any?)] = [
-//                (self.UUID, uuid),
-//                (api.method, status.toString()),
+//            let data: [String: Any?] = [
+//                self.UUID: uuid,
+//                api.method: status.toString(),
 //            ]
-//            self.callback?(api, data.jsonString())
+//            self.callback?(api, data)
 //        }
 //        result?.success(nil)
         result?.notImplemented()
@@ -253,12 +263,54 @@ public class AffiseApiWrapper: NSObject {
         }
 
         Affise.shared.registerDeeplinkCallback { uri in
-            let data: [(String, Any?)] = [
-                (self.UUID, uuid),
-                (api.method, uri.absoluteString),
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: uri.absoluteString,
             ]
-            self.callback?(api.method, data.jsonString())
+            self.callback?(api.method, data)
         }
         result?.success(nil)
+    }
+
+    private func callSkadRegisterErrorCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        SKAdWrapper.register(result) { error in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: error,
+            ]
+            self.callback?(api.method, data)
+        }
+    }
+
+    private func callSkadPostbackErrorCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        guard let data: [String: Any?] = map.opt(api) else {
+            result?.error("api [\(api.method)]: value not set")
+            return
+        }
+
+        let coarseValue: String? = data.opt("coarseValue")
+        
+        guard let fineValue: Int = data.opt("fineValue") else {
+            result?.error("api [\(api.method)]: fineValue not set")
+            return
+        }
+
+        SKAdWrapper.postback(result, fineValue: fineValue, coarseValue: coarseValue) { error in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: error,
+            ]
+            self.callback?(api.method, data)
+        }
     }
 }
