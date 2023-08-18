@@ -84,6 +84,11 @@ const PredefinedString = {
   UTM_SOURCE: "utm_source",
   VERTICAL: "vertical",
   VOUCHER_CODE: "voucher_code",
+  CLICK_ID: "click_id",
+  CAMPAIGN_ID: "campaign_id",
+  EVENT_NAME: "event_name",
+  PID: "pid",
+  PRODUCT_ID: "product_id",
 };
 
 const PredefinedLong = {

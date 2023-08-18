@@ -56,6 +56,11 @@ public enum PredefinedString: Int, Predefined, CaseIterable {
     case UTM_SOURCE
     case VERTICAL
     case VOUCHER_CODE
+    case CLICK_ID
+    case CAMPAIGN_ID
+    case EVENT_NAME
+    case PID
+    case PRODUCT_ID
 
     public func value() -> String { 
         return "\(PredefinedConstants.PREFIX)\(enumValue())"
@@ -119,6 +124,11 @@ public enum PredefinedString: Int, Predefined, CaseIterable {
         case .UTM_SOURCE: return "utm_source"
         case .VERTICAL: return "vertical"
         case .VOUCHER_CODE: return "voucher_code"
+        case .CLICK_ID: return "click_id"
+        case .CAMPAIGN_ID: return "campaign_id"
+        case .EVENT_NAME: return "event_name"
+        case .PID: return "pid"
+        case .PRODUCT_ID: return "product_id"
         }
     }
 

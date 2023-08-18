@@ -1,6 +1,7 @@
 @objc
 public enum AffiseApiMethod: Int, CaseIterable {
     case INIT
+    case IS_INITIALIZED
     case SEND_EVENTS
     case SEND_EVENT
     case ADD_PUSH_TOKEN
@@ -33,6 +34,7 @@ public enum AffiseApiMethod: Int, CaseIterable {
     func value() -> String {
         switch self {
         case .INIT: return "init"
+        case .IS_INITIALIZED: return "is_initialized"
         case .SEND_EVENTS: return "send_events"
         case .SEND_EVENT: return "send_event"
         case .ADD_PUSH_TOKEN: return "add_push_token"

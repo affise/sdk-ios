@@ -19,4 +19,6 @@ internal protocol AffiseApi {
     var initPropertiesStorage: InitPropertiesStorage {get}
     var preferencesUseCase: PreferencesUseCase {get}
     var postBackModelFactory: PostBackModelFactory {get}
+
+    func isInitialized() -> Bool
 }

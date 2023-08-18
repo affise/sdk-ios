@@ -68,61 +68,70 @@ public class Event: NSObject {
      * Add predefined [parameter] with [value] type String to event
      */
     @objc
-    public func addPredefinedParameter(_ parameter: PredefinedString, string: String) {
+    public func addPredefinedParameter(_ parameter: PredefinedString, string: String) -> Event {
         predefinedParameters.append((parameter.value(), string))
+        PredefinedCustom().add(&predefinedParameters, parameter, string: string)
+        return self
     }
 
     /**
      * Add predefined [parameter] with [value] type Array of String to event
      */
     @objc
-    public func addPredefinedParameter(_ parameter: PredefinedListString, listString: [String]) {
+    public func addPredefinedParameter(_ parameter: PredefinedListString, listString: [String]) -> Event {
         predefinedParameters.append((parameter.value(), listString))
+        return self
     }
 
     /**
      * Add predefined [parameter] with [value] type Int64 to event
      */
     @objc
-    public func addPredefinedParameter(_ parameter: PredefinedLong, long: Int64) {
+    public func addPredefinedParameter(_ parameter: PredefinedLong, long: Int64) -> Event {
         predefinedParameters.append((parameter.value(), long))
+        return self
     }
 
     /**
      * Add predefined [parameter] with [value] type Float to event
      */
     @objc
-    public func addPredefinedParameter(_ parameter: PredefinedFloat, float: Float) {
+    public func addPredefinedParameter(_ parameter: PredefinedFloat, float: Float) -> Event {
         predefinedParameters.append((parameter.value(), float))
+        return self
     }
 
     /**
      * Add predefined [parameter] with [value] type JSON to event
      */
-    public func addPredefinedParameter(_ parameter: PredefinedObject, object: [(String, Any?)]) {
+    public func addPredefinedParameter(_ parameter: PredefinedObject, object: [(String, Any?)]) -> Event {
         predefinedParameters.append((parameter.value(), object))
+        return self
     }
     /**
      * Add predefined [parameter] with [value] type JSON to event
      */
     @objc
-    public func addPredefinedParameter(_ parameter: PredefinedObject, object: [[String: AnyObject]]) {
+    public func addPredefinedParameter(_ parameter: PredefinedObject, object: [[String: AnyObject]]) -> Event {
         addPredefinedParameter(parameter, object: object.toFlatList())
+        return self
     }
 
     /**
      * Add predefined [parameter] with [value] type Array of JSON to event
      */
-    public func addPredefinedParameter(_ parameter: PredefinedListObject, listObject: [[(String, Any?)]]) {
+    public func addPredefinedParameter(_ parameter: PredefinedListObject, listObject: [[(String, Any?)]]) -> Event {
         predefinedParameters.append((parameter.value(), listObject))
+        return self
     }
 
     /**
      * Add predefined [parameter] with [value] type Array of JSON to event
      */
     @objc
-    public func addPredefinedParameter(_ parameter: PredefinedListObject, listObject: [[String: AnyObject]]) {
+    public func addPredefinedParameter(_ parameter: PredefinedListObject, listObject: [[String: AnyObject]]) -> Event {
         addPredefinedParameter(parameter, listObject: listObject.toListOfList())
+        return self
     }
 
     @objc

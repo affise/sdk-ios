@@ -13,6 +13,7 @@ internal class AffiseComponent: AffiseApi {
     private let app: UIApplication
     private let initProperties: AffiseInitProperties
     private let launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    private var isReady: Bool = false
 
     init(app: UIApplication,
          initProperties: AffiseInitProperties,
@@ -34,6 +35,11 @@ internal class AffiseComponent: AffiseApi {
         deeplinkManager.initialize(launchOptions: launchOptions)
 //        autoCatchingClickProvider.init(initProperties.autoCatchingClickEvents)
 //        metricsManager.setEnabledMetrics(initProperties.enabledMetrics)
+        isReady = true
+    }
+
+    func isInitialized() -> Bool {
+        return isReady
     }
     
     lazy var bundle: Bundle = Bundle.main

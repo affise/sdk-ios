@@ -169,6 +169,8 @@
 		2B9FA7A72A5C36D300942EA5 /* ToSnakeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA7A62A5C36D300942EA5 /* ToSnakeCase.swift */; };
 		2B9FA7A92A5C3A0000942EA5 /* AffiseProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA7A82A5C3A0000942EA5 /* AffiseProperty.swift */; };
 		2BE995682A6C4559001E4060 /* EventName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE995672A6C4559001E4060 /* EventName.swift */; };
+		2BEEE4672A8FF1CC008AEDAB /* PredefinedCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEEE4632A8FF1CC008AEDAB /* PredefinedCustom.swift */; };
+		2BEEE4682A8FF1CC008AEDAB /* PredefinedGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEEE4642A8FF1CC008AEDAB /* PredefinedGroup.swift */; };
 		7C1642D728BCDB6E007A1FAB /* LastSessionTimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1642D628BCDB6E007A1FAB /* LastSessionTimeProvider.swift */; };
 		7C7F5650289650AA0062DA71 /* AffiseAttributionLib.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F564F289650AA0062DA71 /* AffiseAttributionLib.docc */; };
 		7C7F5656289650AA0062DA71 /* AffiseAttributionLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7F564B289650AA0062DA71 /* AffiseAttributionLib.framework */; };
@@ -435,6 +437,8 @@
 		2B9FA7A62A5C36D300942EA5 /* ToSnakeCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSnakeCase.swift; sourceTree = "<group>"; };
 		2B9FA7A82A5C3A0000942EA5 /* AffiseProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiseProperty.swift; sourceTree = "<group>"; };
 		2BE995672A6C4559001E4060 /* EventName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventName.swift; sourceTree = "<group>"; };
+		2BEEE4632A8FF1CC008AEDAB /* PredefinedCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredefinedCustom.swift; path = parameters/PredefinedCustom.swift; sourceTree = "<group>"; };
+		2BEEE4642A8FF1CC008AEDAB /* PredefinedGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredefinedGroup.swift; path = parameters/PredefinedGroup.swift; sourceTree = "<group>"; };
 		7C1642D628BCDB6E007A1FAB /* LastSessionTimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSessionTimeProvider.swift; sourceTree = "<group>"; };
 		7C7F564B289650AA0062DA71 /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AffiseAttributionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C7F564E289650AA0062DA71 /* AffiseAttributionLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AffiseAttributionLib.h; sourceTree = "<group>"; };
@@ -705,7 +709,9 @@
 			isa = PBXGroup;
 			children = (
 				2B5128282A5F158800FA1F52 /* Predefined.swift */,
+				2BEEE4632A8FF1CC008AEDAB /* PredefinedCustom.swift */,
 				2B5128262A5F158800FA1F52 /* PredefinedFloat.swift */,
+				2BEEE4642A8FF1CC008AEDAB /* PredefinedGroup.swift */,
 				2B51282B2A5F158900FA1F52 /* PredefinedListObject.swift */,
 				2B5128252A5F158800FA1F52 /* PredefinedListString.swift */,
 				2B5128292A5F158800FA1F52 /* PredefinedLong.swift */,
@@ -1283,6 +1289,7 @@
 				1053B24C28DCDC28004FD4B3 /* PushTokenProvider.swift in Sources */,
 				7C9789C928965770009CE639 /* NetworkServiceImpl.swift in Sources */,
 				7C9789CA28965770009CE639 /* SessionManager.swift in Sources */,
+				2BEEE4672A8FF1CC008AEDAB /* PredefinedCustom.swift in Sources */,
 				2B7A55B32A6EBF21003780DA /* InternalCrossPlatform.swift in Sources */,
 				8481C9D429B632B200FAAE4B /* AffiseFlag.swift in Sources */,
 				7C9789CB28965770009CE639 /* SessionManagerImpl.swift in Sources */,
@@ -1383,6 +1390,7 @@
 				1053B28528EB38F4004FD4B3 /* ApplicationLifecyclePreferencesRepositoryImpl.swift in Sources */,
 				10C07E0F28B6B9C300A903FD /* CustomId04Event.swift in Sources */,
 				10C07E2D28B6BA0E00A903FD /* SubscriptionParameters.swift in Sources */,
+				2BEEE4682A8FF1CC008AEDAB /* PredefinedGroup.swift in Sources */,
 				10C07E1728B6B9C300A903FD /* CompleteTrialEvent.swift in Sources */,
 				2B5128342A5F161400FA1F52 /* Provider+Extension.swift in Sources */,
 				10B173E328CF572000E96EA8 /* DeviceManufacturerProvider.swift in Sources */,

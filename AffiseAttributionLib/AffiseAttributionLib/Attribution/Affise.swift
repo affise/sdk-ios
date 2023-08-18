@@ -38,6 +38,11 @@ public class Affise: NSObject {
             self.api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
         }
     }
+
+    @objc
+    public func isInitialized() -> Bool {
+        return self.api?.isInitialized() ?? false
+    }
     
     /**
      * Send events
