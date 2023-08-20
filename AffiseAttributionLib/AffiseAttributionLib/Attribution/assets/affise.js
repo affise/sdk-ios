@@ -89,6 +89,7 @@ const PredefinedString = {
   EVENT_NAME: "event_name",
   PID: "pid",
   PRODUCT_ID: "product_id",
+  CONVERSION_ID: "conversion_id",
 };
 
 const PredefinedLong = {

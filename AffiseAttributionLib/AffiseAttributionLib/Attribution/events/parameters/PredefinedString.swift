@@ -61,6 +61,7 @@ public enum PredefinedString: Int, Predefined, CaseIterable {
     case EVENT_NAME
     case PID
     case PRODUCT_ID
+    case CONVERSION_ID
 
     public func value() -> String { 
         return "\(PredefinedConstants.PREFIX)\(enumValue())"
@@ -129,6 +130,7 @@ public enum PredefinedString: Int, Predefined, CaseIterable {
         case .EVENT_NAME: return "event_name"
         case .PID: return "pid"
         case .PRODUCT_ID: return "product_id"
+        case .CONVERSION_ID: return "conversion_id"
         }
     }
 

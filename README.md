@@ -2,8 +2,8 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| AffiseAttributionLib  | [1.6.6](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| AffiseSKAdNetwork  | [1.6.6](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| AffiseAttributionLib  | [1.6.7](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| AffiseSKAdNetwork  | [1.6.7](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -34,6 +34,8 @@
     - [Events tracking JS](#events-tracking-js)
     - [Predefined event parameters JS](#predefined-event-parameters-js)
     - [Custom events JS](#custom-events-js)
+  - [Custom](#custom)
+    - [ConversionId](#conversionid)
 
 # Description
 
@@ -50,10 +52,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.6.6'
+pod 'AffiseAttributionLib', '~> 1.6.7'
 
 // Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.6'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.7'
 ```
 
 ### Initialize
@@ -120,10 +122,10 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 // Get pod from repository
-pod 'AffiseSKAdNetwork', '~> 1.6.6'
+pod 'AffiseSKAdNetwork', '~> 1.6.7'
 
 // Get source directly from GitHub
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.6'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.7'
 ```
 
 For use:
@@ -441,6 +443,7 @@ In examples above `PredefinedParameters.DESCRIPTION` and `PredefinedObject.CONTE
 - `CLASS`
 - `CONTENT_ID`
 - `CONTENT_TYPE`
+- `CONVERSION_ID`
 - `COUNTRY`
 - `COUPON_CODE`
 - `CURRENCY`
@@ -788,4 +791,20 @@ class MyCustomEvent extends Event {
         super('MyCustom', args)
     }
 }
+```
+
+## Custom
+
+### ConversionId
+
+Adds 3 PredefinedString values: `PredefinedString.CONVERSION_ID`, `PredefinedString.ORDER_ID`, `PredefinedString.PRODUCT_ID`
+
+> `CONVERSION_ID` = `ORDER_ID`_`PRODUCT_ID`
+
+```swift
+let event = AddToCartEvent()
+
+let conversionId = event.customPredefined().conversionId("ORDER_ID", "PRODUCT_ID")
+
+Affise.shared.sendEvent(event: event)
 ```

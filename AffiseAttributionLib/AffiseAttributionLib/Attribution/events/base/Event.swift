@@ -18,7 +18,7 @@ public class Event: NSObject {
     /**
      * Event predefined parameters
      */
-    private(set) var predefinedParameters: [(String, Any?)] = []
+    private var predefinedParameters: [(String, Any?)] = []
 
     /**
      * Is first for user, default false
@@ -70,7 +70,6 @@ public class Event: NSObject {
     @objc
     public func addPredefinedParameter(_ parameter: PredefinedString, string: String) -> Event {
         predefinedParameters.append((parameter.value(), string))
-        PredefinedCustom().add(&predefinedParameters, parameter, string: string)
         return self
     }
 
@@ -138,5 +137,29 @@ public class Event: NSObject {
     public func apply(closure:(Event) -> ()) -> Event {
         closure(self)
         return self
+    }
+
+    internal func getPredefinedParameters() -> [(String, Any?)] {
+        for (key, value) in predefinedCustom.get() {
+            replaceParameter(key, value)
+        }
+        return predefinedParameters
+    }
+
+    private func replaceParameter(_ key: String, _ value: Any) {
+        for (idx, (idxKey, _)) in predefinedParameters.enumerated() {
+            if idxKey == key {
+                predefinedParameters.remove(at: idx)
+                break
+            }
+        }
+        predefinedParameters.append((key, value))
+    }
+
+    private let predefinedCustom: PredefinedCustom = PredefinedCustom()
+
+    @objc
+    public func customPredefined() -> PredefinedCustom {
+        return predefinedCustom
     }
 }

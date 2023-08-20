@@ -1,9 +1,9 @@
 PODS:
-  - AffiseAttributionLib (1.6.6)
-  - AffiseInternal (1.6.6):
+  - AffiseAttributionLib (1.6.7)
+  - AffiseInternal (1.6.7):
     - AffiseAttributionLib
     - AffiseSKAdNetwork
-  - AffiseSKAdNetwork (1.6.6)
+  - AffiseSKAdNetwork (1.6.7)
 
 DEPENDENCIES:
   - AffiseAttributionLib (from `../`)
@@ -19,9 +19,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AffiseAttributionLib: 78b996d8888a853fb9b40f56071ed3392046c3f3
-  AffiseInternal: 93aff99d38edb2c9ce7f361bdb3f83ee37d8df0d
-  AffiseSKAdNetwork: 8fec38aa91f9718f35783fec8749da6d80a9d651
+  AffiseAttributionLib: 84b808e5e59dab261a37c27fb4af13307d356e16
+  AffiseInternal: 50aa36939e3f266979017ec70098245a35d52441
+  AffiseSKAdNetwork: 9fffa925a4535b87a16edb11e2a5bba8bc7b6712
 
 PODFILE CHECKSUM: 36e79e0b4fbf7696aa09adebd6f8724fded36d86
 
