@@ -3,7 +3,7 @@ import AffiseAttributionLib
 internal class PredefinedEventSecondary {
     
     static func isSecondaryConstructor(_ eventName: String?, map: [String:Any?]) -> Bool {
-        if let _: Any = map.getPropertyByKey() { return true }
+        if let data: Any? = map.getPropertyByKey(), data != nil { return true }
         if eventName != EventName.LAST_ATTRIBUTED_TOUCH.eventName { return false }
         if let _: Any = map.getPropertyByKey(AffiseProperty.TYPE.rawValue) { return true }
         
