@@ -73,7 +73,7 @@ After library is added as dependency sync project with gradle files and initiali
 
 For swift use:
 
-> Demo app [AppDelegate.swift](app/app/AppDelegate.swift)
+> Demo app [AppDelegate.swift](example/app/app/AppDelegate.swift)
 
 ```swift
 import AffiseAttributionLib
@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 For objective-c use: 
 
-> Demo app [AppDelegate.m](app-obj-c/app-obj-c/AppDelegate.m)
+> Demo app [AppDelegate.m](example/app-obj-c/app-obj-c/AppDelegate.m)
 
 ```objective-c
 #import "AppDelegate.h"
@@ -604,7 +604,7 @@ Affise.shared.registerDeeplinkCallback { url in
 }
 ```
 
-Add deeplink handler to [`AppDelegate.swift`](app/app/AppDelegate.swift)
+Add deeplink handler to [`AppDelegate.swift`](example/app/app/AppDelegate.swift)
 
 ```swift
 func application(
@@ -619,7 +619,7 @@ func application(
 
 Add key `CFBundleURLTypes` to `Info.plist`
 
-Example: [`app/app/Info.plist`](app/app/Info.plist)
+Example: [`example/app/app/Info.plist`](example/app/app/Info.plist)
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -680,7 +680,7 @@ Other Javascript enviroment features is described below.
 
 ### Events tracking JS
 
-> Demo app [app/app/index.html](app/app/index.html)
+> Demo app [example/app/app/index.html](example/app/app/index.html)
 
 After WebView is initialized you send events from JavaScript enviroment
 
