@@ -24,6 +24,7 @@ jobs:
           pod ipc spec AffiseAttributionLib.podspec
           pod ipc spec AffiseSKAdNetwork.podspec
           pod ipc spec AffiseInternal.podspec
+          pod ipc spec AffiseModule.podspec
 
       # Publish
       - name: Publish AffiseAttributionLib Release
@@ -53,6 +54,16 @@ jobs:
           LIB_VERSION: ${{ github.ref_name }}
         run: |
           pod trunk push AffiseInternal.podspec --allow-warnings --synchronous
+
+      # Publish
+      - name: Publish AffiseModule Release
+        if: ${{ success() || failure() }}
+        id: internal
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
+          LIB_VERSION: ${{ github.ref_name }}
+        run: |
+          pod trunk push AffiseModule.podspec --allow-warnings --synchronous
 
       # Release
       - name: Release

@@ -133,10 +133,13 @@ DefaultSettings.h
 *.gcno
 
 Pods/
-!Podfile.lock
+Podfile.lock
 xcodebuild/Logs/
 IDEWorkspaceChecks.plist
 
+*.xcworkspace
+*.xcodeproj
+!example/*.xcodeproj
 
 # Miscellaneous
 *.class

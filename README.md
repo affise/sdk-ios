@@ -2,8 +2,9 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| AffiseAttributionLib  | [1.6.8](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| AffiseSKAdNetwork  | [1.6.8](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| `AffiseAttributionLib`  | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`  | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| `AffiseModule/Status` | 1.6.9 |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -51,20 +52,28 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-// Get pod from repository
-pod 'AffiseAttributionLib', '~> 1.6.8'
+# Affise SDK library
+pod 'AffiseAttributionLib', '~> 1.6.9'
+# Affise module
+pod 'AffiseModule/Status', '~> 1.6.9'
+```
 
-// Get source directly from GitHub
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.8'
+Get source directly from GitHub
+
+```ruby
+# Affise SDK library
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.9'
+# Affise module
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.9'
 ```
 
 ### Initialize
 
 After library is added as dependency sync project with gradle files and initialize.
 
-> Demo app [AppDelegate.swift](app/app/AppDelegate.swift)
-
 For swift use:
+
+> Demo app [AppDelegate.swift](app/app/AppDelegate.swift)
 
 ```swift
 import AffiseAttributionLib
@@ -87,7 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-For objective-c use:
+For objective-c use: 
+
+> Demo app [AppDelegate.m](app-obj-c/app-obj-c/AppDelegate.m)
 
 ```objective-c
 #import "AppDelegate.h"
@@ -121,11 +132,15 @@ Affise.shared.isInitialized()
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-// Get pod from repository
-pod 'AffiseSKAdNetwork', '~> 1.6.8'
+# Wrapper for StoreKit Ad Network 
+pod 'AffiseSKAdNetwork', '~> 1.6.9'
+```
 
-// Get source directly from GitHub
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.8'
+Get source directly from GitHub
+
+```ruby
+# Wrapper for StoreKit Ad Network 
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.9'
 ```
 
 For use:
@@ -271,10 +286,10 @@ class Presenter {
         let items = [
             ("items", "cookies, potato, milk")
         ]
-        Affise.shared.sendEvent(event: AddToCartEvent("groceries").apply {
-            $0.addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
-            $0.addPredefinedParameter(PredefinedObject.CONTENT, object: items)
-        })
+        Affise.shared.sendEvent(event: AddToCartEvent("groceries")
+            .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
+            .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
+        )
     }
 }
 ```
@@ -287,9 +302,9 @@ For objective-c use:
         @{"items", itemsToCart}
     ];
 
-    Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:@"groceries"];
-    [event addPredefinedParameterWithParameter:PredefinedString.ADREV_AD_TYPE value:@"best before 2029"];
-    [event addPredefinedParameterWithParameter:PredefinedObject.CONTENT object:items];
+    Event *event = [[AddToCartEvent alloc] init:@"groceries"];
+    [event addPredefinedParameter:PredefinedStringADREV_AD_TYPE value:@"best before 2029"];
+    [event addPredefinedParameter:PredefinedObjectCONTENT object:items];
 
     [Affise.shared sendEventWithEvent: event];
 }
@@ -395,10 +410,12 @@ class Presenter {
         let items = [
             ("items", "cookies, potato, milk")
         ]
-        Affise.shared.sendEvent(event: AddToCartEvent("groceries", timeStampMillis: Int64(Date().timeIntervalSince1970 * 1000)).apply {
-            $0.addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
-            $0.addPredefinedParameter(PredefinedObject.CONTENT, object: items)
-        })
+
+        let addToCart = AddToCartEvent("groceries")
+            .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
+            .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
+
+        Affise.shared.sendEvent(event: addToCart)
     }
 }
 ```
@@ -411,10 +428,9 @@ For objective-c use:
         @{"items", itemsToCart}
     ];
 
-    Event *event = [[AddToCartEvent alloc] initWithAddToCartObject:@"groceries"
-                                                   timeStampMillis:NSDate.date.timeIntervalSince1970];
-    [event addPredefinedParameterWithParameter:PredefinedString.ADREV_AD_TYPE value:@"best before 2029"];
-    [event addPredefinedParameterWithParameter:PredefinedObject.CONTENT object:items];
+    Event *event = [[AddToCartEvent alloc] init:@"groceries"];
+    [event addPredefinedParameter:PredefinedStringADREV_AD_TYPE value:@"best before 2029"];
+    [event addPredefinedParameter:PredefinedObjectCONTENT object:items];
 
     [Affise.shared sendEventWithEvent: event];
 }
@@ -442,6 +458,7 @@ In examples above `PredefinedParameters.DESCRIPTION` and `PredefinedObject.CONTE
 - `CITY`
 - `CLASS`
 - `CONTENT_ID`
+- `CONTENT_NAME`
 - `CONTENT_TYPE`
 - `CONVERSION_ID`
 - `COUNTRY`
@@ -471,6 +488,7 @@ In examples above `PredefinedParameters.DESCRIPTION` and `PredefinedObject.CONTE
 - `PAYMENT_INFO_AVAILABLE`
 - `PREFERRED_NEIGHBORHOODS`
 - `PRODUCT_ID`
+- `PRODUCT_NAME`
 - `PURCHASE_CURRENCY`
 - `RECEIPT_ID`
 - `REGION`
@@ -555,7 +573,7 @@ func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: Str
   print("Firebase registration token: \(String(describing: fcmToken))")
 
   // New token generated
-  Affise.share.addPushToken(fcmToken)
+  Affise.share.addPushToken(pushToken: fcmToken)
 }
 ```
 
@@ -563,8 +581,8 @@ func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: Str
 
 Affise automaticly track reinstall events by using silent-push technology, to make this feature work, pass push token when it is recreated by user and on you application starts up
 
-```kotlin
-Affise.share.addPushToken(token)
+```swift
+Affise.share.addPushToken(pushToken: token)
 ```
 
 ## Deeplinks
@@ -586,7 +604,7 @@ Affise.shared.registerDeeplinkCallback { url in
 }
 ```
 
-Add deeplink handler to `AppDelegate.swift` as in `app/app/AppDelegate.swift`
+Add deeplink handler to [`AppDelegate.swift`](app/app/AppDelegate.swift)
 
 ```swift
 func application(
@@ -601,7 +619,7 @@ func application(
 
 Add key `CFBundleURLTypes` to `Info.plist`
 
-Example: `app/app/Info.plist`
+Example: [`app/app/Info.plist`](app/app/Info.plist)
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -654,7 +672,7 @@ override func viewDidLoad() {
 }
 
 // initialize WebView with Affise native library
-Affise.shared.registerWebView(webView)
+Affise.shared.registerWebView(webView: webView)
 
 ```
 
@@ -662,7 +680,7 @@ Other Javascript enviroment features is described below.
 
 ### Events tracking JS
 
-> Demo app [index.html](app/app/index.html)
+> Demo app [app/app/index.html](app/app/index.html)
 
 After WebView is initialized you send events from JavaScript enviroment
 

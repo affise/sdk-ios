@@ -8,15 +8,18 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseInternal"
-  spec.version      = ENV['LIB_VERSION'] || "1.6.8"
+  spec.version      = ENV['LIB_VERSION'] || "1.6.9"
   spec.summary      = "Affise Internal library"
-  spec.description  = "Affise Internal wrapper library for cross platform"
+  spec.description  = "Affise Internal wrapper library for crossplatform"
   spec.homepage     = "https://github.com/affise/sdk-ios"
   spec.license      = { :type => "MIT", :file => 'LICENSE' }
   spec.author       = { "Affise" => "support@affise.com" }
-  spec.source       = { :git => "https://github.com/affise/sdk-ios.git", :tag => "#{spec.version}" }
+  spec.source       = { 
+    :git => "https://github.com/affise/sdk-ios.git", 
+    :tag => "#{spec.version}" 
+  }
 
-  spec.source_files  = "AffiseInternal/AffiseInternal/Classes/**/*"  
+  spec.source_files  = "AffiseInternal/Classes/**/*.{swift}"  
   spec.ios.deployment_target = "9.0"
   spec.swift_version = '5.7'
   
