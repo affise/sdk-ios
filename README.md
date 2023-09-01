@@ -4,7 +4,7 @@
 | ---- |:-------:|
 | `AffiseAttributionLib`  | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
 | `AffiseSKAdNetwork`  | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
-| `AffiseModule/Status` | 1.6.9 |
+| `AffiseModule/Status` | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
