@@ -58,7 +58,7 @@ jobs:
       # Publish
       - name: Publish AffiseModule Release
         if: ${{ success() || failure() }}
-        id: internal
+        id: module
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
           LIB_VERSION: ${{ github.ref_name }}
