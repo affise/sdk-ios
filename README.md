@@ -72,7 +72,7 @@ pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag
 
 After library is added as dependency sync project with gradle files and initialize.
 
-For swift use:
+For `swift` use:
 
 > Demo app [AppDelegate.swift](example/app/app/AppDelegate.swift)
 
@@ -145,6 +145,10 @@ Get source directly from GitHub
 pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.10'
 ```
 
+For `swift` use:
+
+> Demo app [AppDelegate.swift](example/app/app/AppDelegate.swift)
+
 > **Note**
 > For ios prior `16.1` first call
 
@@ -156,7 +160,7 @@ AffiseSKAd.register { error in
 }
 ```
 
-For 'objective-c' use:
+For `objective-c` use:
 
 > Demo app [AppDelegate.m](example/app-obj-c/app-obj-c/AppDelegate.m)
 
@@ -171,7 +175,7 @@ For 'objective-c' use:
 Updates the fine and coarse conversion values, and calls a completion handler if the update fails.
 
 > **Note**
-> Second argument `coarseValue` is available in iOS `16.1+``
+> Second argument `coarseValue` is available in iOS `16.1+`
 
 ```swift
 AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { error in
@@ -179,9 +183,7 @@ AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConver
 }
 ```
 
-For 'objective-c' use:
-
-> Demo app [AppDelegate.m](example/app-obj-c/app-obj-c/AppDelegate.m)
+For `objective-c` use:
 
 ```objective-c
 #import <AffiseSKAdNetwork/AffiseSKAdNetwork-Swift.h>
@@ -198,7 +200,7 @@ Configure your app to send postback copies to Affise:
 Add key `NSAdvertisingAttributionReportEndpoint` to `Info.plist`
 Set key value to `https://affise-skadnetwork.com/`
 
-Example: `example/ios/Runner/Info.plist`
+Example: [`example/ios/Runner/Info.plist`](example/ios/Runner/Info.plist)
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -442,7 +444,7 @@ class Presenter {
         // Send event like this
         addToCart.send()
         
-        // Send event like this
+        // Or send event like this
         // Affise.sendEvent(addToCart)
     }
 }
