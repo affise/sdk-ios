@@ -1,6 +1,6 @@
-public class AffiseKeyValue: CustomStringConvertible {
+public class AffiseKeyValue: NSObject {
     
-    public var description: String { "key=\(key), value=\(value ?? "")" }
+    public override var description: String { "key=\(key), value=\(value ?? "")" }
     
     public let key: String
     public let value: String?

@@ -104,17 +104,17 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.load(app: app, initProperties: data.toAffiseInitProperties, launchOptions: launchOptions)
+        Affise.load(app: app, initProperties: data.toAffiseInitProperties, launchOptions: launchOptions)
 
         result?.success(nil)
     }
 
     private func callIsInitialized(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
-        result?.success(Affise.shared.isInitialized())
+        result?.success(Affise.isInitialized())
     }
 
     private func callSendEvents(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
-        Affise.shared.sendEvents()
+        Affise.sendEvents()
         result?.success(nil)
     }
 
@@ -129,7 +129,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.sendEvent(event: event)
+        Affise.sendEvent(event)
         result?.success(nil)
     }
 
@@ -139,17 +139,17 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.addPushToken(pushToken: pushToken)
+        Affise.addPushToken(pushToken)
         result?.success(nil)
     }
 
     private func callRegisterWebView(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        // Affise.shared.registerWebView(webView)
+        // Affise.registerWebView(webView)
         result?.notImplemented()
     }
 
     private func callUnregisterWebView(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        // Affise.shared.unregisterWebView()
+        // Affise.unregisterWebView()
         result?.notImplemented()
     }
 
@@ -159,7 +159,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.setSecretId(secretKey: secretKey)
+        Affise.setSecretKey(secretKey)
         result?.success(nil)
     }
 
@@ -173,12 +173,12 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.setOfflineModeEnabled(enabled: enabled)
+        Affise.setOfflineModeEnabled(enabled)
         result?.success(nil)
     }
 
     private func callIsOfflineModeEnabled(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        result?.success(Affise.shared.isOfflineModeEnabled())
+        result?.success(Affise.isOfflineModeEnabled())
     }
 
     private func callSetBackgroundTrackingEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
@@ -187,12 +187,12 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.setBackgroundTrackingEnabled(enabled: enabled)
+        Affise.setBackgroundTrackingEnabled(enabled)
         result?.success(nil)
     }
 
     func callIsBackgroundTrackingEnabled(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        result?.success(Affise.shared.isBackgroundTrackingEnabled())
+        result?.success(Affise.isBackgroundTrackingEnabled())
     }
 
     private func callSetTrackingEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
@@ -201,12 +201,12 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.setTrackingEnabled(enabled: enabled)
+        Affise.setTrackingEnabled(enabled)
         result?.success(nil)
     }
 
     private func callIsTrackingEnabled(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        result?.success(Affise.shared.isTrackingEnabled())
+        result?.success(Affise.isTrackingEnabled())
     }
 
     private func callForget(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
@@ -222,11 +222,11 @@ public class AffiseApiWrapper: NSObject {
     }
 
     private func callGetRandomUserId(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        result?.success(Affise.shared.getRandomUserId())
+        result?.success(Affise.getRandomUserId())
     }
 
     private func callGetRandomDeviceId(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        result?.success(Affise.shared.getRandomDeviceId())
+        result?.success(Affise.getRandomDeviceId())
     }
 
     private func callGetReferrer(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
@@ -253,7 +253,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.getStatus(module) { status in
+        Affise.getStatus(module) { status in
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: status.toListOfMap(),
@@ -269,7 +269,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.shared.registerDeeplinkCallback { uri in
+        Affise.registerDeeplinkCallback { uri in
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: uri.absoluteString,

@@ -15,40 +15,41 @@ import WebKit
 
 
 @objc
-public class Affise: NSObject {
-    
-    @objc
-    public static let shared = Affise()
+public final class Affise: NSObject {
 
-    
+    @available(*, deprecated, message: "remove .shared")
+    @objc
+    public static let shared = AffiseShared()
+
     /**
      * Api to communication with Affise
      */
-    private var api: AffiseApi?
+    private static var api: AffiseApi?
     
     /**
      * Init [AffiseComponent] with [app] and [initProperties]
      */
     @objc
-    public func load(app: UIApplication,
-                     initProperties: AffiseInitProperties,
-                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        
-        if (self.api == nil) {
-            self.api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
+    public static func load(
+        app: UIApplication,
+        initProperties: AffiseInitProperties,
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) {
+        if (api == nil) {
+            api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
         }
     }
 
     @objc
-    public func isInitialized() -> Bool {
-        return self.api?.isInitialized() ?? false
+    public static func isInitialized() -> Bool {
+        return api?.isInitialized() ?? false
     }
     
     /**
      * Send events
      */
     @objc
-    public func sendEvents() {
+    public static func sendEvents() {
         api?.eventsManager.sendEvents()
     }
     
@@ -56,28 +57,31 @@ public class Affise: NSObject {
      * Store and send [event]
      */
     @objc
-    public func sendEvent(event: Event) {
+    public static func sendEvent(_ event: Event) {
         api?.storeEventUseCase.storeEvent(event: event)
     }
     
     /**
      * Add [pushToken]
      */
-    public func addPushToken(pushToken: String) {
+    @objc
+    public static func addPushToken(_ pushToken: String) {
         api?.preferences.set(pushToken, forKey: PushTokenProvider.KEY)
     }
     
     /**
      * Register [webView] to WebBridge
      */
-    public func registerWebView(webView: WKWebView) {
+    @objc
+    public static func registerWebView(_ webView: WKWebView) {
         api?.webBridgeManager.registerWebView(webView: webView)
     }
     
     /**
      * Unregister webView on WebBridge
      */
-    public func unregisterWebView() {
+    @objc
+    public static func unregisterWebView() {
         api?.webBridgeManager.unregisterWebView()
     }
     
@@ -85,14 +89,16 @@ public class Affise: NSObject {
     /**
      * Register [callback] for deeplink
      */
-    public func registerDeeplinkCallback(callback: @escaping (_ url: URL) -> Void) {
+    @objc
+    public static func registerDeeplinkCallback(_ callback: @escaping (_ url: URL) -> Void) {
         api?.deeplinkManager.setDeeplinkCallback(callback: callback)
     }
     
     /**
      * Set new secretKey
      */
-    public func setSecretId(secretKey: String) {
+    @objc
+    public static func setSecretKey(_ secretKey: String) {
         api?.initPropertiesStorage.updateSecretKey(secretKey: secretKey)
     }
     
@@ -103,74 +109,90 @@ public class Affise: NSObject {
      * but background work is not paused. When offline mode is enabled,
      * all recorded events should be sent
      */
-    public func setOfflineModeEnabled(enabled: Bool) {
+    @objc
+    public static func setOfflineModeEnabled(_ enabled: Bool) {
         api?.preferencesUseCase.setOfflineModeEnabled(enabled: enabled)
     }
     
     /**
      * Returns current offline mode state
      */
-    public func isOfflineModeEnabled() -> Bool { return api?.preferencesUseCase.isOfflineModeEnabled() ?? false }
+    @objc
+    public static func isOfflineModeEnabled() -> Bool { 
+        return api?.preferencesUseCase.isOfflineModeEnabled() ?? false 
+    }
     
     /**
      * Sets background tracking mode to [enabled] state
      *
      * When disabled, library should not generate any tracking events while in background
      */
-    public func setBackgroundTrackingEnabled(enabled: Bool) {
+    @objc
+    public static func setBackgroundTrackingEnabled(_ enabled: Bool) {
         api?.preferencesUseCase.setBackgroundTrackingEnabled(enabled: enabled)
     }
     
     /**
      * Returns current background tracking state
      */
-    public func isBackgroundTrackingEnabled() -> Bool { return api?.preferencesUseCase.isBackgroundTrackingEnabled() ?? false }
+    @objc
+    public static func isBackgroundTrackingEnabled() -> Bool { 
+        return api?.preferencesUseCase.isBackgroundTrackingEnabled() ?? false
+    }
     
     /**
      * Sets offline mode to [enabled] state
      *
      * When disabled, library should not generate any tracking events
      */
-    public func setTrackingEnabled(enabled: Bool) {
+    @objc
+    public static func setTrackingEnabled(_ enabled: Bool) {
         api?.preferencesUseCase.setTrackingEnabled(enabled: enabled)
     }
     
     /**
      * Returns current tracking state
      */
-    public func isTrackingEnabled() -> Bool { return api?.preferencesUseCase.isTrackingEnabled() ?? false }
+    @objc
+    public static func isTrackingEnabled() -> Bool {
+        return api?.preferencesUseCase.isTrackingEnabled() ?? false 
+    }
 
     /**
      * Returns random User Id
      */
-    public func getRandomUserId() -> String? {
-        let provider : RandomUserIdProvider? = api?.postBackModelFactory.getProvider()
+    @objc
+    public static func getRandomUserId() -> String? {
+        let provider: RandomUserIdProvider? = api?.postBackModelFactory.getProvider()
         return provider?.provide()
     }
 
     /**
      * Returns random Device Id
      */
-    public func getRandomDeviceId() -> String? {
-        let provider : AffiseDeviceIdProvider? = api?.postBackModelFactory.getProvider()
+    @objc
+    public static func getRandomDeviceId() -> String? {
+        let provider: AffiseDeviceIdProvider? = api?.postBackModelFactory.getProvider()
         return provider?.provide()
     }
 
     /**
      * Get module status
      */
-    public func getStatus(_ module: AffiseModules, onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void) {
+    @objc
+    public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void) {
         api?.moduleManager.status(module, onComplete)
     }
     
     /**
      * Call deeplink handle manually
      */
-    public func handleDeeplink(url: URL) {
+    @objc
+    public static func handleDeeplink(_ url: URL) {
         api?.deeplinkManager.handleDeeplink(url: url)
     }
 
-    internal func getApi() -> AffiseApi? {
+    internal static func getApi() -> AffiseApi? {
         return api
     }
 }

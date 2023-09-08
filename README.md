@@ -2,9 +2,9 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib`  | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`  | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
-| `AffiseModule/Status` | [1.6.9](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `AffiseAttributionLib`  | [`1.6.10`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`  | [`1.6.10`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| `AffiseModule/Status` | [`1.6.10`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -30,6 +30,7 @@
   - [Deeplinks](#deeplinks)
   - [Get random user Id](#get-random-user-id)
   - [Get random device Id](#get-random-device-id)
+  - [Get module state](#get-module-state)
   - [WebView tracking](#webview-tracking)
     - [Initialize WebView](#initialize-webview)
     - [Events tracking JS](#events-tracking-js)
@@ -53,18 +54,18 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.9'
+pod 'AffiseAttributionLib', '~> 1.6.10'
 # Affise module
-pod 'AffiseModule/Status', '~> 1.6.9'
+pod 'AffiseModule/Status', '~> 1.6.10'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.9'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.10'
 # Affise module
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.9'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.10'
 ```
 
 ### Initialize
@@ -89,14 +90,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             affiseAppId: "Your appId", //Change to your app id
             secretKey: "Your secretKey" //Change to your appToken
         )
-        Affise.shared.load(app: application, initProperties: properties, launchOptions: launchOptions)
+        Affise.load(app: application, initProperties: properties, launchOptions: launchOptions)
 
         return true
     }
 }
 ```
 
-For objective-c use: 
+For `objective-c` use: 
 
 > Demo app [AppDelegate.m](example/app-obj-c/app-obj-c/AppDelegate.m)
 
@@ -114,7 +115,8 @@ For objective-c use:
         initWithAffiseAppId:@"Your appId" //Change to your app id
         secretKey:@"Your secretKey" //Change to your appToken
     ];
-    [Affise.shared loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
+
+    [Affise loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
 
     return YES;
 }
@@ -124,7 +126,7 @@ For objective-c use:
 Check if library is initialized
 
 ```swift
-Affise.shared.isInitialized()
+Affise.isInitialized()
 ```
 
 ## StoreKit Ad Network
@@ -133,50 +135,62 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.9'
+pod 'AffiseSKAdNetwork', '~> 1.6.10'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.9'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.10'
 ```
 
-For use:
-
-For ios prior `15.4`
+> **Note**
+> For ios prior `16.1` first call
 
 ```swift
 import AffiseSKAdNetwork
 
-AffiseSKAdNetwork.shared()?.registerAppForAdNetworkAttribution(completionHandler: { error in                
+AffiseSKAd.register { error in
     // Handle error
-})
-
-AffiseSKAdNetwork.shared()?.updateConversionValue(conversionValue, completionHandler: { error in
-    // Handle error
-})
+}
 ```
 
-For ios `15.4`
+For 'objective-c' use:
 
-```swift
-import AffiseSKAdNetwork
+> Demo app [AppDelegate.m](example/app-obj-c/app-obj-c/AppDelegate.m)
 
-AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, completionHandler: { error in
+```objective-c
+#import <AffiseSKAdNetwork/AffiseSKAdNetwork-Swift.h>
+
+[AffiseSKAd registerWithCompletionHandler:^(NSString * error) {
     // Handle error
-})
+}];
 ```
 
-For ios `16.1`
+Updates the fine and coarse conversion values, and calls a completion handler if the update fails.
+
+> **Note**
+> Second argument `coarseValue` is available in iOS `16.1+``
 
 ```swift
-import AffiseSKAdNetwork
-
-AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, coarseValue, completionHandler: { error in
+AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { error in
     // Handle error
-})
+}
+```
+
+For 'objective-c' use:
+
+> Demo app [AppDelegate.m](example/app-obj-c/app-obj-c/AppDelegate.m)
+
+```objective-c
+#import <AffiseSKAdNetwork/AffiseSKAdNetwork-Swift.h>
+
+[AffiseSKAd updatePostbackWithFineValue:1
+                            coarseValue:[CoarseConversionValue medium]
+                        completionHandler:^(NSString * error) {
+    // Handle error
+}];
 ```
 
 Configure your app to send postback copies to Affise:
@@ -272,6 +286,7 @@ To match users with events and data library is sending, these identifiers are co
 - `UUID`
 - `AFFISE_APP_OPENED`
 - `PUSHTOKEN`
+- `IS_EMULATOR`
 - `EVENTS`
 - `AFFISE_EVENTS_COUNT`
 
@@ -286,15 +301,22 @@ class Presenter {
         let items = [
             ("items", "cookies, potato, milk")
         ]
-        Affise.shared.sendEvent(event: AddToCartEvent("groceries")
+
+        AddToCartEvent("groceries")
             .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
             .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
-        )
+            .send() // Send event like this
+            
+        // OR Send event like this
+        // Affise.sendEvent(AddToCartEvent("groceries")
+        //     .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
+        //     .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
+        // )
     }
 }
 ```
 
-For objective-c use:
+For `objective-c` use:
 
 ```objective-c
 - (void)onUserAddsItemsToCart:(NSString *)itemsToCart {
@@ -305,8 +327,10 @@ For objective-c use:
     Event *event = [[AddToCartEvent alloc] init:@"groceries"];
     [event addPredefinedParameter:PredefinedStringADREV_AD_TYPE value:@"best before 2029"];
     [event addPredefinedParameter:PredefinedObjectCONTENT object:items];
-
-    [Affise.shared sendEventWithEvent: event];
+    // Send event like this
+    [event send];
+    // Or send event like this
+    // [Affise sendEvent:event];
 }
 ```
 
@@ -414,13 +438,17 @@ class Presenter {
         let addToCart = AddToCartEvent("groceries")
             .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
             .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
-
-        Affise.shared.sendEvent(event: addToCart)
+            
+        // Send event like this
+        addToCart.send()
+        
+        // Send event like this
+        // Affise.sendEvent(addToCart)
     }
 }
 ```
 
-For objective-c use:
+For `objective-c` use:
 
 ```objective-c
 - (void)onUserAddsItemsToCart:(NSString *)itemsToCart {
@@ -431,8 +459,10 @@ For objective-c use:
     Event *event = [[AddToCartEvent alloc] init:@"groceries"];
     [event addPredefinedParameter:PredefinedStringADREV_AD_TYPE value:@"best before 2029"];
     [event addPredefinedParameter:PredefinedObjectCONTENT object:items];
-
-    [Affise.shared sendEventWithEvent: event];
+    // Send event like this
+    [event send];
+    // Or send event like this
+    // [Affise sendEvent:event];
 }
 ```
 
@@ -593,7 +623,7 @@ Register deeplink callback right after Affise.share.init(..)
 
 ```swift
 Affise.share.init(..)
-Affise.shared.registerDeeplinkCallback { url in
+Affise.registerDeeplinkCallback { url in
     let component = URLComponents(string: url.absoluteString)!
     let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
     if let screen = screen, screen == "special_offer" {
@@ -612,7 +642,7 @@ func application(
     open url: URL,
     options: [UIApplication.OpenURLOptionsKey : Any] = [:]
 ) -> Bool {
-    Affise.shared.handleDeeplink(url: url)
+    Affise.handleDeeplink(url)
     return true
 }
 ```
@@ -639,18 +669,22 @@ Example: [`example/app/app/Info.plist`](example/app/app/Info.plist)
 
 ## Get random user Id
 
-Use the next public method of SDK
-
 ```swift
-Affise.shared.getRandomUserId()
+Affise.getRandomUserId()
 ```
 
 ## Get random device Id
 
-Use the next public method of SDK
+```swift
+Affise.getRandomDeviceId()
+```
+
+## Get module state
 
 ```swift
-Affise.shared.getRandomDeviceId()
+Affise.getStatus(AffiseModules.STATUS) { response in 
+    // handle status response
+};
 ```
 
 ## WebView tracking
@@ -672,7 +706,7 @@ override func viewDidLoad() {
 }
 
 // initialize WebView with Affise native library
-Affise.shared.registerWebView(webView: webView)
+Affise.registerWebView(webView)
 
 ```
 
@@ -690,11 +724,14 @@ let event = new AddPaymentInfoEvent({
   userData: 'taxi',
 };
 
-event.addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, 'USD');
-event.addPredefinedParameter(PredefinedFloat.PRICE, 2.19);
-event.addPredefinedParameter(PredefinedObject.CONTENT, data);
+event
+    .addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, 'USD')
+    .addPredefinedParameter(PredefinedFloat.PRICE, 2.19)
+    .addPredefinedParameter(PredefinedObject.CONTENT, data);
+    .send() // Send event like this
 
-Affise.sendEvent(event);
+// Or Send event like this
+// Affise.sendEvent(event);
 ```
 
 Just like with native SDK, javascript enviroment also provides default events that can be passed from WebView:
@@ -790,13 +827,16 @@ For example:
 ```javascript
 let event = ...
 
-event.addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, 'USD');
-event.addPredefinedParameter(PredefinedFloat.PRICE, 2.19);
-event.addPredefinedParameter(PredefinedLong.QUANTITY, 1);
-event.addPredefinedParameter(PredefinedObject.CONTENT, { card: 4138, type: 'phone' });
-event.addPredefinedParameter(PredefinedListObject.CONTENT_LIST, [{content:'songs'}, {content:'videos'}]);
+event
+    .addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, 'USD')
+    .addPredefinedParameter(PredefinedFloat.PRICE, 2.19)
+    .addPredefinedParameter(PredefinedLong.QUANTITY, 1)
+    .addPredefinedParameter(PredefinedObject.CONTENT, { card: 4138, type: 'phone' })
+    .addPredefinedParameter(PredefinedListObject.CONTENT_LIST, [{content:'songs'}, {content:'videos'}])
+    .send(); // Send event like this
 
-Affise.sendEvent(event);
+// Or Send event like this
+// Affise.sendEvent(event);
 ```
 
 ### Custom events JS
@@ -824,5 +864,5 @@ let event = AddToCartEvent()
 
 let conversionId = event.customPredefined().conversionId("ORDER_ID", "PRODUCT_ID")
 
-Affise.shared.sendEvent(event: event)
+Affise.sendEvent(event)
 ```

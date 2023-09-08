@@ -112,6 +112,8 @@ internal class AffiseComponent: AffiseApi {
                                                                              lifetimeRepository: ApplicationLifetimePreferencesRepositoryImpl(userDefaults: preferences))
 
     lazy var stringToSha256Converter: StringToSHA256Converter = StringToSHA256Converter()
+    lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()
+
     /**
      * PostBackModelFactory
      */
@@ -126,7 +128,8 @@ internal class AffiseComponent: AffiseApi {
         initPropertiesStorage: initPropertiesStorage,
         stringToSha256Converter: stringToSha256Converter,
         logsManager: logsManager,
-        deeplinkClickRepository: deeplinkClickRepository
+        deeplinkClickRepository: deeplinkClickRepository,
+        deviceUseCase: deviceUseCase
     ).create()
 
     lazy var moduleManager: AffiseModuleManager = AffiseModuleManager(

@@ -27,6 +27,7 @@ internal class PropertiesProviderFactory {
     private let stringToSha256Converter: StringToSHA256Converter
     private let logsManager: LogsManager
     private let deeplinkClickRepository: DeeplinkClickRepository
+    private let deviceUseCase: DeviceUseCase
     
     init(app: UIApplication,
          bundle: Bundle,
@@ -38,7 +39,8 @@ internal class PropertiesProviderFactory {
          initPropertiesStorage: InitPropertiesStorage,
          stringToSha256Converter: StringToSHA256Converter,
          logsManager: LogsManager,
-         deeplinkClickRepository: DeeplinkClickRepository
+         deeplinkClickRepository: DeeplinkClickRepository,
+         deviceUseCase: DeviceUseCase
     ) {
         self.app = app
         self.bundle = bundle
@@ -51,6 +53,7 @@ internal class PropertiesProviderFactory {
         self.stringToSha256Converter = stringToSha256Converter
         self.logsManager = logsManager
         self.deeplinkClickRepository = deeplinkClickRepository
+        self.deviceUseCase = deviceUseCase
     }
     
     func create() -> PostBackModelFactory {
@@ -96,6 +99,7 @@ internal class PropertiesProviderFactory {
                 MCCProvider(),
                 MNCProvider(),
                 IspNameProvider(),
+                IsEmulatorProvider(useCase: deviceUseCase),
                 RegionProvider(),
                 CountryProvider(),
                 LanguageProvider(),

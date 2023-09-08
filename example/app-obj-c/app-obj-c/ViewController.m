@@ -27,7 +27,10 @@
                                            timeStampMillis:[NSDate date].timeIntervalSince1970 * 1000];
     
     [event addPredefinedParameter:PredefinedStringPARAM_01 string:@"param1"];
-    [Affise.shared sendEventWithEvent:event];
+    // send event
+    [event send];
+    // or
+    // [Affise sendEvent:event];
 }
 
 @end

@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <AffiseAttributionLib/AffiseAttributionLib-Swift.h>
+#import <AffiseSKAdNetwork/AffiseSKAdNetwork-Swift.h>
 
 
 @implementation AppDelegate
@@ -20,7 +21,23 @@
                                                                                     appToken:nil
                                                                                 isProduction:NO
                                                                                     secretKey:nil];
-    [Affise.shared loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
+    
+    [Affise loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
+    
+//    if (@available(iOS 16.1, *)) {
+//    } else {
+//        [AffiseSKAd registerWithCompletionHandler:^(NSString * error) {
+//            // Handle error
+//            NSLog(@"%@", error);
+//        }];
+//    }
+//    
+//    [AffiseSKAd updatePostbackWithFineValue:1
+//                                coarseValue:[CoarseConversionValue medium]
+//                          completionHandler:^(NSString * error) {
+//        // Handle error
+//        NSLog(@"%@", error);
+//    }];
     
     return YES;
 }

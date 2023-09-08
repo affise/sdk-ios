@@ -7,6 +7,7 @@
 
 import UIKit
 import AffiseAttributionLib
+import AffiseSKAdNetwork
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             isProduction: false,
             secretKey: "be07d122-3f3c-11ec-9bbc-0242ac130002"
         )
-        Affise.shared.load(app: application, initProperties: properties, launchOptions: launchOptions)
-        Affise.shared.registerDeeplinkCallback { url in
+        Affise.load(app: application, initProperties: properties, launchOptions: launchOptions)
+        
+        Affise.registerDeeplinkCallback { url in
             let component = URLComponents(string: url.absoluteString)!
             let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
             if let screen = screen, screen == "special_offer" {
@@ -34,7 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-//        Affise.shared.getStatus(AffiseModules.Status, onComplete: { result in
+//        AffiseSKAd.register { er in
+//            // Handle error
+//        }
+//        
+//        AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { er in
+//          DeviceUseCaseImpl
+//        }
+        
+     
+//        Affise.getStatus(AffiseModules.Status) { result in
 //            // handle status
 //        })
         return true
@@ -45,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-        Affise.shared.handleDeeplink(url: url)
+        Affise.handleDeeplink(url)
         return true
     }
     

@@ -69,18 +69,21 @@ class ViewController: UIViewController, WKScriptMessageHandler {
             webView.leftAnchor.constraint(equalTo: webViewWrapper.leftAnchor, constant: 16).isActive = true
             webView.bottomAnchor.constraint(equalTo: webViewWrapper.bottomAnchor, constant: 0).isActive = true
             webView.rightAnchor.constraint(equalTo: webViewWrapper.rightAnchor, constant: -16).isActive = true
-            Affise.shared.registerWebView(webView: webView)
+            Affise.registerWebView(webView)
         }
     }
     
     @objc
     func pressed(sender: UIButton!) {
-        Affise.shared.sendEvent(event: listEvents[sender.tag])
+        // Send event
+        listEvents[sender.tag].send();
+        // or
+        // Affise.sendEvent(listEvents[sender.tag])
     }
     
     
     @IBAction func sendEvents(_ sender: Any) {
-        Affise.shared.sendEvents()
+        Affise.sendEvents()
     }
     
     @IBAction func didValueChangedControl(_ sender: UISegmentedControl) {

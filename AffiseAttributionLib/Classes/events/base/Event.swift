@@ -141,6 +141,14 @@ public class Event: NSObject {
         return self
     }
 
+    /**
+     * Store and send this event
+     */
+    @objc
+    public func send() {
+        Affise.sendEvent(self);
+    }
+
     @objc
     public func apply(closure:(Event) -> ()) -> Event {
         closure(self)

@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseSKAdNetwork"
-  spec.version      = ENV['LIB_VERSION'] || "1.6.9"
+  spec.version      = ENV['LIB_VERSION'] || "1.6.10"
   spec.summary      = "AffiseSKAdNetwork iOS library"
   spec.description  = "Affise library for StoreKit Ad Network (SKAdNetwork)"
   spec.homepage     = "https://github.com/affise/sdk-ios"
@@ -19,6 +19,7 @@ Pod::Spec.new do |spec|
   spec.source_files  = "AffiseSKAdNetwork/Classes/**/*.{h,m,swift}"
   spec.platform = "ios"
   spec.ios.deployment_target = "9.0"
+  spec.swift_version = "5.7"
 
   spec.framework  = "StoreKit"
   spec.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
