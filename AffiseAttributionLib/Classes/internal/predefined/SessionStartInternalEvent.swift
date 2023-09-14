@@ -11,28 +11,17 @@ import Foundation
  * @property lifetimeSessionCount the total application work time milliseconds.
  */
 @objc
-class SessionStartInternalEvent : InternalEvent {
-    private let affiseSessionCount: Int64
-    private let lifetimeSessionCount: Int64
+internal class SessionStartInternalEvent : InternalEvent {
     
     @objc
-    public init(affiseSessionCount: Int64,
-                lifetimeSessionCount: Int64) {
+    public init(
+        affiseSessionCount: Int64,
+        lifetimeSessionCount: Int64
+    ) {
+        super.init()
         
-        self.affiseSessionCount = affiseSessionCount
-        self.lifetimeSessionCount = lifetimeSessionCount
-    }
-
-    /**
-     * Serialize SessionStartInternalEvent to JSONObject
-     *
-     * @return JSONObject of SessionStartInternalEvent
-     */
-    override func serialize() -> [(String, Any?)] {
-        return [
-            (Parameters.AFFISE_SESSION_COUNT, affiseSessionCount),
-            (Parameters.LIFETIME_SESSION_COUNT, lifetimeSessionCount)
-        ]
+        addPropertyRaw(Parameters.AFFISE_SESSION_COUNT, affiseSessionCount)
+        addPropertyRaw(Parameters.LIFETIME_SESSION_COUNT, lifetimeSessionCount)
     }
 
     /**
@@ -40,5 +29,5 @@ class SessionStartInternalEvent : InternalEvent {
      *
      * @return name
      */
-    public override func getName() -> String { return "SessionStart" }
+    public override func getName() -> InternalEventName { return InternalEventName.SESSION_START }
 }

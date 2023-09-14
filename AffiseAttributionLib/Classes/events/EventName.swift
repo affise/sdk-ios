@@ -1,4 +1,4 @@
-public enum EventName: String, CaseIterable {
+public enum EventName: String {
     case ACHIEVE_LEVEL = "AchieveLevel"
     case ADD_PAYMENT_INFO = "AddPaymentInfo"
     case ADD_TO_CART = "AddToCart"
@@ -60,7 +60,12 @@ public enum EventName: String, CaseIterable {
     case VIEW_CONTENT = "ViewContent"
     case VIEW_ITEM = "ViewItem"
     case VIEW_ITEMS = "ViewItems"
+    case AD_REVENUE = "AdRevenue"
+    case ORDER_ITEM_ADDED = "OrderItemAdded"
+    case ORDER_ITEM_REMOVE = "OrderItemRemove"
+}
 
+extension EventName: CaseIterable {
     public var eventName: String {
         return self.rawValue
     }

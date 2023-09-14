@@ -1,4 +1,4 @@
-public enum SubscriptionEventName: String, CaseIterable {
+public enum SubscriptionEventName: String {
     case AFFISE_SUBSCRIPTION_ACTIVATION = "affise_subscription_activation"
     case AFFISE_SUBSCRIPTION_CANCELLATION = "affise_subscription_cancellation"
     case AFFISE_SUBSCRIPTION_ENTERED_BILLING_RETRY = "affise_subscription_entered_billing_retry"
@@ -7,7 +7,9 @@ public enum SubscriptionEventName: String, CaseIterable {
     case AFFISE_SUBSCRIPTION_RENEWAL = "affise_subscription_renewal"
     case AFFISE_SUBSCRIPTION_RENEWAL_FROM_BILLING_RETRY = "affise_subscription_renewal_from_billing_retry"
     case AFFISE_UNSUBSCRIPTION = "affise_unsubscription"
+}
 
+extension SubscriptionEventName: CaseIterable {
     public var eventName: String {
         return self.rawValue
     }

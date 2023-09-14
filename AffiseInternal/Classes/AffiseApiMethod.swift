@@ -1,5 +1,5 @@
 @objc
-public enum AffiseApiMethod: Int, CaseIterable {
+public enum AffiseApiMethod: Int {
     case INIT
     case IS_INITIALIZED
     case SEND_EVENTS
@@ -25,13 +25,10 @@ public enum AffiseApiMethod: Int, CaseIterable {
     case GET_STATUS_CALLBACK
     case REGISTER_DEEPLINK_CALLBACK
     case SKAD_REGISTER_ERROR_CALLBACK
-    case SKAD_POSTBACK_ERROR_CALLBACK
+    case SKAD_POSTBACK_ERROR_CALLBACK 
+    case AFFISE_BUILDER
 
-    public var method: String {
-        return value()
-    }
-
-    func value() -> String {
+    var value: String {
         switch self {
         case .INIT: return "init"
         case .IS_INITIALIZED: return "is_initialized"
@@ -59,10 +56,17 @@ public enum AffiseApiMethod: Int, CaseIterable {
         case .REGISTER_DEEPLINK_CALLBACK: return "register_deeplink_callback"
         case .SKAD_REGISTER_ERROR_CALLBACK: return "skad_register_error_callback"
         case .SKAD_POSTBACK_ERROR_CALLBACK: return "skad_postback_error_callback"
+        case .AFFISE_BUILDER: return "affise_builder"
         }
     }
+}
 
+extension AffiseApiMethod: CaseIterable {
+    public var method: String {
+        return value
+    }
+    
     public static func from(_ name: String) -> AffiseApiMethod? {
-        return allCases.first { name == $0.value() }
+        return allCases.first { name == $0.value }
     }
 }

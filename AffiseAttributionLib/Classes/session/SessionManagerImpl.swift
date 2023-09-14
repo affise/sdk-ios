@@ -26,15 +26,14 @@ class SessionManagerImpl {
 
     private let preferences: UserDefaults
     private let appLifecycleEventsManager: AppLifecycleEventsManager
-    private let internalEventUseCase: StoreInternalEventUseCase
     
-    init(preferences: UserDefaults,
-         appLifecycleEventsManager: AppLifecycleEventsManager,
-         internalEventUseCase: StoreInternalEventUseCase) {
+    init(
+        preferences: UserDefaults,
+        appLifecycleEventsManager: AppLifecycleEventsManager
+    ) {
         
         self.preferences = preferences
         self.appLifecycleEventsManager = appLifecycleEventsManager
-        self.internalEventUseCase = internalEventUseCase
     }
 
     private lazy var sessionData: SessionData = SessionData(
@@ -120,12 +119,11 @@ class SessionManagerImpl {
                 }
 
                 //Send sdk events
-                self.internalEventUseCase.storeInternalEvent(
-                    event: SessionStartInternalEvent(
-                        affiseSessionCount: count,
-                        lifetimeSessionCount: self.getLifetimeSessionTime().timeInMillis
-                    )
+                SessionStartInternalEvent(
+                    affiseSessionCount: count,
+                    lifetimeSessionCount: self.getLifetimeSessionTime().timeInMillis
                 )
+                .send()
             }
         }
     }

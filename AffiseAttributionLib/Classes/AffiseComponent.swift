@@ -59,57 +59,85 @@ internal class AffiseComponent: AffiseApi {
 
     lazy var firstAppOpenUseCase:FirstAppOpenUseCase = FirstAppOpenUseCase(preferences: preferences)
     lazy var webViewUseCase:WebViewUseCase = WebViewUseCase(preferences: preferences)
-    lazy var appLifecycleEventsManager:AppLifecycleEventsManager = AppLifecycleEventsManagerImpl(notificationCenter: notificationCenter, logsManager: logsManager)
+    lazy var appLifecycleEventsManager:AppLifecycleEventsManager = AppLifecycleEventsManagerImpl(
+        notificationCenter: notificationCenter,
+        logsManager: logsManager
+    )
     lazy var logsManager:LogsManager = LogsManagerImpl(storeLogsUseCase: storeLogsUseCase)
-    lazy var logsRepository:LogsRepository = LogsRepositoryImpl(converterToBase64: ConverterToBase64(),
-                                                                converterToSerializedLog: LogToSerializedLogConverter(),
-                                                                logsStorage: logsStorage)
+    lazy var logsRepository:LogsRepository = LogsRepositoryImpl(
+        converterToBase64: ConverterToBase64(),
+        converterToSerializedLog: LogToSerializedLogConverter(),
+        logsStorage: logsStorage
+    )
     lazy var logsStorage:LogsStorage = LogsStorageImpl(fileManager: fileManager)
     
-    lazy var eventsManager:EventsManager = EventsManager(sendDataToServerUseCase: sendDataToServerUseCase, appLifecycleEventsManager: appLifecycleEventsManager)
+    lazy var eventsManager:EventsManager = EventsManager(
+        sendDataToServerUseCase: sendDataToServerUseCase,
+        appLifecycleEventsManager: appLifecycleEventsManager
+    )
     lazy var eventsStorage:EventsStorage = EventsStorageImpl(logsManager: logsManager, fileManager: fileManager)
-    lazy var eventsRepository:EventsRepository = EventsRepositoryImpl(converterToBase64: ConverterToBase64(),
-                                                                      converterToSerializedEvent: EventToSerializedEventConverter(),
-                                                                      logsManager: logsManager,
-                                                                      eventsStorage: eventsStorage)
-    lazy var internalEventsStorage:InternalEventsStorage = InternalEventsStorageImpl(logsManager: logsManager,       fileManager: fileManager)
-    lazy var internalEventsRepository:InternalEventsRepository = InternalEventsRepositoryImpl(converterToBase64: ConverterToBase64(),
-                                                                                              converterToSerializedEvent: InternalEventToSerializedEventConverter(),
-                                                                                              logsManager: logsManager,
-                                                                                              eventsStorage: internalEventsStorage)
+    lazy var eventsRepository:EventsRepository = EventsRepositoryImpl(
+        converterToBase64: ConverterToBase64(),
+        converterToSerializedEvent: EventToSerializedEventConverter(),
+        logsManager: logsManager,
+        eventsStorage: eventsStorage
+    )
+    lazy var internalEventsStorage:InternalEventsStorage = InternalEventsStorageImpl(
+        logsManager: logsManager,
+        fileManager: fileManager
+    )
+    lazy var internalEventsRepository:InternalEventsRepository = InternalEventsRepositoryImpl(
+        converterToBase64: ConverterToBase64(),
+        converterToSerializedEvent: InternalEventToSerializedEventConverter(),
+        logsManager: logsManager,
+        eventsStorage: internalEventsStorage
+    )
     lazy var networkService:NetworkService = NetworkServiceImpl(urlSession: urlSession)
-    lazy var cloudRepository:CloudRepository = CloudRepositoryImpl(networkService: networkService,
-                                                                   userAgentProvider: postBackModelFactory.getProvider(),
-                                                                   converter: PostBackModelToJsonStringConverter())
-    lazy var sessionManager:SessionManager = SessionManagerImpl(preferences: preferences,
-                                                                appLifecycleEventsManager: appLifecycleEventsManager,
-                                                                internalEventUseCase: storeInternalEventUseCase)
-    lazy var storeEventUseCase:StoreEventUseCase = StoreEventUseCaseImpl(repository: eventsRepository,
-                                                                         eventsManager: eventsManager,
-                                                                         preferencesUseCase: preferencesUseCase,
-                                                                         appLifecycleEventsManager: appLifecycleEventsManager,
-                                                                         logsManager: logsManager,
-                                                                         isFirstForUserUseCase: isFirstForUserUseCase)
+    lazy var cloudRepository:CloudRepository = CloudRepositoryImpl(
+        networkService: networkService,
+        userAgentProvider: postBackModelFactory.getProvider(),
+        converter: PostBackModelToJsonStringConverter()
+    )
+    lazy var sessionManager:SessionManager = SessionManagerImpl(
+        preferences: preferences,
+        appLifecycleEventsManager: appLifecycleEventsManager
+    )
+    lazy var storeEventUseCase:StoreEventUseCase = StoreEventUseCaseImpl(
+        repository: eventsRepository,
+        eventsManager: eventsManager,
+        preferencesUseCase: preferencesUseCase,
+        appLifecycleEventsManager: appLifecycleEventsManager,
+        logsManager: logsManager,
+        isFirstForUserUseCase: isFirstForUserUseCase
+    )
     lazy var storeInternalEventUseCase:StoreInternalEventUseCase = StoreInternalEventUseCaseImpl(repository: internalEventsRepository)
     lazy var storeLogsUseCase:StoreLogsUseCase = StoreLogsUseCaseImpl(repository: logsRepository)
     lazy var isFirstForUserStorage:IsFirstForUserStorage = IsFirstForUserStorageImpl(logsManager: logsManager, fileManager: fileManager)
     lazy var isFirstForUserUseCase:IsFirstForUserUseCase = IsFirstForUserUseCaseImpl(isFirstForUserStorage: isFirstForUserStorage)
     lazy var initPropertiesStorage: InitPropertiesStorage = InitPropertiesStorageImpl()
-    lazy var setPropertiesWhenInitUseCase: SetPropertiesWhenAppInitializedUseCase = SetPropertiesWhenAppInitializedUseCaseImpl(storage: initPropertiesStorage)
-    lazy var sendDataToServerUseCase: SendDataToServerUseCase = SendDataToServerUseCaseImpl(postBackModelFactory: postBackModelFactory,
-                                                                                            cloudRepository: cloudRepository,
-                                                                                            eventsRepository: eventsRepository,
-                                                                                            internalEventsRepository: internalEventsRepository,
-                                                                                            logsRepository: logsRepository,
-                                                                                            logsManager: logsManager,
-                                                                                            preferencesUseCase: preferencesUseCase)
+    lazy var setPropertiesWhenInitUseCase: SetPropertiesWhenAppInitializedUseCase = SetPropertiesWhenAppInitializedUseCaseImpl(
+        storage: initPropertiesStorage
+    )
+    lazy var sendDataToServerUseCase: SendDataToServerUseCase = SendDataToServerUseCaseImpl(
+        postBackModelFactory: postBackModelFactory,
+        cloudRepository: cloudRepository,
+        eventsRepository: eventsRepository,
+        internalEventsRepository: internalEventsRepository,
+        logsRepository: logsRepository,
+        logsManager: logsManager,
+        preferencesUseCase: preferencesUseCase
+    )
     lazy var deeplinkClickRepository: DeeplinkClickRepository = DeeplinkClickRepositoryImpl()
-    lazy var deeplinkManager: DeeplinkManager = DeeplinkManagerImpl(isDeeplinkRepository: deeplinkClickRepository,
-                                                                    appLifecycleEventsManager: appLifecycleEventsManager)
+    lazy var deeplinkManager: DeeplinkManager = DeeplinkManagerImpl(
+        isDeeplinkRepository: deeplinkClickRepository,
+        appLifecycleEventsManager: appLifecycleEventsManager
+    )
     lazy var advertisingIdManager: AdvertisingIdManager = AdvertisingIdManagerImpl()
     lazy var webBridgeManager: WebBridgeManager = WebBridgeManager(storeEventUseCase: storeEventUseCase)
-    lazy var preferencesUseCase: PreferencesUseCase = PreferencesUseCaseImpl(repository: ApplicationLifecyclePreferencesRepositoryImpl(),
-                                                                             lifetimeRepository: ApplicationLifetimePreferencesRepositoryImpl(userDefaults: preferences))
+    lazy var preferencesUseCase: PreferencesUseCase = PreferencesUseCaseImpl(
+        repository: ApplicationLifecyclePreferencesRepositoryImpl(),
+        lifetimeRepository: ApplicationLifetimePreferencesRepositoryImpl(userDefaults: preferences)
+    )
 
     lazy var stringToSha256Converter: StringToSHA256Converter = StringToSHA256Converter()
     lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()

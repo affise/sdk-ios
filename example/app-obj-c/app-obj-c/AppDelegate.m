@@ -15,12 +15,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    AffiseInitProperties *initProperties = [[AffiseInitProperties alloc] initWithAffiseAppId:@"AffiseDemoApp-Obj-C"
+    AffiseInitProperties *initProperties = [[AffiseInitProperties alloc] initWithAffiseAppId:@"129"
                                                                                partParamName:nil
                                                                           partParamNameToken:nil
                                                                                     appToken:nil
                                                                                 isProduction:NO
-                                                                                    secretKey:nil];
+                                                                                    secretKey:@"93a40b54-6f12-443f-a250-ebf67c5ee4d2"];
     
     [Affise loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
     

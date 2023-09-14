@@ -1,5 +1,5 @@
 /**
- * Event OrderReturnRequestEvent
+ * Event OrderReturnRequest
  *
  * @property userData any custom data.
  * @property timeStampMillis the timestamp event in milliseconds.

@@ -8,6 +8,7 @@
 import UIKit
 import AffiseAttributionLib
 import AffiseSKAdNetwork
+import AffiseModule
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,12 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let properties = AffiseInitProperties(
-            affiseAppId: "AffiseDemoApp",
-            partParamName: "partParamName",
-            partParamNameToken: "partParamNameToken",
-            appToken: "app-token",
-            isProduction: false,
-            secretKey: "be07d122-3f3c-11ec-9bbc-0242ac130002"
+            affiseAppId: "129",
+            secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2"
         )
         Affise.load(app: application, initProperties: properties, launchOptions: launchOptions)
         

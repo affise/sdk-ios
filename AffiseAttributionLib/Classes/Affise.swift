@@ -195,4 +195,12 @@ public final class Affise: NSObject {
     internal static func getApi() -> AffiseApi? {
         return api
     }
+    
+    /**
+     * Store internal send
+     */
+    @objc
+    internal static func sendInternalEvent(_ event: InternalEvent) {
+        api?.storeInternalEventUseCase.storeInternalEvent(event: event)
+    }
 }

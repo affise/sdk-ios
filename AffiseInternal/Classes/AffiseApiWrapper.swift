@@ -5,6 +5,7 @@ public class AffiseApiWrapper: NSObject {
     private let UUID: String = "callback_uuid"
 
     private let factory = AffiseEventFactory()
+    private let affiseBuilder = AffiseBuilder()
 
     private var callback: ((_ api: String, _ data: [String: Any?]) -> Void)? = nil
 
@@ -87,6 +88,7 @@ public class AffiseApiWrapper: NSObject {
         case .REGISTER_DEEPLINK_CALLBACK: callRegisterDeeplinkCallback(api, map: map, result: result)
         case .SKAD_REGISTER_ERROR_CALLBACK: callSkadRegisterErrorCallback(api, map: map, result: result)
         case .SKAD_POSTBACK_ERROR_CALLBACK: callSkadPostbackErrorCallback(api, map: map, result: result)
+        case .AFFISE_BUILDER: callAffiseBuilder(api, map: map, result: result)
 
         default:
             result?.notImplemented()
@@ -319,5 +321,9 @@ public class AffiseApiWrapper: NSObject {
             ]
             self.callback?(api.method, data)
         }
+    }
+    
+    private func callAffiseBuilder(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        affiseBuilder.call(api, map, result)
     }
 }

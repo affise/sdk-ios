@@ -1,22 +1,23 @@
 @objc
-public enum AffiseModules: Int, CaseIterable, CustomStringConvertible {
+public enum AffiseModules: Int {
     case Status
     
-    internal func enumValue() -> String {
+    internal var enumValue: String {
         switch self {
         case .Status: return "Status"
         }
     }
-    
-    internal func value() -> String { "\(AffiseModules.PREFIX).\(self.enumValue())Module" }
+}
 
-    public var description: String { enumValue() }
+extension AffiseModules: CaseIterable, CustomStringConvertible {
     
-    internal static func values() -> [AffiseModules] {
-        return allCases
-    }
+    internal func value() -> String { "\(AffiseModules.PREFIX).\(self.enumValue)Module" }
+    
+    internal static func values() -> [AffiseModules] { allCases }
     
     internal static let PREFIX: String = "AffiseModule"
+    
+    public var description: String { enumValue }
     
     public static func from(_ name: String) -> AffiseModules? {
         return allCases.first { $0.value().contains(name)  }

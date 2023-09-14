@@ -2,9 +2,9 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib`  | [`1.6.10`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`  | [`1.6.10`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
-| `AffiseModule/Status` | [`1.6.10`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `AffiseAttributionLib`  | [`1.6.11`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`  | [`1.6.11`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| `AffiseModule/Status` | [`1.6.11`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -36,6 +36,11 @@
     - [Events tracking JS](#events-tracking-js)
     - [Predefined event parameters JS](#predefined-event-parameters-js)
     - [Custom events JS](#custom-events-js)
+  - [SDK to SDK integrations](#sdk-to-sdk-integrations)
+    - [AdMob](#admob)
+    - [AppLovin MAX](#applovin-max)
+    - [Helium by Chartboost](#helium-by-chartboost )
+    - [ironSource](#ironsource)
   - [Custom](#custom)
     - [ConversionId](#conversionid)
 
@@ -54,18 +59,18 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.10'
+pod 'AffiseAttributionLib', '~> 1.6.11'
 # Affise module
-pod 'AffiseModule/Status', '~> 1.6.10'
+pod 'AffiseModule/Status', '~> 1.6.11'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.10'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.11'
 # Affise module
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.10'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.11'
 ```
 
 ### Initialize
@@ -135,14 +140,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.10'
+pod 'AffiseSKAdNetwork', '~> 1.6.11'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.10'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.11'
 ```
 
 For `swift` use:
@@ -342,6 +347,7 @@ With above example you can implement other events:
 - `AddPaymentInfo`
 - `AddToCart`
 - `AddToWishlist`
+- `AdRevenue`
 - `ClickAdv`
 - `CompleteRegistration`
 - `CompleteStream`
@@ -363,6 +369,8 @@ With above example you can implement other events:
 - `Login`
 - `OpenedFromPushNotification`
 - `Order`
+- `OrderItemAdded`
+- `OrderItemRemove`
 - `OrderCancel`
 - `OrderReturnRequest`
 - `OrderReturnRequestCancel`
@@ -598,14 +606,14 @@ but if there is no network connection or device is disabled, events are kept loc
 To let affise track push token you need to receive it from your push service provider, and pass to Affise library.
 First add firebase integration to your app completing theese steps: [Firebase Docs](https://firebase.google.com/docs/cloud-messaging/ios/client)
 
-After you have done with firebase inegration, add to your cloud messaging service `onNewToken` method `Affise.share.addPushToken(token)`
+After you have done with firebase inegration, add to your cloud messaging service `onNewToken` method `Affise.addPushToken(token)`
 
 ```swift
 func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
   print("Firebase registration token: \(String(describing: fcmToken))")
 
   // New token generated
-  Affise.share.addPushToken(pushToken: fcmToken)
+  Affise.addPushToken(fcmToken)
 }
 ```
 
@@ -614,17 +622,17 @@ func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: Str
 Affise automaticly track reinstall events by using silent-push technology, to make this feature work, pass push token when it is recreated by user and on you application starts up
 
 ```swift
-Affise.share.addPushToken(pushToken: token)
+Affise.addPushToken(token)
 ```
 
 ## Deeplinks
 
 To integrate deeplink support You can find out how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
-Register deeplink callback right after Affise.share.init(..)
+Register deeplink callback right after Affise.init(..)
 
 ```swift
-Affise.share.init(..)
+Affise.init(..)
 Affise.registerDeeplinkCallback { url in
     let component = URLComponents(string: url.absoluteString)!
     let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
@@ -742,6 +750,7 @@ Just like with native SDK, javascript enviroment also provides default events th
 - `AddPaymentInfoEvent`
 - `AddToCartEvent`
 - `AddToWishlistEvent`
+- `AdRevenueEvent`
 - `ClickAdvEvent`
 - `CompleteRegistrationEvent`
 - `CompleteStreamEvent`
@@ -773,6 +782,8 @@ Just like with native SDK, javascript enviroment also provides default events th
 - `LoginEvent`
 - `OpenedFromPushNotificationEvent`
 - `OrderEvent`
+- `OrderItemAddedEvent`
+- `OrderItemRemoveEvent`
 - `OrderCancelEvent`
 - `OrderReturnRequestEvent`
 - `OrderReturnRequestCancelEvent`
@@ -850,6 +861,117 @@ class MyCustomEvent extends Event {
     constructor(args) {
         super('MyCustom', args)
     }
+}
+```
+
+## SDK to SDK integrations
+
+### AdMob
+
+For more information how to setup, please check [official docs](https://developers.google.com/admob/ios/impression-level-ad-revenue#implementing_paid_event_handler)
+
+```swift
+var rewardedAd: GADRewardedAd?
+
+func requestRewardedAd() {
+    GADRewardedAd.load(withAdUnitID: "AD_UNIT_ID", request: GADRequest()) { (ad, error) in
+        if let error = error {
+            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+            return
+        }
+        rewardedAd = ad
+        rewardedAd?.paidEventHandler = { adValue in
+            let responseInfo = ad?.responseInfo
+            let loadedAdNetworkResponseInfo = responseInfo?.loadedAdNetworkResponseInfo
+
+            // Send AdRevenue info
+            AffiseAdRevenue(AffiseAdSource.ADMOB)
+                .setRevenue(adValue.value / 1000000, adValue.currencyCode)
+                .setNetwork(loadedAdNetworkResponseInfo?.adSourceName)
+                .setUnit(ad?.adUnitID)
+                .send()
+        }
+    }
+}
+```
+
+### AppLovin MAX
+
+For more information how to setup, please check [official docs](https://dash.applovin.com/documentation/mediation/ios/getting-started/advanced-settings#impression-level-user-revenue-api)
+
+```swift
+func didPayRevenue(_ ad: MAAd)
+{
+    // Send AdRevenue info
+    AffiseAdRevenue(AffiseAdSource.APPLOVIN_MAX)
+        .setRevenue(ad.revenue, "USD")
+        .setNetwork(ad.networkName)
+        .setUnit(ad.adUnitIdentifier)
+        .setPlacement(ad.placement)
+        .send()
+}
+```
+
+### Helium by Chartboost
+
+For more information how to setup, please check [official docs](https://developers.chartboost.com/docs/mediation-ios-configure-helium#implementation)
+
+```swift
+func ilrdObserverInit() {
+    NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(didReceiveILRDNotification),
+        name: .heliumDidReceiveILRD,
+        object: nil
+    )
+}
+
+@objc 
+func didReceiveILRDNotification(notification: Notification) {
+    // Extract the ILRD payload.
+    guard let ilrd = notification.object as? HeliumImpressionData else {
+        return
+    }
+
+    let json = ilrd.jsonData
+
+    guard let revenue = json["ad_revenue"] else {
+        return
+    }
+
+    guard let currency = json["currency_type"] else {
+        return
+    }
+
+    // Send AdRevenue info
+    AffiseAdRevenue(AffiseAdSource.HELIUM_CHARTBOOST)
+        .setRevenue(revenue, currency)
+        .setNetwork(json["network_name"])
+        .setUnit(json["placement_name"])
+        .setPlacement(json["line_item_name"])
+        .send()
+}
+```
+
+### ironSource
+
+For more information how to setup, please check [official docs](https://developers.is.com/ironsource-mobile/ios/ad-revenue-measurement-integration/#step-2)
+
+```swift
+func impressionDataDidSucceed(impressionData: ISImpressionData) {
+    guard let revenue: NSNumber = impressionData.revenue else {
+        return
+    }
+    let ad_network: String? = impressionData.ad_network
+    let all_data: NSDictionary? = impressionData.all_data
+
+    // Send AdRevenue info
+    AffiseAdRevenue(AffiseAdSource.IRONSOURCE)
+        .setRevenue(revenue.doubleValue, "USD")
+        .setNetwork(impressionData.ad_network)
+        .setUnit(impressionData.ad_unit)
+        .setPlacement(impressionData.placement)
+        .send()
 }
 ```
 

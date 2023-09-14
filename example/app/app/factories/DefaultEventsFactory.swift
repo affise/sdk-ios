@@ -16,6 +16,7 @@ class DefaultEventsFactory: EventsFactory {
             createAddPaymentInfoEvent(),
             createAddToCartEvent(),
             createAddToWishlistEvent(),
+            createAdRevenueEvent(),
             createClickAdvEvent(),
             createCompleteRegistrationEvent(),
             createCompleteStreamEvent(),
@@ -41,6 +42,8 @@ class DefaultEventsFactory: EventsFactory {
             createLoginEvent(),
             createOpenedFromPushNotificationEvent(),
             createOrderEvent(),
+            createOrderItemAddedEvent(),
+            createOrderItemRemoveEvent(),
             createOrderCancelEvent(),
             createOrderReturnRequestEvent(),
             createOrderReturnRequestCancelEvent(),
@@ -373,6 +376,16 @@ class DefaultEventsFactory: EventsFactory {
             .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
     }
     
+    func createAdRevenueEvent() -> Event { 
+       return AdRevenueEvent("next year")
+            .addPredefinedParameter(.SOURCE, string: AffiseAdSource.ADMOB.type)
+            .addPredefinedParameter(.REVENUE, float: 42)
+            .addPredefinedParameter(.CURRENCY, string: "USD")
+            .addPredefinedParameter(.NETWORK, string: "test")
+            .addPredefinedParameter(.UNIT, string: "m")
+            .addPredefinedParameter(.PLACEMENT, string: "end")
+    }
+
     func createClickAdvEvent() -> Event {
         return ClickAdvEvent("header")
             .addPredefinedParameter(PredefinedString.PARAM_01, string: "PARAM_01")
@@ -574,6 +587,20 @@ class DefaultEventsFactory: EventsFactory {
 
     func createOrderEvent() -> Event {
         return OrderEvent("apple")
+            .addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            .addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            .addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
+    }
+
+    func createOrderItemAddedEvent() -> Event {
+        return OrderItemAddedEvent("apple")
+            .addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
+            .addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
+            .addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)
+    }
+
+    func createOrderItemRemoveEvent() -> Event {
+        return OrderItemRemoveEvent("apple")
             .addPredefinedParameter(PredefinedString.ORDER_ID, string: "23123")
             .addPredefinedParameter(PredefinedFloat.PRICE, float: 2.19)
             .addPredefinedParameter(PredefinedLong.QUANTITY, long: 1)

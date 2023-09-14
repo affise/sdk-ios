@@ -1,16 +1,12 @@
 @objc
-public enum PredefinedFloat: Int, Predefined, CaseIterable {
+public enum PredefinedFloat: Int {
     case PREFERRED_PRICE_RANGE
     case PRICE
     case REVENUE
     case LAT
     case LONG
 
-    public func value() -> String { 
-        return "\(PredefinedConstants.PREFIX)\(enumValue())"
-    }
-
-    func enumValue() -> String {
+    var enumValue: String {
         switch self {
         case .PREFERRED_PRICE_RANGE: return "preferred_price_range"
         case .PRICE: return "price"
@@ -19,7 +15,14 @@ public enum PredefinedFloat: Int, Predefined, CaseIterable {
         case .LONG: return "long"
         }
     }
+}
 
+extension PredefinedFloat: Predefined, CaseIterable {
+    
+    public func value() -> String {
+        return "\(PredefinedConstants.PREFIX)\(enumValue)"
+    }
+    
     public static func from(_ name: String) -> PredefinedFloat? {
         return allCases.first { name == $0.value() }
     }

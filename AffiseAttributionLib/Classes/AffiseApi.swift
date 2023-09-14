@@ -20,6 +20,7 @@ internal protocol AffiseApi {
     var preferencesUseCase: PreferencesUseCase {get}
     var postBackModelFactory: PostBackModelFactory {get}
     var moduleManager: AffiseModuleManager {get}
+    var storeInternalEventUseCase:StoreInternalEventUseCase {get}
 
     func isInitialized() -> Bool
 }

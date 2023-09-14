@@ -1,4 +1,4 @@
-public enum SubscriptionSubType: String, CaseIterable {
+public enum SubscriptionSubType: String {
     case AFFISE_SUB_INITIAL_SUBSCRIPTION = "affise_sub_initial_subscription"
     case AFFISE_SUB_INITIAL_TRIAL = "affise_sub_initial_trial"
     case AFFISE_SUB_INITIAL_OFFER = "affise_sub_initial_offer"
@@ -19,7 +19,9 @@ public enum SubscriptionSubType: String, CaseIterable {
     case AFFISE_SUB_CONVERTED_OFFER_FROM_RETRY = "affise_sub_converted_offer_from_retry"
     case AFFISE_SUB_RENEWED_SUBSCRIPTION_FROM_RETRY = "affise_sub_renewed_subscription_from_retry"
     case AFFISE_SUB_UNSUBSCRIPTION = "affise_sub_unsubscription"
-    
+}
+
+extension SubscriptionSubType: CaseIterable {
     public var typeName: String {
         return self.rawValue
     }

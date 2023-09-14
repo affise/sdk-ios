@@ -1,5 +1,5 @@
 @objc
-public enum PredefinedLong: Int, Predefined, CaseIterable {
+public enum PredefinedLong: Int {
     case AMOUNT
     case DATE_A
     case DATE_B
@@ -23,12 +23,8 @@ public enum PredefinedLong: Int, Predefined, CaseIterable {
     case USER_SCORE
     case EVENT_START
     case EVENT_END
-    
-    public func value() -> String { 
-        return "\(PredefinedConstants.PREFIX)\(enumValue())"
-    }
 
-    func enumValue() -> String {
+    var enumValue: String {
         switch self {
         case .AMOUNT: return "amount"
         case .DATE_A: return "date_a"
@@ -55,7 +51,14 @@ public enum PredefinedLong: Int, Predefined, CaseIterable {
         case .EVENT_END: return "event_end"
         }
     }
+}
 
+extension PredefinedLong: Predefined, CaseIterable {
+    
+    public func value() -> String {
+        return "\(PredefinedConstants.PREFIX)\(enumValue)"
+    }
+    
     public static func from(_ name: String) -> PredefinedLong? {
         return allCases.first { name == $0.value() }
     }

@@ -77,6 +77,9 @@ internal class PredefinedEvent {
         case .ORDER_CANCEL: return OrderCancelEvent(userData, timeStampMillis: timeStamp)
         case .ORDER_RETURN_REQUEST: return OrderReturnRequestEvent(userData, timeStampMillis: timeStamp)
         case .ORDER_RETURN_REQUEST_CANCEL: return OrderReturnRequestCancelEvent(userData, timeStampMillis: timeStamp)
+        case .AD_REVENUE: return AdRevenueEvent(userData, timeStampMillis: timeStamp)
+        case .ORDER_ITEM_ADDED: return OrderItemAddedEvent(userData, timeStampMillis: timeStamp)
+        case .ORDER_ITEM_REMOVE: return OrderItemRemoveEvent(userData, timeStampMillis: timeStamp)
         }
     }
 }

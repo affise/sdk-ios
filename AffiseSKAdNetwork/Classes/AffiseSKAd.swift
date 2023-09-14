@@ -25,7 +25,7 @@ public class AffiseSKAd: NSObject {
 
     @objc(updatePostbackWithFineValue:coarseValue:completionHandler:)
     public static func updatePostbackConversionValue(fineValue: Int, coarseValue: CoarseValue?, _ completionHandler: @escaping (String) -> Void) {
-        var coarse = coarseValue?.value ?? CoarseConversionValue.medium.value
+        let coarse = coarseValue?.value ?? CoarseConversionValue.medium.value
  
         if #available(iOS 16.1, *) {
             AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, coarseValue: coarse, completionHandler: { error in

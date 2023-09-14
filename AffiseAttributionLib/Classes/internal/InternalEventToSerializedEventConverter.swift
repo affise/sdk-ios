@@ -22,7 +22,7 @@ internal class InternalEventToSerializedEventConverter : Converter {
             //Add Id
             (InternalParameters.AFFISE_INTERNAL_EVENT_ID, id),
             //Add name
-            (InternalParameters.AFFISE_INTERNAL_EVENT_NAME, from.getName()),
+            (InternalParameters.AFFISE_INTERNAL_EVENT_NAME, from.getName()?.eventName),
             //Add timestamp
             (InternalParameters.AFFISE_INTERNAL_EVENT_TIMESTAMP, from.getTimestamp()),
             //Add event data
