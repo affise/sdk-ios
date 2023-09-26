@@ -1,12 +1,3 @@
-//
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
  * Base Affise log event
  *

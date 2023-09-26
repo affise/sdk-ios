@@ -1,14 +1,5 @@
-//
-//  InstallFinishTimeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.INSTALL_FINISH_TIME]
+ * Provider for parameter [ProviderType.INSTALL_FINISH_TIME]
  *
  * @property useCase to retrieve first open time from
  */
@@ -30,7 +21,7 @@ class InstallFinishTimeProvider : LongPropertyProvider {
         12.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.INSTALL_FINISH_TIME
+    public override func getKey() -> ProviderType? {
+        ProviderType.INSTALL_FINISH_TIME
     }
 }

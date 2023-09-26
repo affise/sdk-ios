@@ -1,14 +1,5 @@
-//
-//  TimezoneDeviceProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.TIMEZONE_DEV]
+ * Provider for parameter [ProviderType.TIMEZONE_DEV]
  */
 class TimezoneDeviceProvider : StringPropertyProvider {
     /**
@@ -25,7 +16,7 @@ class TimezoneDeviceProvider : StringPropertyProvider {
         51.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.TIMEZONE_DEV
+    public override func getKey() -> ProviderType? {
+        ProviderType.TIMEZONE_DEV
     }
 }

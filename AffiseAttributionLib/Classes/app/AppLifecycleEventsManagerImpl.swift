@@ -5,9 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-import UIKit
-
 /**
  * Manager for handling events occurring on the activity
  *

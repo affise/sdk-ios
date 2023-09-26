@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 internal class FirstAppOpenUseCase {
     
@@ -50,7 +48,7 @@ internal class FirstAppOpenUseCase {
         preferences.set(firstOpenDate, forKey: FIRST_OPENED_DATE_KEY)
         preferences.set(affDevId, forKey: AFF_DEVICE_ID)
         preferences.set(affAltDevId, forKey: AFF_ALT_DEVICE_ID)
-        preferences.set(randomUserId, forKey: Parameters.RANDOM_USER_ID)
+        preferences.set(randomUserId, forKey: ProviderType.RANDOM_USER_ID.provider)
         preferences.set(true, forKey: FIRST_OPENED)
     }
 
@@ -100,5 +98,5 @@ internal class FirstAppOpenUseCase {
      * Get random user id
      * @return random user id
      */
-    func getRandomUserId() -> String  {return preferences.string(forKey: Parameters.RANDOM_USER_ID) ?? ""}
+    func getRandomUserId() -> String  {return preferences.string(forKey: ProviderType.RANDOM_USER_ID.provider) ?? ""}
 }

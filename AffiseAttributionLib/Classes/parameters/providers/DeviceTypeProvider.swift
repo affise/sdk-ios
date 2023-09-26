@@ -1,15 +1,5 @@
-//
-//  DeviceTypeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-import UIKit
-
 /**
- * Provider for parameter [Parameters.DEVICE_TYPE]
+ * Provider for parameter [ProviderType.DEVICE_TYPE]
  */
 class DeviceTypeProvider: StringPropertyProvider {
     
@@ -37,7 +27,7 @@ class DeviceTypeProvider: StringPropertyProvider {
         42.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.DEVICE_TYPE
+    public override func getKey() -> ProviderType? {
+        ProviderType.DEVICE_TYPE
     }
 }

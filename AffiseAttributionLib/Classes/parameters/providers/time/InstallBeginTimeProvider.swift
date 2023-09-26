@@ -1,14 +1,5 @@
-//
-//  InstallBeginTimeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.INSTALL_BEGIN_TIME]
+ * Provider for parameter [ProviderType.INSTALL_BEGIN_TIME]
  *
  * @property useCase to retrieve first open time from
  */
@@ -30,7 +21,7 @@ class InstallBeginTimeProvider : LongPropertyProvider {
         11.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.INSTALL_BEGIN_TIME
+    public override func getKey() -> ProviderType? {
+        ProviderType.INSTALL_BEGIN_TIME
     }
 }

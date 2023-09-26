@@ -5,11 +5,9 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-import UIKit
 
 /**
- * Provider for parameter [Parameters.HARDWARE_NAME]
+ * Provider for parameter [ProviderType.HARDWARE_NAME]
  */
 class HardwareNameProvider: StringPropertyProvider {
     
@@ -21,7 +19,7 @@ class HardwareNameProvider: StringPropertyProvider {
         23.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.HARDWARE_NAME
+    public override func getKey() -> ProviderType? {
+        ProviderType.HARDWARE_NAME
     }
 }

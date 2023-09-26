@@ -1,15 +1,6 @@
-//
-//  FirstOpenHourProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.FIRST_OPEN_HOUR]
+ * Provider for parameter [ProviderType.FIRST_OPEN_HOUR]
  *
  * @property useCase to retrieve first open time from
  */
@@ -31,7 +22,7 @@ class FirstOpenHourProvider: LongPropertyProvider {
         9.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.FIRST_OPEN_HOUR
+    public override func getKey() -> ProviderType? {
+        ProviderType.FIRST_OPEN_HOUR
     }
 }

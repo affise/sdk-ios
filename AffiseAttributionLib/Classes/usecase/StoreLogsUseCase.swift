@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 /**
  * UseCase store logs interface

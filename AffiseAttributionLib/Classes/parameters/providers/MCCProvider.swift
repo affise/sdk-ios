@@ -1,16 +1,8 @@
-//
-//  MCCProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
 import CoreTelephony
 
 
 /**
- * Provider for parameter [Parameters.MCCODE]
+ * Provider for parameter [ProviderType.MCCODE]
  */
 class MCCProvider: StringPropertyProvider {
     
@@ -27,7 +19,7 @@ class MCCProvider: StringPropertyProvider {
         36.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.MCCODE
+    public override func getKey() -> ProviderType? {
+        ProviderType.MCCODE
     }
 }

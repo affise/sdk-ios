@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 /**
  * Model describes preferences which persist until application restart

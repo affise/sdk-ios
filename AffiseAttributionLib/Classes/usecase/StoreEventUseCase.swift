@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 /**
  * Event use case for store events

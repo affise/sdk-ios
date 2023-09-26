@@ -1,15 +1,6 @@
-//
-//  AffPartParamNameTokenPropertyProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for property [Parameters.AFFISE_PART_PARAM_NAME_TOKEN]
+ * Provider for property [ProviderType.AFFISE_PART_PARAM_NAME_TOKEN]
  *
  * @property initProperties to retrieve part param name token
  */
@@ -28,7 +19,7 @@ class AffPartParamNameTokenPropertyProvider: StringPropertyProvider {
         60.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_PART_PARAM_NAME_TOKEN
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_PART_PARAM_NAME_TOKEN
     }
 }

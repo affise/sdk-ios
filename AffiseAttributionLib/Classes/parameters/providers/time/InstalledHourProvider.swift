@@ -1,14 +1,5 @@
-//
-//  InstalledHourProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.INSTALLED_HOUR]
+ * Provider for parameter [ProviderType.INSTALLED_HOUR]
  *
  * @property useCase to retrieve first open time from
  */
@@ -30,7 +21,7 @@ class InstalledHourProvider : LongPropertyProvider {
         8.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.INSTALLED_HOUR
+    public override func getKey() -> ProviderType? {
+        ProviderType.INSTALLED_HOUR
     }
 }

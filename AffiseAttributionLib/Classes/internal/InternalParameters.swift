@@ -1,5 +1,3 @@
-import Foundation
-
 struct InternalParameters {
     static let AFFISE_INTERNAL_EVENT_ID = "internal_event_id"
     static let AFFISE_INTERNAL_EVENT_NAME = "internal_event_name"

@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 struct SessionData {
     let lifetimeSessionCount: TimeInterval
@@ -37,8 +35,8 @@ class SessionManagerImpl {
     }
 
     private lazy var sessionData: SessionData = SessionData(
-        lifetimeSessionCount: self.preferences.value(forKey: Parameters.LIFETIME_SESSION_COUNT) as? TimeInterval ?? 0,
-        affiseSessionCount: Int64(self.preferences.integer(forKey: Parameters.AFFISE_SESSION_COUNT))
+        lifetimeSessionCount: self.preferences.value(forKey: ProviderType.LIFETIME_SESSION_COUNT.provider) as? TimeInterval ?? 0,
+        affiseSessionCount: Int64(self.preferences.integer(forKey: ProviderType.AFFISE_SESSION_COUNT.provider))
     )
 
     /**
@@ -171,7 +169,7 @@ class SessionManagerImpl {
 
         sessionData = sessionData.copy(lifetimeSessionCount: lifetimeSessionTime)
 
-        preferences.set(lifetimeSessionTime, forKey: Parameters.LIFETIME_SESSION_COUNT)
+        preferences.set(lifetimeSessionTime, forKey: ProviderType.LIFETIME_SESSION_COUNT.provider)
     }
 
     /**
@@ -189,7 +187,7 @@ class SessionManagerImpl {
 
         sessionData = sessionData.copy(affiseSessionCount: count)
 
-        preferences.set(count, forKey: Parameters.AFFISE_SESSION_COUNT)
+        preferences.set(count, forKey: ProviderType.AFFISE_SESSION_COUNT.provider)
     }
 
     /**

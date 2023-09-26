@@ -1,15 +1,5 @@
-//
-//  RandomUserIdProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
- * Provider for parameter [Parameters.RANDOM_USER_ID]
+ * Provider for parameter [ProviderType.RANDOM_USER_ID]
  *
  * @property useCase to retrieve random user id
  */
@@ -28,7 +18,7 @@ public class RandomUserIdProvider: StringPropertyProvider {
         49.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.RANDOM_USER_ID
+    public override func getKey() -> ProviderType? {
+        ProviderType.RANDOM_USER_ID
     }
 }

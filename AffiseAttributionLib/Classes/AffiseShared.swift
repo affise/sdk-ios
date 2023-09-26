@@ -1,7 +1,4 @@
-import Foundation
-import UIKit
 import WebKit
-
 
 
 @available(*, deprecated, message: "will be removed")

@@ -1,16 +1,8 @@
-//
-//  ConnectionTypeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
 import SystemConfiguration
 
 
 /**
- * Provides connection type [Parameters.CONNECTION_TYPE]
+ * Provides connection type [ProviderType.CONNECTION_TYPE]
  */
 class ConnectionTypeProvider: StringPropertyProvider {
     
@@ -44,7 +36,7 @@ class ConnectionTypeProvider: StringPropertyProvider {
         21.1
     }
 
-    public override func getKey() -> String? {
-        Parameters.CONNECTION_TYPE
+    public override func getKey() -> ProviderType? {
+        ProviderType.CONNECTION_TYPE
     }
 }

@@ -1,14 +1,5 @@
-//
-//  ProxyIpAddressProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.PROXY_IP_ADDRESS]
+ * Provider for parameter [ProviderType.PROXY_IP_ADDRESS]
  */
 class ProxyIpAddressProvider: StringPropertyProvider {
     
@@ -32,7 +23,7 @@ class ProxyIpAddressProvider: StringPropertyProvider {
         24.1
     }
 
-    public override func getKey() -> String? {
-        Parameters.PROXY_IP_ADDRESS
+    public override func getKey() -> ProviderType? {
+        ProviderType.PROXY_IP_ADDRESS
     }
 }

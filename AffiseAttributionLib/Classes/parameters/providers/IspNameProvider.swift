@@ -1,16 +1,8 @@
-//
-//  IspNameProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
 import CoreTelephony
 
 
 /**
- * Provider for parameter [Parameters.ISP]
+ * Provider for parameter [ProviderType.ISP]
  */
 class IspNameProvider: StringPropertyProvider {
     
@@ -27,7 +19,7 @@ class IspNameProvider: StringPropertyProvider {
         37.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.ISP
+    public override func getKey() -> ProviderType? {
+        ProviderType.ISP
     }
 }

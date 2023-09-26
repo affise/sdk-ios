@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 /**
  * Use case to set properties on library init

@@ -1,9 +1,3 @@
-import Foundation
-
-
-import Foundation
-
-
 /**
  * When session start.
  *
@@ -20,8 +14,8 @@ internal class SessionStartInternalEvent : InternalEvent {
     ) {
         super.init()
         
-        addPropertyRaw(Parameters.AFFISE_SESSION_COUNT, affiseSessionCount)
-        addPropertyRaw(Parameters.LIFETIME_SESSION_COUNT, lifetimeSessionCount)
+        addPropertyRaw(ProviderType.AFFISE_SESSION_COUNT.provider, affiseSessionCount)
+        addPropertyRaw(ProviderType.LIFETIME_SESSION_COUNT.provider, lifetimeSessionCount)
     }
 
     /**

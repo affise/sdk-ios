@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 public enum AffiseError: Error {
     case cloud(url: String, error: Error, attempts: Int, retry: Bool)

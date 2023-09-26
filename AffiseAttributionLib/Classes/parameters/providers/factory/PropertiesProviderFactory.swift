@@ -5,9 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-import UIKit
-
 
 /**
  * Factory for [PostBackModelFactory]
@@ -79,7 +76,7 @@ internal class PropertiesProviderFactory {
                 CreatedTimeProvider(),
                 CreatedTimeMilliProvider(),
                 CreatedTimeHourProvider(),
-                CustomLongProvider(Parameters.LAST_TIME_SESSION, order: 54.0) {
+                CustomLongProvider(ProviderType.LAST_TIME_SESSION, order: 54.0) {
                     return lastSessionTimeProvider.provide()
                 },
                 ConnectionTypeProvider(),
@@ -89,7 +86,7 @@ internal class PropertiesProviderFactory {
                 DeviceManufacturerProvider(),
                 ProxyIpAddressProvider(),
                 DeeplinkClickPropertyProvider(deeplinkClickRepository: deeplinkClickRepository),
-                EmptyStringProvider(Parameters.DEVICE_ATLAS_ID, order: 26.0),
+                EmptyStringProvider(ProviderType.DEVICE_ATLAS_ID, order: 26.0),
                 AffiseDeviceIdProvider(useCase: firstAppOpenUseCase),
                 AffiseAltDeviceIdProvider(useCase: firstAppOpenUseCase),
                 AdidProvider(advertisingIdManager: advertisingIdManager),
@@ -113,8 +110,8 @@ internal class PropertiesProviderFactory {
                 RandomUserIdProvider(useCase: firstAppOpenUseCase),
                 IsProductionPropertyProvider(storage: initPropertiesStorage),
                 TimezoneDeviceProvider(),
-                EmptyStringProvider(Parameters.AFFISE_EVENT_TOKEN, order: 52.0),
-                EmptyStringProvider(Parameters.AFFISE_EVENT_NAME, order: 53.0),
+                EmptyStringProvider(ProviderType.AFFISE_EVENT_TOKEN, order: 52.0),
+                EmptyStringProvider(ProviderType.AFFISE_EVENT_NAME, order: 53.0),
                 lastSessionTimeProvider,
                 TimeSessionProvider(sessionManager: sessionManager),
                 AffiseSessionCountProvider(sessionManager: sessionManager),
@@ -124,7 +121,7 @@ internal class PropertiesProviderFactory {
                 AffPartParamNameTokenPropertyProvider(storage: initPropertiesStorage),
                 AffAppTokenPropertyProvider(storage: initPropertiesStorage, stringToSHA256Converter: stringToSha256Converter),
                 // AffSDKSecretIdProvider(storage: initPropertiesStorage),
-                EmptyStringProvider(Parameters.LABEL, order: 62.0),
+                EmptyStringProvider(ProviderType.LABEL, order: 62.0),
                 PushTokenProvider(preferences: preferences)
             ]
         )

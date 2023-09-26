@@ -1,14 +1,6 @@
-//
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Type of touch
  */
-
 @objc
 public enum TouchType: Int{
     case CLICK

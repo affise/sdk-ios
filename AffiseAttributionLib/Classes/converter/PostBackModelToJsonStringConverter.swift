@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 /**
  * Converter List<PostBackModel> to String
@@ -38,7 +36,7 @@ class PostBackModelToJsonStringConverter : Converter {
         var dict: [(String, Any?)] = []
 
         for item in obj.parameters {
-            dict.append((item.0, item.1))
+            dict.append((item.0.provider, item.1))
         }
 
         //Events

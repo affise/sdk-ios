@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import UIKit
-
 
 /**
  * Interface describing callback that is going to be triggered when deeplink is received by application

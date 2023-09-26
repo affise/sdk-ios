@@ -5,11 +5,9 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 struct PostBackModel {
-    let parameters: [(String, Any?)]
+    let parameters: [(ProviderType, Any?)]
     
     let events: Array<SerializedEvent>?
     let logs: Array<SerializedLog>?

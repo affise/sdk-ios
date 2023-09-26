@@ -1,15 +1,6 @@
-//
-//  InstallFirstEventProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.INSTALL_FIRST_EVENT]
+ * Provider for parameter [ProviderType.INSTALL_FIRST_EVENT]
  *
  * @property useCase to retrieve is first open from
  */
@@ -28,7 +19,7 @@ class InstallFirstEventProvider : BooleanPropertyProvider {
         10.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.INSTALL_FIRST_EVENT
+    public override func getKey() -> ProviderType? {
+        ProviderType.INSTALL_FIRST_EVENT
     }
 }

@@ -1,6 +1,3 @@
-import Foundation
-
-
 /**
  * Event Unsubscription use [data] of event and [userData]
  */
@@ -10,10 +7,10 @@ public class UnsubscriptionEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_UNSUBSCRIPTION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_UNSUBSCRIPTION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_UNSUBSCRIPTION }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_UNSUBSCRIPTION.typeName }
 }

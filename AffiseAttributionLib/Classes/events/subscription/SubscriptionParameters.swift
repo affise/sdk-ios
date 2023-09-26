@@ -1,10 +1,3 @@
-//
-//  SubscriptionParameters.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
 /**
  * Subscription events parameters - key of parameter
  */

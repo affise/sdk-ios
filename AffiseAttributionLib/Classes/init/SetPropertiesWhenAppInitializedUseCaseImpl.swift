@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 /**
  * UseCase when user provided properties is stored to storage on app init.

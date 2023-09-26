@@ -1,14 +1,5 @@
-//
-//  CreatedTimeHourProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.CREATED_TIME_HOUR]
+ * Provider for parameter [ProviderType.CREATED_TIME_HOUR]
  */
 class CreatedTimeHourProvider : LongPropertyProvider {
     override func provide() -> Int64? {
@@ -19,7 +10,7 @@ class CreatedTimeHourProvider : LongPropertyProvider {
         20.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.CREATED_TIME_HOUR
+    public override func getKey() -> ProviderType? {
+        ProviderType.CREATED_TIME_HOUR
     }
 }

@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 /**
  * Serialized log contains [id] identification, [type] and log [data]

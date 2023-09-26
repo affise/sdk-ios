@@ -1,14 +1,5 @@
-//
-//  CountryProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.COUNTRY]
+ * Provider for parameter [ProviderType.COUNTRY]
  */
 class CountryProvider: StringPropertyProvider {
     
@@ -20,7 +11,7 @@ class CountryProvider: StringPropertyProvider {
         39.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.COUNTRY
+    public override func getKey() -> ProviderType? {
+        ProviderType.COUNTRY
     }
 }

@@ -1,15 +1,6 @@
-//
-//  AppVersionRawProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * App version number (Android) [Parameters.APP_VERSION_RAW]
+ * App version number (Android) [ProviderType.APP_VERSION_RAW]
  */
 class AppVersionRawProvider: StringPropertyProvider {
     private let bundle: Bundle
@@ -26,7 +17,7 @@ class AppVersionRawProvider: StringPropertyProvider {
         4.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.APP_VERSION_RAW
+    public override func getKey() -> ProviderType? {
+        ProviderType.APP_VERSION_RAW
     }
 }

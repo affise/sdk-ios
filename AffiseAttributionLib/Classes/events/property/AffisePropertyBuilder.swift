@@ -1,5 +1,3 @@
-import Foundation
-
 internal class AffisePropertyBuilder {
     private let PREFIX = "affise_event"
     private var data: [(String, Any?)] = []

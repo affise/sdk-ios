@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 /**
  * Storage for isDeeplink model to determine if app was opened by deeplink

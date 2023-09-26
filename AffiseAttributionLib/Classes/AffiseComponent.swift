@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-import UIKit
 
 internal class AffiseComponent: AffiseApi {
     

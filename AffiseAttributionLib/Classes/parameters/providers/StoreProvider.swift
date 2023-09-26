@@ -1,15 +1,5 @@
-//
-//  StoreProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
- *  Provider for parameter [Parameters.STORE]
+ *  Provider for parameter [ProviderType.STORE]
  */
 class StoreProvider: StringPropertyProvider {
     
@@ -21,7 +11,7 @@ class StoreProvider: StringPropertyProvider {
         5.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.STORE
+    public override func getKey() -> ProviderType? {
+        ProviderType.STORE
     }
 }

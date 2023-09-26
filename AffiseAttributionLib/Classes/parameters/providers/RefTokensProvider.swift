@@ -1,14 +1,5 @@
-//
-//  RefTokensProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.REFTOKENS]
+ * Provider for parameter [ProviderType.REFTOKENS]
  *
  * @property preferences to retrieve reftoken
  */
@@ -39,8 +30,8 @@ class RefTokensProvider: StringPropertyProvider {
         33.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.REFTOKENS
+    public override func getKey() -> ProviderType? {
+        ProviderType.REFTOKENS
     }
 }
 

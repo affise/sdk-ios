@@ -1,14 +1,5 @@
-//
-//  CpuTypeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.CPU_TYPE]
+ * Provider for parameter [ProviderType.CPU_TYPE]
  */
 class CpuTypeProvider: StringPropertyProvider {
 
@@ -41,7 +32,7 @@ class CpuTypeProvider: StringPropertyProvider {
         22.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.CPU_TYPE
+    public override func getKey() -> ProviderType? {
+        ProviderType.CPU_TYPE
     }
 }

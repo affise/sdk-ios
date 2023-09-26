@@ -20,6 +20,7 @@ public enum AffiseApiMethod: Int {
     case CRASH_APPLICATION
     case GET_RANDOM_USER_ID
     case GET_RANDOM_DEVICE_ID
+    case GET_PROVIDERS
     case GET_REFERRER_CALLBACK
     case GET_REFERRER_VALUE_CALLBACK
     case GET_STATUS_CALLBACK
@@ -50,6 +51,7 @@ public enum AffiseApiMethod: Int {
         case .CRASH_APPLICATION: return "crash_application"
         case .GET_RANDOM_USER_ID: return "get_random_user_id"
         case .GET_RANDOM_DEVICE_ID: return "get_random_device_id"
+        case .GET_PROVIDERS: return "get_providers"
         case .GET_REFERRER_CALLBACK: return "get_referrer_callback"
         case .GET_REFERRER_VALUE_CALLBACK: return "get_referrer_value_callback"
         case .GET_STATUS_CALLBACK: return "get_status_callback"

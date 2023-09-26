@@ -11,10 +11,8 @@ internal class AffiseEventFactory {
 
         var event: Event? = nil
         
-        if let subType = subType {
+        if SubscriptionEvent.isSubscriptionEvent(eventData) {
             event = SubscriptionEvent.create(name, subName: subType, map: eventData)
-        } else if PredefinedEventSecondary.isSecondaryConstructor(name, map: eventData) {
-            event = PredefinedEventSecondary.create(name, map: eventData)
         } else {
             event = PredefinedEvent.create(name, map: eventData)
         }

@@ -2,9 +2,9 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib`  | [`1.6.11`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`  | [`1.6.11`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
-| `AffiseModule/Status` | [`1.6.11`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `AffiseAttributionLib`  | [`1.6.12`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`  | [`1.6.12`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| `AffiseModule/Status` | [`1.6.12`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -14,7 +14,8 @@
     - [Initialize](#initialize)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
-  - [Device identifiers collection](#device-identifiers-collection)
+  - [ProviderType identifiers collection](#providertype-identifiers-collection)
+    - [Attribution](#attribution)
   - [Events tracking](#events-tracking)
   - [Custom events tracking](#custom-events-tracking)
   - [Predefined event parameters](#predefined-event-parameters)
@@ -30,6 +31,7 @@
   - [Deeplinks](#deeplinks)
   - [Get random user Id](#get-random-user-id)
   - [Get random device Id](#get-random-device-id)
+  - [Get providers](#get-providers)
   - [Get module state](#get-module-state)
   - [WebView tracking](#webview-tracking)
     - [Initialize WebView](#initialize-webview)
@@ -39,7 +41,7 @@
   - [SDK to SDK integrations](#sdk-to-sdk-integrations)
     - [AdMob](#admob)
     - [AppLovin MAX](#applovin-max)
-    - [Helium by Chartboost](#helium-by-chartboost )
+    - [Helium by Chartboost](#helium-by-chartboost)
     - [ironSource](#ironsource)
   - [Custom](#custom)
     - [ConversionId](#conversionid)
@@ -59,18 +61,18 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.11'
+pod 'AffiseAttributionLib', '~> 1.6.12'
 # Affise module
-pod 'AffiseModule/Status', '~> 1.6.11'
+pod 'AffiseModule/Status', '~> 1.6.12'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.11'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.12'
 # Affise module
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.11'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.12'
 ```
 
 ### Initialize
@@ -140,14 +142,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.11'
+pod 'AffiseSKAdNetwork', '~> 1.6.12'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.11'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.12'
 ```
 
 For `swift` use:
@@ -219,19 +221,30 @@ Example: [`example/ios/Runner/Info.plist`](example/ios/Runner/Info.plist)
 
 # Features
 
-## Device identifiers collection
+## ProviderType identifiers collection
 
-To match users with events and data library is sending, these identifiers are collected:
+To match users with events and data library is sending, these `ProviderType` identifiers are collected:
+
+### Attribution
 
 - `AFFISE_APP_ID`
 - `AFFISE_PKG_APP_NAME`
+- `AFF_APP_NAME_DASHBOARD`
 - `APP_VERSION`
 - `APP_VERSION_RAW`
 - `STORE`
+- `TRACKER_TOKEN`
+- `TRACKER_NAME`
+- `FIRST_TRACKER_TOKEN`
+- `FIRST_TRACKER_NAME`
+- `LAST_TRACKER_TOKEN`
+- `LAST_TRACKER_NAME`
+- `OUTDATED_TRACKER_TOKEN`
 - `INSTALLED_TIME`
 - `FIRST_OPEN_TIME`
 - `INSTALLED_HOUR`
 - `FIRST_OPEN_HOUR`
+- `INSTALL_FIRST_EVENT`
 - `INSTALL_BEGIN_TIME`
 - `INSTALL_FINISH_TIME`
 - `REFERRAL_TIME`
@@ -260,6 +273,9 @@ To match users with events and data library is sending, these identifiers are co
 - `GAID_ADID_MD5`
 - `OAID`
 - `OAID_MD5`
+- `ALTSTR_ADID`
+- `FIREOS_ADID`
+- `COLOROS_ADID`
 - `REFTOKEN`
 - `REFTOKENS`
 - `REFERRER`
@@ -274,12 +290,14 @@ To match users with events and data library is sending, these identifiers are co
 - `DEVICE_TYPE`
 - `OS_NAME`
 - `PLATFORM`
+- `SDK_PLATFORM`
 - `API_LEVEL_OS`
 - `AFFISE_SDK_VERSION`
 - `OS_VERSION`
 - `RANDOM_USER_ID`
 - `AFFISE_SDK_POS`
 - `TIMEZONE_DEV`
+- `AFFISE_EVENT_TOKEN`
 - `LAST_TIME_SESSION`
 - `TIME_SESSION`
 - `AFFISE_SESSION_COUNT`
@@ -287,6 +305,7 @@ To match users with events and data library is sending, these identifiers are co
 - `AFFISE_DEEPLINK`
 - `AFFISE_PART_PARAM_NAME`
 - `AFFISE_PART_PARAM_NAME_TOKEN`
+- `AFFISE_EVENT_NAME`
 - `AFFISE_APP_TOKEN`
 - `LABEL`
 - `AFFISE_SDK_SECRET_ID`
@@ -294,8 +313,6 @@ To match users with events and data library is sending, these identifiers are co
 - `AFFISE_APP_OPENED`
 - `PUSHTOKEN`
 - `IS_EMULATOR`
-- `EVENTS`
-- `AFFISE_EVENTS_COUNT`
 
 ## Events tracking
 
@@ -312,13 +329,7 @@ class Presenter {
         AddToCartEvent("groceries")
             .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
             .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
-            .send() // Send event like this
-            
-        // OR Send event like this
-        // Affise.sendEvent(AddToCartEvent("groceries")
-        //     .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
-        //     .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
-        // )
+            .send() // Send event
     }
 }
 ```
@@ -334,10 +345,8 @@ For `objective-c` use:
     Event *event = [[AddToCartEvent alloc] init:@"groceries"];
     [event addPredefinedParameter:PredefinedStringADREV_AD_TYPE value:@"best before 2029"];
     [event addPredefinedParameter:PredefinedObjectCONTENT object:items];
-    // Send event like this
+    // Send event
     [event send];
-    // Or send event like this
-    // [Affise sendEvent:event];
 }
 ```
 
@@ -445,15 +454,10 @@ class Presenter {
             ("items", "cookies, potato, milk")
         ]
 
-        let addToCart = AddToCartEvent("groceries")
+        AddToCartEvent("groceries")
             .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
             .addPredefinedParameter(PredefinedObject.CONTENT, object: items)
-            
-        // Send event like this
-        addToCart.send()
-        
-        // Or send event like this
-        // Affise.sendEvent(addToCart)
+            .send() // Send event  
     }
 }
 ```
@@ -469,10 +473,8 @@ For `objective-c` use:
     Event *event = [[AddToCartEvent alloc] init:@"groceries"];
     [event addPredefinedParameter:PredefinedStringADREV_AD_TYPE value:@"best before 2029"];
     [event addPredefinedParameter:PredefinedObjectCONTENT object:items];
-    // Send event like this
+    // Send event
     [event send];
-    // Or send event like this
-    // [Affise sendEvent:event];
 }
 ```
 
@@ -689,6 +691,16 @@ Affise.getRandomUserId()
 Affise.getRandomDeviceId()
 ```
 
+## Get providers
+
+Returns providers map with [ProviderType](#providertype-identifiers-collection) as key
+
+```swift
+let providers: [ProviderType: Any?] = Affise.getProviders()
+let key = ProviderType.AFFISE_APP_TOKEN
+let value = providers[key]
+```
+
 ## Get module state
 
 ```swift
@@ -730,18 +742,14 @@ After WebView is initialized you send events from JavaScript enviroment
 
 ```javascript
 let data = { card: 4138, type: 'phone' };
-let event = new AddPaymentInfoEvent({
-  userData: 'taxi',
-};
 
-event
+new AddPaymentInfoEvent({
+  userData: 'taxi',
+})
     .addPredefinedParameter(PredefinedString.PURCHASE_CURRENCY, 'USD')
     .addPredefinedParameter(PredefinedFloat.PRICE, 2.19)
     .addPredefinedParameter(PredefinedObject.CONTENT, data);
-    .send() // Send event like this
-
-// Or Send event like this
-// Affise.sendEvent(event);
+    .send() // Send event
 ```
 
 Just like with native SDK, javascript enviroment also provides default events that can be passed from WebView:
@@ -846,10 +854,7 @@ event
     .addPredefinedParameter(PredefinedLong.QUANTITY, 1)
     .addPredefinedParameter(PredefinedObject.CONTENT, { card: 4138, type: 'phone' })
     .addPredefinedParameter(PredefinedListObject.CONTENT_LIST, [{content:'songs'}, {content:'videos'}])
-    .send(); // Send event like this
-
-// Or Send event like this
-// Affise.sendEvent(event);
+    .send(); // Send event
 ```
 
 ### Custom events JS

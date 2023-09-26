@@ -1,5 +1,3 @@
-import Foundation
-
 /**
  * Internal Events repository interface
  */

@@ -1,15 +1,6 @@
-//
-//  LastSessionTimeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.LAST_SESSION_TIME]
+ * Provider for parameter [ProviderType.LAST_SESSION_TIME]
  *
  * @property sessionManager to retrieve last interaction time
  */
@@ -32,7 +23,7 @@ class LastSessionTimeProvider : LongPropertyProvider {
         21.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.LAST_SESSION_TIME
+    public override func getKey() -> ProviderType? {
+        ProviderType.LAST_SESSION_TIME
     }
 }

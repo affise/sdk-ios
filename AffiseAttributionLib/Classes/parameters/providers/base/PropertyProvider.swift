@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 /**
  * Base property provider
@@ -16,7 +14,7 @@ public class PropertyProvider<T> : Provider {
         0
     }
     
-    public func getKey() -> String? {
+    public func getKey() -> ProviderType? {
         nil
     }
     
@@ -77,7 +75,7 @@ public class StringWithParamPropertyProvider : Provider {
         0
     }
     
-    public func getKey() -> String? {
+    public func getKey() -> ProviderType? {
         nil
     }
     

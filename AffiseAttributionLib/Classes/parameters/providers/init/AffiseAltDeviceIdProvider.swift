@@ -1,15 +1,6 @@
-//
-//  AffiseAltDeviceIdProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.AFFISE_ALT_DEVICE_ID]
+ * Provider for parameter [ProviderType.AFFISE_ALT_DEVICE_ID]
  *
  * @property useCase to retrieve affise alt device id
  */
@@ -28,7 +19,7 @@ class AffiseAltDeviceIdProvider: StringPropertyProvider {
         28.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_ALT_DEVICE_ID
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_ALT_DEVICE_ID
     }
 }

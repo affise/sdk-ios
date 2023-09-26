@@ -1,15 +1,6 @@
-//
-//  AffSDKSecretIdProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.AFFISE_SDK_SECRET_ID]
+ * Provider for parameter [ProviderType.AFFISE_SDK_SECRET_ID]
  *
  * @property initProperties to retrieve id from
  */
@@ -28,7 +19,7 @@ class AffSDKSecretIdProvider: StringPropertyProvider {
         63.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_SDK_SECRET_ID
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_SDK_SECRET_ID
     }
 }

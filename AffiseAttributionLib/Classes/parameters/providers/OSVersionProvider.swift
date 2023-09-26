@@ -1,15 +1,5 @@
-//
-//  OSVersionProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-import UIKit
-
 /**
- * Provider for parameter [Parameters.OS_VERSION]
+ * Provider for parameter [ProviderType.OS_VERSION]
  */
 class OSVersionProvider: StringPropertyProvider {
     
@@ -21,7 +11,7 @@ class OSVersionProvider: StringPropertyProvider {
         48.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.OS_VERSION
+    public override func getKey() -> ProviderType? {
+        ProviderType.OS_VERSION
     }
 }

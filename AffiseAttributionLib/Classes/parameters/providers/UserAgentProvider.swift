@@ -1,15 +1,5 @@
-//
-//  UserAgentProvider.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-import WebKit
-
 /**
- * Provider for parameter [Parameters.USER_AGENT]
+ * Provider for parameter [ProviderType.USER_AGENT]
  */
 internal class UserAgentProvider : StringPropertyProvider {
     private let useCase: WebViewUseCase
@@ -26,7 +16,7 @@ internal class UserAgentProvider : StringPropertyProvider {
         35.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.USER_AGENT
+    public override func getKey() -> ProviderType? {
+        ProviderType.USER_AGENT
     }
 }

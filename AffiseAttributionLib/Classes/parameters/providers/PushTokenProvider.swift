@@ -1,14 +1,5 @@
-//
-//  PushTokenProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.PUSHTOKEN]
+ * Provider for parameter [ProviderType.PUSHTOKEN]
  *
  * @property preferences to retrieve reftoken
  */
@@ -30,7 +21,7 @@ class PushTokenProvider: StringPropertyProvider {
         65.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.PUSHTOKEN
+    public override func getKey() -> ProviderType? {
+        ProviderType.PUSHTOKEN
     }
 }

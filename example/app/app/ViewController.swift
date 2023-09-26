@@ -35,7 +35,7 @@ class ViewController: UIViewController, WKScriptMessageHandler {
         let buttons = listEvents.enumerated().map { (index, event) -> UIButton in
             let button = UIButton(type: .system)
             if let subscribeEvent = event as? BaseSubscriptionEvent {
-                button.setTitle(subscribeEvent.subtype()?.typeName, for: .normal)
+                button.setTitle(subscribeEvent.subtype(), for: .normal)
             } else {
                 button.setTitle(event.getName(), for: .normal)
             }

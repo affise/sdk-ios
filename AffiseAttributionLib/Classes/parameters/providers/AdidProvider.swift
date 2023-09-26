@@ -1,14 +1,5 @@
-//
-//  AdidProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.ADID]
+ * Provider for parameter [ProviderType.ADID]
  */
 internal class AdidProvider : StringPropertyProvider {
     private let advertisingIdManager: AdvertisingIdManager
@@ -25,7 +16,7 @@ internal class AdidProvider : StringPropertyProvider {
         29.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.ADID
+    public override func getKey() -> ProviderType? {
+        ProviderType.ADID
     }
 }

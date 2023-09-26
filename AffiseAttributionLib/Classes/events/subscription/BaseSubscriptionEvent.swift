@@ -1,19 +1,9 @@
-//
-//  BaseSubscriptionEvent.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
  * Base Event of Subscription use [data] of event and [userData]
  */
 @objc
 public class BaseSubscriptionEvent : NativeEvent {
-    private var data: [(String, Any?)] = []
+    internal var data: [(String, Any?)] = []
     
     public convenience init(
         data: [(String, Any?)],
@@ -35,16 +25,16 @@ public class BaseSubscriptionEvent : NativeEvent {
      * Type of subscription
      *
      */
-    func type() -> SubscriptionEventName? { return nil }
+    func type() -> String? { return nil }
     
     /**
      * Subtype of subscription
      */
-    public func subtype() -> SubscriptionSubType? { return nil }
+    public func subtype() -> String? { return nil }
      
     override func serializeBuilder() -> AffisePropertyBuilder {
         let result = super.serializeBuilder()
-            .addRaw(SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue, value: subtype()?.typeName ?? "")
+            .addRaw(SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue, value: subtype() ?? "")
         
         for item in data {
             result.addRaw(item.0, value: item.1)
@@ -58,5 +48,5 @@ public class BaseSubscriptionEvent : NativeEvent {
      *
      * @return name
      */
-    public override func getName() -> String { return type()?.eventName ?? "" }
+    public override func getName() -> String { return type() ?? "" }
 }

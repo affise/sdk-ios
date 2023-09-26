@@ -1,15 +1,6 @@
-//
-//  AffisePackageAppNameProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.AFFISE_PKG_APP_NAME]
+ * Provider for parameter [ProviderType.AFFISE_PKG_APP_NAME]
  *
  */
 public class AffisePackageAppNameProvider: StringPropertyProvider {
@@ -27,7 +18,7 @@ public class AffisePackageAppNameProvider: StringPropertyProvider {
         2.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_PKG_APP_NAME
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_PKG_APP_NAME
     }
 }

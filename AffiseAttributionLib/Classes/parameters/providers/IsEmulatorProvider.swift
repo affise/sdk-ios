@@ -1,5 +1,5 @@
 /**
- * Provider for parameter [Parameters.IS_EMULATOR]
+ * Provider for parameter [ProviderType.IS_EMULATOR]
  */
 class IsEmulatorProvider: BooleanPropertyProvider {
     
@@ -17,7 +17,7 @@ class IsEmulatorProvider: BooleanPropertyProvider {
         67.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.IS_EMULATOR
+    public override func getKey() -> ProviderType? {
+        ProviderType.IS_EMULATOR
     }
 }

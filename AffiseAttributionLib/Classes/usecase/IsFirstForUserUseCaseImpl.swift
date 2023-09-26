@@ -1,5 +1,3 @@
-import Foundation
-
 /**
  * Event use case for IsFirstForUser
  *

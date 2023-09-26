@@ -1,11 +1,9 @@
 //
 //  AffiseApi.swift
-//  app
 //
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 internal protocol AffiseApi {
     var firstAppOpenUseCase: FirstAppOpenUseCase {get}

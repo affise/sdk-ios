@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 class EventsParams {
     static let EVENTS_DIR_NAME = "affise-events"

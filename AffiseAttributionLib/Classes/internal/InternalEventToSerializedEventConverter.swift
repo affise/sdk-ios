@@ -1,5 +1,3 @@
-import Foundation
-
 /**
  * Converter InternalEvent to SerializedEvent
  */

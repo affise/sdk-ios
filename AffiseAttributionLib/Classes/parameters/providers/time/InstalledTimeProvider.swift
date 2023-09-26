@@ -1,14 +1,5 @@
-//
-//  InstalledTimeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.INSTALLED_TIME]
+ * Provider for parameter [ProviderType.INSTALLED_TIME]
  *
  * @property useCase to retrieve first open time from
  */
@@ -30,7 +21,7 @@ class InstalledTimeProvider : LongPropertyProvider {
         6.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.INSTALLED_TIME
+    public override func getKey() -> ProviderType? {
+        ProviderType.INSTALLED_TIME
     }
 }

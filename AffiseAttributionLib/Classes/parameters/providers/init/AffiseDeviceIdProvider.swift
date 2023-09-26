@@ -1,15 +1,6 @@
-//
-//  AffiseDeviceIdProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.AFFISE_DEVICE_ID]
+ * Provider for parameter [ProviderType.AFFISE_DEVICE_ID]
  *
  * @property useCase to retrieve affise device id
  */
@@ -28,7 +19,7 @@ public class AffiseDeviceIdProvider: StringPropertyProvider {
         27.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_DEVICE_ID
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_DEVICE_ID
     }
 }

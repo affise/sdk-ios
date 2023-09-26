@@ -1,15 +1,6 @@
-//
-//  IsProductionPropertyProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for property [Parameters.AFFISE_SDK_POS]
+ * Provider for property [ProviderType.AFFISE_SDK_POS]
  *
  * @property initProperties to retrieve is production
  */
@@ -35,7 +26,7 @@ class IsProductionPropertyProvider: StringPropertyProvider {
         50.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_SDK_POS
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_SDK_POS
     }
 }

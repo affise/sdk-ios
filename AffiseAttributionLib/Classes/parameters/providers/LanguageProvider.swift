@@ -1,14 +1,5 @@
-//
-//  LanguageProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.LANGUAGE]
+ * Provider for parameter [ProviderType.LANGUAGE]
  */
 class LanguageProvider: StringPropertyProvider {
     
@@ -20,7 +11,7 @@ class LanguageProvider: StringPropertyProvider {
         40.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.LANGUAGE
+    public override func getKey() -> ProviderType? {
+        ProviderType.LANGUAGE
     }
 }

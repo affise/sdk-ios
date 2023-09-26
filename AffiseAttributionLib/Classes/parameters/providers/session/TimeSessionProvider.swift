@@ -1,15 +1,6 @@
-//
-//  TimeSessionProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.TIME_SESSION]
+ * Provider for parameter [ProviderType.TIME_SESSION]
  *
  * @property sessionManager to retrieve session time
  */
@@ -28,7 +19,7 @@ class TimeSessionProvider : LongPropertyProvider {
         55.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.TIME_SESSION
+    public override func getKey() -> ProviderType? {
+        ProviderType.TIME_SESSION
     }
 }

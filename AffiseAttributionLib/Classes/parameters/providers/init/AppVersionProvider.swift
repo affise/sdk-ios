@@ -1,15 +1,6 @@
-//
-//  AppVersionProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.APP_VERSION]
+ * Provider for parameter [ProviderType.APP_VERSION]
  */
 class AppVersionProvider: StringPropertyProvider {
     private let bundle: Bundle
@@ -26,7 +17,7 @@ class AppVersionProvider: StringPropertyProvider {
         3.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.APP_VERSION
+    public override func getKey() -> ProviderType? {
+        ProviderType.APP_VERSION
     }
 }

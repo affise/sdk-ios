@@ -1,14 +1,5 @@
-//
-//  DeeplinkClickPropertyProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for property [Parameters.DEEPLINK_CLICK]
+ * Provider for property [ProviderType.DEEPLINK_CLICK]
  *
  * @property deeplinkClickRepository to retrieve network is deeplink
  */
@@ -27,7 +18,7 @@ class DeeplinkClickPropertyProvider : BooleanPropertyProvider {
         25.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.DEEPLINK_CLICK
+    public override func getKey() -> ProviderType? {
+        ProviderType.DEEPLINK_CLICK
     }
 }

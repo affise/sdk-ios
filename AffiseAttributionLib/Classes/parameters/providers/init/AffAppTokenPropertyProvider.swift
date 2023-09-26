@@ -1,15 +1,6 @@
-//
-//  AffAppTokenPropertyProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for property [Parameters.AFFISE_APP_TOKEN]
+ * Provider for property [ProviderType.AFFISE_APP_TOKEN]
  *
  * @property initProperties to retrieve appToken
  */
@@ -34,7 +25,7 @@ public class AffAppTokenPropertyProvider: StringWithParamPropertyProvider {
         61.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_APP_TOKEN
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_APP_TOKEN
     }
 }

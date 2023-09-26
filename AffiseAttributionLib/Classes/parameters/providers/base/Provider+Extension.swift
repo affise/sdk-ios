@@ -3,8 +3,8 @@ public extension Array where Element == Provider {
         self.first(where: { $0 is T }) as? T
     }
 
-    func mapProviders() -> [(String, Any?)] {
-        var result: [(String, Any?)] = []
+    func mapProviders() -> [(ProviderType, Any?)] {
+        var result: [(ProviderType, Any?)] = []
         let createdTimeProvider: CreatedTimeProvider? = self.getProvider()
         let createdTime  = createdTimeProvider?.provideWithDefault() ?? 0
         let sortedArray = self.filter{ $0.getKey() != nil}.sorted(by: {$0.getOrder() < $1.getOrder()})

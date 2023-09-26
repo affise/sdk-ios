@@ -1,5 +1,3 @@
-import Foundation
-
 class StoreInternalEventUseCaseImpl {
     private let repository: InternalEventsRepository
 

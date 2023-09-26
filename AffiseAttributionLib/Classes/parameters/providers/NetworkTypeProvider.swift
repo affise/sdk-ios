@@ -1,17 +1,9 @@
-//
-//  NetworkTypeProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
 import CoreTelephony
 import SystemConfiguration
 
 
 /**
- * Provider for parameter [Parameters.NETWORK_TYPE]
+ * Provider for parameter [ProviderType.NETWORK_TYPE]
  */
 class NetworkTypeProvider: StringPropertyProvider {
     
@@ -91,7 +83,7 @@ class NetworkTypeProvider: StringPropertyProvider {
         23.1
     }
 
-    public override func getKey() -> String? {
-        Parameters.NETWORK_TYPE
+    public override func getKey() -> ProviderType? {
+        ProviderType.NETWORK_TYPE
     }
 }

@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import UIKit
 
 /**
  * Implementation for [DeeplinkManager]

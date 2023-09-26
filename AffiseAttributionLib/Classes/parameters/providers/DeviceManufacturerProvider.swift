@@ -1,15 +1,6 @@
-//
-//  DeviceManufacturerProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- *  Provider for parameter [Parameters.DEVICE_MANUFACTURER]
+ *  Provider for parameter [ProviderType.DEVICE_MANUFACTURER]
  */
 class DeviceManufacturerProvider: StringPropertyProvider {
     
@@ -21,7 +12,7 @@ class DeviceManufacturerProvider: StringPropertyProvider {
         24.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.DEVICE_MANUFACTURER
+    public override func getKey() -> ProviderType? {
+        ProviderType.DEVICE_MANUFACTURER
     }
 }

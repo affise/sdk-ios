@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 internal protocol LogsStorage {
     func hasLogs(key: String, subKeys: Array<String>) -> Bool

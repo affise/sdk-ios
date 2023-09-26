@@ -1,15 +1,5 @@
-//
-//  PlatformNameProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
- *  Provider for parameter [Parameters.SDK_PLATFORM]
+ *  Provider for parameter [ProviderType.SDK_PLATFORM]
  */
 class SdkPlatformNameProvider: StringPropertyProvider {
     
@@ -21,7 +11,7 @@ class SdkPlatformNameProvider: StringPropertyProvider {
         45.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.SDK_PLATFORM
+    public override func getKey() -> ProviderType? {
+        ProviderType.SDK_PLATFORM
     }
 }

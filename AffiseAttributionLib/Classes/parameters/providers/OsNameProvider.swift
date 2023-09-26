@@ -1,15 +1,5 @@
-//
-//  OsNameProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-import UIKit
-
 /**
- * Provider for parameter [Parameters.OS_NAME]
+ * Provider for parameter [ProviderType.OS_NAME]
  */
 class OsNameProvider: StringPropertyProvider {
     
@@ -21,7 +11,7 @@ class OsNameProvider: StringPropertyProvider {
         43.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.OS_NAME
+    public override func getKey() -> ProviderType? {
+        ProviderType.OS_NAME
     }
 }

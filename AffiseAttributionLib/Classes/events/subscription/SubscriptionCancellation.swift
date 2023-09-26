@@ -1,13 +1,3 @@
-//
-//  FailedTrialEvent.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
  * Event FailedTrial use [data] of event and [userData]
  */
@@ -17,12 +7,12 @@ public class FailedTrialEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_FAILED_TRIAL }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_FAILED_TRIAL.typeName }
 }
 
 /**
@@ -34,12 +24,12 @@ public class FailedOfferiseEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_FAILED_OFFERISE }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_FAILED_OFFERISE.typeName }
 }
 
 /**
@@ -51,12 +41,12 @@ public class FailedSubscriptionEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_FAILED_SUBSCRIPTION }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_FAILED_SUBSCRIPTION.typeName }
 }
 
 /**
@@ -68,12 +58,12 @@ public class FailedTrialFromRetryEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_FAILED_TRIAL_FROM_RETRY }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_FAILED_TRIAL_FROM_RETRY.typeName }
 }
 
 /**
@@ -85,12 +75,12 @@ public class FailedOfferFromRetryEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_FAILED_OFFER_FROM_RETRY }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_FAILED_OFFER_FROM_RETRY.typeName }
 }
 
 /**
@@ -102,10 +92,10 @@ public class FailedSubscriptionFromRetryEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_CANCELLATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_FAILED_SUBSCRIPTION_FROM_RETRY }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_FAILED_SUBSCRIPTION_FROM_RETRY.typeName }
 }

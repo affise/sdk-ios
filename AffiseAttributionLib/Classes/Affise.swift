@@ -1,6 +1,5 @@
 //
 //  Affise.swift
-//  app
 //
 //  Created by Sergey Korney
 //
@@ -9,8 +8,6 @@
 /**
  * Entry point to initialise Affise Attribution library
  */
-import Foundation
-import UIKit
 import WebKit
 
 
@@ -174,6 +171,21 @@ public final class Affise: NSObject {
     public static func getRandomDeviceId() -> String? {
         let provider: AffiseDeviceIdProvider? = api?.postBackModelFactory.getProvider()
         return provider?.provide()
+    }
+
+    /**
+     * Returns providers map
+     */
+    @objc(getProviders)
+    public static func getProvidersObjc() -> NSDictionary {
+        return getProviders() as NSDictionary 
+    }
+    
+    /**
+     * Returns providers map
+     */
+    public static func getProviders() -> [ProviderType:Any?] {
+        return api?.postBackModelFactory.getProvidersMap().toMap() ?? [:]
     }
 
     /**

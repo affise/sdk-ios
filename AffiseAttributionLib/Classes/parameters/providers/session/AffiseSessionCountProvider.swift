@@ -1,14 +1,5 @@
-//
-//  AffiseSessionCountProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.AFFISE_SESSION_COUNT]
+ * Provider for parameter [ProviderType.AFFISE_SESSION_COUNT]
  *
  * @property sessionManager to retrieve session count
  */
@@ -31,7 +22,7 @@ internal class AffiseSessionCountProvider : LongPropertyProvider {
         56.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_SESSION_COUNT
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_SESSION_COUNT
     }
 }

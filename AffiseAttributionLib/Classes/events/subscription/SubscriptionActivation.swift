@@ -1,13 +1,3 @@
-//
-//  InitialSubscriptionEvent.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
  * Event InitialSubscription use [data] of event and [userData]
  */
@@ -17,12 +7,12 @@ public class InitialSubscriptionEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_ACTIVATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_ACTIVATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_INITIAL_SUBSCRIPTION }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_INITIAL_SUBSCRIPTION.typeName }
 }
 
 /**
@@ -34,12 +24,12 @@ public class InitialTrialEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_ACTIVATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_ACTIVATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_INITIAL_TRIAL }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_INITIAL_TRIAL.typeName }
 }
 
 /**
@@ -51,10 +41,10 @@ public class InitialOfferEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_ACTIVATION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_ACTIVATION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_INITIAL_OFFER }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_INITIAL_OFFER.typeName }
 }

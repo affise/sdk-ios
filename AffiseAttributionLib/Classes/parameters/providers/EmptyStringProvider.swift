@@ -1,11 +1,9 @@
-import Foundation
-
 internal class EmptyStringProvider: StringPropertyProvider {
     
     private var order: Float = 0.0
-    private var key: String? = nil
+    private var key: ProviderType? = nil
 
-    init(_ key: String?, order: Float) {
+    init(_ key: ProviderType?, order: Float) {
         self.key = key
         self.order = order
     }
@@ -18,7 +16,7 @@ internal class EmptyStringProvider: StringPropertyProvider {
         order
     }
 
-    public override func getKey() -> String? {
+    public override func getKey() -> ProviderType? {
         key
     }
 }

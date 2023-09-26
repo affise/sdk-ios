@@ -33,18 +33,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-//        AffiseSKAd.register { er in
+//        AffiseSKAd.register { error in
 //            // Handle error
 //        }
 //        
-//        AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { er in
-//          DeviceUseCaseImpl
+//        AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { error in
+//            // handle error
 //        }
         
      
 //        Affise.getStatus(AffiseModules.Status) { result in
 //            // handle status
-//        })
+//        }
         return true
     }
     

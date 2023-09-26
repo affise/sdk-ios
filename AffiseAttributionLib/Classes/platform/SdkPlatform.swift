@@ -1,6 +1,3 @@
-import Foundation
-
-
 internal class SdkPlatform {
     static let IOS = "ios"
     static private let REACT = "react"

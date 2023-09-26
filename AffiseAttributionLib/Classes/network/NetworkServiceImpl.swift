@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 
 public class NetworkServiceImpl {
     private let urlSession: URLSession

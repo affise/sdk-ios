@@ -1,13 +1,3 @@
-//
-//  ConvertedTrialEvent.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
  * Event ConvertedTrial use [data] of event and [userData]
  */
@@ -17,12 +7,12 @@ public class ConvertedTrialEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_FIRST_CONVERSION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_FIRST_CONVERSION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_CONVERTED_TRIAL }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_CONVERTED_TRIAL.typeName }
 }
 
 /**
@@ -34,10 +24,10 @@ public class ConvertedOfferEvent : BaseSubscriptionEvent {
     /**
      * Type of event
      */
-    override func type() -> SubscriptionEventName { return SubscriptionEventName.AFFISE_SUBSCRIPTION_FIRST_CONVERSION }
+    override func type() -> String { return SubscriptionEventName.AFFISE_SUBSCRIPTION_FIRST_CONVERSION.eventName }
 
     /**
      * Subtype of event
      */
-    public override func subtype() -> SubscriptionSubType { return SubscriptionSubType.AFFISE_SUB_CONVERTED_OFFER }
+    public override func subtype() -> String { return SubscriptionSubType.AFFISE_SUB_CONVERTED_OFFER.typeName }
 }

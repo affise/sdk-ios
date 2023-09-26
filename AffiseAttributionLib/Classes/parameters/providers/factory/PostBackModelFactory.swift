@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 internal class PostBackModelFactory {
     
@@ -28,7 +26,7 @@ internal class PostBackModelFactory {
         internalEvents: Array<SerializedEvent> = []
     ) -> PostBackModel {
         return PostBackModel(
-            parameters: mapProviders(),
+            parameters: getProvidersMap(),
             events: events,
             logs: logs,
             metrics: metrics,
@@ -36,7 +34,7 @@ internal class PostBackModelFactory {
         )
     }
 
-    private func mapProviders() -> [(String, Any?)] {
+    func getProvidersMap() -> [(ProviderType, Any?)] {
         return providers.mapProviders()
     }
 

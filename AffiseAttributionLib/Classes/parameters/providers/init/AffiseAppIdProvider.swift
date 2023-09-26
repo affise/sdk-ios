@@ -1,15 +1,6 @@
-//
-//  AffiseAppIdProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 
 /**
- * Provider for parameter [Parameters.AFFISE_APP_ID]
+ * Provider for parameter [ProviderType.AFFISE_APP_ID]
  *
  * @property storage to retrieve affise app id
  */
@@ -28,7 +19,7 @@ public class AffiseAppIdProvider: StringPropertyProvider {
         1.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.AFFISE_APP_ID
+    public override func getKey() -> ProviderType? {
+        ProviderType.AFFISE_APP_ID
     }
 }

@@ -5,7 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
 import WebKit
 
 internal class WebBridgeManager: NSObject, WKScriptMessageHandler {

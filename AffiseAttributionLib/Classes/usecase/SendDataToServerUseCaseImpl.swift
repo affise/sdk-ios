@@ -5,8 +5,6 @@
 //  Created by Sergey Korney
 //
 
-import Foundation
-
 
 internal class SendDataToServerUseCaseImpl {
     

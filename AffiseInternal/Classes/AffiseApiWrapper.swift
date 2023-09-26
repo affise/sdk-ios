@@ -82,6 +82,7 @@ public class AffiseApiWrapper: NSObject {
         case .CRASH_APPLICATION: callCrashApplication(api, map: map, result: result)
         case .GET_RANDOM_USER_ID: callGetRandomUserId(api, map: map, result: result)
         case .GET_RANDOM_DEVICE_ID: callGetRandomDeviceId(api, map: map, result: result)
+        case .GET_PROVIDERS: callGetProviders(api, map: map, result: result)
         case .GET_REFERRER_CALLBACK: callGetReferrer(api, map: map, result: result)
         case .GET_REFERRER_VALUE_CALLBACK: callGetReferrerValue(api, map: map, result: result)
         case .GET_STATUS_CALLBACK: callGetStatusCallback(api, map: map, result: result)
@@ -229,6 +230,13 @@ public class AffiseApiWrapper: NSObject {
 
     private func callGetRandomDeviceId(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
         result?.success(Affise.getRandomDeviceId())
+    }
+
+    private func callGetProviders(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+        let data: [String:Any?] = Affise.getProviders().reduce(into: [:]) { dict, provider in
+            dict[provider.key.provider]=provider.value
+        }
+        result?.success(data)
     }
 
     private func callGetReferrer(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {

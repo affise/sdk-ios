@@ -1,15 +1,5 @@
-//
-//  UuidProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
-
 /**
- * Provider for parameter [Parameters.UUID]
+ * Provider for parameter [ProviderType.UUID]
  */
 class UuidProvider: StringPropertyProvider {
 
@@ -21,7 +11,7 @@ class UuidProvider: StringPropertyProvider {
         64.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.UUID
+    public override func getKey() -> ProviderType? {
+        ProviderType.UUID
     }
 }

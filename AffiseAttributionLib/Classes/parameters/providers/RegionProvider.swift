@@ -1,14 +1,5 @@
-//
-//  RegionProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
-
 /**
- * Provider for parameter [Parameters.REGION]
+ * Provider for parameter [ProviderType.REGION]
  */
 class RegionProvider: StringPropertyProvider {
     
@@ -20,7 +11,7 @@ class RegionProvider: StringPropertyProvider {
         38.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.REGION
+    public override func getKey() -> ProviderType? {
+        ProviderType.REGION
     }
 }

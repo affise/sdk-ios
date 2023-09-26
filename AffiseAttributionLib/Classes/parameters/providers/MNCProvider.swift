@@ -1,16 +1,8 @@
-//
-//  MNCProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-import Foundation
 import CoreTelephony
 
 
 /**
- * Provider for parameter [Parameters.MNCODE]
+ * Provider for parameter [ProviderType.MNCODE]
  */
 class MNCProvider: StringPropertyProvider {
     
@@ -27,7 +19,7 @@ class MNCProvider: StringPropertyProvider {
         37.0
     }
 
-    public override func getKey() -> String? {
-        Parameters.MNCODE
+    public override func getKey() -> ProviderType? {
+        ProviderType.MNCODE
     }
 }

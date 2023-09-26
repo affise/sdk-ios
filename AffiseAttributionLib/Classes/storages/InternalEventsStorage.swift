@@ -1,5 +1,3 @@
-import Foundation
-
 internal protocol InternalEventsStorage {
     func hasEvents(key: String) -> Bool
     func saveEvent(key: String, event: SerializedEvent)

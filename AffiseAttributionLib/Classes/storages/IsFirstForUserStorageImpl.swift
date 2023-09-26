@@ -1,6 +1,3 @@
-import Foundation
-
-
 class IsFirstForUserStorageImpl {
     
     private let logsManager: LogsManager

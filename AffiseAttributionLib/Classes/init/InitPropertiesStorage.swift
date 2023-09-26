@@ -1,11 +1,8 @@
 //
 //  InitPropertiesStorage.swift
-//  app
 //
 //  Created by Sergey Korney
 //
-
-import Foundation
 
 /**
  * Storage for initiative sdk property
