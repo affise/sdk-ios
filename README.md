@@ -2,9 +2,9 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib`  | [`1.6.12`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`  | [`1.6.12`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
-| `AffiseModule/Status` | [`1.6.12`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `AffiseAttributionLib`  | [`1.6.13`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`  | [`1.6.13`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork) |
+| `AffiseModule/Status` | [`1.6.13`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -45,7 +45,9 @@
     - [ironSource](#ironsource)
   - [Custom](#custom)
     - [ConversionId](#conversionid)
-
+- [Debug](#debug)
+  - [Validate credentials](#validate-credentials)
+  
 # Description
 
 Affise SDK is a software you can use to collect app usage statistics, device identifiers, deeplink usage, track install
@@ -61,18 +63,18 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.12'
+pod 'AffiseAttributionLib', '~> 1.6.13'
 # Affise module
-pod 'AffiseModule/Status', '~> 1.6.12'
+pod 'AffiseModule/Status', '~> 1.6.13'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.12'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.13'
 # Affise module
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.12'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.13'
 ```
 
 ### Initialize
@@ -142,14 +144,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.12'
+pod 'AffiseSKAdNetwork', '~> 1.6.13'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.12'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.13'
 ```
 
 For `swift` use:
@@ -631,17 +633,15 @@ Affise.addPushToken(token)
 
 To integrate deeplink support You can find out how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
-Register deeplink callback right after Affise.init(..)
+Register deeplink callback right after `Affise.init(..)`
 
 ```swift
 Affise.init(..)
 Affise.registerDeeplinkCallback { url in
     let component = URLComponents(string: url.absoluteString)!
-    let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
-    if let screen = screen, screen == "special_offer" {
-        // open special offer activity
-    } else {
-        // open another activity
+    let screen = component.queryItems?.first(where: {$0.name == "<your_uri_key>"})?.value
+    if let screen = screen, screen == "<your_uri_key_value>" {
+        // handle value
     }
 }
 ```
@@ -994,4 +994,36 @@ let event = AddToCartEvent()
 let conversionId = event.customPredefined().conversionId("ORDER_ID", "PRODUCT_ID")
 
 Affise.sendEvent(event)
+```
+
+# Debug
+
+## Validate credentials
+
+> **Warning**
+> Debug methods WON'T work on Production
+
+Validate your credentials by receiving `ValidationStatus` values:
+
+- `VALID` - your credentials are valid
+- `INVALID_APP_ID` - your app id is not valid 
+- `INVALID_SECRET_KEY` - your SDK secretKey is not valid
+- `PACKAGE_NAME_NOT_FOUND` - your application package name not found
+- `NOT_WORKING_ON_PRODUCTION` - you using debug method on production
+- `NETWORK_ERROR` - network or server not available (for example `Airoplane mode` is active)
+
+```swift
+Affise.load(app: application, 
+    initProperties: AffiseInitProperties(
+        affiseAppId: "Your appId",
+        secretKey: "Your secretKey",
+        isProduction: false, //Set Production to false to enable debug methods 
+    ), 
+    launchOptions: launchOptions
+)
+
+
+Affise.Debug.validate { status in
+    // Handle validation status
+}
 ```

@@ -21,12 +21,17 @@ public enum AffiseApiMethod: Int {
     case GET_RANDOM_USER_ID
     case GET_RANDOM_DEVICE_ID
     case GET_PROVIDERS
+    // callback
     case GET_REFERRER_CALLBACK
     case GET_REFERRER_VALUE_CALLBACK
     case GET_STATUS_CALLBACK
     case REGISTER_DEEPLINK_CALLBACK
     case SKAD_REGISTER_ERROR_CALLBACK
-    case SKAD_POSTBACK_ERROR_CALLBACK 
+    case SKAD_POSTBACK_ERROR_CALLBACK
+    // debug
+    case DEBUG_VALIDATE_CALLBACK
+    case DEBUG_NETWORK_CALLBACK
+    // builder
     case AFFISE_BUILDER
 
     var value: String {
@@ -58,6 +63,8 @@ public enum AffiseApiMethod: Int {
         case .REGISTER_DEEPLINK_CALLBACK: return "register_deeplink_callback"
         case .SKAD_REGISTER_ERROR_CALLBACK: return "skad_register_error_callback"
         case .SKAD_POSTBACK_ERROR_CALLBACK: return "skad_postback_error_callback"
+        case .DEBUG_VALIDATE_CALLBACK: return "debug_validate_callback"
+        case .DEBUG_NETWORK_CALLBACK: return "debug_network_callback"
         case .AFFISE_BUILDER: return "affise_builder"
         }
     }

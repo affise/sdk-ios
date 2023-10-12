@@ -1,12 +1,12 @@
 import AffiseAttributionLib
 
 
-class ProvidersToJsonStringConverter: Converter {
+public class ProvidersToJsonStringConverter: Converter {
 
-    typealias T = [Provider]
-    typealias R = String
+    public typealias T = [Provider]
+    public typealias R = String
     
-    func convert(from: [Provider]) -> String {       
+    public func convert(from: [Provider]) -> String {
         let result = from.mapProviders().map {(key, value) in
             (key.provider, value)
         } 

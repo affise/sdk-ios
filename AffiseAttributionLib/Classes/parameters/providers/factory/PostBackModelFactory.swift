@@ -1,11 +1,3 @@
-//
-//  PostBackModelFactory.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 internal class PostBackModelFactory {
     
     private var providers: [Provider]
@@ -48,5 +40,13 @@ internal class PostBackModelFactory {
     
     func getProviders() -> [Provider] {
         return providers
+    }
+
+    func getProviders(_ types: [Provider.Type]) -> [Provider] {
+        return providers.getProviders(types)
+    }
+    
+    func getRequestProviders() -> [Provider] {
+        return providers.getRequestProviders()
     }
 }

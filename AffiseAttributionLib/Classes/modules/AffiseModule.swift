@@ -24,7 +24,7 @@ open class AffiseModule {
         return []
     }
 
-    open func status(_ onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void) {
+    open func status(_ onComplete: @escaping OnKeyValueCallback) {
         onComplete([AffiseKeyValue("state", "enabled")])
     }
     
@@ -34,5 +34,13 @@ open class AffiseModule {
     
     public func getProvider<T: Provider>() -> T? {
         baseProviders.getProvider()
+    }
+    
+    public func getProviders(_ types: [Provider.Type]) -> [Provider] {
+        return baseProviders.getProviders(types)
+    }
+    
+    public func getRequestProviders() -> [Provider] {
+        return baseProviders.getRequestProviders()
     }
 }

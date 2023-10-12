@@ -3,5 +3,5 @@ import AffiseAttributionLib
 
 protocol CheckStatusUseCase {
 
-    func send(_ onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void)
+    func send(_ onComplete: @escaping OnKeyValueCallback)
 }

@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
 import UIKit
 import AffiseAttributionLib
 import AffiseSKAdNetwork
@@ -17,34 +10,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Initialize https://github.com/affise/sdk-ios#initialize
         let properties = AffiseInitProperties(
             affiseAppId: "129",
-            secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2"
+            secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2",
+            isProduction: false //Set Production to false to enable debug methods 
         )
         Affise.load(app: application, initProperties: properties, launchOptions: launchOptions)
         
+        // Deeplinks https://github.com/affise/sdk-ios#deeplinks
         Affise.registerDeeplinkCallback { url in
             let component = URLComponents(string: url.absoluteString)!
             let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
             if let screen = screen, screen == "special_offer" {
-                // open special offer activity
-            } else {
-                // open another activity
+                // handle value
             }
         }
         
+        // StoreKit Ad Network https://github.com/affise/sdk-ios#storekit-ad-network
 //        AffiseSKAd.register { error in
-//            // Handle error
+//            // handle error
 //        }
-//        
+
+        // StoreKit Ad Network https://github.com/affise/sdk-ios#storekit-ad-network
 //        AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { error in
 //            // handle error
 //        }
-        
      
+        // Get module state https://github.com/affise/sdk-ios#get-module-state
 //        Affise.getStatus(AffiseModules.Status) { result in
 //            // handle status
 //        }
+        
+        // Debug: Validate credentials https://github.com/affise/sdk-ios#validate-credentials
+        Affise.Debug.validate { status in
+            debugPrint("Affise: validate = \(status)")
+        }
+        
+        // Debug: network request/response
+        Affise.Debug.network { (request, response) in
+            debugPrint("Affise: \(request)")
+            debugPrint("Affise: \(response)")
+        }
         return true
     }
     

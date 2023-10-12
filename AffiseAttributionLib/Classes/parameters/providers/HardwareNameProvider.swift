@@ -1,11 +1,3 @@
-//
-//  HardwareNameProvider.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Provider for parameter [ProviderType.HARDWARE_NAME]
  */

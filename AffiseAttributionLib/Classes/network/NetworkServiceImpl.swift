@@ -1,13 +1,6 @@
-//
-//  NetworkServiceImpl.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 public class NetworkServiceImpl {
     private let urlSession: URLSession
+    private var debugRequest: DebugOnNetworkCallback?
     
     init(urlSession: URLSession) {
         self.urlSession = urlSession;
@@ -15,17 +8,27 @@ public class NetworkServiceImpl {
 }
 
 extension NetworkServiceImpl: NetworkService {
-    public func executeRequest(httpsUrl: URL,
-                        method: NetworkServiceMethod,
-                        data: Data,
-                        timeout: TimeInterval,
-                        headers: Dictionary<String, String>) throws -> (Data?, HTTPURLResponse) {
+    
+    public func setDebug(_ debugRequest: @escaping DebugOnNetworkCallback) {
+        self.debugRequest = debugRequest
+    }
+
+    public func executeRequest(
+        httpsUrl: URL,
+        method: NetworkServiceMethod,
+        data: Data?,
+        timeout: TimeInterval,
+        headers: [String:String]
+    ) -> HttpResponse {
+        var responseCode: Int = 0
+        var responseMessage: String = ""
+        var responseBody: String? = nil
         
         var request = URLRequest.init(url: httpsUrl)
         request.httpMethod = method.rawValue
         request.httpShouldHandleCookies = false;
         request.httpBody = data
-        let contentLength = "\(data.count)"
+        let contentLength = "\(data?.count ?? 0)"
         request.addValue(contentLength, forHTTPHeaderField: "Content-Length")
         request.timeoutInterval = timeout
         
@@ -33,18 +36,14 @@ extension NetworkServiceImpl: NetworkService {
             request.addValue(value, forHTTPHeaderField: key)
         }
         request.addValue("must-revalidate, no-store, no-cache", forHTTPHeaderField: "Cache-Control")
-        
-        var result: Data?
-        var response: URLResponse?
-        var error: Error?
-        
+
         var complete: Bool = false
         
-        let task = urlSession.dataTask(with: request) { data, resp, err in
-            result = data
-            response = resp
-            error = err
-
+        let task = urlSession.dataTask(with: request) { responseData, response, error in
+            responseBody = responseData?.toString()
+            responseCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            responseMessage = error?.localizedDescription ?? ""
+            
             complete = true
         }
         task.resume()
@@ -52,11 +51,11 @@ extension NetworkServiceImpl: NetworkService {
         while !complete {
             Thread.sleep(forTimeInterval: 1)
         }
-        
-        if let error = error {
-            throw error
+
+        let httpResponse = HttpResponse(responseCode, responseMessage, responseBody)
+        if let debugRequest = debugRequest {
+            debugRequest(HttpRequest(httpsUrl, method, headers, data?.toString()), httpResponse)
         }
-        
-        return (result, response as! HTTPURLResponse)
+        return httpResponse
     }
 }

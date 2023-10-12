@@ -35,8 +35,8 @@ public class AffiseInitProperties: NSObject {
 
     @objc
     public convenience init(
-        affiseAppId: String?,
-        secretKey: String? = nil
+        affiseAppId: String,
+        secretKey: String
     ) {
         self.init(
             affiseAppId: affiseAppId,
@@ -48,21 +48,19 @@ public class AffiseInitProperties: NSObject {
         )
     }
 
-    // public init(affiseAppId: String?,
-    //             partParamName: String? = nil,
-    //             partParamNameToken: String? = nil,
-    //             appToken: String? = nil,
-    //             isProduction: Bool = true,
-    //             secretKey: String? = nil,
-    //             flags: [AffiseFlag]
-    // ) {
-        
-    //     self.affiseAppId = affiseAppId
-    //     self.partParamName = partParamName
-    //     self.partParamNameToken = partParamNameToken
-    //     self.appToken = appToken
-    //     self.isProduction = isProduction
-    //     self.secretKey = secretKey
-    //     self.flags = flags
-    // }
+    @objc
+    public convenience init(
+        affiseAppId: String,
+        secretKey: String,
+        isProduction: Bool
+    ) {
+        self.init(
+            affiseAppId: affiseAppId,
+            partParamName: nil,
+            partParamNameToken: nil,
+            appToken: nil,
+            isProduction: isProduction,
+            secretKey: secretKey
+        )
+    }
 }

@@ -4,7 +4,7 @@
 class SdkPlatformNameProvider: StringPropertyProvider {
     
     override func provide() -> String? {
-        return SdkPlatform.info
+        return InternalSdkPlatform.info
     }
     
     public override func getOrder() -> Float {

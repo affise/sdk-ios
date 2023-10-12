@@ -34,7 +34,7 @@ internal class AffiseModuleManager {
         }
     }
 
-    func status(_ module: AffiseModules, _ onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void) {
+    func status(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
         modules[module]?.status(onComplete)
     }
     

@@ -11,13 +11,13 @@ internal class CheckStatusUseCaseImpl {
     let logsManager: LogsManager
     let converter: ProvidersToJsonStringConverter
     let keyValueConverter: StringToKeyValueConverter
-    let networkService: NetworkService?
+    let networkService: NetworkService
     let providers: [Provider]
 
     init(
+        affiseModule: AffiseModule,
         logsManager: LogsManager,
-        networkService: NetworkService?,
-        providers: [Provider],
+        networkService: NetworkService,
         converter: ProvidersToJsonStringConverter,
         keyValueConverter: StringToKeyValueConverter
     ) {
@@ -25,49 +25,26 @@ internal class CheckStatusUseCaseImpl {
         self.converter = converter
         self.keyValueConverter = keyValueConverter
         self.networkService = networkService
-        self.providers = providers
+        self.providers = affiseModule.getRequestProviders()
     }
 
-    private func createRequest(url: String, data: [Provider]) throws -> String? {
-        guard let networkService = networkService else {
-            return nil
-        }
-        
-        let httpsUrl = Foundation.URL(string: url)!
-        
-        let jsonString = converter.convert(from: data)
-        let sendData = jsonString.data(using: .utf8)!
+    private func createRequest() -> HttpResponse {
+        guard let httpsUrl = URL.toURL() else { return HttpResponse(0, "", nil) }
         
         //Create request
-        let (data, response) = try networkService.executeRequest(
+        return networkService.executeRequest(
             httpsUrl: httpsUrl,
             method: .POST,
-            data: sendData,
+            data: converter.convert(from: providers).toData(),
             timeout: TIMEOUT_SEND,
-            headers: createHeaders()
+            headers: CloudConfig.headers
         )
-        
-        var result: String?
-        if let data = data {
-            result = String.init(data: data, encoding: .utf8)
-        }
-        
-        if (response.statusCode != 200) {
-            throw AffiseError.network(status: response.statusCode, message: result)
-        }
-        return result
-    }
-
-    private func createHeaders() -> Dictionary<String, String> {
-        return [
-            "Content-Type" : "application/json; charset=utf-8"
-        ]
     }
 }
 
 extension CheckStatusUseCaseImpl: CheckStatusUseCase {
 
-    func send(_ onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void) {
+    func send(_ onComplete: @escaping OnKeyValueCallback) {
         DispatchQueue.global(qos:.background).async { [weak self] in
             self?.sendWithRepeat(onComplete) {
                 Thread.sleep(forTimeInterval: CheckStatusUseCaseImpl.TIME_DELAY_SENDING)
@@ -75,7 +52,7 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
         }
     }
     
-    func sendWithRepeat( _ onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void, onFailedAttempt: () -> Void) {
+    func sendWithRepeat( _ onComplete: @escaping OnKeyValueCallback, onFailedAttempt: () -> Void) {
         //attempts to send
         var attempts = ATTEMPTS_TO_SEND
         
@@ -84,17 +61,18 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
 
         //While has attempts and not send
         while (attempts != 0 && !send) {
-            do {
-                let response = try createRequest(url: URL, data: providers)
-                onComplete(keyValueConverter.convert(from: response))
+            let response = createRequest()
+            if isHttpValid(response.code) {
+                onComplete(keyValueConverter.convert(from: response.body))
                 
                 //Send is ok
                 send = true
-            } catch {
+            } else {
                 attempts = attempts - 1
                 //Check attempts
                 if (attempts == 0) {
                     onComplete([])
+                    let error = AffiseError.network(status: response.code, message: response.body)
                     //Log error
                     logsManager.addSdkError(error: AffiseError.cloud(url: URL, error: error, attempts: ATTEMPTS_TO_SEND, retry: true))
                 } else {

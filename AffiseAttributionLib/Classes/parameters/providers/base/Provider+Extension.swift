@@ -18,6 +18,23 @@ public extension Array where Element == Provider {
         }
         return result
     }
+    
+    func getProviders(_ types: [Provider.Type]) -> [Provider] {
+        return self.filter { p in
+            types.contains(where: { type(of: p) == $0 })
+        }
+    }
+    
+    func getRequestProviders() -> [Provider] {
+        return getProviders([
+            CreatedTimeProvider.self,
+            AffiseAppIdProvider.self,
+            AffisePackageAppNameProvider.self,
+            AffAppTokenPropertyProvider.self,
+            AffiseDeviceIdProvider.self,
+            RandomUserIdProvider.self
+        ])
+    }
 }
 
 internal extension Provider {

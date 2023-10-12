@@ -169,7 +169,7 @@ public class AffiseShared: NSObject {
      * Get module status
      */
     @available(*, deprecated, message: "use Affise.getStatus(_ module: _ onComplete:)")
-    public func getStatus(_ module: AffiseModules, onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void) {
+    public func getStatus(_ module: AffiseModules, onComplete: @escaping OnKeyValueCallback) {
         Affise.getStatus(module, onComplete)
     }
     

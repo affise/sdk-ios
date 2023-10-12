@@ -1,11 +1,3 @@
-//
-//  CloudRepositoryImpl.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 internal class CloudRepositoryImpl {
 
     private let ATTEMPTS_TO_SEND = 3
@@ -27,27 +19,18 @@ internal class CloudRepositoryImpl {
     /**
      * Send [data] to [url]
      */
-    private func createRequest(url: String, data: Array<PostBackModel>) throws {
-        
-        let httpsUrl = URL(string: url)!
-        
-        let jsonString = converter.convert(from: data)
-        let sendData = jsonString.data(using: .utf8)!
+    private func createRequest(url: String, data: [PostBackModel]) -> HttpResponse {
+        guard let httpsUrl = url.toURL() else { return HttpResponse(0, "", nil) }
 //        let sendData = try JSONSerialization.data(withJSONObject: dictArray, options: .prettyPrinted)
         
         //Create request
-        let (data, response) = try networkService.executeRequest(httpsUrl: httpsUrl,
-                                                                 method: .POST,
-                                                                 data: sendData,
-                                                                 timeout: TIMEOUT_SEND,
-                                                                 headers: createHeaders())
-        if (response.statusCode != 200) {
-            var message: String?
-            if let data = data {
-                message = String.init(data: data, encoding: .utf8)
-            }
-            throw AffiseError.network(status: response.statusCode, message: message)
-        }
+        return networkService.executeRequest(
+            httpsUrl: httpsUrl,
+            method: .POST,
+            data: converter.convert(from: data).toData(),
+            timeout: TIMEOUT_SEND,
+            headers: createHeaders()
+        )
     }
 
     /**
@@ -77,16 +60,17 @@ extension CloudRepositoryImpl: CloudRepository {
         
         //While has attempts and not send
         while (attempts != 0 && !send) {
-            do {
-                //Create request
-                try createRequest(url: url, data: data)
-                
+            //Create request
+            let response =  createRequest(url: url, data: data)
+            
+            if isHttpValid(response.code) {
                 //Send is ok
                 send = true
-            } catch {
+            } else {
                 attempts = attempts - 1
                 //Check attempts
                 if (attempts == 0) {
+                    let error = AffiseError.network(status: response.code, message: response.body)
                     //Add throwable
                     throw AffiseError.cloud(url: url, error: error, attempts: ATTEMPTS_TO_SEND, retry: true)
                 }

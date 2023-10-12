@@ -13,14 +13,14 @@ public class InternalCrossPlatform {
     }
 
     public static func react() {
-        SdkPlatform.react()
+        InternalSdkPlatform.react()
     }
 
     public static func flutter() {
-        SdkPlatform.flutter()
+        InternalSdkPlatform.flutter()
     }
 
     public static func unity() {
-        SdkPlatform.unity()
+        InternalSdkPlatform.unity()
     }
 }

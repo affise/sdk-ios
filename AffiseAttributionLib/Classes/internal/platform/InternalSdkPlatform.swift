@@ -1,4 +1,4 @@
-internal class SdkPlatform {
+internal class InternalSdkPlatform {
     static let IOS = "ios"
     static private let REACT = "react"
     static private let FLUTTER = "flutter"

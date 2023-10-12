@@ -6,37 +6,22 @@ class StatusModule: AffiseModule {
     private var checkStatusUseCase: CheckStatusUseCase? = nil
     
     private lazy var stringToKeyValueConverter: StringToKeyValueConverter = StringToKeyValueConverter()
-    private lazy var providersToJsonStringConverter: ProvidersToJsonStringConverter = ProvidersToJsonStringConverter()
         
     override func initialize() {
-        
-        let createdTimeProvider: CreatedTimeProvider? = getProvider()
-        let affiseAppIdProvider: AffiseAppIdProvider? = getProvider()
-        let affisePackageAppNameProvider: AffisePackageAppNameProvider? = getProvider()
-        let affAppTokenPropertyProvider: AffAppTokenPropertyProvider? = getProvider()
-        let affiseDeviceIdProvider: AffiseDeviceIdProvider? = getProvider()
-        let randomUserIdProvider: RandomUserIdProvider? = getProvider()
-                
-        let providers: [Provider?] = [
-            createdTimeProvider,
-            affiseAppIdProvider,
-            affisePackageAppNameProvider,
-            affAppTokenPropertyProvider,
-            affiseDeviceIdProvider,
-            randomUserIdProvider,
-        ]
-        
+        guard let providersToJsonStringConverter: ProvidersToJsonStringConverter = get() else { return }
+        guard let networkService: NetworkService = get() else { return }
+
         checkStatusUseCase = CheckStatusUseCaseImpl(
+            affiseModule: self,
             logsManager: logsManager,
-            networkService: get(),
-            providers: providers.compactMap { $0 },
+            networkService: networkService,
             converter: providersToJsonStringConverter,
             keyValueConverter: stringToKeyValueConverter
         )
     }
     
-    override func status(_ onComplete: @escaping ([AffiseKeyValue]) -> Void) {
-        checkStatusUseCase?.send(onComplete)
+    override func status(_ onComplete: @escaping OnKeyValueCallback) {
+        checkStatusUseCase?.send(onComplete) ?? onComplete([])
     }
 }
 

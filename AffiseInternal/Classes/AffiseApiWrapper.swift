@@ -7,7 +7,8 @@ public class AffiseApiWrapper: NSObject {
     private let factory = AffiseEventFactory()
     private let affiseBuilder = AffiseBuilder()
 
-    private var callback: ((_ api: String, _ data: [String: Any?]) -> Void)? = nil
+    public typealias OnCallback = (_ api: String, _ data: [String: Any?]) -> Void
+    private var callback: OnCallback? = nil
 
     private var app: UIApplication? = nil
     private var launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
@@ -89,6 +90,8 @@ public class AffiseApiWrapper: NSObject {
         case .REGISTER_DEEPLINK_CALLBACK: callRegisterDeeplinkCallback(api, map: map, result: result)
         case .SKAD_REGISTER_ERROR_CALLBACK: callSkadRegisterErrorCallback(api, map: map, result: result)
         case .SKAD_POSTBACK_ERROR_CALLBACK: callSkadPostbackErrorCallback(api, map: map, result: result)
+        case .DEBUG_VALIDATE_CALLBACK: callDebugValidateCallback(api, map: map, result: result)
+        case .DEBUG_NETWORK_CALLBACK: callDebugNetworkCallback(api, map: map, result: result)
         case .AFFISE_BUILDER: callAffiseBuilder(api, map: map, result: result)
 
         default:
@@ -330,7 +333,43 @@ public class AffiseApiWrapper: NSObject {
             self.callback?(api.method, data)
         }
     }
-    
+
+    private func callDebugValidateCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        Affise.Debug.validate { status in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: status.status,
+            ]
+            self.callback?(api.method, data)
+        }
+    }
+
+    private func callDebugNetworkCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        Affise.Debug.network { request, response in
+            let data: [String: Any?] = [
+                api.method: [
+                    "request": [
+                        "method": request.method.rawValue,
+                        "url": request.url.absoluteString,
+                        "headers": request.headers,
+                        "body": "\(request.body?.toJsonGuardString() ?? "")",
+                    ],
+                    "response": [
+                        "code": response.code,
+                        "message": response.message,
+                        "body": "\(response.body?.toJsonGuardString() ?? "")",
+                    ],
+                ]
+            ]
+            self.callback?(api.method, data)
+        }
+    }
+
     private func callAffiseBuilder(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
         affiseBuilder.call(api, map, result)
     }

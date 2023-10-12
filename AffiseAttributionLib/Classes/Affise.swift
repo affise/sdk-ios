@@ -192,7 +192,7 @@ public final class Affise: NSObject {
      * Get module status
      */
     @objc
-    public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping (_ data: [AffiseKeyValue]) -> Void) {
+    public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
         api?.moduleManager.status(module, onComplete)
     }
     
@@ -215,4 +215,27 @@ public final class Affise: NSObject {
     internal static func sendInternalEvent(_ event: InternalEvent) {
         api?.storeInternalEventUseCase.storeInternalEvent(event: event)
     }
+    
+    public class Debug {
+        /**
+         * Won't work on Production
+         *
+         * Validate credentials
+         */
+        @objc
+        public static func validate(_ callback: @escaping DebugOnValidateCallback) {
+            api?.debugValidateUseCase.validate(callback)
+        }
+
+        /**
+         * Won't work on Production
+         *
+         * Show request-response data
+         */
+        @objc
+        public static func network(_ callback: @escaping DebugOnNetworkCallback) {
+            api?.debugNetworkUseCase.onRequest(callback)
+        }
+    }
+    
 }
