@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let properties = AffiseInitProperties(
             affiseAppId: "129",
             secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2",
-            isProduction: false //Set Production to false to enable debug methods 
+            isProduction: false //To enable debug methods set Production to false
         )
         Affise.load(app: application, initProperties: properties, launchOptions: launchOptions)
         

@@ -1017,7 +1017,7 @@ Affise.load(app: application,
     initProperties: AffiseInitProperties(
         affiseAppId: "Your appId",
         secretKey: "Your secretKey",
-        isProduction: false, //Set Production to false to enable debug methods 
+        isProduction: false, //To enable debug methods set Production to false
     ), 
     launchOptions: launchOptions
 )
