@@ -1,6 +1,3 @@
-import AffiseAttributionLib
-
-
 public class ProvidersToJsonStringConverter: Converter {
 
     public typealias T = [Provider]

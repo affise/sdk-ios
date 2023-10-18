@@ -33,42 +33,42 @@ internal extension Event {
             guard let string = value as? String else {
                 return
             }
-            self.addPredefinedParameter(param as! PredefinedString, string: string)
+            let _ = self.addPredefinedParameter(param as! PredefinedString, string: string)
             break
             
         case is PredefinedListString:
             guard let list = value as? [String] else {
                 return
             }
-            self.addPredefinedParameter(param as! PredefinedListString, listString: list)
+            let _ = self.addPredefinedParameter(param as! PredefinedListString, listString: list)
             break
             
         case is PredefinedLong:
             guard let number = value as? NSNumber else {
                 return
             }
-            self.addPredefinedParameter(param as! PredefinedLong, long: number.int64Value)
+            let _ = self.addPredefinedParameter(param as! PredefinedLong, long: number.int64Value)
             break
             
         case is PredefinedFloat:
             guard let number = value as? NSNumber else {
                 return
             }
-            self.addPredefinedParameter(param as! PredefinedFloat, float: number.floatValue)
+            let _ = self.addPredefinedParameter(param as! PredefinedFloat, float: number.floatValue)
             break
             
         case is PredefinedObject:
             guard let object = value as? [(String, Any)] else {
                 return
             }
-            self.addPredefinedParameter(param as! PredefinedObject, object: object)
+            let _ = self.addPredefinedParameter(param as! PredefinedObject, object: object)
             break
             
         case is PredefinedListObject:
             guard let list = value as? [Any] else {
                 return
             }
-            self.addPredefinedParameter(param as! PredefinedListObject, listObject: list.toArrayOfObject())
+            let _ = self.addPredefinedParameter(param as! PredefinedListObject, listObject: list.toArrayOfObject())
             break
             
         default:

@@ -1,11 +1,3 @@
-//
-//  EventsParams.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-
 class EventsParams {
     static let EVENTS_DIR_NAME = "affise-events"
     static let EVENTS_SEND_COUNT = 100

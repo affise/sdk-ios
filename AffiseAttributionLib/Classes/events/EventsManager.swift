@@ -1,11 +1,3 @@
-//
-//  EventsManager.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Manager of Events
  *
@@ -68,7 +60,9 @@ class EventsManager {
      * Send event
      */
     func sendEvents(withDelay: Bool = true) {
-        sendDataToServerUseCase.send(withDelay: withDelay)
+        DispatchQueue.global(qos:.background).sync {
+            sendDataToServerUseCase.send(withDelay: withDelay)
+        }
     }
 
     /**

@@ -118,9 +118,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createRenewedSubscriptionFromRetryEvent() -> Event {
@@ -130,9 +129,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createReactivatedSubscriptionEvent() -> Event {
@@ -142,9 +140,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createFailedTrialEvent() -> Event {
@@ -154,9 +151,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createFailedOfferiseEvent() -> Event {
@@ -166,9 +162,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createFailedSubscriptionEvent() -> Event {
@@ -178,9 +173,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createFailedTrialFromRetryEvent() -> Event {
@@ -190,9 +184,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createFailedOfferFromRetryEvent() -> Event {
@@ -202,9 +195,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createFailedSubscriptionFromRetryEvent() -> Event {
@@ -214,9 +206,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createRenewedSubscriptionEvent() -> Event {
@@ -226,9 +217,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createTrialInRetryEvent() -> Event {
@@ -238,9 +228,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createOfferInRetryEvent() -> Event {
@@ -250,9 +239,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createSubscriptionInRetryEvent() -> Event {
@@ -262,9 +250,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createInitialOfferEvent() -> Event {
@@ -274,9 +261,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createInitialTrialEvent() -> Event {
@@ -286,9 +272,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createInitialSubscriptionEvent() -> Event {
@@ -298,9 +283,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createConvertedTrialEvent() -> Event {
@@ -310,9 +294,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createConvertedOfferEvent() -> Event {
@@ -322,9 +305,8 @@ class DefaultEventsFactory: EventsFactory {
                    ("affise_event_product_id", 278459628375 as Int64)
                   ],
             userData: "Subscription Plus"
-        ).apply {
-            $0.addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
-        }
+        )
+        .addPredefinedParameter(PredefinedFloat.REVENUE, float: 225522)
     }
     
     func createAchieveLevelEvent() -> Event {

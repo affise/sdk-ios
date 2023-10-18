@@ -10,12 +10,24 @@ class IsFirstForUserUseCaseImpl {
     /**
      * Cache of already send events
      */
-    private var cache: Array<String> = []
-
+    private var cache: [String] = []
+    private let lockQueue = DispatchQueue(label: "com.affise.attribution", attributes: .concurrent)
     
     init(isFirstForUserStorage: IsFirstForUserStorage) {
         self.isFirstForUserStorage = isFirstForUserStorage
         cache = isFirstForUserStorage.getEventsNames()
+    }
+    
+    func cacheContains(_ value: String) -> Bool {
+        lockQueue.sync {
+            return cache.contains(value)
+        }
+    }
+    
+    func cacheAppend(_ value: String) {
+        lockQueue.async(flags: .barrier) {
+            self.cache.append(value)
+        }
     }
 }
 
@@ -25,11 +37,14 @@ extension IsFirstForUserUseCaseImpl: IsFirstForUserUseCase {
      * Update IsFirstForUser
      */
     func updateEvent(_ event: Event) {
-        let eventClass = String(describing: type(of: event))
-        if (self.cache.contains(eventClass)) {
+        var eventClass = event.getName()
+        if let subtype = (event as? BaseSubscriptionEvent)?.subtype() {
+            eventClass = subtype
+        }
+        if (self.cacheContains(eventClass) || self.cacheContains(String(describing: type(of: event)))) {
             event.setFirstForUser(false)
         } else {
-            self.cache.append(eventClass)
+            self.cacheAppend(eventClass)
             self.isFirstForUserStorage.add(eventClass)
             event.setFirstForUser(true)
         }
@@ -55,10 +70,10 @@ extension IsFirstForUserUseCaseImpl: IsFirstForUserUseCase {
                 return event
             }
             
-            if (self.cache.contains(eventClass)) {
+            if (self.cacheContains(eventClass)) {
                 dict[Parameters.AFFISE_EVENT_FIRST_FOR_USER] = false
             } else {
-                self.cache.append(eventClass)
+                self.cacheAppend(eventClass)
                 self.isFirstForUserStorage.add(eventClass)
                 dict[Parameters.AFFISE_EVENT_FIRST_FOR_USER] = true
             }

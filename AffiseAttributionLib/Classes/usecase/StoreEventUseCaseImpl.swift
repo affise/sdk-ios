@@ -1,11 +1,3 @@
-//
-//  StoreEventUseCaseImpl.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 class StoreEventUseCaseImpl {
     private let repository: EventsRepository
     private let eventsManager: EventsManager
@@ -54,7 +46,7 @@ extension StoreEventUseCaseImpl: StoreEventUseCase {
     func storeEvent(event: Event) {
         
         if (isTrackingEnabled()) {
-            DispatchQueue.global(qos:.background).async { [weak self] in
+            DispatchQueue.global(qos:.background).sync { [weak self] in
                 //Update event for isFirstForUser
                 self?.isFirstForUserUseCase.updateEvent(event)
                 
@@ -69,7 +61,7 @@ extension StoreEventUseCaseImpl: StoreEventUseCase {
     
     func storeWebEvent(event: String) {
         if (isTrackingEnabled() || event != GDPREvent.EVENT_NAME) {
-            DispatchQueue.global(qos:.background).async { [weak self] in  
+            DispatchQueue.global(qos:.background).sync { [weak self] in  
                 //Update event for isFirstForUser
                 let updatedEvent = self?.isFirstForUserUseCase.updateWebEvent(event) ?? event
 

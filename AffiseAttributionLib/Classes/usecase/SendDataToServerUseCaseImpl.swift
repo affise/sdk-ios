@@ -1,11 +1,3 @@
-//
-//  SendDataToServerUseCaseImpl.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 internal class SendDataToServerUseCaseImpl {
     
     private static let TIME_DELAY_SENDING: TimeInterval = 15
@@ -40,8 +32,21 @@ internal class SendDataToServerUseCaseImpl {
     /**
      * Flags to status is sending from current url
      */
-    private var isSend = Dictionary(uniqueKeysWithValues: CloudConfig.urls.map{ ($0, false) })
+    private var isSendThreadUnsafe: [String:Bool] = Dictionary(uniqueKeysWithValues: CloudConfig.urls.map{ ($0, false) })
+    private let lockQueue = DispatchQueue(label: "com.affise.attribution", attributes: .concurrent)
 
+    func getIsSend(_ key: String) -> Bool {
+        lockQueue.sync {
+            guard let result = isSendThreadUnsafe[key] else { return false }
+            return result
+        }
+    }
+
+    func setIsSend(_ key: String, _ value: Bool) {
+        lockQueue.async(flags: .barrier) {
+            self.isSendThreadUnsafe[key] = value
+        }
+    }
     
     /**
      * Sending for url
@@ -104,12 +109,13 @@ extension SendDataToServerUseCaseImpl: SendDataToServerUseCase {
             return
         }
         let globalQueue = DispatchQueue.global(qos:.background)
+        
         //For all urls
         CloudConfig.urls.forEach { it in
             //Check if sending on this url
-            if (isSend[it] == false) {
+            if (getIsSend(it) == false) {
                 //Lock sending to this url
-                isSend[it] = true
+                setIsSend(it, true)
                 
                 globalQueue.async { [weak self] in
                     if (withDelay) {
@@ -119,7 +125,7 @@ extension SendDataToServerUseCaseImpl: SendDataToServerUseCase {
                     self?.send(url: it)
 
                     //Unlock sending to this url
-                    self?.isSend[it] = false
+                    self?.setIsSend(it, false)
                 }
             }
         }
