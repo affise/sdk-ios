@@ -12,6 +12,7 @@
   - [Integration](#integration)
     - [Integrate as Cocoapods](#integrate-as-cocoapods)
     - [Initialize](#initialize)
+    - [Requirements](#requirements)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
   - [ProviderType identifiers collection](#providertype-identifiers-collection)
@@ -47,6 +48,7 @@
     - [ConversionId](#conversionid)
 - [Debug](#debug)
   - [Validate credentials](#validate-credentials)
+- [Troubleshoots](#troubleshoots)
   
 # Description
 
@@ -136,6 +138,22 @@ Check if library is initialized
 
 ```swift
 Affise.isInitialized()
+```
+
+### Requirements
+
+Affise SDK uses `AppTrackingTransparency` framework to get `advertisingIdentifier`
+For working functionality your app needs to declare [`NSUserTrackingUsageDescription` permission](https://developer.apple.com/documentation/bundleresources/information_property_list/nsusertrackingusagedescription):
+
+Open XCode project `info.plist` and add key `NSUserTrackingUsageDescription` with string value
+
+```xml
+<plist version="1.0">
+<dict>
+    ...
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Youre permission text</string>
+</dict>
 ```
 
 ## StoreKit Ad Network
@@ -1027,3 +1045,12 @@ Affise.Debug.validate { status in
     // Handle validation status
 }
 ```
+
+# Troubleshoots
+
+> **Warning**
+> This app has crashed because it attempted to access privacy-sensitive data without a usage description.
+> The app's `Info.plist` must contain an `NSUserTrackingUsageDescription` key with a string value explaining
+> to the user how the app uses this data.
+
+Open `info.plist` and add key `NSUserTrackingUsageDescription` with string value. For more information [read requirements](#requirements)
