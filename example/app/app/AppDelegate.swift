@@ -12,12 +12,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // Initialize https://github.com/affise/sdk-ios#initialize
-        let properties = AffiseInitProperties(
-            affiseAppId: "129",
-            secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2",
-            isProduction: false //To enable debug methods set Production to false
-        )
-        Affise.load(app: application, initProperties: properties, launchOptions: launchOptions)
+        Affise
+            .settings(
+                affiseAppId: "129",
+                secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2"
+            )
+            .setProduction(false) //To enable debug methods set Production to false
+            .start(app: application, launchOptions: launchOptions) // Start Affise SDK
         
         // Deeplinks https://github.com/affise/sdk-ios#deeplinks
         Affise.registerDeeplinkCallback { url in
@@ -44,9 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         
         // Debug: Validate credentials https://github.com/affise/sdk-ios#validate-credentials
-        Affise.Debug.validate { status in
-            debugPrint("Affise: validate = \(status)")
-        }
+//        Affise.Debug.validate { status in
+//            debugPrint("Affise: validate = \(status)")
+//        }
         
         // Debug: network request/response
         Affise.Debug.network { (request, response) in

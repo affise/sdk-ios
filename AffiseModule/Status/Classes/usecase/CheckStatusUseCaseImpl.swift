@@ -6,7 +6,8 @@ internal class CheckStatusUseCaseImpl {
     private let ATTEMPTS_TO_SEND = 30
     private let TIMEOUT_SEND: TimeInterval = 30
     
-    let URL = "https://tracking.affattr.com/check_status"
+    let PATH: String = "check_status"
+    var url: String = ""
 
     let logsManager: LogsManager
     let converter: ProvidersToJsonStringConverter
@@ -26,10 +27,12 @@ internal class CheckStatusUseCaseImpl {
         self.keyValueConverter = keyValueConverter
         self.networkService = networkService
         self.providers = affiseModule.getRequestProviders()
+        
+        self.url = CloudConfig.getURL(PATH)
     }
 
     private func createRequest() -> HttpResponse {
-        guard let httpsUrl = URL.toURL() else { return HttpResponse(0, "", nil) }
+        guard let httpsUrl = url.toURL() else { return HttpResponse(0, "", nil) }
         
         //Create request
         return networkService.executeRequest(
@@ -74,7 +77,7 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
                     onComplete([])
                     let error = AffiseError.network(status: response.code, message: response.body)
                     //Log error
-                    logsManager.addSdkError(error: AffiseError.cloud(url: URL, error: error, attempts: ATTEMPTS_TO_SEND, retry: true))
+                    logsManager.addSdkError(error: AffiseError.cloud(url: url, error: error, attempts: ATTEMPTS_TO_SEND, retry: true))
                 } else {
                     onFailedAttempt()
                 }

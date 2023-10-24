@@ -1,10 +1,3 @@
-//
-//  AffiseInitProperties.swift
-//
-//  Created by Sergey Korney
-//
-
-
 @objc
 public class AffiseInitProperties: NSObject {
     let affiseAppId: String?
@@ -13,7 +6,7 @@ public class AffiseInitProperties: NSObject {
     let appToken: String?
     let isProduction: Bool
     let secretKey: String?
-    let flags: [AffiseFlag]
+    let domain: String?
     
     @objc
     public init(
@@ -22,7 +15,8 @@ public class AffiseInitProperties: NSObject {
         partParamNameToken: String? = nil,
         appToken: String? = nil,
         isProduction: Bool = true,
-        secretKey: String? = nil
+        secretKey: String? = nil,
+        domain: String? = nil
     ) {
         self.affiseAppId = affiseAppId
         self.partParamName = partParamName
@@ -30,7 +24,9 @@ public class AffiseInitProperties: NSObject {
         self.appToken = appToken
         self.isProduction = isProduction
         self.secretKey = secretKey
-        self.flags = []
+        self.domain = domain
+        
+        CloudConfig.setupDomain(domain)
     }
 
     @objc
@@ -44,7 +40,8 @@ public class AffiseInitProperties: NSObject {
             partParamNameToken: nil,
             appToken: nil,
             isProduction: true,
-            secretKey: secretKey
+            secretKey: secretKey,
+            domain: nil
         )
     }
 
@@ -60,7 +57,8 @@ public class AffiseInitProperties: NSObject {
             partParamNameToken: nil,
             appToken: nil,
             isProduction: isProduction,
-            secretKey: secretKey
+            secretKey: secretKey,
+            domain: nil
         )
     }
 }

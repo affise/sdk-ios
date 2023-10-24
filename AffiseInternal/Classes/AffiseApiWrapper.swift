@@ -109,8 +109,21 @@ public class AffiseApiWrapper: NSObject {
             result?.error("api [\(api.method)]: value not set")
             return
         }
+        
+        if !data.isValid() {
+            result?.error("api [\(api.method)]: affiseAppId or secretKey is not set")
+            return
+        }
+        
+        let (affiseAppId, secretKey) = data.getAppIdAndSecretKey()
 
-        Affise.load(app: app, initProperties: data.toAffiseInitProperties, launchOptions: launchOptions)
+        Affise
+            .settings(
+                affiseAppId: affiseAppId,
+                secretKey: secretKey
+            )
+            .addSettings(data)
+            .start(app: app, launchOptions: launchOptions)
 
         result?.success(nil)
     }

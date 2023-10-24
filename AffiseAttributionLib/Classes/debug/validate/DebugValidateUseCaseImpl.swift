@@ -9,7 +9,8 @@ class DebugValidateUseCaseImpl {
     let INVALID_CHECK_SUM = "Failed to get application or check sum"
     let PACKAGE_NAME_NOT_FOUND = "Package name not found"
     
-    let URL = "https://tracking.affattr.com/postback/validate"
+    let PATH = "postback/validate"
+    var url: String = ""
 
     let initProperties: AffiseInitProperties
     let logsManager: LogsManager
@@ -30,10 +31,12 @@ class DebugValidateUseCaseImpl {
         self.converter = converter
 
         self.providers = postBackModelFactory.getRequestProviders()
+        
+        self.url = CloudConfig.getURL(PATH)
     }
 
     private func createRequest() -> HttpResponse {
-        guard let httpsUrl = URL.toURL() else { return HttpResponse(0, "", nil) }
+        guard let httpsUrl = url.toURL() else { return HttpResponse(0, "", nil) }
  
         //Create request
         return networkService.executeRequest(

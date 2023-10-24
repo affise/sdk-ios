@@ -2,9 +2,9 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib` | [`1.6.14`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`    | [`1.6.14`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Status`  | [`1.6.14`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib` | [`1.6.15`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`    | [`1.6.15`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Status`  | [`1.6.15`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -12,6 +12,7 @@
   - [Integration](#integration)
     - [Integrate as Cocoapods](#integrate-as-cocoapods)
     - [Initialize](#initialize)
+      - [Domain](#domain)
     - [Requirements](#requirements)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
@@ -65,18 +66,18 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.14'
+pod 'AffiseAttributionLib', '~> 1.6.15'
 # Affise module
-pod 'AffiseModule/Status', '~> 1.6.14'
+pod 'AffiseModule/Status', '~> 1.6.15'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.14'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.15'
 # Affise module
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.14'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.15'
 ```
 
 ### Initialize
@@ -97,11 +98,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let properties = AffiseInitProperties(
-            affiseAppId: "Your appId", //Change to your app id
-            secretKey: "Your secretKey" //Change to your appToken
-        )
-        Affise.load(app: application, initProperties: properties, launchOptions: launchOptions)
+        Affise
+            .settings(
+                affiseAppId: "Your appId", //Change to your app id
+                secretKey: "Your secretKey" //Change to your appToken
+            )
+            .start(app: application, launchOptions: launchOptions) // Start Affise SDK
 
         return true
     }
@@ -122,12 +124,11 @@ For `objective-c` use:
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-    AffiseInitProperties *initProperties = [[AffiseInitProperties alloc] 
-        initWithAffiseAppId:@"Your appId" //Change to your app id
-        secretKey:@"Your secretKey" //Change to your appToken
+    AffiseSettings *affise = [Affise settingsWithAffiseAppId:@"Your appId" //Change to your app id
+                                                   secretKey:@"Your secretKey" //Change to your appToken
     ];
-
-    [Affise loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
+    [affise setProduction:false]; //To enable debug methods set Production to false
+    [affise startWithApp:application launchOptions:launchOptions]; // Start Affise SDK
 
     return YES;
 }
@@ -138,6 +139,20 @@ Check if library is initialized
 
 ```swift
 Affise.isInitialized()
+```
+
+#### Domain
+
+Set SDK server doamin:
+
+```swift
+Affise
+    .settings(
+        affiseAppId: "Your appId",
+        secretKey: "Your secretKey"
+    )
+    .setDomain("https://YourCustomDomain") // Set custom domain
+    .start(app: application, launchOptions: launchOptions)
 ```
 
 ### Requirements
@@ -162,14 +177,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.14'
+pod 'AffiseSKAdNetwork', '~> 1.6.15'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.14'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.15'
 ```
 
 For `swift` use:
@@ -651,10 +666,10 @@ Affise.addPushToken(token)
 
 To integrate deeplink support You can find out how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
-Register deeplink callback right after `Affise.init(..)`
+Register deeplink callback right after `Affise.settings(..).start(..)`
 
 ```swift
-Affise.init(..)
+Affise.settings(affiseAppId:affiseAppId, secretKey:secretKey).start(app:app, launchOptions: launchOptions)
 Affise.registerDeeplinkCallback { url in
     let component = URLComponents(string: url.absoluteString)!
     let screen = component.queryItems?.first(where: {$0.name == "<your_uri_key>"})?.value
@@ -1031,15 +1046,13 @@ Validate your credentials by receiving `ValidationStatus` values:
 - `NETWORK_ERROR` - network or server not available (for example `Airoplane mode` is active)
 
 ```swift
-Affise.load(app: application, 
-    initProperties: AffiseInitProperties(
+Affise
+    .settings(
         affiseAppId: "Your appId",
-        secretKey: "Your secretKey",
-        isProduction: false, //To enable debug methods set Production to false
-    ), 
-    launchOptions: launchOptions
-)
-
+        secretKey: "Your secretKey" 
+    )
+    .setProduction(false) //To enable debug methods set Production to false
+    .start(app: application, launchOptions: launchOptions) // Start Affise SDK
 
 Affise.Debug.validate { status in
     // Handle validation status

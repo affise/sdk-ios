@@ -15,15 +15,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    AffiseInitProperties *initProperties = [[AffiseInitProperties alloc] initWithAffiseAppId:@"129"
-                                                                               partParamName:nil
-                                                                          partParamNameToken:nil
-                                                                                    appToken:nil
-                                                                                isProduction:NO
-                                                                                    secretKey:@"93a40b54-6f12-443f-a250-ebf67c5ee4d2"];
-    
-    [Affise loadWithApp:application initProperties:initProperties launchOptions:launchOptions];
-    
+    AffiseSettings *affise = [Affise settingsWithAffiseAppId:@"129" secretKey:@"93a40b54-6f12-443f-a250-ebf67c5ee4d2"];
+    [affise setProduction:false]; //To enable debug methods set Production to false
+    [affise startWithApp:application launchOptions:launchOptions]; // Start Affise SDK
+ 
 //    if (@available(iOS 16.1, *)) {
 //    } else {
 //        [AffiseSKAd registerWithCompletionHandler:^(NSString * error) {

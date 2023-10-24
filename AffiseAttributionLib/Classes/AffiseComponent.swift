@@ -1,11 +1,3 @@
-//
-//  AffiseComponent.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 internal class AffiseComponent: AffiseApi {
     
     private let app: UIApplication
@@ -38,7 +30,8 @@ internal class AffiseComponent: AffiseApi {
             app: app,
             dependencies: [
                 stringToSha256Converter,
-                networkService
+                networkService,
+                providersToJsonStringConverter
             ]
         )
 

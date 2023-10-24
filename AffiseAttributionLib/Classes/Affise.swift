@@ -1,10 +1,3 @@
-//
-//  Affise.swift
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Entry point to initialise Affise Attribution library
  */
@@ -22,19 +15,44 @@ public final class Affise: NSObject {
      * Api to communication with Affise
      */
     private static var api: AffiseApi?
+
+    /**
+     * Affise SDK settings builder
+     * To start SDK call .start(app:launchOptions:)
+     * [affiseAppId] - your app id
+     * [secretKey] - your SDK secretKey
+     */
+    @objc
+    public static func settings(
+        affiseAppId: String,
+        secretKey: String
+    ) -> AffiseSettings {
+        return AffiseSettings(affiseAppId: affiseAppId, secretKey: secretKey)
+    }
+    
+    internal static func start(
+        initProperties: AffiseInitProperties,
+        app: UIApplication,
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) {
+        if (api == nil) {
+            api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
+        } else {
+            debugPrint("Affise SDK is already initialized")
+        }
+    }
     
     /**
      * Init [AffiseComponent] with [app] and [initProperties]
      */
     @objc
+    @available(*, deprecated, message: "use Affise.settings(affiseAppId:secretKey:).start(app:launchOptions:)")
     public static func load(
         app: UIApplication,
         initProperties: AffiseInitProperties,
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) {
-        if (api == nil) {
-            api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
-        }
+        start(initProperties: initProperties, app: app, launchOptions: launchOptions)
     }
 
     @objc
