@@ -192,7 +192,12 @@ For `swift` use:
 > Demo app [AppDelegate.swift](example/app/app/AppDelegate.swift)
 
 > **Note**
+>
+> 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦
+> 
 > For ios prior `16.1` first call
+> 
+> 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦
 
 ```swift
 import AffiseSKAdNetwork
@@ -217,7 +222,12 @@ For `objective-c` use:
 Updates the fine and coarse conversion values, and calls a completion handler if the update fails.
 
 > **Note**
+>
+> 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦
+> 
 > Second argument `coarseValue` is available in iOS `16.1+`
+>
+> 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦
 
 ```swift
 AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { error in
@@ -1034,7 +1044,12 @@ Affise.sendEvent(event)
 ## Validate credentials
 
 > **Warning**
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+> 
 > Debug methods WON'T work on Production
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
 Validate your credentials by receiving `ValidationStatus` values:
 
@@ -1062,8 +1077,15 @@ Affise.Debug.validate { status in
 # Troubleshoots
 
 > **Warning**
+> 
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
 > This app has crashed because it attempted to access privacy-sensitive data without a usage description.
+> 
 > The app's `Info.plist` must contain an `NSUserTrackingUsageDescription` key with a string value explaining
+> 
 > to the user how the app uses this data.
+> 
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
 Open `info.plist` and add key `NSUserTrackingUsageDescription` with string value. For more information [read requirements](#requirements)
