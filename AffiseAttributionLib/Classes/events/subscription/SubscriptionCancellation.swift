@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Event FailedTrial use [data] of event and [userData]
  */

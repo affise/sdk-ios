@@ -1,3 +1,7 @@
+import Foundation
+import UIKit
+
+
 internal class AffiseComponent: AffiseApi {
     
     private let app: UIApplication

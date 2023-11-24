@@ -1,0 +1,93 @@
+name: Publish Frameworks
+run-name: Publish Frameworks ${{ github.ref_name }}
+
+on: 
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version build'
+        required: false
+        type: string
+
+jobs:
+  publish:
+    name: Publish Affise SDK Frameworks
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+ 
+      # Version
+      - name: Version Tag
+        id: version_tag
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            echo Version: ${{ inputs.version }}
+            echo "VERSION=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo Version: ${{ github.ref_name }}
+            echo "VERSION=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Swift 5.7
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "5.7"
+
+      - name: Create AffiseAttributionLib XCFramework
+        uses: unsignedapps/swift-create-xcframework@v2.3.0
+        with:
+          target: "AffiseAttributionLib"
+      
+      # Release
+      - name: Release
+        if: ${{ success() }}
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Affise Attribution iOS SDK ${{ steps.version_tag.outputs.VERSION }}
+          draft: false
+          prerelease: false
+      
+      # Upload AffiseAttributionLib
+      - name: Upload Release AffiseAttributionLib Framework 🗳
+        if: ${{ success() }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./AffiseAttributionLib.zip
+          asset_name: AffiseAttributionLib-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+          asset_content_type: application/zip    
+
+      # # Upload AffiseModuleStatus
+      # - name: Upload Release AffiseModuleStatus Framework 🗳
+      #   if: ${{ success() }}
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleStatus.zip
+      #     asset_name: AffiseModuleStatus-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
+
+      # # Upload AffiseSKAdNetwork
+      # - name: Upload Release AffiseSKAdNetwork Framework 🗳
+      #   if: ${{ success() }}
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseSKAdNetwork.zip
+      #     asset_name: AffiseSKAdNetwork-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip

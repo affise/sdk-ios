@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public enum ProviderType: Int {
     case AFFISE_APP_ID

@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public class AffiseInitProperties: NSObject {
     let affiseAppId: String?

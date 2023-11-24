@@ -1,9 +1,12 @@
-open class AffiseModule {
+import UIKit
+
+@objc
+open class AffiseModule: NSObject {
     
-    public let app: UIApplication
-    public let logsManager: LogsManager
-    public let dependencies: [Any]
-    public let baseProviders: [Provider]
+    public var app: UIApplication?
+    public var logsManager: LogsManager?
+    public var dependencies: [Any] = []
+    public var baseProviders: [Provider] = []
 
     public required init(
         app: UIApplication,
@@ -11,6 +14,7 @@ open class AffiseModule {
         dependencies: [Any],
         providers: [Provider]
     ) {
+        super.init()
         self.app = app
         self.logsManager = logsManager
         self.dependencies = dependencies

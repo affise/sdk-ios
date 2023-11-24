@@ -1,3 +1,5 @@
+import Foundation
+
 private func get64LeastSignificantBitsForVersion1() -> Int64  {
     let random = Int64.random(in: 0...Int64.max)
     let random63BitLong = random & 0x3FFFFFFFFFFFFFFF

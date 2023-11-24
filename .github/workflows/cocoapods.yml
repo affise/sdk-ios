@@ -1,10 +1,16 @@
-name: Publish
-run-name: Publish ${{ github.ref_name }}
+name: Publish CocoaPods
+run-name: Publish CocoaPods ${{ github.ref_name }}
 
-on:
+on: 
   push:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version build'
+        required: false
+        type: string
 
 jobs:
   publish:
@@ -15,10 +21,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      # Version
+      - name: Version Tag
+        id: version_tag
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            echo Version: ${{ inputs.version }}
+            echo "VERSION=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo Version: ${{ github.ref_name }}
+            echo "VERSION=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
+      
       - name: Info
         if: ${{ success() || failure() }}
         env:
-          LIB_VERSION: ${{ github.ref_name }}
+          LIB_VERSION: ${{ steps.version_tag.outputs.VERSION }}
         run: |
           pod --version
           pod ipc spec AffiseAttributionLib.podspec
@@ -31,7 +49,7 @@ jobs:
         if: ${{ success() || failure() }}
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
-          LIB_VERSION: ${{ github.ref_name }}
+          LIB_VERSION: ${{ steps.version_tag.outputs.VERSION }}
         run: |
           pod trunk push AffiseAttributionLib.podspec --allow-warnings
 
@@ -41,7 +59,7 @@ jobs:
         id: skad
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
-          LIB_VERSION: ${{ github.ref_name }}
+          LIB_VERSION: ${{ steps.version_tag.outputs.VERSION }}
         run: |
           pod trunk push AffiseSKAdNetwork.podspec --allow-warnings
 
@@ -51,7 +69,7 @@ jobs:
         id: internal
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
-          LIB_VERSION: ${{ github.ref_name }}
+          LIB_VERSION: ${{ steps.version_tag.outputs.VERSION }}
         run: |
           pod trunk push AffiseInternal.podspec --allow-warnings --synchronous
 
@@ -61,19 +79,6 @@ jobs:
         id: module
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
-          LIB_VERSION: ${{ github.ref_name }}
+          LIB_VERSION: ${{ steps.version_tag.outputs.VERSION }}
         run: |
           pod trunk push AffiseModule.podspec --allow-warnings --synchronous
-
-      # Release
-      - name: Release
-        if: ${{ success() || failure() }}
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Affise Attribution iOS SDK ${{ github.ref }}
-          draft: false
-          prerelease: false

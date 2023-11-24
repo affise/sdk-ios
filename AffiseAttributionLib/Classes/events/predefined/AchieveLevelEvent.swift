@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * When a user has some achieve level event.
  *

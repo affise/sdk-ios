@@ -1,3 +1,5 @@
+import Foundation
+
 internal class SendDataToServerUseCaseImpl {
     
     private static let TIME_DELAY_SENDING: TimeInterval = 15

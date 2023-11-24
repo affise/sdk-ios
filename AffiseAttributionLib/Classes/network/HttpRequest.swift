@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public class HttpRequest: NSObject {
     public let url: URL

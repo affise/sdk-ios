@@ -1,3 +1,5 @@
+import Foundation
+
 public func isNullOrBlank(_ text: String?) -> Bool {
     guard let text = text else {
         return true

@@ -1,10 +1,4 @@
-//
-//  StringToSHA256Converter.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
 import CommonCrypto
 
 

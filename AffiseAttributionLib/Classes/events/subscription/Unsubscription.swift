@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Event Unsubscription use [data] of event and [userData]
  */

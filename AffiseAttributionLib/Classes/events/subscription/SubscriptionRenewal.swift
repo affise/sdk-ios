@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Event RenewedSubscription use [data] of event and [userData]
  */

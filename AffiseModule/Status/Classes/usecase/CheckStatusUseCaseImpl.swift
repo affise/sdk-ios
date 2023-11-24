@@ -1,3 +1,4 @@
+import Foundation
 import AffiseAttributionLib
 
 internal class CheckStatusUseCaseImpl {
@@ -9,7 +10,7 @@ internal class CheckStatusUseCaseImpl {
     let PATH: String = "check_status"
     var url: String = ""
 
-    let logsManager: LogsManager
+    let logsManager: LogsManager?
     let converter: ProvidersToJsonStringConverter
     let keyValueConverter: StringToKeyValueConverter
     let networkService: NetworkService
@@ -17,7 +18,7 @@ internal class CheckStatusUseCaseImpl {
 
     init(
         affiseModule: AffiseModule,
-        logsManager: LogsManager,
+        logsManager: LogsManager?,
         networkService: NetworkService,
         converter: ProvidersToJsonStringConverter,
         keyValueConverter: StringToKeyValueConverter
@@ -77,7 +78,7 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
                     onComplete([])
                     let error = AffiseError.network(status: response.code, message: response.body)
                     //Log error
-                    logsManager.addSdkError(error: AffiseError.cloud(url: url, error: error, attempts: ATTEMPTS_TO_SEND, retry: true))
+                    logsManager?.addSdkError(error: AffiseError.cloud(url: url, error: error, attempts: ATTEMPTS_TO_SEND, retry: true))
                 } else {
                     onFailedAttempt()
                 }

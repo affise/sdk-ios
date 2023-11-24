@@ -1,3 +1,5 @@
+import Foundation
+
 public class StringToKeyValueConverter: Converter {
     
     private static let KEY = "key"
@@ -13,7 +15,8 @@ public class StringToKeyValueConverter: Converter {
         var result: [AffiseKeyValue] = []
         
         do {
-            let jsonArray = try JSONSerialization.jsonObject(with: json.data(using: .utf8)!, options: .mutableContainers) as! [[String:Any?]]
+            let jsonArray = try JSONSerialization.jsonObject(with: json.data(using: .utf8)!, options: .mutableContainers) as? [[String:Any?]]
+            guard let jsonArray = jsonArray else { return result }
             for item in jsonArray {
                 guard let key = item[StringToKeyValueConverter.KEY] as? String else { continue }
                 let value = item[StringToKeyValueConverter.VALUE] as? String

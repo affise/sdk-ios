@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Provider for parameter [ProviderType.AFFISE_PKG_APP_NAME]
  *

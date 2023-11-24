@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public enum PredefinedListObject: Int {
     case CONTENT_LIST

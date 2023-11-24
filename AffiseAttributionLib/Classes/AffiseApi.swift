@@ -1,3 +1,5 @@
+import Foundation
+
 internal protocol AffiseApi {
     var firstAppOpenUseCase: FirstAppOpenUseCase {get}
     var sessionManager: SessionManager {get}

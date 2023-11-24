@@ -1,3 +1,4 @@
+import Foundation
 import AffiseAttributionLib
 
 internal class EventParameters {
@@ -33,42 +34,42 @@ internal extension Event {
             guard let string = value as? String else {
                 return
             }
-            let _ = self.addPredefinedParameter(param as! PredefinedString, string: string)
+            _ = self.addPredefinedParameter(param as! PredefinedString, string: string)
             break
             
         case is PredefinedListString:
             guard let list = value as? [String] else {
                 return
             }
-            let _ = self.addPredefinedParameter(param as! PredefinedListString, listString: list)
+            _ = self.addPredefinedParameter(param as! PredefinedListString, listString: list)
             break
             
         case is PredefinedLong:
             guard let number = value as? NSNumber else {
                 return
             }
-            let _ = self.addPredefinedParameter(param as! PredefinedLong, long: number.int64Value)
+            _ = self.addPredefinedParameter(param as! PredefinedLong, long: number.int64Value)
             break
             
         case is PredefinedFloat:
             guard let number = value as? NSNumber else {
                 return
             }
-            let _ = self.addPredefinedParameter(param as! PredefinedFloat, float: number.floatValue)
+            _ = self.addPredefinedParameter(param as! PredefinedFloat, float: number.floatValue)
             break
             
         case is PredefinedObject:
             guard let object = value as? [(String, Any)] else {
                 return
             }
-            let _ = self.addPredefinedParameter(param as! PredefinedObject, object: object)
+            _ = self.addPredefinedParameter(param as! PredefinedObject, object: object)
             break
             
         case is PredefinedListObject:
             guard let list = value as? [Any] else {
                 return
             }
-            let _ = self.addPredefinedParameter(param as! PredefinedListObject, listObject: list.toArrayOfObject())
+            _ = self.addPredefinedParameter(param as! PredefinedListObject, listObject: list.toArrayOfObject())
             break
             
         default:

@@ -1,3 +1,5 @@
+import Foundation
+
 class StoreEventUseCaseImpl {
     private let repository: EventsRepository
     private let eventsManager: EventsManager

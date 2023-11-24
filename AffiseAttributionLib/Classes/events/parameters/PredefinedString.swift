@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public enum PredefinedString: Int {
     case ADREV_AD_TYPE

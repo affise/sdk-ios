@@ -1,3 +1,4 @@
+import Foundation
 
 /**
  * App version number (Android) [ProviderType.APP_VERSION_RAW]

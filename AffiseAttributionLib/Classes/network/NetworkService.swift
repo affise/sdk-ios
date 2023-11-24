@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Method of connection
  */

@@ -2,15 +2,16 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib` | [`1.6.15`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`    | [`1.6.15`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Status`  | [`1.6.15`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib` | [`1.6.16`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`    | [`1.6.16`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Status`  | [`1.6.16`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
   - [Quick start](#quick-start)
   - [Integration](#integration)
     - [Integrate as Cocoapods](#integrate-as-cocoapods)
+    - [Integrate as Swift Package Manager](#integrate-as-swift-package-manager)
     - [Initialize](#initialize)
       - [Domain](#domain)
     - [Requirements](#requirements)
@@ -66,19 +67,31 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.15'
+pod 'AffiseAttributionLib', '~> 1.6.16'
 # Affise module
-pod 'AffiseModule/Status', '~> 1.6.15'
+pod 'AffiseModule/Status', '~> 1.6.16'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.15'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.16'
 # Affise module
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.15'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.16'
 ```
+
+### Integrate as Swift Package Manager
+
+To add the SDK using SPM:
+
+1. Open XCode project, navigate to `File / Add Packages`.
+
+2. In the `Add New Package` window enter `https://github.com/affise/sdk-ios` in `search` field.
+
+3. Click on the `Add Package` button.
+
+4. In `Choose Package Products` window select required packages and click `Add Package`, and it will be added to your iOS project and linked automatically.
 
 ### Initialize
 
@@ -177,14 +190,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.15'
+pod 'AffiseSKAdNetwork', '~> 1.6.16'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.15'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.16'
 ```
 
 For `swift` use:
@@ -713,7 +726,7 @@ Example: [`example/app/app/Info.plist`](example/app/app/Info.plist)
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>YOUR_AFFISE_APP_ID.affattr.com</string>
+        <string>YOUR_DOMAIN</string>
         <key>CFBundleURLSchemes</key>
         <array>
             <string>affise</string>

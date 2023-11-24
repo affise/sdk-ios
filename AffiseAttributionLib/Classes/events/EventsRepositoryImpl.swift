@@ -1,9 +1,4 @@
-//
-//  EventsRepositoryImpl.swift
-//  app
-//
-//  Created by Sergey Korney
-//
+import Foundation
 
 
 /**
@@ -60,13 +55,17 @@ extension EventsRepositoryImpl : EventsRepository {
     /**
      * Store web[event] by [urls]
      */
-    func storeWebEvent(event: String, urls: Array<String>) {
+    func storeWebEvent(event: String, urls: [String]) {
         do {
             //Create json
-            let dict = try JSONSerialization.jsonObject(with: event.data(using: .utf8)!, options: .mutableContainers) as! Dictionary<String, Any?>
+            let dict = try JSONSerialization.jsonObject(with: event.data(using: .utf8)!, options: .mutableContainers) as? [String: Any?]
             
             //Gei event id
-            let id = dict[Parameters.AFFISE_EVENT_ID] as! String
+            guard let id = dict?[Parameters.AFFISE_EVENT_ID] as? String else {
+                //Log error
+                logsManager.addUserError(message: "No event Id")
+                return
+            }
             
             //Crreate serialized event
             let serializedEvent = SerializedEvent(id: id, data: event)

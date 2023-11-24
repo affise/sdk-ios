@@ -1,9 +1,4 @@
-//
-//  NativeEvent.swift
-//  app
-//
-//  Created by Sergey Korney
-//
+import Foundation
 
 
 @objc

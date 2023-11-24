@@ -40,23 +40,23 @@ internal extension Dictionary where Key == String, Value == Any? {
 internal extension AffiseSettings {
     func addSettings(_ data: [String: Any?]) -> AffiseSettings {
         if let value = data.getString(Field.DOMAIN) {
-            self.setDomain(value)
+            _ = self.setDomain(value)
         }
         
         if let value = data.getBool(Field.IS_PRODUCTION) {
-            self.setProduction(value)
+            _ = self.setProduction(value)
         }
         
         if let value = data.getString(Field.PART_PARAM_NAME) {
-            self.setPartParamName(value)
+            _ = self.setPartParamName(value)
         }
         
         if let value = data.getString(Field.PART_PARAM_NAME_TOKEN) {
-            self.setPartParamNameToken(value)
+            _ = self.setPartParamNameToken(value)
         }
         
         if let value = data.getString(Field.APP_TOKEN) {
-            self.setAppToken(value)
+            _ = self.setAppToken(value)
         }
         
         return self

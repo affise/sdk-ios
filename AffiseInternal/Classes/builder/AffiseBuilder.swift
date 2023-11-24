@@ -1,4 +1,6 @@
+import Foundation
 import AffiseAttributionLib
+
 internal class AffiseBuilder {
     func call(_ api: AffiseApiMethod, _ map: [String: Any?], _ result: AffiseResult?) {
         guard let data: [String: Any?] = map.opt(api) else {
@@ -43,18 +45,18 @@ internal class AffiseBuilder {
         
         let currency: String? = map.opt(AffiseBuilderProperty.CURRENCY)
         
-        let _ = adRevenue.setRevenue(revenue.doubleValue, currency ?? "")
+        _ = adRevenue.setRevenue(revenue.doubleValue, currency ?? "")
         
         if let network: String = map.opt(AffiseBuilderProperty.NETWORK) {
-            let _ = adRevenue.setNetwork(network)
+            _ = adRevenue.setNetwork(network)
         }
         
         if let unit: String = map.opt(AffiseBuilderProperty.UNIT) {
-            let _ = adRevenue.setUnit(unit)
+            _ = adRevenue.setUnit(unit)
         }
         
         if let placement: String = map.opt(AffiseBuilderProperty.PLACEMENT) {
-            let _ = adRevenue.setPlacement(placement)
+            _ = adRevenue.setPlacement(placement)
         }
         
         adRevenue.send()

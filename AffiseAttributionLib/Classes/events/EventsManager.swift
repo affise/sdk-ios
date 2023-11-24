@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Manager of Events
  *
@@ -70,9 +72,7 @@ class EventsManager {
      */
     private func startTimer() {
         //Stop timer if running
-        if let _ = timer {
-            stopTimer()
-        }
+        stopTimer()
 
         //Create timer
         timer = Timer(timeInterval: EventsManager.TIME_SEND_REPEAT,
@@ -90,6 +90,7 @@ class EventsManager {
      * Stop timer fo repeat send events
      */
     private func stopTimer() {
+        if timer == nil { return }
         //Stop timer
         timer?.invalidate()
         timer = nil

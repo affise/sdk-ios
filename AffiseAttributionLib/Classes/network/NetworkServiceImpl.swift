@@ -1,3 +1,5 @@
+import Foundation
+
 public class NetworkServiceImpl {
     private let urlSession: URLSession
     private var debugRequest: DebugOnNetworkCallback?

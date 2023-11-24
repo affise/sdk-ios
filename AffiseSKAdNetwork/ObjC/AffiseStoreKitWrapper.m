@@ -1,21 +1,13 @@
-//
-//  AffiseSKAdNetwork.m
-//  AffiseAttributionSKAd
-//
-//  Created by Sergey Korney
-//  
-//
-
-#import "AffiseSKAdNetwork.h"
+#import "AffiseStoreKitWrapper.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 NSString *const kAffiseSKAdNetworkErrorDomain = @"affiseSKAdNetworkError";
 
 
-@implementation AffiseSKAdNetwork
+@implementation AffiseStoreKitWrapper
 + (nullable instancetype)shared {
-    static AffiseSKAdNetwork *shared = nil;
+    static AffiseStoreKitWrapper *shared = nil;
     static dispatch_once_t onceToken = 0;
     dispatch_once(&onceToken, ^{
         shared = [[self alloc] init];
@@ -161,25 +153,23 @@ NSString *const kAffiseSKAdNetworkErrorDomain = @"affiseSKAdNetworkError";
 
 - (BOOL)isApiAvailableForClass:(Class)class andSelector:(SEL)selector error:(NSError **)error {
     if (class == nil) {
-        if (error != nil) {
-            *error = [AffiseSKAdNetwork errorWithCode:AffiseSKAdNetworkErrorCodeUnknown
+        if (error == nil) return NO;
+        
+        *error = [AffiseStoreKitWrapper errorWithCode:AffiseSKAdNetworkErrorCodeUnknown
                                         failureReason:@"StoreKit.framework not found in the app (SKAdNetwork class not found)"
                                       underlyingError:nil];
-        }
-        return NO;
     }
     if (!selector) {
-        if (error != nil) {
-            *error = [AffiseSKAdNetwork errorWithCode:AffiseSKAdNetworkErrorCodeUnknown
+        if (error == nil) return NO;
+        
+        *error = [AffiseStoreKitWrapper errorWithCode:AffiseSKAdNetworkErrorCodeUnknown
                                         failureReason:@"Selector for given method was not found"
                                       underlyingError:nil];
-        }
-        return NO;
     }
     if ([class respondsToSelector:selector] == NO) {
-        *error = [AffiseSKAdNetwork errorWithCode:AffiseSKAdNetworkErrorCodeUnknown
-                                    failureReason:[NSString stringWithFormat:@"%@ method implementation not found", NSStringFromSelector(selector)]
-                                  underlyingError:nil];
+        *error = [AffiseStoreKitWrapper errorWithCode:AffiseSKAdNetworkErrorCodeUnknown
+                                        failureReason:[NSString stringWithFormat:@"%@ method implementation not found", NSStringFromSelector(selector)]
+                                      underlyingError:nil];
         return NO;
     }
     

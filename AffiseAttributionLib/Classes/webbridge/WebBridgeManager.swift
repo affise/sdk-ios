@@ -1,10 +1,4 @@
-//
-//  WebBridgeManager.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
 import WebKit
 
 internal class WebBridgeManager: NSObject, WKScriptMessageHandler {
@@ -31,9 +25,8 @@ internal class WebBridgeManager: NSObject, WKScriptMessageHandler {
         self.webView = webView
         webView.configuration.userContentController.add(self, name: WEB_BRIDGE_JAVASCRIPT_INTERFACE_NAME)
         webView.configuration.userContentController.add(self, name: WEB_BRIDGE_LOG)
-        let bundle = Bundle(for: type(of: self))
         do {
-            guard let path = bundle.path(forResource: "affise", ofType: "js") else {
+            guard let path = getAssetPath(name: "affise", ext: "js") else {
                 return
             }
             let contents = try String(contentsOfFile: path)
@@ -78,5 +71,36 @@ internal class WebBridgeManager: NSObject, WKScriptMessageHandler {
         default:
             break
         }
+    }
+    
+    private func getAssetPath(name: String, ext: String) -> String? {
+        let bundle = Bundle(for: type(of: self))
+        
+        if let path = bundle.path(forResource: name, ofType: ext) {
+            return path
+        }
+        
+        if let path = getSpmBundle()?.path(forResource: name, ofType: ext) {
+            return path
+        }
+        
+        return nil
+    }
+    
+    private func getSpmBundle() -> Bundle? {
+        let bundleName = "Affise_AffiseAttributionLib.bundle"
+        let resourceURLs = [
+            Bundle.main.resourceURL,
+            Bundle.main.bundleURL,
+            Bundle(for: type(of: self)).resourceURL
+        ]
+        
+        for url in resourceURLs {
+            let bundlePath = url?.appendingPathComponent(bundleName)
+            if let bundle = bundlePath.flatMap(Bundle.init(url:)) {
+                return bundle
+            }
+        }
+        return nil
     }
 }

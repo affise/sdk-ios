@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public class PredefinedCustom: NSObject {
     private var predefinedParameters: [(String, Any?)] = []

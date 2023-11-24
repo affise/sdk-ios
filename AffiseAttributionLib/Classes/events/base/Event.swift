@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Base event
  */

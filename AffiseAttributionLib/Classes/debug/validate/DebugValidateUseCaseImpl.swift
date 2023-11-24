@@ -1,3 +1,5 @@
+import Foundation
+
 class DebugValidateUseCaseImpl {
     
     private static let TIME_DELAY_SENDING: TimeInterval = 5
@@ -55,8 +57,8 @@ class DebugValidateUseCaseImpl {
 
         do { 
             //Create json
-            let dict = try JSONSerialization.jsonObject(with: (response.body ?? "{}").data(using: .utf8)!, options: .mutableContainers) as! [String: Any?]
-            let message: String = dict[KEY] as? String ?? ""
+            let dict = try JSONSerialization.jsonObject(with: (response.body ?? "{}").data(using: .utf8)!, options: .mutableContainers) as? [String: Any?]
+            let message: String = dict?[KEY] as? String ?? ""
             
             if message.caseInsensitiveCompare(INVALID_APP_ID) == .orderedSame {
                 return ValidationStatus.INVALID_APP_ID

@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Event ConvertedTrial use [data] of event and [userData]
  */

@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Provider for parameter [ProviderType.CREATED_TIME]
  */

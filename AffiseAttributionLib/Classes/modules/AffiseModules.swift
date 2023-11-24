@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public enum AffiseModules: Int {
     case Status
@@ -11,11 +13,9 @@ public enum AffiseModules: Int {
 
 extension AffiseModules: CaseIterable, CustomStringConvertible {
     
-    internal func value() -> String { "\(AffiseModules.PREFIX).\(self.enumValue)Module" }
+    internal func value() -> String { "Affise\(self.enumValue)Module" }
     
     internal static func values() -> [AffiseModules] { allCases }
-    
-    internal static let PREFIX: String = "AffiseModule"
     
     public var description: String { enumValue }
     

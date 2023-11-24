@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Event use case for IsFirstForUser
  *
@@ -56,14 +58,14 @@ extension IsFirstForUserUseCaseImpl: IsFirstForUserUseCase {
     func updateWebEvent(_ event: String) -> String {
         do {
             var eventClass: String? = nil
-            var dict = try JSONSerialization.jsonObject(with: event.data(using: .utf8)!, options: .mutableContainers) as! [String: Any?]
+            var dict = try JSONSerialization.jsonObject(with: event.data(using: .utf8)!, options: .mutableContainers) as? [String: Any?]
             
-            let subtype = (dict[Parameters.AFFISE_EVENT_DATA] as? [String: Any?])?[SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue] as? String
+            let subtype = (dict?[Parameters.AFFISE_EVENT_DATA] as? [String: Any?])?[SubscriptionParameters.AFFISE_SUBSCRIPTION_EVENT_TYPE_KEY.rawValue] as? String
   
             if let subtype = subtype {
                 eventClass = subtype
             } else {
-                eventClass = dict[Parameters.AFFISE_EVENT_NAME] as? String
+                eventClass = dict?[Parameters.AFFISE_EVENT_NAME] as? String
             }
 
             guard let eventClass = eventClass else {
@@ -71,14 +73,13 @@ extension IsFirstForUserUseCaseImpl: IsFirstForUserUseCase {
             }
             
             if (self.cacheContains(eventClass)) {
-                dict[Parameters.AFFISE_EVENT_FIRST_FOR_USER] = false
+                dict?[Parameters.AFFISE_EVENT_FIRST_FOR_USER] = false
             } else {
                 self.cacheAppend(eventClass)
                 self.isFirstForUserStorage.add(eventClass)
-                dict[Parameters.AFFISE_EVENT_FIRST_FOR_USER] = true
+                dict?[Parameters.AFFISE_EVENT_FIRST_FOR_USER] = true
             }
-        
-            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            let jsonData = try JSONSerialization.data(withJSONObject: dict ?? "{}", options: .prettyPrinted)
             return String(data: jsonData, encoding: .utf8)!
         } catch {
             return event

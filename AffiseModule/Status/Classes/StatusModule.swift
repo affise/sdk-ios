@@ -1,13 +1,15 @@
+import Foundation
+import UIKit
 import AffiseAttributionLib
 
-
-class StatusModule: AffiseModule {
+@objc(AffiseStatusModule)
+public final class StatusModule: AffiseModule {
     
     private var checkStatusUseCase: CheckStatusUseCase? = nil
     
     private lazy var stringToKeyValueConverter: StringToKeyValueConverter = StringToKeyValueConverter()
         
-    override func initialize() {
+    public override func initialize() {
         guard let providersToJsonStringConverter: ProvidersToJsonStringConverter = get() else { return }
         guard let networkService: NetworkService = get() else { return }
 
@@ -20,7 +22,7 @@ class StatusModule: AffiseModule {
         )
     }
     
-    override func status(_ onComplete: @escaping OnKeyValueCallback) {
+    public override func status(_ onComplete: @escaping OnKeyValueCallback) {
         checkStatusUseCase?.send(onComplete) ?? onComplete([])
     }
 }

@@ -1,9 +1,4 @@
-//
-//  EventToSerializedEventConverter.swift
-//  app
-//
-//  Created by Sergey Korney
-//
+import Foundation
 
 
 /**

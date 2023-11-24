@@ -1,10 +1,4 @@
-//
-//  Int64+Time.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
 
 extension TimeInterval {
     var stripTimestampToHours: TimeInterval {

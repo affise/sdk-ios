@@ -1,11 +1,3 @@
-//
-//  LogsManagerImpl.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 internal class LogsManagerImpl {
     private let storeLogsUseCase: StoreLogsUseCase
     
@@ -59,6 +51,18 @@ extension LogsManagerImpl: LogsManager {
         storeLog(
             event: AffiseLog.UserdataLog(
                 value: error.localizedDescription.toJsonGuardString()
+            )
+        )
+    }
+    
+    /**
+     * Add user [throwable] to logs
+     */
+    func addUserError(message: String) {
+        //Create UserdataLog
+        storeLog(
+            event: AffiseLog.UserdataLog(
+                value: message
             )
         )
     }

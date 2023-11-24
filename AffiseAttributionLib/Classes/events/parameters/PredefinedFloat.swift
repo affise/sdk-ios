@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public enum PredefinedFloat: Int {
     case PREFERRED_PRICE_RANGE

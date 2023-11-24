@@ -1,3 +1,5 @@
+import Foundation
+
 class InternalEventsStorageImpl {
     
     private let logsManager: LogsManager

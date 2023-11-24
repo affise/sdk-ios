@@ -1,3 +1,5 @@
+import Foundation
+
 public extension String {
     func toSnakeCase() -> String? {
         let pattern = "(?<=.)([A-Z]|\\d+)"

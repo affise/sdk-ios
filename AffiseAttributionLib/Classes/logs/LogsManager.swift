@@ -1,11 +1,3 @@
-//
-//  LogsManager.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Manager logs interface
  */
@@ -25,6 +17,11 @@ public protocol LogsManager {
      * Add [throwable] of user
      */
     func addUserError(error: Error)
+    
+    /**
+     * Add [throwable] of user
+     */
+    func addUserError(message: String)
 
     /**
      * Add [throwable] of sdk

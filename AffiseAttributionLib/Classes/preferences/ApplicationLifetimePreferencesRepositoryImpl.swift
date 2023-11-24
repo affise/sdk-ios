@@ -1,9 +1,4 @@
-//
-//  ApplicationLifetimePreferencesRepositoryImpl.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
+import Foundation
 
 
 /**
@@ -19,10 +14,7 @@ internal class ApplicationLifetimePreferencesRepositoryImpl : ApplicationLifetim
     
     init(userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
-    }
-    
-    
-    
+    }    
     
     var preferences: ApplicationLifetimePreferences {
         get {
@@ -33,6 +25,5 @@ internal class ApplicationLifetimePreferencesRepositoryImpl : ApplicationLifetim
         set {
             userDefaults.set(newValue.trackingEnabled, forKey: ApplicationLifetimePreferencesRepositoryImpl.PREFERENCE_TRACKING)
         }
-        
     }
 }

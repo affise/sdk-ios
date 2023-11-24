@@ -1,10 +1,4 @@
-//
-//  CustomId01Event.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
 
 /**
  * Event CustomId01

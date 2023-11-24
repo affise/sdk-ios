@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Event ReactivatedSubscription use [data] of event and [userData]
  */

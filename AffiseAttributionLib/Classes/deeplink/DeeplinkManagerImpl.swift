@@ -1,9 +1,5 @@
-//
-//  DeeplinkManagerImpl.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
+import Foundation
+import UIKit
 
 
 /**

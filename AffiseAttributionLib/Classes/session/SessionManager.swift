@@ -1,10 +1,4 @@
-//
-//  SessionManager.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
 
 /**
  * Manager Session interface

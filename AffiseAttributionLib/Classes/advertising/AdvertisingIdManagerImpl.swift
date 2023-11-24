@@ -1,10 +1,3 @@
-//
-//  AdvertisingIdManagerImpl.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
 import AdSupport
 import AppTrackingTransparency
 

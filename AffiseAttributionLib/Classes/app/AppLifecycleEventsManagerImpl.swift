@@ -1,9 +1,5 @@
-//
-//  AppLifecycleEventsManagerImpl.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
+import Foundation
+import UIKit
 
 /**
  * Manager for handling events occurring on the activity
@@ -11,8 +7,6 @@
  * @property app application on which they are listening Activities
  * @property logsManager for error logging
  */
-
-
 class AppLifecycleEventsManagerImpl {
     private let notificationCenter: NotificationCenter
     private let logsManager: LogsManager

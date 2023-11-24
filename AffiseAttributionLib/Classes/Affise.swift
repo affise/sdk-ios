@@ -1,9 +1,9 @@
+import Foundation
+import WebKit
+
 /**
  * Entry point to initialise Affise Attribution library
  */
-import WebKit
-
-
 @objc
 public final class Affise: NSObject {
 

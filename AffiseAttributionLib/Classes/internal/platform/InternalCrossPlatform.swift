@@ -1,3 +1,5 @@
+import Foundation
+
 public class InternalCrossPlatform {
     
     private static func getApi() -> AffiseApi? { return Affise.getApi() }

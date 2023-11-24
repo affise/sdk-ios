@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public enum ValidationStatus: Int {
     case VALID

@@ -1,10 +1,4 @@
-//
-//  ConverterToBase64.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
 
 /**
  *  Convert string to Base64 [encoded string]

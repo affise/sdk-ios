@@ -1,3 +1,6 @@
+import Foundation
+
+@objc
 public class AffiseKeyValue: NSObject {
     
     public override var description: String { "key=\(key), value=\(value ?? "")" }

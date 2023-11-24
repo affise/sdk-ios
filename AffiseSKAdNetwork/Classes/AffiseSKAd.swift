@@ -1,20 +1,29 @@
+import Foundation
+#if canImport(UIKit)
+import UIKit
+#endif
+
+#if canImport(AffiseInternalWrapperObjC)
+import AffiseInternalWrapperObjC
+#endif
+
 @objc
 public class AffiseSKAd: NSObject {
 
     @objc(registerWithCompletionHandler:)
     public static func register(_ completionHandler: @escaping (String)->Void) {
         if #available(iOS 16.1, *) {
-            AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(0, coarseValue: CoarseConversionValue.medium.value, completionHandler: { error in
+            AffiseStoreKitWrapper.shared()?.updatePostbackConversionValue(0, coarseValue: CoarseConversionValue.medium.value, completionHandler: { error in
                 let errorMessage = error?.localizedDescription ?? ""
                 completionHandler(errorMessage)
             })
         } else if #available(iOS 15.4, *) {
-            AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(0, completionHandler: { error in
+            AffiseStoreKitWrapper.shared()?.updatePostbackConversionValue(0, completionHandler: { error in
                 let errorMessage = error?.localizedDescription ?? ""
                 completionHandler(errorMessage)
             })
         } else if #available(iOS 14.0, *) {
-            AffiseSKAdNetwork.shared()?.registerAppForAdNetworkAttribution(completionHandler: { error in                
+            AffiseStoreKitWrapper.shared()?.registerAppForAdNetworkAttribution(completionHandler: { error in
                 let errorMessage = error?.localizedDescription ?? ""
                 completionHandler(errorMessage)
             })
@@ -28,17 +37,17 @@ public class AffiseSKAd: NSObject {
         let coarse = coarseValue?.value ?? CoarseConversionValue.medium.value
  
         if #available(iOS 16.1, *) {
-            AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, coarseValue: coarse, completionHandler: { error in
+            AffiseStoreKitWrapper.shared()?.updatePostbackConversionValue(fineValue, coarseValue: coarse, completionHandler: { error in
                 let errorMessage = error?.localizedDescription ?? ""
                 completionHandler(errorMessage)
             })
         } else if #available(iOS 15.4, *) {
-            AffiseSKAdNetwork.shared()?.updatePostbackConversionValue(fineValue, completionHandler: { error in
+            AffiseStoreKitWrapper.shared()?.updatePostbackConversionValue(fineValue, completionHandler: { error in
                 let errorMessage = error?.localizedDescription ?? ""
                 completionHandler(errorMessage)
             })
         } else if #available(iOS 14.0, *) {
-            AffiseSKAdNetwork.shared()?.updateConversionValue(fineValue, completionHandler: { error in
+            AffiseStoreKitWrapper.shared()?.updateConversionValue(fineValue, completionHandler: { error in
                 let errorMessage = error?.localizedDescription ?? ""
                 completionHandler(errorMessage)
             })
@@ -48,6 +57,23 @@ public class AffiseSKAd: NSObject {
     }
     
     private static func notSupported() -> String {
-        return "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion) Not supported"
+        return "\(self.systemName()) \(self.systemVersion()) Not supported"
+    }
+    
+    private static func systemName() -> String {
+        #if canImport(UIKit)
+        return UIDevice.current.systemName
+        #else
+        return Host.current().name ?? ""
+        #endif
+    }
+    
+    
+    private static func systemVersion() -> String {
+        #if canImport(UIKit)
+        return UIDevice.current.systemVersion
+        #else
+        return ProcessInfo.processInfo.operatingSystemVersionString
+        #endif
     }
 }

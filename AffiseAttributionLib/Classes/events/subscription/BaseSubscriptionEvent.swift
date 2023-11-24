@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Base Event of Subscription use [data] of event and [userData]
  */

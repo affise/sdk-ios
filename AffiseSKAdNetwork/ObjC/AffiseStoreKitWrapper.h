@@ -1,11 +1,3 @@
-//
-//  AffiseSKAdNetwork.h
-//  AffiseAttributionSKAd
-//
-//  Created by Sergey Korney
-//  
-//
-
 #import <Foundation/Foundation.h>
 
 
@@ -21,7 +13,7 @@ typedef NS_ENUM(NSUInteger, AffiseSKAdNetworkErrorCode) {
 typedef void(^AffiseSKAdNetworkCompletionHandler)(NSError *_Nullable error);
 
 
-@interface AffiseSKAdNetwork : NSObject
+@interface AffiseStoreKitWrapper : NSObject
 + (nullable instancetype)shared;
 
 - (void)registerAppForAdNetworkAttributionWithCompletionHandler:(AffiseSKAdNetworkCompletionHandler)completionHandler;

@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 internal enum InternalEventName: Int {
     case SESSION_START

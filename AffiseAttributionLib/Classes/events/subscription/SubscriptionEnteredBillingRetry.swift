@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Event TrialInRetry use [data] of event and [userData]
  */

@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public class HttpResponse: NSObject {
     public let code: Int

@@ -1,3 +1,6 @@
+import Foundation
+import UIKit 
+
 internal class AffiseModuleManager {
 
     private let bundle: Bundle
@@ -35,7 +38,7 @@ internal class AffiseModuleManager {
     }
 
     func status(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
-        modules[module]?.status(onComplete)
+        modules[module]?.status(onComplete) ?? onComplete([AffiseKeyValue(module.value(), "not found")])
     }
     
     private func classType(_ name: AffiseModules) -> AffiseModule.Type? {

@@ -1,3 +1,4 @@
+import Foundation
 
 /**
  * Provider for parameter [ProviderType.APP_VERSION]

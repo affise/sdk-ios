@@ -1,3 +1,5 @@
+import Foundation
+
 internal class CloudRepositoryImpl {
 
     private let ATTEMPTS_TO_SEND = 3
@@ -21,7 +23,6 @@ internal class CloudRepositoryImpl {
      */
     private func createRequest(url: String, data: [PostBackModel]) -> HttpResponse {
         guard let httpsUrl = url.toURL() else { return HttpResponse(0, "", nil) }
-//        let sendData = try JSONSerialization.data(withJSONObject: dictArray, options: .prettyPrinted)
         
         //Create request
         return networkService.executeRequest(

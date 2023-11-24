@@ -1,10 +1,4 @@
-//
-//  InstallReferrerToDeeplinkUriConverter.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
 
 /**
  * Implementation of [Converter]

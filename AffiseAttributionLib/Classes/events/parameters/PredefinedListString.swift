@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public enum PredefinedListString: Int {
     case CONTENT_IDS

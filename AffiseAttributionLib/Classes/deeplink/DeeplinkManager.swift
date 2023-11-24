@@ -1,10 +1,5 @@
-//
-//  DeeplinkManager.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
+import Foundation
+import UIKit
 
 /**
  * Interface describing callback that is going to be triggered when deeplink is received by application

@@ -1,3 +1,5 @@
+import Foundation
+import UIKit
 import AffiseAttributionLib
 
 @objc
@@ -26,16 +28,13 @@ public class AffiseApiWrapper: NSObject {
         }
     }
 
-    public func setCallback(_ callback: @escaping (_ api: String, _ map: [String: Any?]) -> Void) {
-        self.callback = { apiName, map in
-            callback(apiName, map)
-        }
+    public func setCallback(_ callback: @escaping OnCallback) { 
+        self.callback = callback
     }
 
     @objc(deeplink:)
     public func handleDeeplink(_ link: String?) {
-        guard let url = link else { return }
-        InternalCrossPlatform.deeplink(url)
+        InternalCrossPlatform.deeplink(link ?? "")
     }
     
     @objc(react)

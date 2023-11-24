@@ -1,3 +1,5 @@
+import UIKit
+
 /**
  * Provider for parameter [ProviderType.HARDWARE_NAME]
  */
