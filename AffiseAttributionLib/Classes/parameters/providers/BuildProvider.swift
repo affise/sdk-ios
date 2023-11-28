@@ -1,25 +1,25 @@
 import Foundation
 
 /**
- * Provider for parameter [ProviderType.LANGUAGE]
+ * Provider for parameter [ProviderType.BUILD]
  */
-class LanguageProvider: StringPropertyProvider {
+class BuildProvider: StringPropertyProvider {
     
     private let useCase: RemarketingUseCase
     
     init(_ useCase: RemarketingUseCase) {
         self.useCase = useCase
     }
-    
+
     override func provide() -> String? {
-        useCase.local()
+        useCase.build
     }
     
     public override func getOrder() -> Float {
-        40.0
+        70.0
     }
 
     public override func getKey() -> ProviderType? {
-        ProviderType.LANGUAGE
+        ProviderType.BUILD
     }
 }

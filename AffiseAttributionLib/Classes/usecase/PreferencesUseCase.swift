@@ -1,11 +1,3 @@
-//
-//  PreferencesUseCase.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Use case to set library preferences
  */

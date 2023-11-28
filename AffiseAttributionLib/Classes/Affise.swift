@@ -105,7 +105,7 @@ public final class Affise: NSObject {
      * Register [callback] for deeplink
      */
     @objc
-    public static func registerDeeplinkCallback(_ callback: @escaping (_ url: URL) -> Void) {
+    public static func registerDeeplinkCallback(_ callback: @escaping OnDeeplinkCallback) {
         api?.deeplinkManager.setDeeplinkCallback(callback: callback)
     }
     

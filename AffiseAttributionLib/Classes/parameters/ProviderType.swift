@@ -83,7 +83,12 @@ public enum ProviderType: Int {
     case AFFISE_INTERNAL_EVENTS_COUNT
     case IS_ROOTED
     case IS_EMULATOR
-    
+
+    // remarketing
+    case OS_AND_VERSION
+    case DEVICE
+    case BUILD
+
     // advertising
     case GAID_ADID
     case GAID_ADID_MD5
@@ -187,7 +192,12 @@ public enum ProviderType: Int {
         case .AFFISE_INTERNAL_EVENTS_COUNT: return "affise_internal_events_count"
         case .IS_ROOTED: return "is_rooted"
         case .IS_EMULATOR: return "is_emulator"
-            
+        
+        // remarketing
+        case .OS_AND_VERSION: return "os_and_version"
+        case .DEVICE: return "device"
+        case .BUILD: return "build"
+
         // advertising
         case .GAID_ADID: return "gaid_adid"
         case .GAID_ADID_MD5: return "gaid_adid_md5"

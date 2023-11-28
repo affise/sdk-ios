@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Deeplinks https://github.com/affise/sdk-ios#deeplinks
         Affise.registerDeeplinkCallback { url in
-            let component = URLComponents(string: url.absoluteString)!
-            let screen = component.queryItems?.first(where: {$0.name == "screen"})?.value
+            let component = URLComponents(string: url?.absoluteString ?? "")
+            let screen = component?.queryItems?.first(where: {$0.name == "screen"})?.value
             if let screen = screen, screen == "special_offer" {
                 // handle value
             }

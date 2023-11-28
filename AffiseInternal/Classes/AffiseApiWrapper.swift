@@ -297,7 +297,7 @@ public class AffiseApiWrapper: NSObject {
         Affise.registerDeeplinkCallback { uri in
             let data: [String: Any?] = [
                 self.UUID: uuid,
-                api.method: uri.absoluteString,
+                api.method: uri?.absoluteString ?? "",
             ]
             self.callback?(api.method, data)
         }

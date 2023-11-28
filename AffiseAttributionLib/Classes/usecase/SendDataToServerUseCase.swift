@@ -1,11 +1,3 @@
-//
-//  SendDataToServerUseCase.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 protocol SendDataToServerUseCase {
 
     /**

@@ -5,9 +5,7 @@ public class InternalCrossPlatform {
     private static func getApi() -> AffiseApi? { return Affise.getApi() }
 
     public static func deeplink(_ uri: String) {
-        guard let url = URL(string: uri) else { return }
-
-        getApi()?.deeplinkManager.handleDeeplink(url: url)
+        getApi()?.deeplinkManager.handleDeeplink(url: URL(string: uri))
     }
 
     public static func start() {

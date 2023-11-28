@@ -137,6 +137,7 @@ internal class AffiseComponent: AffiseApi {
     lazy var stringToSha256Converter: StringToSHA256Converter = StringToSHA256Converter()
     lazy var providersToJsonStringConverter: ProvidersToJsonStringConverter = ProvidersToJsonStringConverter()
     lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()
+    lazy var remarketingUseCase: RemarketingUseCase = RemarketingUseCaseImpl()
 
     /**
      * PostBackModelFactory
@@ -153,7 +154,8 @@ internal class AffiseComponent: AffiseApi {
         stringToSha256Converter: stringToSha256Converter,
         logsManager: logsManager,
         deeplinkClickRepository: deeplinkClickRepository,
-        deviceUseCase: deviceUseCase
+        deviceUseCase: deviceUseCase,
+        remarketingUseCase: remarketingUseCase
     ).create()
 
     lazy var moduleManager: AffiseModuleManager = AffiseModuleManager(

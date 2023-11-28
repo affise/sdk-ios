@@ -1,11 +1,3 @@
-//
-//  StoreLogsUseCase.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * UseCase store logs interface
  */

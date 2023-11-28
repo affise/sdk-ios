@@ -1,11 +1,3 @@
-//
-//  StoreEventUseCase.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Event use case for store events
  */

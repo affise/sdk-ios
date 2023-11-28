@@ -1,11 +1,3 @@
-//
-//  PreferencesUseCaseImpl.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Implementation of [PreferencesUseCase]
  *

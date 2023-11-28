@@ -74,7 +74,7 @@ public class AffiseShared: NSObject {
      * Register [callback] for deeplink
      */
     @available(*, deprecated, message: "use Affise.registerDeeplinkCallback(_ callback:)")
-    public func registerDeeplinkCallback(callback: @escaping (_ url: URL) -> Void) {
+    public func registerDeeplinkCallback(callback: @escaping OnDeeplinkCallback) {
         Affise.registerDeeplinkCallback(callback)
     }
     

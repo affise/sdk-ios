@@ -20,6 +20,7 @@ internal class PropertiesProviderFactory {
     private let logsManager: LogsManager
     private let deeplinkClickRepository: DeeplinkClickRepository
     private let deviceUseCase: DeviceUseCase
+    private let remarketingUseCase: RemarketingUseCase
     
     init(app: UIApplication,
          bundle: Bundle,
@@ -32,7 +33,8 @@ internal class PropertiesProviderFactory {
          stringToSha256Converter: StringToSHA256Converter,
          logsManager: LogsManager,
          deeplinkClickRepository: DeeplinkClickRepository,
-         deviceUseCase: DeviceUseCase
+         deviceUseCase: DeviceUseCase,
+         remarketingUseCase: RemarketingUseCase
     ) {
         self.app = app
         self.bundle = bundle
@@ -46,6 +48,7 @@ internal class PropertiesProviderFactory {
         self.logsManager = logsManager
         self.deeplinkClickRepository = deeplinkClickRepository
         self.deviceUseCase = deviceUseCase
+        self.remarketingUseCase = remarketingUseCase
     }
     
     func create() -> PostBackModelFactory {
@@ -94,7 +97,7 @@ internal class PropertiesProviderFactory {
                 IsEmulatorProvider(useCase: deviceUseCase),
                 RegionProvider(),
                 CountryProvider(),
-                LanguageProvider(),
+                LanguageProvider(remarketingUseCase),
                 DeviceNameProvider(),
                 DeviceTypeProvider(),
                 OsNameProvider(),
@@ -117,7 +120,10 @@ internal class PropertiesProviderFactory {
                 AffAppTokenPropertyProvider(storage: initPropertiesStorage, stringToSHA256Converter: stringToSha256Converter),
                 // AffSDKSecretIdProvider(storage: initPropertiesStorage),
                 EmptyStringProvider(ProviderType.LABEL, order: 62.0),
-                PushTokenProvider(preferences: preferences)
+                PushTokenProvider(preferences: preferences),
+                OsAndVersionProvider(remarketingUseCase),
+                DeviceProvider(remarketingUseCase),
+                BuildProvider(remarketingUseCase)
             ]
         )
     }

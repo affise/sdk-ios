@@ -56,9 +56,9 @@ internal class DeeplinkManagerImpl : DeeplinkManager {
         deeplinkCallback = callback
     }
 
-    func handleDeeplink(url: URL) {
+    func handleDeeplink(url: URL?) {
         isDeeplinkRepository.setDeeplinkClick(isDeeplink: true)
-        isDeeplinkRepository.setDeeplink(deeplink: url.absoluteString)
+        isDeeplinkRepository.setDeeplink(deeplink: url?.absoluteString ?? "")
         deeplinkCallback?(url)
     }
 }
