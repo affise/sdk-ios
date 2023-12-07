@@ -1,3 +1,4 @@
+import Foundation
 
 /**
  *  Provider for parameter [ProviderType.AFFISE_SDK_VERSION]
@@ -5,7 +6,7 @@
 class AffSDKVersionProvider: StringPropertyProvider {
     
     override func provide() -> String? {
-        return "1.6.17"
+        return "1.6.18"
     }
     
     public override func getOrder() -> Float {

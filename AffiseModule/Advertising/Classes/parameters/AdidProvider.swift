@@ -1,14 +1,17 @@
+import AffiseAttributionLib
+
 /**
  * Provider for parameter [ProviderType.ADID]
  */
 internal class AdidProvider : StringPropertyProvider {
+    
     private let advertisingIdManager: AdvertisingIdManager
     
     init(advertisingIdManager: AdvertisingIdManager) {
         self.advertisingIdManager = advertisingIdManager
     }
 
-    override func provide() -> String? {
+    public override func provide() -> String? {
         return advertisingIdManager.getAdvertisingId()
     }
     

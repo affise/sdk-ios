@@ -215,6 +215,14 @@ public final class Affise: NSObject {
     }
     
     /**
+     * Manual module start
+     */
+    @objc
+    public static func moduleStart(_ module: AffiseModules) {
+        api?.moduleManager.manualStart(module)
+    }
+
+    /**
      * Call deeplink handle manually
      */
     @objc

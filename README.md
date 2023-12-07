@@ -2,9 +2,10 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib` | [`1.6.17`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`    | [`1.6.17`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Status`  | [`1.6.17`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib` | [`1.6.18`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`    | [`1.6.18`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.18`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`  | [`1.6.18`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -14,6 +15,7 @@
     - [Integrate as Swift Package Manager](#integrate-as-swift-package-manager)
     - [Initialize](#initialize)
       - [Domain](#domain)
+    - [Modules](#modules)
     - [Requirements](#requirements)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
@@ -67,18 +69,20 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.17'
-# Affise module
-pod 'AffiseModule/Status', '~> 1.6.17'
+pod 'AffiseAttributionLib', '~> 1.6.18'
+# Affise modules
+pod 'AffiseModule/Advertising', '~> 1.6.18'
+pod 'AffiseModule/Status', '~> 1.6.18'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.17'
-# Affise module
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.17'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.18'
+# Affise modules
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.18'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.18'
 ```
 
 ### Integrate as Swift Package Manager
@@ -168,9 +172,36 @@ Affise
     .start(app: application, launchOptions: launchOptions)
 ```
 
+### Modules
+
+| Module        | Version                                                                              | Start    |
+| ------------- |:------------------------------------------------------------------------------------:|----------|
+| `Advertising` | [`1.6.18`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Status`      | [`1.6.18`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+
+If module start type is `manual`, then call
+
+```swift
+Affise.moduleStart(.Advertising)
+```
+
+> **Warning**
+> 
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> Module Advertising requires `NSUserTrackingUsageDescription` key in `info.plist`
+>
+> Application will crash if key not present
+> 
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+Open `info.plist` and add key `NSUserTrackingUsageDescription` with string value. For more information [read requirements](#requirements)
+
+
+
 ### Requirements
 
-Affise SDK uses `AppTrackingTransparency` framework to get `advertisingIdentifier`
+Affise Advertising module uses `AppTrackingTransparency` framework to get `advertisingIdentifier`
 For working functionality your app needs to declare [`NSUserTrackingUsageDescription` permission](https://developer.apple.com/documentation/bundleresources/information_property_list/nsusertrackingusagedescription):
 
 Open XCode project `info.plist` and add key `NSUserTrackingUsageDescription` with string value
@@ -190,14 +221,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.17'
+pod 'AffiseSKAdNetwork', '~> 1.6.18'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.17'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.18'
 ```
 
 For `swift` use:

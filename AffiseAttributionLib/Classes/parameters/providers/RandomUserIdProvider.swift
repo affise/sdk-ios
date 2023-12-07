@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  * Provider for parameter [ProviderType.RANDOM_USER_ID]
  *
@@ -10,7 +12,7 @@ public class RandomUserIdProvider: StringPropertyProvider {
         self.useCase = useCase
     }
     
-    override func provide() -> String? {
+    public override func provide() -> String? {
         return useCase.getRandomUserId()
     }
     

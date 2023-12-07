@@ -1,10 +1,3 @@
-//
-//  AdvertisingIdManager.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
-
 /**
  * Manager to track google advertising id changes
  */

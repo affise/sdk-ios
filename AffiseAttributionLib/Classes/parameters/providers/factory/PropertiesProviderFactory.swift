@@ -8,7 +8,6 @@ internal class PropertiesProviderFactory {
     
     private let app: UIApplication
     private let bundle: Bundle
-    private let advertisingIdManager: AdvertisingIdManager
     private let firstAppOpenUseCase: FirstAppOpenUseCase
     private let webViewUseCase: WebViewUseCase
     private let sessionManager: SessionManager
@@ -24,7 +23,6 @@ internal class PropertiesProviderFactory {
     
     init(app: UIApplication,
          bundle: Bundle,
-         advertisingIdManager: AdvertisingIdManager,
          firstAppOpenUseCase: FirstAppOpenUseCase,
          webViewUseCase: WebViewUseCase,
          sessionManager: SessionManager,
@@ -38,7 +36,6 @@ internal class PropertiesProviderFactory {
     ) {
         self.app = app
         self.bundle = bundle
-        self.advertisingIdManager = advertisingIdManager
         self.firstAppOpenUseCase = firstAppOpenUseCase
         self.webViewUseCase = webViewUseCase
         self.sessionManager = sessionManager
@@ -87,7 +84,6 @@ internal class PropertiesProviderFactory {
                 EmptyStringProvider(ProviderType.DEVICE_ATLAS_ID, order: 26.0),
                 AffiseDeviceIdProvider(useCase: firstAppOpenUseCase),
                 AffiseAltDeviceIdProvider(useCase: firstAppOpenUseCase),
-                AdidProvider(advertisingIdManager: advertisingIdManager),
                 RefTokenProvider(preferences: preferences),
                 RefTokensProvider(preferences: preferences),
                 UserAgentProvider(useCase: webViewUseCase),

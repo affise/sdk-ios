@@ -2,28 +2,37 @@ import UIKit
 
 @objc
 open class AffiseModule: NSObject {
-    
+
     public var app: UIApplication?
     public var logsManager: LogsManager?
     public var dependencies: [Any] = []
     public var baseProviders: [Provider] = []
 
-    public required init(
+    public required override init(
+    ) {
+        super.init()
+    }
+
+    open func dependencies(
         app: UIApplication,
         logsManager: LogsManager,
         dependencies: [Any],
         providers: [Provider]
     ) {
-        super.init()
         self.app = app
         self.logsManager = logsManager
         self.dependencies = dependencies
         self.baseProviders = providers
-        self.initialize()
+    }
+    
+    open func initialize() {
+
     }
 
-    open func initialize() {}
-    
+    open func isManual() -> Bool {
+        false
+    }
+
     open func providers() -> [Provider] {
         return []
     }

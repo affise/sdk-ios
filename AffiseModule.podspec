@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.6.17"
+  s.version      = ENV["LIB_VERSION"] || "1.6.18"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
   s.homepage     = "https://github.com/affise/sdk-ios"
@@ -27,5 +27,9 @@ Pod::Spec.new do |s|
   
   s.subspec "Status" do |sub|
     sub.source_files = "AffiseModule/Status/Classes/**/*.{swift}"
+  end
+  
+  s.subspec "Advertising" do |sub|
+    sub.source_files = "AffiseModule/Advertising/Classes/**/*.{swift}"
   end
 end

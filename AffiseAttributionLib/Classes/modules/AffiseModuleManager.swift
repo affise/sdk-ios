@@ -22,27 +22,52 @@ internal class AffiseModuleManager {
         app: UIApplication,
         dependencies: [Any]
     ) {
-        for name in AffiseModules.values() {
-            guard let cls = classType(name) else { continue }
-            
-            let module = cls.init(
+        initAffiseModules { module in
+            module.dependencies(
                 app: app,
                 logsManager: logsManager,
                 dependencies: dependencies,
                 providers: postBackModelFactory.getProviders()
             )
             
-            postBackModelFactory.addProviders(module.providers())
-            modules[name] = module
+            if module.isManual() == false {
+                moduleStart(module)
+            }
         }
     }
 
+    func manualStart(_ module: AffiseModules) {
+        guard let affiseModule: AffiseModule = modules[module] else { return }
+        if affiseModule.isManual() == false { return }
+        moduleStart(affiseModule)
+    }
+
     func status(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
-        modules[module]?.status(onComplete) ?? onComplete([AffiseKeyValue(module.value(), "not found")])
+        getModule(module)?.status(onComplete) ?? onComplete([AffiseKeyValue(module.value(), "not found")])
+    }
+    
+    private func moduleStart(_ module: AffiseModule) {
+        module.initialize()
+        postBackModelFactory.addProviders(module.providers())
     }
     
     private func classType(_ name: AffiseModules) -> AffiseModule.Type? {
         guard let cls = NSClassFromString(name.value()) as? AffiseModule.Type else { return nil }
         return cls
+    }
+    
+    private func getModule(_ name: AffiseModules) -> AffiseModule? {
+        modules[name]
+    }
+    
+    private func initAffiseModules(_ callback: (_ module: AffiseModule) -> Void) {
+        for name in AffiseModules.values() {
+            guard let cls = classType(name) else { continue }
+        
+            let module = cls.init()
+            modules[name] = module
+
+            callback(module)
+        }
     }
 }

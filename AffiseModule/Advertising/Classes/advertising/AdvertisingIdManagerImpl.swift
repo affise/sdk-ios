@@ -3,7 +3,8 @@ import AppTrackingTransparency
 
 
 class AdvertisingIdManagerImpl : AdvertisingIdManager {
-    private let asIdentifierManager: ASIdentifierManager = ASIdentifierManager.shared()
+    
+    private lazy var asIdentifierManager: ASIdentifierManager = ASIdentifierManager.shared() 
     
     var advertisingId: String?
     

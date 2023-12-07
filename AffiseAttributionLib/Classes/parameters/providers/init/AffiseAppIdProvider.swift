@@ -1,3 +1,4 @@
+import Foundation
 
 /**
  * Provider for parameter [ProviderType.AFFISE_APP_ID]
@@ -11,7 +12,7 @@ public class AffiseAppIdProvider: StringPropertyProvider {
         self.storage = storage
     }
     
-    override func provide() -> String? {
+    public override func provide() -> String? {
         return storage.getProperties()?.affiseAppId
     }
     

@@ -1,3 +1,4 @@
+import Foundation
 
 /**
  * Provider for parameter [ProviderType.AFFISE_DEVICE_ID]
@@ -11,7 +12,7 @@ public class AffiseDeviceIdProvider: StringPropertyProvider {
         self.useCase = useCase
     }
     
-    override func provide() -> String? {
+    public override func provide() -> String? {
         return useCase.getAffiseDeviseId()
     }
     

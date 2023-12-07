@@ -83,6 +83,7 @@ public class AffiseApiWrapper: NSObject {
         case .GET_RANDOM_USER_ID: callGetRandomUserId(api, map: map, result: result)
         case .GET_RANDOM_DEVICE_ID: callGetRandomDeviceId(api, map: map, result: result)
         case .GET_PROVIDERS: callGetProviders(api, map: map, result: result)
+        case .MODULE_START: callModuleStart(api, map: map, result: result)
         case .GET_REFERRER_CALLBACK: callGetReferrer(api, map: map, result: result)
         case .GET_REFERRER_VALUE_CALLBACK: callGetReferrerValue(api, map: map, result: result)
         case .GET_STATUS_CALLBACK: callGetStatusCallback(api, map: map, result: result)
@@ -252,6 +253,21 @@ public class AffiseApiWrapper: NSObject {
             dict[provider.key.provider]=provider.value
         }
         result?.success(data)
+    }
+
+    private func callModuleStart(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+         guard let name: String = map.opt(api) else {
+            result?.error("api [\(api.method)]: value not set")
+            return
+        }
+
+        guard let module: AffiseModules = AffiseModules.from(name) else {
+            result?.error("api [\(api.method)]: no valid AffiseModules")
+            return
+        }
+
+        Affise.moduleStart(module)
+        result?.success(nil)
     }
 
     private func callGetReferrer(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {

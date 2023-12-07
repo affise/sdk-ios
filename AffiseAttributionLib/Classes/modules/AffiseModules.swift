@@ -2,10 +2,12 @@ import Foundation
 
 @objc
 public enum AffiseModules: Int {
+    case Advertising
     case Status
     
     internal var enumValue: String {
         switch self {
+        case .Advertising: return "Advertising"
         case .Status: return "Status"
         }
     }

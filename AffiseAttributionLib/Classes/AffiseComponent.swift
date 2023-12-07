@@ -9,9 +9,11 @@ internal class AffiseComponent: AffiseApi {
     private let launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     private var isReady: Bool = false
 
-    init(app: UIApplication,
-         initProperties: AffiseInitProperties,
-         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+    init(
+        app: UIApplication,
+        initProperties: AffiseInitProperties,
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) {
         
         self.app = app;
         self.initProperties = initProperties;
@@ -23,7 +25,6 @@ internal class AffiseComponent: AffiseApi {
         setPropertiesWhenInitUseCase.initialize(initProperties: initProperties)
         sessionManager.initialize()
         eventsManager.initialize()
-        advertisingIdManager.initialize()
 //        oaidManager.init(app)
 //        retrieveInstallReferrerUseCase.startInstallReferrerRetrieve()
         deeplinkManager.initialize(launchOptions: launchOptions)
@@ -127,7 +128,6 @@ internal class AffiseComponent: AffiseApi {
         isDeeplinkRepository: deeplinkClickRepository,
         appLifecycleEventsManager: appLifecycleEventsManager
     )
-    lazy var advertisingIdManager: AdvertisingIdManager = AdvertisingIdManagerImpl()
     lazy var webBridgeManager: WebBridgeManager = WebBridgeManager(storeEventUseCase: storeEventUseCase)
     lazy var preferencesUseCase: PreferencesUseCase = PreferencesUseCaseImpl(
         repository: ApplicationLifecyclePreferencesRepositoryImpl(),
@@ -145,7 +145,6 @@ internal class AffiseComponent: AffiseApi {
     lazy var postBackModelFactory: PostBackModelFactory = PropertiesProviderFactory(
         app: app,
         bundle: bundle,
-        advertisingIdManager: advertisingIdManager,
         firstAppOpenUseCase: firstAppOpenUseCase,
         webViewUseCase: webViewUseCase,
         sessionManager: sessionManager,

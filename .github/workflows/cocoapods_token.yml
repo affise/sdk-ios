@@ -1,0 +1,16 @@
+name: CocoaPods Token
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  pods:
+    name: pod
+    runs-on: macOS-latest
+
+    steps:
+      - name: Pod trunk me
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN  }}
+        run: |
+          pod trunk me

@@ -4,7 +4,7 @@ import Foundation
  * Provider for parameter [ProviderType.CREATED_TIME]
  */
 public class CreatedTimeProvider : LongPropertyProvider {
-    override func provide() -> Int64? {
+    public override func provide() -> Int64? {
         return Date().timeIntervalSince1970.timeInMillis
     }
     

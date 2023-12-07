@@ -11,7 +11,7 @@ public class AffisePackageAppNameProvider: StringPropertyProvider {
         self.bundle = bundle
     }
     
-    override func provide() -> String? {
+    public override func provide() -> String? {
         return bundle.bundleIdentifier
     }
     

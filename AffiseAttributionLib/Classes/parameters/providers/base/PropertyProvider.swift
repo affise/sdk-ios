@@ -1,20 +1,12 @@
-//
-//  PropertyProvider.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Base property provider
  */
-public class PropertyProvider<T> : Provider {
-    public func getOrder() -> Float {
+open class PropertyProvider<T> : Provider {
+    open func getOrder() -> Float {
         0
     }
     
-    public func getKey() -> ProviderType? {
+    open func getKey() -> ProviderType? {
         nil
     }
     
@@ -30,7 +22,7 @@ public class PropertyProvider<T> : Provider {
     /**
      * Provide data
      */
-    func provide() -> T? { nil }
+    open func provide() -> T? { nil }
     
     /**
      * Provide data with default value
@@ -43,8 +35,8 @@ public class PropertyProvider<T> : Provider {
 /**
  * Base string property provider
  */
-public class StringPropertyProvider : PropertyProvider<String> {
-    init() {
+open class StringPropertyProvider : PropertyProvider<String> {
+    public init() {
         super.init("")
     }
 }
