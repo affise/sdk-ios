@@ -25,7 +25,7 @@ open class AffiseModule: NSObject {
         self.baseProviders = providers
     }
     
-    open func initialize() {
+    open func start() {
 
     }
 

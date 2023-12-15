@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
 import UIKit
 import WebKit
 import AffiseAttributionLib
@@ -79,11 +72,6 @@ class ViewController: UIViewController, WKScriptMessageHandler {
         listEvents[sender.tag].send();
         // or
         // Affise.sendEvent(listEvents[sender.tag])
-    }
-    
-    
-    @IBAction func sendEvents(_ sender: Any) {
-        Affise.sendEvents()
     }
     
     @IBAction func didValueChangedControl(_ sender: UISegmentedControl) {

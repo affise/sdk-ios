@@ -4,7 +4,7 @@ import Foundation
 public enum AffiseApiMethod: Int {
     case INIT
     case IS_INITIALIZED
-    case SEND_EVENTS
+//    case SEND_EVENTS // deprecated
     case SEND_EVENT
     case ADD_PUSH_TOKEN
     case REGISTER_WEB_VIEW
@@ -41,7 +41,7 @@ public enum AffiseApiMethod: Int {
         switch self {
         case .INIT: return "init"
         case .IS_INITIALIZED: return "is_initialized"
-        case .SEND_EVENTS: return "send_events"
+//        case .SEND_EVENTS: return "send_events" // deprecated
         case .SEND_EVENT: return "send_event"
         case .ADD_PUSH_TOKEN: return "add_push_token"
         case .REGISTER_WEB_VIEW: return "register_web_view"

@@ -14,7 +14,7 @@ public final class AdvertisingModule: AffiseModule {
         true
     }
 
-    override public func initialize() {
+    override public func start() {
         advertisingIdManager.initialize()
         
         newProviders = [

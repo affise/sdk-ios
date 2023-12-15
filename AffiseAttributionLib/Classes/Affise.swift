@@ -7,10 +7,6 @@ import WebKit
 @objc
 public final class Affise: NSObject {
 
-    @available(*, deprecated, message: "remove .shared")
-    @objc
-    public static let shared = AffiseShared()
-
     /**
      * Api to communication with Affise
      */
@@ -41,19 +37,6 @@ public final class Affise: NSObject {
             debugPrint("Affise SDK is already initialized")
         }
     }
-    
-    /**
-     * Init [AffiseComponent] with [app] and [initProperties]
-     */
-    @objc
-    @available(*, deprecated, message: "use Affise.settings(affiseAppId:secretKey:).start(app:launchOptions:)")
-    public static func load(
-        app: UIApplication,
-        initProperties: AffiseInitProperties,
-        launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) {
-        start(initProperties: initProperties, app: app, launchOptions: launchOptions)
-    }
 
     @objc
     public static func isInitialized() -> Bool {
@@ -61,12 +44,13 @@ public final class Affise: NSObject {
     }
     
     /**
+     * deprecated
      * Send events
      */
-    @objc
-    public static func sendEvents() {
-        api?.eventsManager.sendEvents()
-    }
+    // @objc
+    // private static func sendEvents() {
+    //     api?.eventsManager.sendEvents()
+    // }
     
     /**
      * Store and send [event]
@@ -171,6 +155,22 @@ public final class Affise: NSObject {
     @objc
     public static func isTrackingEnabled() -> Bool {
         return api?.preferencesUseCase.isTrackingEnabled() ?? false 
+    }
+    
+    /**
+     * Get referrer
+     */
+    @objc
+    public static func getReferrer(_ callback: @escaping OnReferrerCallback) {
+        api?.retrieveInstallReferrerUseCase.getReferrer(callback)
+    }
+    
+    /**
+     * Get referrer Value
+     */
+    @objc
+    public static func getReferrerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
+        api?.retrieveInstallReferrerUseCase.getReferrerValue(key, callback)
     }
 
     /**

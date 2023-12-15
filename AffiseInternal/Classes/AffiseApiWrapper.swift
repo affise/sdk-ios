@@ -64,7 +64,7 @@ public class AffiseApiWrapper: NSObject {
         switch api {
         case .INIT: callInit(api, map: map, result: result)
         case .IS_INITIALIZED: callIsInitialized(api, map: map, result: result)
-        case .SEND_EVENTS: callSendEvents(api, map: map, result: result)
+//        case .SEND_EVENTS: callSendEvents(api, map: map, result: result) // deprecated
         case .SEND_EVENT: callSendEvent(api, map: map, result: result)
         case .ADD_PUSH_TOKEN: callAddPushToken(api, map: map, result: result)
         case .REGISTER_WEB_VIEW: callRegisterWebView(api, map: map, result: result)
@@ -132,10 +132,11 @@ public class AffiseApiWrapper: NSObject {
         result?.success(Affise.isInitialized())
     }
 
-    private func callSendEvents(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
-        Affise.sendEvents()
-        result?.success(nil)
-    }
+//    deprecated
+//    private func callSendEvents(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+//        Affise.sendEvents()
+//        result?.success(nil)
+//    }
 
     private func callSendEvent(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
         guard let data: [String: Any?] = map.opt(api) else {
@@ -270,12 +271,48 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callGetReferrer(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        result?.notImplemented()
+    private func callGetReferrer(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        Affise.getReferrer { referrer in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: referrer,
+            ]
+            self.callback?(api.method, data)
+        }
+
+        result?.success(nil)
     }
 
-    private func callGetReferrerValue(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        result?.notImplemented()
+    private func callGetReferrerValue(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        guard let name: String = map.opt(api) else {
+            result?.error("api [\(api.method)]: value not set")
+            return
+        }
+
+        guard let key: ReferrerKey = ReferrerKey.from(name) else {
+            result?.error("api [\(api.method)]: no valid ReferrerKey")
+            return
+        }
+
+        Affise.getReferrerValue(key) { value in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: value,
+            ]
+            self.callback?(api.method, data)
+        }
+
+        result?.success(nil)
     }
 
     private func callGetStatusCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {

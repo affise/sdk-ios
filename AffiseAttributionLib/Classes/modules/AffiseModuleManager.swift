@@ -37,7 +37,7 @@ internal class AffiseModuleManager {
     }
 
     func manualStart(_ module: AffiseModules) {
-        guard let affiseModule: AffiseModule = modules[module] else { return }
+        guard let affiseModule: AffiseModule = getModule(module) else { return }
         if affiseModule.isManual() == false { return }
         moduleStart(affiseModule)
     }
@@ -47,7 +47,7 @@ internal class AffiseModuleManager {
     }
     
     private func moduleStart(_ module: AffiseModule) {
-        module.initialize()
+        module.start()
         postBackModelFactory.addProviders(module.providers())
     }
     
@@ -56,7 +56,7 @@ internal class AffiseModuleManager {
         return cls
     }
     
-    private func getModule(_ name: AffiseModules) -> AffiseModule? {
+    func getModule(_ name: AffiseModules) -> AffiseModule? {
         modules[name]
     }
     

@@ -1,0 +1,1 @@
+public typealias OnReferrerCallback = (_ value: String?) -> Void

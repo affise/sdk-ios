@@ -12,6 +12,7 @@ internal protocol AffiseApi {
     var initPropertiesStorage: InitPropertiesStorage {get}
     var preferencesUseCase: PreferencesUseCase {get}
     var postBackModelFactory: PostBackModelFactory {get}
+    var retrieveInstallReferrerUseCase: RetrieveInstallReferrerUseCase {get}
     var moduleManager: AffiseModuleManager {get}
     var storeInternalEventUseCase: StoreInternalEventUseCase {get}
     var debugValidateUseCase: DebugValidateUseCase {get}

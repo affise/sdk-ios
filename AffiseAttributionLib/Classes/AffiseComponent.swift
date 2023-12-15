@@ -157,6 +157,10 @@ internal class AffiseComponent: AffiseApi {
         remarketingUseCase: remarketingUseCase
     ).create()
 
+    lazy var retrieveInstallReferrerUseCase: RetrieveInstallReferrerUseCase = RetrieveInstallReferrerUseCase(
+        moduleManager: moduleManager
+    )
+
     lazy var moduleManager: AffiseModuleManager = AffiseModuleManager(
         bundle: bundle,
         logsManager: logsManager,

@@ -1,7 +1,6 @@
 import UIKit
 import AffiseAttributionLib
 import AffiseSKAdNetwork
-import AffiseModule
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

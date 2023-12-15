@@ -19,31 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ou5-aG-UjD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3a-oZ-DUB">
-                                        <rect key="frame" x="248" y="16" width="150" height="60"/>
-                                        <color key="backgroundColor" red="0.14901960784313725" green="0.13333333333333333" blue="0.22745098039215686" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="NSN-rG-E1z"/>
-                                            <constraint firstAttribute="height" constant="60" id="ZTv-Ss-9sf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Send events">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="sendEvents:" destination="Y3X-KI-XeX" eventType="touchUpInside" id="agV-4B-s1N"/>
-                                        </connections>
-                                    </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sgi-1h-ehv">
-                                        <rect key="frame" x="16" y="92" width="382" height="51"/>
+                                        <rect key="frame" x="16" y="7" width="382" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gVs-2f-gPd"/>
                                         </constraints>
@@ -58,19 +37,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Y3a-oZ-DUB" secondAttribute="trailing" constant="16" id="9xb-kd-FTX"/>
-                                    <constraint firstAttribute="height" constant="150" id="HPN-nO-ZcP"/>
+                                    <constraint firstAttribute="height" constant="65" id="HPN-nO-ZcP"/>
                                     <constraint firstItem="sgi-1h-ehv" firstAttribute="leading" secondItem="ou5-aG-UjD" secondAttribute="leading" constant="16" id="VZl-Ao-7j8"/>
                                     <constraint firstAttribute="trailing" secondItem="sgi-1h-ehv" secondAttribute="trailing" constant="16" id="dqd-Ko-6au"/>
-                                    <constraint firstItem="Y3a-oZ-DUB" firstAttribute="top" secondItem="ou5-aG-UjD" secondAttribute="top" constant="16" id="glj-bB-JoW"/>
                                     <constraint firstAttribute="bottom" secondItem="sgi-1h-ehv" secondAttribute="bottom" constant="8" id="npK-xe-cEU"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xRQ-wr-1cX">
-                                <rect key="frame" x="0.0" y="194" width="414" height="668"/>
+                                <rect key="frame" x="0.0" y="109" width="414" height="753"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fya-GQ-PUS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="753"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RXo-Ka-RxP">
                                                 <rect key="frame" x="16" y="0.0" width="382" height="50"/>
