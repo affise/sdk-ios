@@ -16,6 +16,7 @@
     - [Initialize](#initialize)
       - [Domain](#domain)
     - [Modules](#modules)
+      - [Advertising](#advertising)
     - [Requirements](#requirements)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
@@ -179,7 +180,7 @@ Affise
 
 | Module        | Version                                                                              | Start    |
 | ------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising` | [`1.6.19`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| [`Advertising`](#advertising) | [`1.6.19`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
 | `Status`      | [`1.6.19`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call
@@ -187,6 +188,10 @@ If module start type is `manual`, then call
 ```swift
 Affise.moduleStart(.Advertising)
 ```
+
+#### Advertising
+
+This module required to Use [`IDFA`](https://developer.apple.com/documentation/adsupport/asidentifiermanager/advertisingidentifier) (Identifier for advertisers)
 
 > **Warning**
 > 
