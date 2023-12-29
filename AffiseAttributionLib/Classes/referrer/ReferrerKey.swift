@@ -30,6 +30,11 @@ public enum ReferrerKey: Int {
     case SUB_3
     case SUB_4
     case SUB_5
+    case AFFISE_SUB_1
+    case AFFISE_SUB_2
+    case AFFISE_SUB_3
+    case AFFISE_SUB_4
+    case AFFISE_SUB_5
 
     var enumValue: String {
         switch self {
@@ -63,6 +68,11 @@ public enum ReferrerKey: Int {
         case .SUB_3: return "sub3"
         case .SUB_4: return "sub4"
         case .SUB_5: return "sub5"
+        case .AFFISE_SUB_1: return "affise_sub1"
+        case .AFFISE_SUB_2: return "affise_sub2"
+        case .AFFISE_SUB_3: return "affise_sub3"
+        case .AFFISE_SUB_4: return "affise_sub4"
+        case .AFFISE_SUB_5: return "affise_sub5"
         }
     }
 }

@@ -36,10 +36,15 @@ internal class AffiseModuleManager {
         }
     }
 
-    func manualStart(_ module: AffiseModules) {
-        guard let affiseModule: AffiseModule = getModule(module) else { return }
-        if affiseModule.isManual() == false { return }
+    func getModules() -> [AffiseModules] {
+        return Array(modules.keys)
+    }
+
+    func manualStart(_ module: AffiseModules) -> Bool {
+        guard let affiseModule: AffiseModule = getModule(module) else { return false }
+        if affiseModule.isManual() == false { return false }
         moduleStart(affiseModule)
+        return true
     }
 
     func status(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {

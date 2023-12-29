@@ -218,8 +218,24 @@ public final class Affise: NSObject {
      * Manual module start
      */
     @objc
-    public static func moduleStart(_ module: AffiseModules) {
-        api?.moduleManager.manualStart(module)
+    @discardableResult
+    public static func moduleStart(_ module: AffiseModules) -> Bool {
+        return api?.moduleManager.manualStart(module) ?? false
+    }
+
+    /**
+     * Get installed modules
+     */
+    @objc
+    public static func getModulesInstalledObjc() -> [String] {
+        return api?.moduleManager.getModules().map { $0.description } ?? []
+    }
+    
+    /**
+     * Get installed modules
+     */
+    public static func getModulesInstalled() -> [AffiseModules] {
+        return api?.moduleManager.getModules() ?? []
     }
 
     /**

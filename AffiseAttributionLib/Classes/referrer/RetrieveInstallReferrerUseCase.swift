@@ -1,3 +1,5 @@
+import Foundation
+
 class RetrieveInstallReferrerUseCase {
 
     let moduleManager: AffiseModuleManager
