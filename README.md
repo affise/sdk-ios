@@ -179,9 +179,11 @@ Affise
 ### Modules
 
 > **Warning**
-> 
+>
 > 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
 > How to install modules read in [Integration section](#integration)
+>
 > 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
 | Module        | Version                                                                              | Start    |
