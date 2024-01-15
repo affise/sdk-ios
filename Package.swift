@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "AffiseModuleAdvertising", targets: ["AffiseModuleAdvertising"]),
         .library(name: "AffiseModuleStatus", targets: ["AffiseModuleStatus"]),
         .library(name: "AffiseSKAdNetwork", targets: ["AffiseSKAdNetwork", "AffiseInternalWrapperObjC"]),
+        .library(name: "AffiseInternal", targets: ["AffiseInternal"]),
     ],
     targets: [
         .target(
