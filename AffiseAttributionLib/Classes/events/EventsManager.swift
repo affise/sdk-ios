@@ -71,18 +71,25 @@ class EventsManager {
      * Start timer fo repeat send events
      */
     private func startTimer() {
-        //Stop timer if running
-        stopTimer()
-
-        //Create timer
-        timer = Timer(timeInterval: EventsManager.TIME_SEND_REPEAT,
-                      target: self,
-                      selector: #selector(fireTimer),
-                      userInfo: nil,
-                      repeats: true)
-
-        DispatchQueue.main.async {
-            RunLoop.current.add(self.timer!, forMode: .common)
+        lockQueue.async(flags: .barrier) {
+            //Stop timer if running
+            self.stopTimer()
+            
+            //Create timer
+            let timer = Timer(
+                timeInterval: EventsManager.TIME_SEND_REPEAT,
+                target: self,
+                selector: #selector(self.fireTimer),
+                userInfo: nil,
+                repeats: true
+            )
+            
+            self.setTimer(timer)
+            
+            DispatchQueue.main.async {
+                guard let timer = self.getTimer() else { return }
+                RunLoop.current.add(timer, forMode: .common)
+            }
         }
     }
 
@@ -90,10 +97,11 @@ class EventsManager {
      * Stop timer fo repeat send events
      */
     private func stopTimer() {
-        if timer == nil { return }
-        //Stop timer
-        timer?.invalidate()
-        timer = nil
+        lockQueue.async(flags: .barrier) {
+            if self.timer == nil { return }
+            self.timer?.invalidate()
+            self.timer = nil
+        }
     }
     
     @objc
@@ -103,5 +111,19 @@ class EventsManager {
 
         //Stop timer
         stopTimer()
+    }
+        
+    private let lockQueue = DispatchQueue(label: "com.affise.EventsManager", attributes: .concurrent)
+    
+    func getTimer() -> Timer? {
+        lockQueue.sync {
+            return timer
+        }
+    }
+    
+    func setTimer(_ timer: Timer?) {
+        lockQueue.async(flags: .barrier) {
+            self.timer = timer
+        }
     }
 }
