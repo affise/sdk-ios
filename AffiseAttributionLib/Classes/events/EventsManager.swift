@@ -13,8 +13,10 @@ class EventsManager {
     private let sendDataToServerUseCase: SendDataToServerUseCase
     private let appLifecycleEventsManager: AppLifecycleEventsManager
 
-    init(sendDataToServerUseCase: SendDataToServerUseCase,
-         appLifecycleEventsManager: AppLifecycleEventsManager) {
+    init(
+        sendDataToServerUseCase: SendDataToServerUseCase,
+        appLifecycleEventsManager: AppLifecycleEventsManager
+    ) {
         
         self.sendDataToServerUseCase = sendDataToServerUseCase
         self.appLifecycleEventsManager = appLifecycleEventsManager
@@ -71,25 +73,20 @@ class EventsManager {
      * Start timer fo repeat send events
      */
     private func startTimer() {
-        lockQueue.async(flags: .barrier) {
-            //Stop timer if running
-            self.stopTimer()
-            
-            //Create timer
-            let timer = Timer(
-                timeInterval: EventsManager.TIME_SEND_REPEAT,
-                target: self,
-                selector: #selector(self.fireTimer),
-                userInfo: nil,
-                repeats: true
-            )
-            
-            self.setTimer(timer)
-            
-            DispatchQueue.main.async {
-                guard let timer = self.getTimer() else { return }
-                RunLoop.current.add(timer, forMode: .common)
-            }
+        //Stop timer if running
+        stopTimer()
+
+        //Create timer
+        timer = Timer.scheduledTimer(
+            withTimeInterval: EventsManager.TIME_SEND_REPEAT,
+            repeats: true
+        ) { [weak self] _ in
+            self?.fireTimer()
+        }
+
+        DispatchQueue.main.async { [weak self] in
+            guard let timer = self?.timer else { return }
+            RunLoop.current.add(timer, forMode: .common)
         }
     }
 
@@ -97,33 +94,17 @@ class EventsManager {
      * Stop timer fo repeat send events
      */
     private func stopTimer() {
-        lockQueue.async(flags: .barrier) {
-            if self.timer == nil { return }
-            self.timer?.invalidate()
-            self.timer = nil
-        }
+        if timer == nil { return }
+        //Stop timer
+        timer?.invalidate()
+        timer = nil
     }
-    
-    @objc
+
     private func fireTimer() {
         //Send events
         sendEvents()
 
         //Stop timer
         stopTimer()
-    }
-        
-    private let lockQueue = DispatchQueue(label: "com.affise.EventsManager", attributes: .concurrent)
-    
-    func getTimer() -> Timer? {
-        lockQueue.sync {
-            return timer
-        }
-    }
-    
-    func setTimer(_ timer: Timer?) {
-        lockQueue.async(flags: .barrier) {
-            self.timer = timer
-        }
     }
 }

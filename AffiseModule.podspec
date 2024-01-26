@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.6.22"
+  s.version      = ENV["LIB_VERSION"] || "1.6.23"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
   s.homepage     = "https://github.com/affise/sdk-ios"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
      :submodules => true
   }
 
-  s.ios.deployment_target = "9.0"
+  s.ios.deployment_target = "10.0"
   s.swift_version = "5.7"
 
   s.dependency "AffiseAttributionLib"
