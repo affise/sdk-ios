@@ -73,19 +73,19 @@ class EventsManager {
      * Start timer fo repeat send events
      */
     private func startTimer() {
-        //Stop timer if running
-        stopTimer()
-
-        //Create timer
-        timer = Timer.scheduledTimer(
-            withTimeInterval: EventsManager.TIME_SEND_REPEAT,
-            repeats: true
-        ) { [weak self] _ in
-            self?.fireTimer()
-        }
-
         DispatchQueue.main.async { [weak self] in
-            guard let timer = self?.timer else { return }
+            //Stop timer if running
+            self?.stopTimer()
+            
+            //Create timer
+            let timer = Timer.scheduledTimer(
+                withTimeInterval: EventsManager.TIME_SEND_REPEAT,
+                repeats: true
+            ) { [weak self] _ in
+                self?.fireTimer()
+            }
+            
+            self?.timer = timer
             RunLoop.current.add(timer, forMode: .common)
         }
     }
