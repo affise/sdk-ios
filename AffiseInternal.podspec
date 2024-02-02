@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseInternal"
-  spec.version      = ENV['LIB_VERSION'] || "1.6.24"
+  spec.version      = ENV['LIB_VERSION'] || "1.6.25"
   spec.summary      = "Affise Internal library"
   spec.description  = "Affise Internal wrapper library for crossplatform"
   spec.homepage     = "https://github.com/affise/sdk-ios"
@@ -20,9 +20,9 @@ Pod::Spec.new do |spec|
   }
 
   spec.source_files  = "AffiseInternal/Classes/**/*.{swift}"  
-  spec.ios.deployment_target = "10.0"
+  spec.ios.deployment_target = "9.0"
   spec.swift_version = '5.7'
   
-  spec.dependency "AffiseAttributionLib"
-  spec.dependency "AffiseSKAdNetwork"
+  spec.dependency "AffiseAttributionLib", "#{spec.version}"
+  spec.dependency "AffiseSKAdNetwork", "#{spec.version}"
 end

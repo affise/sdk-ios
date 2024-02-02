@@ -78,15 +78,28 @@ class EventsManager {
             self?.stopTimer()
             
             //Create timer
-            let timer = Timer.scheduledTimer(
+            guard let timer = self?.scheduledTimer() else { return }
+            self?.timer = timer
+            RunLoop.current.add(timer, forMode: .common)
+        }
+    }
+    
+    private func scheduledTimer() -> Timer {
+        if #available(iOS 10.0, *) {
+            return Timer.scheduledTimer(
                 withTimeInterval: EventsManager.TIME_SEND_REPEAT,
                 repeats: true
             ) { [weak self] _ in
                 self?.fireTimer()
             }
-            
-            self?.timer = timer
-            RunLoop.current.add(timer, forMode: .common)
+        } else {
+            return Timer.scheduledTimer(
+                timeInterval: EventsManager.TIME_SEND_REPEAT,
+                target: self,
+                selector: #selector(self.fireTimer),
+                userInfo: nil,
+                repeats: true
+            )
         }
     }
 
@@ -100,6 +113,7 @@ class EventsManager {
         timer = nil
     }
 
+    @objc
     private func fireTimer() {
         //Send events
         sendEvents()
