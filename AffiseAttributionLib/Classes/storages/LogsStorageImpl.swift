@@ -109,10 +109,10 @@ extension LogsStorageImpl: LogsStorage {
             )
             
             try directoryContents.sort(by: { file1, file2 in
-                let attr = try fileManager.attributesOfItem(atPath: file1.path)
-                let creationDate1 = (attr[.modificationDate] as! Date)
+                let attr1 = try fileManager.attributesOfItem(atPath: file1.path)
+                guard let creationDate1 = attr1[.modificationDate] as? Date else { return false }
                 let attr2 = try fileManager.attributesOfItem(atPath: file2.path)
-                let creationDate2 = (attr2[.modificationDate] as! Date)
+                guard let creationDate2 = attr2[.modificationDate] as? Date else { return false }
                 
                 return creationDate1.compare(creationDate2) == .orderedDescending
             })

@@ -104,7 +104,7 @@ extension InternalEventsStorageImpl: InternalEventsStorage {
             
             let events = try directoryContents.filter({ fileURL in
                 let attr = try fileManager.attributesOfItem(atPath: fileURL.path)
-                let creationDate = (attr[.modificationDate] as! Date)
+                guard let creationDate = attr[.modificationDate] as? Date else { return true }
                 if (creationDate.timeIntervalSince1970 < Date().timeIntervalSinceNow - Double(InternalEventsParams.INTERNAL_EVENTS_STORE_TIME)) {
                     do {
                         try fileManager.removeItem(atPath: fileURL.path)
