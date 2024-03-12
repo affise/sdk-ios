@@ -9,6 +9,7 @@ internal class FirstAppOpenUseCase {
     private let AFF_ALT_DEVICE_ID = "AFF_ALT_DEVICE_ID"
     
     private let preferences: UserDefaults
+    private var firstRun: Bool = false
     
     init(preferences: UserDefaults) {
         self.preferences = preferences
@@ -21,6 +22,8 @@ internal class FirstAppOpenUseCase {
         if (preferences.value(forKey: FIRST_OPENED_DATE_KEY) == nil) {
             onAppFirstOpen()
         }
+
+        firstRun = preferences.value(forKey: FIRST_OPENED) as? Bool ?? true
     }
 
     /**
@@ -63,6 +66,14 @@ internal class FirstAppOpenUseCase {
         return value
     }
     
+    /**
+     * Get first run
+     * @return is first run
+     */
+    func isFirstRun() -> Bool {
+        return firstRun
+    }
+
     /**
      * Get first open date
      * @return first open date

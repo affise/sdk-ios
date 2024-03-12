@@ -25,6 +25,7 @@ public enum AffiseApiMethod: Int {
     case GET_PROVIDERS
     case MODULE_START
     case GET_MODULES_INSTALLED
+    case IS_FIRST_RUN
     // callback
     case GET_REFERRER_CALLBACK
     case GET_REFERRER_VALUE_CALLBACK
@@ -63,6 +64,7 @@ public enum AffiseApiMethod: Int {
         case .GET_PROVIDERS: return "get_providers"
         case .MODULE_START: return "module_start"
         case .GET_MODULES_INSTALLED: return "get_modules_installed"
+        case .IS_FIRST_RUN: return "is_first_run"
         // callback
         case .GET_REFERRER_CALLBACK: return "get_referrer_callback"
         case .GET_REFERRER_VALUE_CALLBACK: return "get_referrer_value_callback"

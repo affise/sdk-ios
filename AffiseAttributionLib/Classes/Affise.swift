@@ -205,6 +205,13 @@ public final class Affise: NSObject {
     public static func getProviders() -> [ProviderType:Any?] {
         return api?.postBackModelFactory.getProvidersMap().toMap() ?? [:]
     }
+    
+    /**
+     * Is it first run
+     */
+    public static func isFirstRun() -> Bool {
+        return api?.firstAppOpenUseCase.isFirstRun() ?? true
+    }
 
     /**
      * Get module status

@@ -85,6 +85,7 @@ public class AffiseApiWrapper: NSObject {
         case .GET_PROVIDERS: callGetProviders(api, map: map, result: result)
         case .MODULE_START: callModuleStart(api, map: map, result: result)
         case .GET_MODULES_INSTALLED: callGetModulesInstalled(api, map: map, result: result)
+        case .IS_FIRST_RUN: callIsFirstRun(api, map: map, result: result)
         case .GET_REFERRER_CALLBACK: callGetReferrer(api, map: map, result: result)
         case .GET_REFERRER_VALUE_CALLBACK: callGetReferrerValue(api, map: map, result: result)
         case .GET_STATUS_CALLBACK: callGetStatusCallback(api, map: map, result: result)
@@ -274,6 +275,10 @@ public class AffiseApiWrapper: NSObject {
     private func callGetModulesInstalled(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
         let data: [String] = Affise.getModulesInstalled().map { $0.description }
         result?.success(data)
+    }
+
+    private func callIsFirstRun(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        result?.success(Affise.isFirstRun())
     }
 
     private func callGetReferrer(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
