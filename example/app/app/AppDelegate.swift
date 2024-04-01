@@ -1,6 +1,6 @@
 import UIKit
 import AffiseAttributionLib
-import AffiseSKAdNetwork
+//import AffiseSKAdNetwork
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Debug: network request/response
         Affise.Debug.network { (request, response) in
-            debugPrint("Affise: \(request)")
-            debugPrint("Affise: \(response)")
+//            debugPrint("Affise: \(request)")
+           debugPrint("Affise: \(response)")
         }
         return true
     }

@@ -6,7 +6,7 @@ import Foundation
 class AffSDKVersionProvider: StringPropertyProvider {
     
     override func provide() -> String? {
-        return "1.6.27"
+        return "1.6.28"
     }
     
     public override func getOrder() -> Float {

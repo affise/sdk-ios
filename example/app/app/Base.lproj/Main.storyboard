@@ -29,6 +29,7 @@
                                         <segments>
                                             <segment title="EVENTS"/>
                                             <segment title="WEB EVENTS"/>
+                                            <segment title="STORE"/>
                                         </segments>
                                         <connections>
                                             <action selector="didValueChangedControl:" destination="Y3X-KI-XeX" eventType="valueChanged" id="nJF-AC-aVx"/>
@@ -70,6 +71,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jju-UP-1WR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -90,6 +95,7 @@
                     <connections>
                         <outlet property="eventsWrapper" destination="Fya-GQ-PUS" id="kDN-IF-24c"/>
                         <outlet property="stackView" destination="RXo-Ka-RxP" id="iWz-DX-qmp"/>
+                        <outlet property="storeWrapper" destination="jju-UP-1WR" id="dK9-lG-MRF"/>
                         <outlet property="webViewWrapper" destination="OYL-xb-ZnC" id="pJW-wX-GKe"/>
                     </connections>
                 </viewController>

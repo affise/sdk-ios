@@ -4,11 +4,13 @@ import Foundation
 public enum AffiseModules: Int {
     case Advertising
     case Status
+    case Subscription
     
     internal var enumValue: String {
         switch self {
         case .Advertising: return "Advertising"
         case .Status: return "Status"
+        case .Subscription: return "Subscription"
         }
     }
 }

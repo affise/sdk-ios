@@ -11,6 +11,7 @@
 		10C07E3828B737D400A903FD /* EventsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C07E3728B737D400A903FD /* EventsFactory.swift */; };
 		10C07E3B28B7380C00A903FD /* DefaultEventsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C07E3A28B7380C00A903FD /* DefaultEventsFactory.swift */; };
 		26CDECE9BB0CA0706ECEC29A /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 337C855EA0BA3B031C2BE0DF /* Pods_app.framework */; };
+		2B3251CC2BB7C6E30045C92D /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3251CB2BB7C6E30045C92D /* StoreView.swift */; };
 		7C139994287F2FC000C28C32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C139993287F2FC000C28C32 /* AppDelegate.swift */; };
 		7C139998287F2FC000C28C32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C139997287F2FC000C28C32 /* ViewController.swift */; };
 		7C13999B287F2FC000C28C32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C139999287F2FC000C28C32 /* Main.storyboard */; };
@@ -45,6 +46,8 @@
 		10EE600929E52EF400174ED3 /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AffiseAttributionLib.framework; path = "../../../../Desktop/AffiseAttributionLib.xcframework/ios-arm64_armv7/AffiseAttributionLib.framework"; sourceTree = "<group>"; };
 		10EE600D29E52F1F00174ED3 /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AffiseAttributionLib.framework; path = "../../../../Desktop/AffiseAttributionLib.xcframework/ios-arm64_i386_x86_64-simulator/AffiseAttributionLib.framework"; sourceTree = "<group>"; };
 		10EE601129E52F4900174ED3 /* AffiseAttributionLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AffiseAttributionLib.framework; sourceTree = "<group>"; };
+		2B09694C2BAB348D005123F4 /* test.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.storekit; sourceTree = "<group>"; };
+		2B3251CB2BB7C6E30045C92D /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		337C855EA0BA3B031C2BE0DF /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C139990287F2FC000C28C32 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C139993287F2FC000C28C32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +131,9 @@
 			children = (
 				10C07E3628B737C400A903FD /* factories */,
 				7C139993287F2FC000C28C32 /* AppDelegate.swift */,
+				2B09694C2BAB348D005123F4 /* test.storekit */,
 				7C139997287F2FC000C28C32 /* ViewController.swift */,
+				2B3251CB2BB7C6E30045C92D /* StoreView.swift */,
 				7C139999287F2FC000C28C32 /* Main.storyboard */,
 				7C13999C287F2FC100C28C32 /* Assets.xcassets */,
 				7C13999E287F2FC100C28C32 /* LaunchScreen.storyboard */,
@@ -340,6 +345,7 @@
 				7C139998287F2FC000C28C32 /* ViewController.swift in Sources */,
 				10C07E3828B737D400A903FD /* EventsFactory.swift in Sources */,
 				7C139994287F2FC000C28C32 /* AppDelegate.swift in Sources */,
+				2B3251CC2BB7C6E30045C92D /* StoreView.swift in Sources */,
 				10C07E3B28B7380C00A903FD /* DefaultEventsFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

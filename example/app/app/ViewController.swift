@@ -1,6 +1,8 @@
 import UIKit
 import WebKit
 import AffiseAttributionLib
+import SwiftUI
+
 
 class ViewController: UIViewController, WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -11,6 +13,7 @@ class ViewController: UIViewController, WKScriptMessageHandler {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var webViewWrapper: UIView!
     @IBOutlet weak var eventsWrapper: UIScrollView!
+    @IBOutlet weak var storeWrapper: UIView!
     
     var webView: WKWebView?
     
@@ -57,12 +60,28 @@ class ViewController: UIViewController, WKScriptMessageHandler {
             webView.loadFileURL(indexURL, allowingReadAccessTo: indexURL)
             webViewWrapper.addSubview(webView)
             
-            webView.translatesAutoresizingMaskIntoConstraints = false
-            webView.topAnchor.constraint(equalTo: webViewWrapper.topAnchor, constant: 0).isActive = true
-            webView.leftAnchor.constraint(equalTo: webViewWrapper.leftAnchor, constant: 16).isActive = true
-            webView.bottomAnchor.constraint(equalTo: webViewWrapper.bottomAnchor, constant: 0).isActive = true
-            webView.rightAnchor.constraint(equalTo: webViewWrapper.rightAnchor, constant: -16).isActive = true
+            webView.fillAnchor(webViewWrapper)
             Affise.registerWebView(webView)
+        }
+                
+        storeUi(storeWrapper)
+    }
+    
+    func storeUi(_ root: UIView) {
+        if #available(iOS 13.0, *) {
+            if let view = UIHostingController(rootView: StoreView()).view {
+                root.addSubview(view)
+                view.fillAnchor(root)
+            }
+        } else {
+            let label = UILabel()
+            label.text = "No SwiftUi View"
+            label.textColor = UIColor.red
+            label.textAlignment = .center
+            label.adjustsFontSizeToFitWidth = true
+            
+            root.addSubview(label)
+            label.fillAnchor(root)
         }
     }
     
@@ -75,8 +94,18 @@ class ViewController: UIViewController, WKScriptMessageHandler {
     }
     
     @IBAction func didValueChangedControl(_ sender: UISegmentedControl) {
-            eventsWrapper.isHidden = sender.selectedSegmentIndex != 0
-            webViewWrapper.isHidden = sender.selectedSegmentIndex == 0
+        eventsWrapper.isHidden = sender.selectedSegmentIndex != 0
+        webViewWrapper.isHidden = sender.selectedSegmentIndex != 1
+        storeWrapper.isHidden = sender.selectedSegmentIndex != 2
     }
 }
 
+extension UIView {
+    func fillAnchor(_ root: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: root.topAnchor, constant: 0).isActive = true
+        self.leftAnchor.constraint(equalTo: root.leftAnchor, constant: 16).isActive = true
+        self.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: 0).isActive = true
+        self.rightAnchor.constraint(equalTo: root.rightAnchor, constant: -16).isActive = true
+    }
+}

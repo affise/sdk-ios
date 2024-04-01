@@ -70,6 +70,9 @@ public enum PredefinedString: Int {
     case NETWORK
     case UNIT
     case PLACEMENT
+    case PRODUCT_TYPE
+    case SUBSCRIPTION_TYPE
+    case ORIGINAL_ORDER_ID
 
     var enumValue: String {
         switch self {
@@ -141,6 +144,9 @@ public enum PredefinedString: Int {
         case .NETWORK: return "network"
         case .UNIT: return "unit"
         case .PLACEMENT: return "placement"
+        case .PRODUCT_TYPE: return "product_type"
+        case .SUBSCRIPTION_TYPE: return "subscription_type"
+        case .ORIGINAL_ORDER_ID: return "original_order_id"
         }
     }
 }

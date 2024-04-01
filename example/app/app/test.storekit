@@ -1,0 +1,190 @@
+{
+  "identifier" : "8C82C8A9",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "0.31",
+      "familyShareable" : false,
+      "internalID" : "8522A32A",
+      "localizations" : [
+        {
+          "description" : "description",
+          "displayName" : "Subscription 1",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.testapp.subs_1",
+      "referenceName" : "Subscription 1",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "0.32",
+      "familyShareable" : false,
+      "internalID" : "C65DE88D",
+      "localizations" : [
+        {
+          "description" : "description",
+          "displayName" : "Subscription 2",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.testapp.subs_2",
+      "referenceName" : "Subscription 2",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.11",
+      "familyShareable" : false,
+      "internalID" : "6424A388",
+      "localizations" : [
+        {
+          "description" : "description",
+          "displayName" : "Consumable 1",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.testapp.consum_1",
+      "referenceName" : "Consumable 1",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "0.21",
+      "familyShareable" : false,
+      "internalID" : "24EE3BDF",
+      "localizations" : [
+        {
+          "description" : "description",
+          "displayName" : "Non consumable 1",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.testapp.non_consum_1",
+      "referenceName" : "Non consumable 1",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.12",
+      "familyShareable" : false,
+      "internalID" : "D44949CF",
+      "localizations" : [
+        {
+          "description" : "description",
+          "displayName" : "Consumable 2",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.testapp.consum_2",
+      "referenceName" : "Consumable 2",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "0.22",
+      "familyShareable" : false,
+      "internalID" : "C6DD400F",
+      "localizations" : [
+        {
+          "description" : "description",
+          "displayName" : "Non consumable 2",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.testapp.non_consum_2",
+      "referenceName" : "Non consumable 2",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "BEE43702",
+      "localizations" : [
+
+      ],
+      "name" : "Renewable",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.43",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "E92AF38A",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "description",
+              "displayName" : "Auto subs year",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.testapp.auto_subs_year",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Auto subs year",
+          "subscriptionGroupID" : "BEE43702",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.41",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "D9EFF0F0",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "description",
+              "displayName" : "Auto subs week",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.testapp.auto_subs_week",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "Auto subs week",
+          "subscriptionGroupID" : "BEE43702",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.42",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "E0DF6C12",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "description",
+              "displayName" : "Auto subs month",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.testapp.auto_subs_month",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Auto subs month",
+          "subscriptionGroupID" : "BEE43702",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 2
+  }
+}

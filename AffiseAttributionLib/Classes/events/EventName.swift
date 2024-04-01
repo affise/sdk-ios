@@ -38,6 +38,7 @@ public enum EventName: String {
     case ORDER_RETURN_REQUEST = "OrderReturnRequest"
     case ORDER_RETURN_REQUEST_CANCEL = "OrderReturnRequestCancel"
     case PURCHASE = "Purchase"
+    case FAILED_PURCHASE = "FailedPurchase"
     case RATE = "Rate"
     case RE_ENGAGE = "ReEngage"
     case RESERVE = "Reserve"
