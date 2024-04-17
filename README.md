@@ -35,6 +35,7 @@
   - [Push token tracking](#push-token-tracking)
   - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
   - [Deeplinks](#deeplinks)
+  - [AppLinks](#applinks)
   - [Get random user Id](#get-random-user-id)
   - [Get random device Id](#get-random-device-id)
   - [Get providers](#get-providers)
@@ -746,9 +747,21 @@ Affise.addPushToken(token)
 
 ## Deeplinks
 
-To integrate deeplink support You can find out how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
+> **Warning**
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> Deeplinks support only **CUSTOM** scheme **NOT** `http` or `https`
+>
+> For `http` or `https` read how to setup [AppLinks](#applinks)
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
-Register deeplink callback right after `Affise.settings(..).start(..)`
+To integrate deeplink support you need:
+
+- Follow how to set up deeplinks in the [official documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
+
+- Register deeplink callback right after `Affise.settings(..).start(..)`
 
 ```swift
 Affise.settings(affiseAppId:affiseAppId, secretKey:secretKey).start(app:app, launchOptions: launchOptions)
@@ -761,7 +774,7 @@ Affise.registerDeeplinkCallback { url in
 }
 ```
 
-Add deeplink handler to [`AppDelegate.swift`](example/app/app/AppDelegate.swift)
+- Add deeplink handler to [`AppDelegate.swift`](example/app/app/AppDelegate.swift)
 
 ```swift
 func application(
@@ -778,6 +791,8 @@ Add key `CFBundleURLTypes` to `Info.plist`
 
 Example: [`example/app/app/Info.plist`](example/app/app/Info.plist)
 
+Example: `YOUR_SCHEME://YOUR_DOMAIN` (`myapp://mydomain.com`)
+
 ```xml
 <key>CFBundleURLTypes</key>
 <array>
@@ -788,9 +803,71 @@ Example: [`example/app/app/Info.plist`](example/app/app/Info.plist)
         <string>YOUR_DOMAIN</string>
         <key>CFBundleURLSchemes</key>
         <array>
-            <string>affise</string>
+            <string>YOUR_SCHEME</string>
         </array>
     </dict>
+</array>
+```
+
+## AppLinks
+
+> **Warning**
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> You must owne website domain.
+>
+> And has ability to add file `https://yoursite/.well-known/apple-app-site-association`
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+To integrate applink support you need:
+
+- Follow how to set up applink in the [official documentation](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app).
+
+- Associate your app with your website. [Supporting associated domains](https://developer.apple.com/documentation/xcode/supporting-associated-domains)
+
+- [Configuring an associated domain](https://developer.apple.com/documentation/xcode/configuring-an-associated-domain/)
+
+- Register deeplink callback right after `Affise.settings(..).start(..)`
+
+```swift
+Affise.settings(affiseAppId:affiseAppId, secretKey:secretKey).start(app:app, launchOptions: launchOptions)
+Affise.registerDeeplinkCallback { url in
+    let component = URLComponents(string: url?.absoluteString ?? "")
+    let screen = component?.queryItems?.first(where: {$0.name == "<your_uri_key>"})?.value
+    if let screen = screen, screen == "<your_uri_key_value>" {
+        // handle value
+    }
+}
+```
+
+- Add deeplink handler to `AppDelegate.swift`
+
+```swift
+func application(
+    _ application: UIApplication,
+    continue userActivity: NSUserActivity,
+    restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+) -> Bool {
+     // Get URL components from the incoming user activity.
+    guard url == userActivity.webpageURL else {
+        return false
+    }
+
+    Affise.handleDeeplink(url)
+    return true
+}
+```
+
+Add key `com.apple.developer.associated-domains` to `Info.plist`
+
+Example: `https://YOUR_DOMAIN` (`https://mydomain.com`)
+
+```xml
+<key>com.apple.developer.associated-domains</key>
+<array>
+	<string>applinks:YOUR_DOMAIN</string>
 </array>
 ```
 
