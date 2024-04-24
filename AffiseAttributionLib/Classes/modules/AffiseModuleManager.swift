@@ -1,6 +1,7 @@
 import Foundation
 import UIKit 
 
+
 internal class AffiseModuleManager {
 
     private let bundle: Bundle
@@ -48,7 +49,7 @@ internal class AffiseModuleManager {
     }
 
     func status(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
-        getModule(module)?.status(onComplete) ?? onComplete([AffiseKeyValue(module.value(), "not found")])
+        getModule(module)?.status(onComplete) ?? onComplete([AffiseKeyValue(module.className(), "not found")])
     }
     
     private func moduleStart(_ module: AffiseModule) {
@@ -57,7 +58,9 @@ internal class AffiseModuleManager {
     }
     
     private func classType(_ name: AffiseModules) -> AffiseModule.Type? {
-        guard let cls = NSClassFromString(name.value()) as? AffiseModule.Type else { return nil }
+        let aClass: AnyClass? = NSClassFromString(name.className()) ?? NSClassFromString(name.classNameModule())
+        guard let aClass = aClass else { return nil }  
+        guard let cls = aClass as? AffiseModule.Type else { return nil }
         return cls
     }
     

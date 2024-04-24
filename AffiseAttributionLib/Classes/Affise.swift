@@ -1,5 +1,7 @@
 import Foundation
+#if canImport(WebKit)
 import WebKit
+#endif
 
 /**
  * Entry point to initialise Affise Attribution library
@@ -42,22 +44,26 @@ public final class Affise: NSObject {
     public static func isInitialized() -> Bool {
         return api?.isInitialized() ?? false
     }
-    
-    /**
-     * deprecated
-     * Send events
-     */
-    // @objc
-    // private static func sendEvents() {
-    //     api?.eventsManager.sendEvents()
-    // }
-    
+
     /**
      * Store and send [event]
      */
     @objc
-    public static func sendEvent(_ event: Event) {
+    internal static func sendEvent(_ event: Event) {
         api?.storeEventUseCase.storeEvent(event: event)
+    }
+    /**
+     * Send now [event]
+     */
+    @objc
+    internal static func sendEventNow(_ event: Event, _ success: @escaping OnSendSuccessCallback, _ failed: @escaping OnSendFailedCallback) {
+        api?.immediateSendToServerUseCase.sendNow(event: event, success: success) { response in
+            let toSave = failed(response)
+            if toSave {
+                api?.storeEventUseCase.storeEvent(event: event)
+            }
+            return toSave
+        }
     }
     
     /**

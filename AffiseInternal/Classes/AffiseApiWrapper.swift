@@ -9,7 +9,9 @@ public class AffiseApiWrapper: NSObject {
     private let factory = AffiseEventFactory()
     private let affiseBuilder = AffiseBuilder()
 
-    public typealias OnCallback = (_ api: String, _ data: [String: Any?]) -> Void
+    public typealias OnCallback = (_ api: String, _ data: [String: Any?]) -> [String: Any?]?
+    public typealias OnAffiseCallback = (_ api: String, _ data: String) -> String?
+
     private var callback: OnCallback? = nil
 
     private var app: UIApplication? = nil
@@ -22,9 +24,10 @@ public class AffiseApiWrapper: NSObject {
     }
 
     @objc(callback:)
-    public func setCallback(_ callback: @escaping (_ api: String, _ data: String) -> Void) {
+    public func setCallback(_ callback: @escaping OnAffiseCallback) {
         self.callback = { apiName, map in
-            callback(apiName, map.toArray().jsonString())
+            let result = callback(apiName, map.toArray().jsonString())
+            return result?.toJsonMap()
         }
     }
 
@@ -64,8 +67,8 @@ public class AffiseApiWrapper: NSObject {
         switch api {
         case .INIT: callInit(api, map: map, result: result)
         case .IS_INITIALIZED: callIsInitialized(api, map: map, result: result)
-//        case .SEND_EVENTS: callSendEvents(api, map: map, result: result) // deprecated
         case .SEND_EVENT: callSendEvent(api, map: map, result: result)
+        case .SEND_EVENT_NOW: callSendEventNow(api, map: map, result: result)
         case .ADD_PUSH_TOKEN: callAddPushToken(api, map: map, result: result)
         case .REGISTER_WEB_VIEW: callRegisterWebView(api, map: map, result: result)
         case .UNREGISTER_WEB_VIEW: callUnregisterWebView(api, map: map, result: result)
@@ -134,12 +137,6 @@ public class AffiseApiWrapper: NSObject {
         result?.success(Affise.isInitialized())
     }
 
-//    deprecated
-//    private func callSendEvents(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
-//        Affise.sendEvents()
-//        result?.success(nil)
-//    }
-
     private func callSendEvent(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
         guard let data: [String: Any?] = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
@@ -151,7 +148,43 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.sendEvent(event)
+        event.send()
+        result?.success(nil)
+    }
+
+    private func callSendEventNow(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+        guard let data: [String: Any?] = map.opt(api) else {
+            result?.error("api [\(api.method)]: value not set")
+            return
+        }
+
+        guard let event = factory.create(data) else {
+            result?.error("api [\(api.method)]: not valid event")
+            return
+        }
+        
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        event.sendNow({
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+            ]
+            let _ = self.callback?(api.method, data)
+        }) { response in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: [
+                    "code": response.code,
+                    "message": response.message,
+                    "body": "\(response.body?.toJsonGuardString() ?? "")",
+                ],
+            ]
+            return self.callback?(api.method, data)?.opt(api) ?? true
+        }
+
         result?.success(nil)
     }
 
@@ -292,7 +325,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: referrer,
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
 
         result?.success(nil)
@@ -319,7 +352,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: value,
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
 
         result?.success(nil)
@@ -346,7 +379,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: status.toListOfMap(),
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
         result?.success(nil)
     }
@@ -362,7 +395,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: uri?.absoluteString ?? "",
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
         result?.success(nil)
     }
@@ -378,7 +411,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: error,
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
     }
 
@@ -405,7 +438,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: error,
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
     }
 
@@ -420,7 +453,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: status.status,
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
     }
 
@@ -441,7 +474,7 @@ public class AffiseApiWrapper: NSObject {
                     ],
                 ]
             ]
-            self.callback?(api.method, data)
+            let _ = self.callback?(api.method, data)
         }
     }
 

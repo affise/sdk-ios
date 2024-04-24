@@ -1,9 +1,4 @@
-//
-//  Array+Serialized.swift
-//  AffiseAttributionLib
-//
-//  Created by Sergey Korney
-//
+import Foundation
 
 
 public extension Array where Element == (String, Any?) {

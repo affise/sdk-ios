@@ -2,10 +2,10 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib` | [`1.6.28`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`    | [`1.6.28`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.28`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`  | [`1.6.28`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib` | [`1.6.29`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`    | [`1.6.29`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.29`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`  | [`1.6.29`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -22,6 +22,7 @@
 - [Features](#features)
   - [ProviderType identifiers collection](#providertype-identifiers-collection)
     - [Attribution](#attribution)
+  - [Event send control](#event-send-control)
   - [Events tracking](#events-tracking)
   - [Custom events tracking](#custom-events-tracking)
   - [Predefined event parameters](#predefined-event-parameters)
@@ -75,20 +76,20 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.28'
+pod 'AffiseAttributionLib', '~> 1.6.29'
 # Affise modules
-pod 'AffiseModule/Advertising', '~> 1.6.28'
-pod 'AffiseModule/Status', '~> 1.6.28'
+pod 'AffiseModule/Advertising', '~> 1.6.29'
+pod 'AffiseModule/Status', '~> 1.6.29'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.28'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.29'
 # Affise modules
-pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.28'
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.28'
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.29'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.29'
 ```
 
 ### Integrate as Swift Package Manager
@@ -190,8 +191,8 @@ Affise
 
 | Module        | Version                                                                              | Start    |
 | ------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising` | [`1.6.28`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Status`      | [`1.6.28`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising` | [`1.6.29`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Status`      | [`1.6.29`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -243,14 +244,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.28'
+pod 'AffiseSKAdNetwork', '~> 1.6.29'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.28'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.29'
 ```
 
 For `swift` use:
@@ -424,6 +425,29 @@ To match users with events and data library is sending, these `ProviderType` ide
 - `AFFISE_APP_OPENED`
 - `PUSHTOKEN`
 - `IS_EMULATOR`
+
+## Event send control
+
+There are two ways to send events
+
+1. Cache event to later scheduled send in batch
+
+```swift
+AddToCartEvent()
+    .send()
+```
+
+2. Send event right now
+
+```swift
+AddToCartEvent()
+    .sendNow({
+        // handle event send success
+    }) { errorResponse in
+        // handle event send failed
+        return true // return true to cache event to later scheduled send
+    }
+```
 
 ## Events tracking
 

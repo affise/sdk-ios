@@ -1,16 +1,16 @@
-import AffiseAttributionLib
 import Foundation
 import UIKit
+import AffiseAttributionLib
 
 
 @objc(AffiseSubscriptionModule)
-internal final class SubscriptionModule: AffiseModule  {
+public final class SubscriptionModule: AffiseModule {
 
     private(set) static var instance: SubscriptionModule? = nil
     
     lazy var storeManager: StoreManager = StoreManager()
 
-    override public func start() {
+    override public func start() {  
         SubscriptionModule.instance = self
     }
 }
@@ -25,10 +25,10 @@ extension SubscriptionModule: AffiseSubscriptionApi {
         module.storeManager.fetchProducts(productsIds, callback)
     }
     
-    public static func purchase(_ productId: String, _ type: AffiseProductType? = nil, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+    public static func purchase(_ product: AffiseProduct, _ type: AffiseProductType? = nil, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
         guard let module = instance else {
             return callback(.failure(AffiseSubscriptionError.notInitialized))
         }
-        module.storeManager.purchase(productId, type, callback)
+        module.storeManager.purchase(product, type, callback)
     }
 }

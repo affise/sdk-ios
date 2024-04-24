@@ -17,22 +17,6 @@ internal class CloudRepositoryImpl {
         self.userAgentProvider = userAgentProvider
         self.converter = converter
     }
-    
-    /**
-     * Send [data] to [url]
-     */
-    private func createRequest(url: String, data: [PostBackModel]) -> HttpResponse {
-        guard let httpsUrl = url.toURL() else { return HttpResponse(0, "", nil) }
-        
-        //Create request
-        return networkService.executeRequest(
-            httpsUrl: httpsUrl,
-            method: .POST,
-            data: converter.convert(from: data).toData(),
-            timeout: TIMEOUT_SEND,
-            headers: createHeaders()
-        )
-    }
 
     /**
      * Create headers
@@ -77,5 +61,21 @@ extension CloudRepositoryImpl: CloudRepository {
                 }
             }
         }
+    }
+
+      /**
+     * Send [data] to [url]
+     */
+    func createRequest(url: String, data: [PostBackModel]) -> HttpResponse {
+        guard let httpsUrl = url.toURL() else { return HttpResponse(0, "", nil) }
+        
+        //Create request
+        return networkService.executeRequest(
+            httpsUrl: httpsUrl,
+            method: .POST,
+            data: converter.convert(from: data).toData(),
+            timeout: TIMEOUT_SEND,
+            headers: createHeaders()
+        )
     }
 }

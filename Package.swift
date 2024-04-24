@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "AffiseAttributionLib", targets: ["AffiseAttributionLib"]),
         .library(name: "AffiseModuleAdvertising", targets: ["AffiseModuleAdvertising"]),
         .library(name: "AffiseModuleStatus", targets: ["AffiseModuleStatus"]),
-        .library(name: "AffiseSubscriptionModule", targets: ["AffiseSubscriptionModule"]),
+        .library(name: "AffiseModuleSubscription", targets: ["AffiseModuleSubscription"]),
         .library(name: "AffiseSKAdNetwork", targets: ["AffiseSKAdNetwork", "AffiseInternalWrapperObjC"]),
         .library(name: "AffiseInternal", targets: ["AffiseInternal"]),
     ],
@@ -23,6 +23,12 @@ let package = Package(
             sources: [ "Classes" ],
             resources: [
                .process("Assets"),
+            ],
+            swiftSettings: [
+                .unsafeFlags([
+                    "-enable-library-evolution",
+                    // "-emit-module-interface",
+                ]),
             ]
         ),
         .target(
@@ -38,7 +44,7 @@ let package = Package(
             sources: [ "Classes" ]
         ),
         .target(
-            name: "AffiseSubscriptionModule",
+            name: "AffiseModuleSubscription",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/Subscription",
             sources: [ "Classes" ],

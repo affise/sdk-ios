@@ -128,7 +128,15 @@ public class Event: NSObject {
      */
     @objc
     public func send() {
-        Affise.sendEvent(self);
+        Affise.sendEvent(self)
+    }
+
+    /**
+     * Send this event
+     */
+    @objc
+    public func sendNow(_ success: @escaping OnSendSuccessCallback, _ failed: @escaping OnSendFailedCallback) {
+        Affise.sendEventNow(self, success, failed)
     }
 
     @objc

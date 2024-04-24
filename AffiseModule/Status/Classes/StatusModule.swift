@@ -34,7 +34,7 @@ public final class StatusModule: AffiseModule {
         }
         checkStatusUseCase.send { status in
             onComplete(status)
-            self.referrerUseCase?.parseStatus(status)
+            let _ = self.referrerUseCase?.parseStatus(status)
         }
     }
 }

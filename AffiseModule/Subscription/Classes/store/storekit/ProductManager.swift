@@ -1,3 +1,4 @@
+import Foundation
 import StoreKit
 import AffiseAttributionLib
 
@@ -52,9 +53,7 @@ extension ProductManager: SKProductsRequestDelegate {
                     dict[product.productIdentifier] = product
                 }
                 
-                let products: [String:AffiseProduct] = self.products.reduce(into: [:]) { (dict, item) in
-                    dict[item.key] = AffiseProduct(item.value)
-                }
+                let products: [AffiseProduct] = self.products.map { AffiseProduct($0.value) }
                 
                 for callback in callbacks {
                     callback(.success(AffiseProductsResult(products: products, invalid: invalid)))
@@ -72,7 +71,7 @@ extension ProductManager: SKProductsRequestDelegate {
         queue.async { [weak self] in
             guard let self = self else { return }
             
-            guard let (ids, callbacks) = self.getIdsCallbacks(request) as? ([String], [AffiseResultCallback<AffiseProductsResult>]) else {
+            guard let (_, callbacks) = self.getIdsCallbacks(request) as? ([String], [AffiseResultCallback<AffiseProductsResult>]) else {
                 return
             }
             

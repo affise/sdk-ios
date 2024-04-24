@@ -1,9 +1,11 @@
 import SwiftUI
 import AffiseAttributionLib
 #if canImport(AffiseModule)
+// Cocopods module
 import AffiseModule
-#elseif canImport(AffiseSubscriptionModule)
-import AffiseSubscriptionModule
+#elseif canImport(AffiseModuleSubscription)
+// SwiftPM or XCFramework module
+import AffiseModuleSubscription
 #endif
 import StoreKit
 
@@ -34,8 +36,11 @@ struct Product {
         all.values.flatMap { $0 }
     }
     
-    static func getType(_ id: String) -> AffiseProductType? {
-        all.first { $0.value.contains(id) }?.key
+    static func getType(_ id: String?) -> AffiseProductType? {
+        guard let id = id else {
+            return nil
+        }
+        return all.first { $0.value.contains(id) }?.key
     }
 }
 
@@ -88,14 +93,13 @@ struct StoreView: View {
     }
     
     func initProducts() {
-        #if canImport(AffiseModule) || canImport(AffiseSubscriptionModule)
+        #if canImport(AffiseModule) || canImport(AffiseModuleSubscription)
         Affise.fetchProducts(Product.allIds) { result in
             switch result {
             case .failure(let error):
                 print("\(error)")
             case .success(let result):
                 products = result.products
-                    .map { $0.value }
                     .sorted { $0.price ?? 0 < $1.price ?? 0 }
 
                 print("invalid ids: [\(result.invalidIds.joined(separator: ", "))]")
@@ -141,10 +145,8 @@ struct ProductRowView: View {
                 price(product.price, product.priceLocale) ?? "-"
             )
             
-            if let productId = product.productId {
-                Button("Buy") {
-                    purchase(productId)
-                }
+            Button("Buy") {
+                purchase(product)
             }
         }
         .padding([.leading, .trailing], 0)
@@ -152,9 +154,9 @@ struct ProductRowView: View {
         .listRowBackground(Color.gray.opacity(0.2))
     }
     
-    func purchase(_ id: String) {
-        #if canImport(AffiseModule) || canImport(AffiseSubscriptionModule)
-        Affise.purchase(id, Product.getType(id)) { result in
+    func purchase(_ product: AffiseProduct) {
+        #if canImport(AffiseModule) || canImport(AffiseModuleSubscription)
+        Affise.purchase(product, Product.getType(product.productId)) { result in
             switch result {
             case .failure(let error):
                 print("\(error)")

@@ -1,3 +1,4 @@
+import Foundation
 import AffiseAttributionLib
 
 
@@ -10,8 +11,8 @@ internal class StoreManager: NSObject {
         productManager.fetchProducts(productsIds, callback)
     }
     
-    func purchase(_ productId: String, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
-        transactionManager.purchase(productId, type, callback)
+    func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+        transactionManager.purchase(product, type, callback)
     }
 }
 

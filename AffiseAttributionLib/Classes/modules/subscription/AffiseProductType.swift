@@ -1,3 +1,6 @@
+import Foundation
+
+
 @objc
 public enum AffiseProductType: Int {
 

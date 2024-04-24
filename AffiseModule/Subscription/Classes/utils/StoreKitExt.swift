@@ -3,13 +3,13 @@ import StoreKit
 import AffiseAttributionLib
 
 
-extension Date {
+internal extension Date {
     var toTimestamp: Int64 {
         Int64(self.timeIntervalSince1970 * 1000)
     } 
 }
 
-extension SKPaymentTransaction {
+internal extension SKPaymentTransaction {
     var toTimestamp: Int64 {
         if let transactionDate = self.transactionDate {
             return transactionDate.toTimestamp
@@ -19,7 +19,7 @@ extension SKPaymentTransaction {
     }
 }
 
-extension SKProduct {
+internal extension SKProduct {
     var isSubscription: Bool {
         if #available(iOS 11.2, *) {
             if self.subscriptionPeriod != nil {
@@ -44,7 +44,7 @@ extension SKProduct {
 }
 
 @available(iOS 11.2, *)
-extension SKProductSubscriptionPeriod {
+internal extension SKProductSubscriptionPeriod {
     
     func add(to: Date) -> Date {
         return Calendar.current.date(byAdding: self.calendarUnit, value: self.numberOfUnits, to: to) ?? to
@@ -60,11 +60,13 @@ extension SKProductSubscriptionPeriod {
             return .month
         case .year:
             return .year
+        default:
+            return .day
         }
     }
 
     var unitType: TimeUnitType {
-         switch self.unit {
+        switch self.unit {
         case .day:
              return .DAY
         case .week:
@@ -73,6 +75,8 @@ extension SKProductSubscriptionPeriod {
             return .MONTH
         case .year:
             return .YEAR
+        default:
+            return .DAY
         }
     }
 }

@@ -1,3 +1,4 @@
+import Foundation
 import AffiseAttributionLib
 
 
@@ -7,7 +8,7 @@ extension Affise: AffiseSubscriptionApi {
         SubscriptionModule.fetchProducts(ids, callback)
     }
     
-    public static func purchase(_ id: String, _ type: AffiseProductType? = nil, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
-        SubscriptionModule.purchase(id, type, callback)
+    public static func purchase(_ product: AffiseProduct, _ type: AffiseProductType? = nil, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+        SubscriptionModule.purchase(product, type, callback)
     }
 }

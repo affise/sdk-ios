@@ -1,5 +1,6 @@
 import Foundation
 
+
 @objc
 public enum AffiseModules: Int {
     case Advertising
@@ -17,13 +18,15 @@ public enum AffiseModules: Int {
 
 extension AffiseModules: CaseIterable, CustomStringConvertible {
     
-    internal func value() -> String { "Affise\(self.enumValue)Module" }
+    internal func className() -> String { "Affise\(self.enumValue)Module" }
+
+    internal func classNameModule() -> String { "AffiseModule\(self.enumValue).\(self.enumValue)Module" }
     
     internal static func values() -> [AffiseModules] { allCases }
     
     public var description: String { enumValue }
     
     public static func from(_ name: String) -> AffiseModules? {
-        return allCases.first { $0.value().contains(name)  }
+        return allCases.first { $0.className().contains(name)  }
     }
 }

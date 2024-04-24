@@ -1,3 +1,4 @@
+import Foundation
 import StoreKit
 import AffiseAttributionLib
 
@@ -17,9 +18,10 @@ internal class TransactionManager: NSObject {
         self.productManager = productManager
     }
     
-    func purchase(_ productId: String, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+    func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
         queue.async { [weak self] in
             guard let self = self else { return }
+            guard let productId = product.productId else { return }
             
             guard let product = self.productManager?.products[productId] else {
                 callback(.failure(AffiseSubscriptionError.productNotFound([productId])))
@@ -122,7 +124,7 @@ internal class TransactionManager: NSObject {
             } else {
                 event = PurchaseEvent()
             }
-            event?
+            let _ = event?
                 .addPredefinedParameter(.PRODUCT_ID, string: product.productIdentifier)
                 .addPredefinedParameter(.PRODUCT_TYPE, string: eventType.enumValue)
         
@@ -145,7 +147,7 @@ internal class TransactionManager: NSObject {
                 numberOfUnits = Int64(product.subscriptionPeriod?.numberOfUnits ?? 0 )
             }
             
-            event?
+            let _ = event?
                 .addPredefinedParameter(.SUBSCRIPTION_ID, string: product.productIdentifier)
                 .addPredefinedParameter(.SUBSCRIPTION_TYPE, string: eventType.enumValue)
                 .addPredefinedParameter(.UNIT, string: timeUnit)
@@ -154,13 +156,11 @@ internal class TransactionManager: NSObject {
         default: break
         }
         
-        event?
+        return event?
             .addPredefinedParameter(.ORDER_ID, string: orderId ?? "")
             .addPredefinedParameter(.ORIGINAL_ORDER_ID, string: originalOrderId ?? "")
             .addPredefinedParameter(.CURRENCY, string: product.priceLocale.currencyCode ?? "")
-            .addPredefinedParameter(.PRICE, float: product.price.floatValue ?? 0.0)
-        
-        return event
+            .addPredefinedParameter(.PRICE, float: product.price.floatValue)
     }
 }
 

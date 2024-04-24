@@ -1,4 +1,6 @@
+import Foundation
 import UIKit
+
 
 @objc
 open class AffiseModule: NSObject {

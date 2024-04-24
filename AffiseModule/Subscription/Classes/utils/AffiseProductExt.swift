@@ -1,5 +1,7 @@
-import AffiseAttributionLib
+import Foundation
 import StoreKit
+import AffiseAttributionLib
+
 
 public extension AffiseProduct {
 

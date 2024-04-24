@@ -72,9 +72,10 @@ internal class AffiseComponent: AffiseApi {
         appLifecycleEventsManager: appLifecycleEventsManager
     )
     lazy var eventsStorage:EventsStorage = EventsStorageImpl(logsManager: logsManager, fileManager: fileManager)
+    lazy var eventToSerializedEventConverter:EventToSerializedEventConverter = EventToSerializedEventConverter()
     lazy var eventsRepository:EventsRepository = EventsRepositoryImpl(
         converterToBase64: ConverterToBase64(),
-        converterToSerializedEvent: EventToSerializedEventConverter(),
+        converterToSerializedEvent: eventToSerializedEventConverter,
         logsManager: logsManager,
         eventsStorage: eventsStorage
     )
@@ -122,6 +123,12 @@ internal class AffiseComponent: AffiseApi {
         logsRepository: logsRepository,
         logsManager: logsManager,
         preferencesUseCase: preferencesUseCase
+    )
+    lazy var immediateSendToServerUseCase: ImmediateSendToServerUseCase = ImmediateSendToServerUseCaseImpl(
+        cloudRepository: cloudRepository,
+        postBackModelFactory: postBackModelFactory,
+        converterToSerializedEvent: eventToSerializedEventConverter,
+        logsManager: logsManager
     )
     lazy var deeplinkClickRepository: DeeplinkClickRepository = DeeplinkClickRepositoryImpl()
     lazy var deeplinkManager: DeeplinkManager = DeeplinkManagerImpl(
