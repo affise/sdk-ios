@@ -1,11 +1,3 @@
-//
-//  PostBackModel.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 struct PostBackModel {
     let parameters: [(ProviderType, Any?)]
     

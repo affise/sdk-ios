@@ -1,11 +1,3 @@
-//
-//  PostBackModelToJsonStringConverter.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Converter List<PostBackModel> to String
  */
@@ -40,22 +32,22 @@ class PostBackModelToJsonStringConverter : Converter {
         }
 
         //Events
-        let eventsArray = obj.events?.map { event in event.data } ?? []
+        let eventsArray = obj.events?.compactEvent() ?? []
         dict.append((Parameters.AFFISE_EVENTS_COUNT, eventsArray.count))
         dict.append((EVENTS_KEY, eventsArray))
 
-        //Events
-        let sdkEventsArray = obj.internalEvents?.map { event in event.data } ?? []
+        //Internal Events
+        var sdkEventsArray = obj.internalEvents?.compactEvent() ?? []
         dict.append((Parameters.AFFISE_INTERNAL_EVENTS_COUNT, sdkEventsArray.count))
-        dict.append((INTERNAL_EVENTS_KEY, sdkEventsArray))
+        dict.append((INTERNAL_EVENTS_KEY, sdkEventsArray.compactMap { $0 }))
 
         //Logs
-        let logsArray = obj.logs?.map { log in log.data } ?? []
+        let logsArray = obj.logs?.compactLog() ?? []        
         dict.append((Parameters.AFFISE_SDK_EVENTS_COUNT, logsArray.count))
         dict.append((SDK_EVENTS_KEY, logsArray))
 
         //Metrics
-        let metricsArray = obj.metrics?.map { metric in metric.data } ?? []
+        let metricsArray = obj.metrics?.compactEvent() ?? []
         dict.append((Parameters.AFFISE_METRICS_EVENTS_COUNT, metricsArray.count))
         dict.append((METRICS_EVENTS_KEY, metricsArray))
         

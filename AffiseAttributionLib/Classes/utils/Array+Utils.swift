@@ -31,3 +31,26 @@ extension Array where Element == (ProviderType, Any?) {
         }
     }
 }
+
+extension Array where Element == SerializedEvent {
+    func compactEvent() -> [String]  {
+        return self.compactMap { event in
+            if event.data.isBlank {
+                return nil
+            }
+            return event.data
+        }
+    }
+}
+
+extension Array where Element == SerializedLog {
+    func compactLog() -> [String]  {
+        return self.compactMap { event in
+            if event.data.isBlank {
+                return nil
+            }
+            return event.data
+        }
+    }
+}
+

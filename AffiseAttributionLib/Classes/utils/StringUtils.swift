@@ -22,8 +22,11 @@ public extension String {
         return Foundation.URL(string: self)
     }
     
-    
     func toJsonGuardString() -> String {
         return self.replacingOccurrences(of: "\"", with: "\\\"")
+    }
+    
+    var isBlank: Bool {
+        return allSatisfy { $0.isWhitespace }
     }
 }
