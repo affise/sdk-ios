@@ -1,11 +1,3 @@
-//
-//  SerializedEvent.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Serialized event to store
  */

@@ -37,7 +37,7 @@ class PostBackModelToJsonStringConverter : Converter {
         dict.append((EVENTS_KEY, eventsArray))
 
         //Internal Events
-        var sdkEventsArray = obj.internalEvents?.compactEvent() ?? []
+        let sdkEventsArray = obj.internalEvents?.compactEvent() ?? []
         dict.append((Parameters.AFFISE_INTERNAL_EVENTS_COUNT, sdkEventsArray.count))
         dict.append((INTERNAL_EVENTS_KEY, sdkEventsArray.compactMap { $0 }))
 
