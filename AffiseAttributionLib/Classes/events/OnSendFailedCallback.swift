@@ -1,1 +1,1 @@
-public typealias OnSendFailedCallback = (_ status: HttpResponse) -> Bool
+public typealias OnSendFailedCallback = (_ status: HttpResponse) -> Void

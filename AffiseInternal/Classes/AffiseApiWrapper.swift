@@ -5,12 +5,13 @@ import AffiseAttributionLib
 @objc
 public class AffiseApiWrapper: NSObject {
     private let UUID: String = "callback_uuid"
+    private let TAG: String = "callback_tag"
 
     private let factory = AffiseEventFactory()
     private let affiseBuilder = AffiseBuilder()
 
-    public typealias OnCallback = (_ api: String, _ data: [String: Any?]) -> [String: Any?]?
-    public typealias OnAffiseCallback = (_ api: String, _ data: String) -> String?
+    public typealias OnCallback = (_ api: String, _ data: [String: Any?]) -> Void
+    public typealias OnAffiseCallback = (_ api: String, _ data: String) -> Void
 
     private var callback: OnCallback? = nil
 
@@ -26,8 +27,7 @@ public class AffiseApiWrapper: NSObject {
     @objc(callback:)
     public func setCallback(_ callback: @escaping OnAffiseCallback) {
         self.callback = { apiName, map in
-            let result = callback(apiName, map.toArray().jsonString())
-            return result?.toJsonMap()
+            callback(apiName, map.toArray().jsonString())
         }
     }
 
@@ -171,18 +171,20 @@ public class AffiseApiWrapper: NSObject {
         event.sendNow({
             let data: [String: Any?] = [
                 self.UUID: uuid,
+                self.TAG: "success",
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }) { response in
             let data: [String: Any?] = [
                 self.UUID: uuid,
+                self.TAG: "failed",
                 api.method: [
                     "code": response.code,
                     "message": response.message,
                     "body": "\(response.body?.toJsonGuardString() ?? "")",
                 ],
             ]
-            return self.callback?(api.method, data)?.opt(api) ?? true
+            self.callback?(api.method, data)
         }
 
         result?.success(nil)
@@ -325,7 +327,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: referrer,
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
 
         result?.success(nil)
@@ -352,7 +354,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: value,
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
 
         result?.success(nil)
@@ -379,7 +381,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: status.toListOfMap(),
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
         result?.success(nil)
     }
@@ -395,7 +397,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: uri?.absoluteString ?? "",
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
         result?.success(nil)
     }
@@ -411,7 +413,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: error,
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
     }
 
@@ -438,7 +440,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: error,
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
     }
 
@@ -453,7 +455,7 @@ public class AffiseApiWrapper: NSObject {
                 self.UUID: uuid,
                 api.method: status.status,
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
     }
 
@@ -474,7 +476,7 @@ public class AffiseApiWrapper: NSObject {
                     ],
                 ]
             ]
-            let _ = self.callback?(api.method, data)
+            self.callback?(api.method, data)
         }
     }
 

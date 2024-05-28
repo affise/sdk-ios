@@ -57,13 +57,7 @@ public final class Affise: NSObject {
      */
     @objc
     internal static func sendEventNow(_ event: Event, _ success: @escaping OnSendSuccessCallback, _ failed: @escaping OnSendFailedCallback) {
-        api?.immediateSendToServerUseCase.sendNow(event: event, success: success) { response in
-            let toSave = failed(response)
-            if toSave {
-                api?.storeEventUseCase.storeEvent(event: event)
-            }
-            return toSave
-        }
+        api?.immediateSendToServerUseCase.sendNow(event: event, success: success, failed: failed)
     }
     
     /**

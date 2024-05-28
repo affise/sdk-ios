@@ -44,7 +44,6 @@ public enum AffiseApiMethod: Int {
         switch self {
         case .INIT: return "init"
         case .IS_INITIALIZED: return "is_initialized"
-//        case .SEND_EVENTS: return "send_events" // deprecated
         case .SEND_EVENT: return "send_event"
         case .SEND_EVENT_NOW: return "send_event_now"
         case .ADD_PUSH_TOKEN: return "add_push_token"
