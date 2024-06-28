@@ -1,12 +1,5 @@
 import SwiftUI
 import AffiseAttributionLib
-#if canImport(AffiseModule)
-// Cocopods module
-import AffiseModule
-#elseif canImport(AffiseModuleSubscription)
-// SwiftPM or XCFramework module
-import AffiseModuleSubscription
-#endif
 import StoreKit
 
 
@@ -56,6 +49,22 @@ func titleByType(_ type: AffiseProductType) -> String {
 @available(iOS 13.0, *)
 struct StoreView: View {
     
+    @State var hasSubscriptionModule: Bool = Affise.Module.hasSubscriptionModule()
+       
+    var body: some View {
+        VStack {
+            if hasSubscriptionModule {
+                Products()
+            } else {
+               Text("No Subscription Module")
+            }
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct Products: View {
+    
     @State var products: [AffiseProduct] = []
     
     func typeMatch(_ product: AffiseProduct, _ type: AffiseProductType) -> Bool {
@@ -93,8 +102,7 @@ struct StoreView: View {
     }
     
     func initProducts() {
-        #if canImport(AffiseModule) || canImport(AffiseModuleSubscription)
-        Affise.fetchProducts(Product.allIds) { result in
+        Affise.Module.fetchProducts(Product.allIds) { result in
             switch result {
             case .failure(let error):
                 print("\(error)")
@@ -102,13 +110,11 @@ struct StoreView: View {
                 products = result.products
                     .sorted { $0.price ?? 0 < $1.price ?? 0 }
 
-                print("invalid ids: [\(result.invalidIds.joined(separator: ", "))]")
+                // print("invalid ids: [\(result.invalidIds.joined(separator: ", "))]")
             }
         }
-        #endif
     }
 }
-
 
 @available(iOS 13.0, *)
 struct ProductRowView: View {
@@ -155,8 +161,7 @@ struct ProductRowView: View {
     }
     
     func purchase(_ product: AffiseProduct) {
-        #if canImport(AffiseModule) || canImport(AffiseModuleSubscription)
-        Affise.purchase(product, Product.getType(product.productId)) { result in
+        Affise.Module.purchase(product, Product.getType(product.productId)) { result in
             switch result {
             case .failure(let error):
                 print("\(error)")
@@ -164,13 +169,12 @@ struct ProductRowView: View {
                 print("\(purchasedInfo)")
             }
         }
-        #endif
     }
 }
 
 #if targetEnvironment(simulator)
 @available(iOS 13.0, *)
-struct StoreView_Previews: PreviewProvider {
+struct Products_Previews: PreviewProvider {
 
     static let products: [AffiseProduct] = [
         AffiseProduct("Preview product 1", 0.01, "Test"),
@@ -178,7 +182,7 @@ struct StoreView_Previews: PreviewProvider {
     ]
     
     static var previews: some View {
-        StoreView(products: products)
+        Products(products: products)
     }
 }
 

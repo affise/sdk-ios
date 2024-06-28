@@ -89,7 +89,7 @@ public final class Affise: NSObject {
      * Register [callback] for deeplink
      */
     @objc
-    public static func registerDeeplinkCallback(_ callback: @escaping OnDeeplinkCallback) {
+    public static func registerDeeplinkCallback(_ callback: OnDeeplinkCallback?) {
         api?.deeplinkManager.setDeeplinkCallback(callback: callback)
     }
     
@@ -216,6 +216,7 @@ public final class Affise: NSObject {
     /**
      * Get module status
      */
+    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getStatus")
     @objc
     public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
         api?.moduleManager.status(module, onComplete)
@@ -224,6 +225,7 @@ public final class Affise: NSObject {
     /**
      * Manual module start
      */
+    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.moduleStart")
     @objc
     @discardableResult
     public static func moduleStart(_ module: AffiseModules) -> Bool {
@@ -233,6 +235,7 @@ public final class Affise: NSObject {
     /**
      * Get installed modules
      */
+    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getModulesInstalledObjc")
     @objc
     public static func getModulesInstalledObjc() -> [String] {
         return api?.moduleManager.getModules().map { $0.description } ?? []
@@ -241,6 +244,7 @@ public final class Affise: NSObject {
     /**
      * Get installed modules
      */
+    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getModulesInstalled")
     public static func getModulesInstalled() -> [AffiseModules] {
         return api?.moduleManager.getModules() ?? []
     }
@@ -256,7 +260,7 @@ public final class Affise: NSObject {
     internal static func getApi() -> AffiseApi? {
         return api
     }
-    
+
     /**
      * Store internal send
      */
@@ -265,6 +269,44 @@ public final class Affise: NSObject {
         api?.storeInternalEventUseCase.storeInternalEvent(event: event)
     }
     
+    public class Module {
+        /**
+        * Get module status
+        */
+        @objc
+        public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
+            api?.moduleManager.status(module, onComplete)
+        }
+        
+        /**
+        * Manual module start
+        */
+        @objc
+        @discardableResult
+        public static func moduleStart(_ module: AffiseModules) -> Bool {
+            return api?.moduleManager.manualStart(module) ?? false
+        }
+
+        /**
+        * Get installed modules
+        */
+        @objc
+        public static func getModulesInstalledObjc() -> [String] {
+            return api?.moduleManager.getModules().map { $0.description } ?? []
+        }
+        
+        /**
+        * Get installed modules
+        */
+        public static func getModulesInstalled() -> [AffiseModules] {
+            return api?.moduleManager.getModules() ?? []
+        }
+
+        internal static func getApi(_ module: AffiseModules) -> AffiseModuleApi? {
+            return api?.moduleManager.api(module)
+        }
+    }
+
     public class Debug {
         /**
          * Won't work on Production

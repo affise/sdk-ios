@@ -41,7 +41,8 @@ internal class CheckStatusUseCaseImpl {
             method: .POST,
             data: converter.convert(from: providers).toData(),
             timeout: TIMEOUT_SEND,
-            headers: CloudConfig.headers
+            headers: CloudConfig.headers,
+            redirect: true
         )
     }
 }

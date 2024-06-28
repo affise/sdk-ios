@@ -24,13 +24,10 @@ public enum AffiseApiMethod: Int {
     case GET_RANDOM_USER_ID
     case GET_RANDOM_DEVICE_ID
     case GET_PROVIDERS
-    case MODULE_START
-    case GET_MODULES_INSTALLED
     case IS_FIRST_RUN
     // callback
     case GET_REFERRER_CALLBACK
     case GET_REFERRER_VALUE_CALLBACK
-    case GET_STATUS_CALLBACK
     case REGISTER_DEEPLINK_CALLBACK
     case SKAD_REGISTER_ERROR_CALLBACK
     case SKAD_POSTBACK_ERROR_CALLBACK
@@ -39,6 +36,17 @@ public enum AffiseApiMethod: Int {
     case DEBUG_NETWORK_CALLBACK
     // builder
     case AFFISE_BUILDER
+    ////////////////////////////////////////
+    // modules
+    ////////////////////////////////////////
+    case MODULE_START
+    case GET_MODULES_INSTALLED
+    case GET_STATUS_CALLBACK
+    // Link Module
+    case MODULE_LINK_LINK_RESOLVE_CALLBACK
+    ////////////////////////////////////////
+    // modules
+    ////////////////////////////////////////
 
     var value: String {
         switch self {
@@ -63,19 +71,26 @@ public enum AffiseApiMethod: Int {
         case .GET_RANDOM_USER_ID: return "get_random_user_id"
         case .GET_RANDOM_DEVICE_ID: return "get_random_device_id"
         case .GET_PROVIDERS: return "get_providers"
-        case .MODULE_START: return "module_start"
-        case .GET_MODULES_INSTALLED: return "get_modules_installed"
         case .IS_FIRST_RUN: return "is_first_run"
         // callback
         case .GET_REFERRER_CALLBACK: return "get_referrer_callback"
         case .GET_REFERRER_VALUE_CALLBACK: return "get_referrer_value_callback"
-        case .GET_STATUS_CALLBACK: return "get_status_callback"
         case .REGISTER_DEEPLINK_CALLBACK: return "register_deeplink_callback"
         case .SKAD_REGISTER_ERROR_CALLBACK: return "skad_register_error_callback"
         case .SKAD_POSTBACK_ERROR_CALLBACK: return "skad_postback_error_callback"
         case .DEBUG_VALIDATE_CALLBACK: return "debug_validate_callback"
         case .DEBUG_NETWORK_CALLBACK: return "debug_network_callback"
         case .AFFISE_BUILDER: return "affise_builder"
+        ////////////////////////////////////////
+        // modules
+        ////////////////////////////////////////
+        case .MODULE_START: return "module_start"
+        case .GET_MODULES_INSTALLED: return "get_modules_installed"
+        case .GET_STATUS_CALLBACK: return "get_status_callback"
+        case .MODULE_LINK_LINK_RESOLVE_CALLBACK: return "module_link_link_resolve_callback"
+        ////////////////////////////////////////
+        // modules
+        ////////////////////////////////////////
         }
     }
 }

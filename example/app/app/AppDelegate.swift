@@ -20,10 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .start(app: application, launchOptions: launchOptions) // Start Affise SDK
         
         // Deeplinks https://github.com/affise/sdk-ios#deeplinks
-        Affise.registerDeeplinkCallback { url in
-            let component = URLComponents(string: url?.absoluteString ?? "")
-            let screen = component?.queryItems?.first(where: {$0.name == "screen"})?.value
-            if let screen = screen, screen == "special_offer" {
+        Affise.registerDeeplinkCallback { [weak self] value in
+            self?.showAlert(
+                title: "Deeplink",
+                message: "\"\(value.deeplink)\"\n\n" +
+                "scheme: \"\(value.scheme ?? "")\"\n\n" +
+                "host: \"\(value.host ?? "")\"\n\n" +
+                "path: \"\(value.path ?? "")\"\n\n" +
+                "parameters: \(value.parameters)"
+            )
+            
+            if value.parameters["screen"]?.contains("special_offer") == true {
                 // handle value
             }
         }
@@ -47,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Affise.Debug.validate { status in
 //            debugPrint("Affise: validate = \(status)")
 //        }
-        
+               
         // Debug: network request/response
         Affise.Debug.network { (request, response) in
 //            debugPrint("Affise: \(request)")
@@ -85,6 +92,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func showAlert(title: String, message: String) {
+        guard let rootViewController = self.window?.rootViewController else {
+            return
+        }
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        
+        rootViewController.present(alertController, animated: true, completion: nil)
     }
 }
 

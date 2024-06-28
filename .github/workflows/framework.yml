@@ -41,7 +41,7 @@ jobs:
       - name: Create AffiseAttributionLib XCFramework
         uses: unsignedapps/swift-create-xcframework@v2.3.0
         with:
-          target: "AffiseAttributionLib, AffiseModuleAdvertising, AffiseModuleStatus, AffiseModuleSubscription"
+          target: "AffiseAttributionLib, AffiseModuleAdvertising, AffiseModuleLink, AffiseModuleStatus, AffiseModuleSubscription"
       
       # Release
       - name: Release
@@ -67,6 +67,18 @@ jobs:
           asset_path: ./AffiseAttributionLib.zip
           asset_name: AffiseAttributionLib-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
           asset_content_type: application/zip    
+
+      # Upload AffiseModuleLink
+      - name: Upload Release AffiseModuleLink Framework 🗳
+        if: ${{ success() }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./AffiseModuleLink.zip
+          asset_name: AffiseModuleLink-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+          asset_content_type: application/zip
 
       # Upload AffiseModuleStatus
       - name: Upload Release AffiseModuleStatus Framework 🗳

@@ -78,4 +78,8 @@ internal class AffiseModuleManager {
             callback(module)
         }
     }
+
+    func api(_ module: AffiseModules) -> AffiseModuleApi? {
+        return getModule(module) as? AffiseModuleApi
+    }
 }

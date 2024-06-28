@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseSKAdNetwork"
-  spec.version      = ENV['LIB_VERSION'] || "1.6.32"
+  spec.version      = ENV['LIB_VERSION'] || "1.6.33"
   spec.summary      = "AffiseSKAdNetwork iOS library"
   spec.description  = "Affise library for StoreKit Ad Network (SKAdNetwork)"
   spec.homepage     = "https://github.com/affise/sdk-ios"

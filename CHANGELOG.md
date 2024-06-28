@@ -1,10 +1,23 @@
 # Changelog
 
+## [1.6.33] - 2024-06-28
+
+### Added
+
+- New module `Link`.
+
+### Changed
+
+- Update `registerDeeplinkCallback` change uri to convenient values.
+- Update `Affise.getStatus` moved to `Affise.Module.getStatus`.
+- Update `Affise.moduleStart` moved to `Affise.Module.moduleStart`.
+- Update `Affise.getModulesInstalled` moved to `Affise.Module.getModulesInstalled`.
+
 ## [1.6.32] - 2024-05-28
 
 ### Removed
 
-- Result for failed `sendEvents`.
+- Result for failed `sendNow`.
 
 ### Changed
 
@@ -49,6 +62,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.33]: https://github.com/affise/sdk-ios/compare/1.6.32...1.6.33
 [1.6.32]: https://github.com/affise/sdk-ios/compare/1.6.31...1.6.32
 [1.6.31]: https://github.com/affise/sdk-ios/compare/1.6.30...1.6.31
 [1.6.30]: https://github.com/affise/sdk-ios/compare/1.6.29...1.6.30

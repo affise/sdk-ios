@@ -5,7 +5,7 @@ import UIKit
  * Interface describing callback that is going to be triggered when deeplink is received by application
  * Triggered when new deeplink [uri] is received by application with
  */
-public typealias OnDeeplinkCallback = (_ url: URL?) -> Void
+public typealias OnDeeplinkCallback = (_ value: DeeplinkValue) -> Void
 
 /**
  * Manager that coordinates deeplink related tasks
@@ -19,7 +19,7 @@ protocol DeeplinkManager {
     /**
      * Sets [callback] to invoke when app receives deeplink
      */
-    func setDeeplinkCallback(callback: @escaping OnDeeplinkCallback)
+    func setDeeplinkCallback(callback: OnDeeplinkCallback?)
 
     /**
      * Process [uri] as deeplink

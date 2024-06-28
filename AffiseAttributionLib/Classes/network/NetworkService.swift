@@ -23,6 +23,7 @@ public protocol NetworkService {
         method: NetworkServiceMethod,
         data: Data?,
         timeout: TimeInterval,
-        headers: [String:String]
+        headers: [String:String],
+        redirect: Bool
     ) -> HttpResponse
 }

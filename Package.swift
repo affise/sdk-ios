@@ -11,6 +11,7 @@ let package = Package(
     products: [
         .library(name: "AffiseAttributionLib", targets: ["AffiseAttributionLib"]),
         .library(name: "AffiseModuleAdvertising", targets: ["AffiseModuleAdvertising"]),
+        .library(name: "AffiseModuleLink", targets: ["AffiseModuleLink"]),
         .library(name: "AffiseModuleStatus", targets: ["AffiseModuleStatus"]),
         .library(name: "AffiseModuleSubscription", targets: ["AffiseModuleSubscription"]),
         .library(name: "AffiseSKAdNetwork", targets: ["AffiseSKAdNetwork", "AffiseInternalWrapperObjC"]),
@@ -35,6 +36,12 @@ let package = Package(
             name: "AffiseModuleAdvertising",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/Advertising",
+            sources: [ "Classes" ]
+        ),
+        .target(
+            name: "AffiseModuleLink",
+            dependencies: ["AffiseAttributionLib"],
+            path: "AffiseModule/Link",
             sources: [ "Classes" ]
         ),
         .target(

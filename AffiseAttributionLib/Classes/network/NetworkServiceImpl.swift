@@ -20,11 +20,13 @@ extension NetworkServiceImpl: NetworkService {
         method: NetworkServiceMethod,
         data: Data?,
         timeout: TimeInterval,
-        headers: [String:String]
+        headers: [String:String],
+        redirect: Bool = true
     ) -> HttpResponse {
         var responseCode: Int = 0
         var responseMessage: String = ""
         var responseBody: String? = nil
+        var responseHeaders: [String:[String]] = [:]
         
         var request = URLRequest.init(url: httpsUrl)
         request.httpMethod = method.rawValue
@@ -41,20 +43,23 @@ extension NetworkServiceImpl: NetworkService {
 
         var complete: Bool = false
         
-        let task = urlSession.dataTask(with: request) { responseData, response, error in
+        let task = urlSession.dataTask(redirect: redirect, with: request) { responseData, response, error in
+            let httpResponse = (response as? HTTPURLResponse)
+
             responseBody = responseData?.toString()
-            responseCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            responseCode = httpResponse?.statusCode ?? 0
             responseMessage = error?.localizedDescription ?? ""
-            
+            responseHeaders = httpResponse?.allHeaders() ?? [:]
+
             complete = true
         }
         task.resume()
-        
+      
         while !complete {
             Thread.sleep(forTimeInterval: 1)
         }
 
-        let httpResponse = HttpResponse(responseCode, responseMessage, responseBody)
+        let httpResponse = HttpResponse(responseCode, responseMessage, responseBody, responseHeaders)
         if let debugRequest = debugRequest {
             debugRequest(HttpRequest(httpsUrl, method, headers, data?.toString()), httpResponse)
         }

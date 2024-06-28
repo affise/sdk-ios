@@ -30,3 +30,13 @@ public extension String {
         return allSatisfy { $0.isWhitespace }
     }
 }
+
+
+extension Optional  where Wrapped == String {
+    
+    public var isNullOrBlank: Bool {
+        get {
+            return self?.isBlank ?? true
+        }
+    }
+}

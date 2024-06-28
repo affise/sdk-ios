@@ -52,13 +52,13 @@ internal class DeeplinkManagerImpl : DeeplinkManager {
         }
     }
 
-    func setDeeplinkCallback(callback: @escaping OnDeeplinkCallback) {
+    func setDeeplinkCallback(callback: OnDeeplinkCallback?) {
         deeplinkCallback = callback
     }
 
     func handleDeeplink(url: URL?) {
         isDeeplinkRepository.setDeeplinkClick(isDeeplink: true)
         isDeeplinkRepository.setDeeplink(deeplink: url?.absoluteString ?? "")
-        deeplinkCallback?(url)
+        deeplinkCallback?(url.toDeeplinkValue())
     }
 }

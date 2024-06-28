@@ -1,11 +1,14 @@
 # Affise Attribution iOS Library
 
+[Change Log](CHANGELOG.md)
+
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib` | [`1.6.32`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`    | [`1.6.32`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.32`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`  | [`1.6.32`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib` | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`    | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`  | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`  | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -16,7 +19,8 @@
     - [Initialize](#initialize)
       - [Domain](#domain)
     - [Modules](#modules)
-      - [Advertising](#advertising)
+      - [Module Advertising](#module-advertising)
+      - [Module Link](#module-link)
     - [Requirements](#requirements)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
@@ -76,20 +80,22 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.32'
+pod 'AffiseAttributionLib', '~> 1.6.33'
 # Affise modules
-pod 'AffiseModule/Advertising', '~> 1.6.32'
-pod 'AffiseModule/Status', '~> 1.6.32'
+pod 'AffiseModule/Advertising', '~> 1.6.33'
+pod 'AffiseModule/Link', '~> 1.6.33'
+pod 'AffiseModule/Status', '~> 1.6.33'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.32'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.33'
 # Affise modules
-pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.32'
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.32'
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.33'
+pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.33'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.33'
 ```
 
 ### Integrate as Swift Package Manager
@@ -134,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-For `objective-c` use: 
+For `objective-c` use:
 
 > Demo app [AppDelegate.m](example/app-obj-c/app-obj-c/AppDelegate.m)
 
@@ -191,36 +197,49 @@ Affise
 
 | Module        | Version                                                                              | Start    |
 | ------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising` | [`1.6.32`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Status`      | [`1.6.32`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising` | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Link`        | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`      | [`1.6.33`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
 ```swift
-Affise.moduleStart(.Advertising)
+Affise.Module.moduleStart(.Advertising)
 ```
 
 Get list of installed modules:
 
 ```swift
-Affise.getModulesInstalled()
+Affise.Module.getModulesInstalled()
 ```
 
-#### Advertising
+#### Module Advertising
 
 This module required to Use [`IDFA`](https://developer.apple.com/documentation/adsupport/asidentifiermanager/advertisingidentifier) (Identifier for advertisers)
 
 > **Warning**
-> 
+>
 > 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 >
 > Module Advertising requires `NSUserTrackingUsageDescription` key in `info.plist`
 >
-> Application will crash if key not present
-> 
+> Application **will crash** if key not present
+>
 > 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
 Open `info.plist` and add key `NSUserTrackingUsageDescription` with string value. For more information [read requirements](#requirements)
+
+#### Module Link
+
+Return last url in chan of redirection
+
+🟥Support MAX 10 redirections🟥
+
+```swift
+Affise.Module.linkResolve("SITE_WITH_REDIRECTION") { redirectUrl in
+    // handle redirect url
+}
+```
 
 ### Requirements
 
@@ -244,14 +263,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.32'
+pod 'AffiseSKAdNetwork', '~> 1.6.33'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.32'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.33'
 ```
 
 For `swift` use:
@@ -445,7 +464,7 @@ AddToCartEvent()
         // handle event send success
     }) { errorResponse in
         // handle event send failed
-        // Warning: event is NOT cached for later send
+        // 🟥Warning🟥: event is NOT cached for later send
     }
 ```
 
@@ -790,9 +809,16 @@ To integrate deeplink support you need:
 ```swift
 Affise.settings(affiseAppId:affiseAppId, secretKey:secretKey).start(app:app, launchOptions: launchOptions)
 Affise.registerDeeplinkCallback { url in
-    let component = URLComponents(string: url?.absoluteString ?? "")
-    let screen = component?.queryItems?.first(where: {$0.name == "<your_uri_key>"})?.value
-    if let screen = screen, screen == "<your_uri_key_value>" {
+    // full uri "scheme://host/path?parameters"   
+    let deeplink = value.deeplink
+
+    // separated for convenience 
+    let scheme = value.scheme
+    let host = value.host
+    let path = value.path
+    let queryParametersMap = value.parameters
+
+    if queryParametersMap["<your_uri_key>"].contains("<your_uri_key_value>") == true {
         // handle value
     }
 }
@@ -833,6 +859,12 @@ Example: `YOUR_SCHEME://YOUR_DOMAIN` (`myapp://mydomain.com`)
 </array>
 ```
 
+Test DeepLink via terminal command:
+
+```terminal
+xcrun simctl openurl booted "YOUR_SCHEME://YOUR_DOMAIN/somepath?param=1&list=some&list=other&list=1"
+```
+
 ## AppLinks
 
 > **Warning**
@@ -858,9 +890,16 @@ To integrate applink support you need:
 ```swift
 Affise.settings(affiseAppId:affiseAppId, secretKey:secretKey).start(app:app, launchOptions: launchOptions)
 Affise.registerDeeplinkCallback { url in
-    let component = URLComponents(string: url?.absoluteString ?? "")
-    let screen = component?.queryItems?.first(where: {$0.name == "<your_uri_key>"})?.value
-    if let screen = screen, screen == "<your_uri_key_value>" {
+    // full uri "scheme://host/path?parameters"   
+    let deeplink = value.deeplink
+
+    // separated for convenience 
+    let scheme = value.scheme
+    let host = value.host
+    let path = value.path
+    let queryParametersMap = value.parameters
+
+    if queryParametersMap["<your_uri_key>"].contains("<your_uri_key_value>")  == true {
         // handle value
     }
 }
@@ -893,6 +932,12 @@ Example: `https://YOUR_DOMAIN` (`https://mydomain.com`)
 <array>
 	<string>applinks:YOUR_DOMAIN</string>
 </array>
+```
+
+Test DeepLink via terminal command:
+
+```terminal
+xcrun simctl openurl booted "https://YOUR_DOMAIN/somepath?param=1&list=some&list=other&list=1"
 ```
 
 ## Get random user Id
@@ -994,7 +1039,7 @@ In examples above `ReferrerKey.CLICK_ID` is used, but many others is available:
 ## Get module state
 
 ```swift
-Affise.getStatus(AffiseModules.STATUS) { response in 
+Affise.Module.getStatus(AffiseModules.STATUS) { response in 
     // handle status response
 };
 ```
