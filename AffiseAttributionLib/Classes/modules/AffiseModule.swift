@@ -26,6 +26,8 @@ open class AffiseModule: NSObject {
         self.dependencies = dependencies
         self.baseProviders = providers
     }
+
+    open var version: String { "" }
     
     open func start() {
 

@@ -17,5 +17,12 @@
 	</array>
 	<key>NSAdvertisingAttributionReportEndpoint</key>
 	<string>https://affise-skadnetwork.com/</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<!-- <key>UIApplicationSupportsMultipleScenes</key>
+		<true/> -->
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>

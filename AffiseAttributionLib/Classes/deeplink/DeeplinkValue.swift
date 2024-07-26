@@ -10,7 +10,7 @@ public class DeeplinkValue: NSObject {
     public let path: String?
     public let parameters: [String:[String]]
     
-    init(
+    public init(
         deeplink: String,
         scheme: String?,
         host: String?,
@@ -32,7 +32,7 @@ extension DeeplinkValue {
 
 extension Optional where Wrapped == URL {
     
-    func toDeeplinkValue() -> DeeplinkValue {
+    public func toDeeplinkValue() -> DeeplinkValue {
         guard let self = self else {
             return DeeplinkValue(
                 deeplink: "",

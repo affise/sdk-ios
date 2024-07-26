@@ -71,11 +71,13 @@ internal class AffiseModuleManager {
     private func initAffiseModules(_ callback: (_ module: AffiseModule) -> Void) {
         for name in AffiseModules.values() {
             guard let cls = classType(name) else { continue }
-        
             let module = cls.init()
-            modules[name] = module
-
-            callback(module)
+            if module.version == BuildConfig.AFFISE_VERSION {
+                modules[name] = module
+                callback(module)
+            } else {
+                print(AffiseModuleError.version(name: name, module: module).localizedDescription)
+            }
         }
     }
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.34] - 2024-07-26
+
+### Added
+
+- Modules compatibility check.
+
 ## [1.6.33] - 2024-06-28
 
 ### Added
@@ -62,6 +68,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.34]: https://github.com/affise/sdk-ios/compare/1.6.33...1.6.34
 [1.6.33]: https://github.com/affise/sdk-ios/compare/1.6.32...1.6.33
 [1.6.32]: https://github.com/affise/sdk-ios/compare/1.6.31...1.6.32
 [1.6.31]: https://github.com/affise/sdk-ios/compare/1.6.30...1.6.31
