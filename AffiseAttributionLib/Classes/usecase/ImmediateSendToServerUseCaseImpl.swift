@@ -46,7 +46,7 @@ extension ImmediateSendToServerUseCaseImpl: ImmediateSendToServerUseCase {
                 guard let self = self else { return }
                 
                 let response = self.sendNow(event: event, url: it)
-                if isHttpValid(response.code) {
+                if response.isHttpValid() {
                     success()
                 } else {
                     let _ = failed(response)

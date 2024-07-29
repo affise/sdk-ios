@@ -36,7 +36,9 @@ internal class AffiseComponent: AffiseApi {
             dependencies: [
                 stringToSha256Converter,
                 networkService,
-                providersToJsonStringConverter
+                providersToJsonStringConverter,
+                postBackModelFactory,
+                postBackModelToJsonStringConverter
             ]
         )
 
@@ -90,10 +92,11 @@ internal class AffiseComponent: AffiseApi {
         eventsStorage: internalEventsStorage
     )
     lazy var networkService:NetworkService = NetworkServiceImpl(urlSession: urlSession)
+    lazy var postBackModelToJsonStringConverter:PostBackModelToJsonStringConverter = PostBackModelToJsonStringConverter()
     lazy var cloudRepository:CloudRepository = CloudRepositoryImpl(
         networkService: networkService,
         userAgentProvider: postBackModelFactory.getProvider(),
-        converter: PostBackModelToJsonStringConverter()
+        converter: postBackModelToJsonStringConverter
     )
     lazy var sessionManager:SessionManager = SessionManagerImpl(
         preferences: preferences,

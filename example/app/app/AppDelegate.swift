@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
      
         // Get module state https://github.com/affise/sdk-ios#get-module-state
-//        Affise.getStatus(AffiseModules.Status) { result in
+//        Affise.Module.getStatus(AffiseModules.Status) { result in
 //            // handle status
 //        }
         

@@ -1,10 +1,10 @@
 /**
  * Converter List<PostBackModel> to String
  */
-class PostBackModelToJsonStringConverter : Converter {
+public class PostBackModelToJsonStringConverter : Converter {
     
-    typealias T = Array<PostBackModel>
-    typealias R = String
+    public typealias T = Array<PostBackModel>
+    public typealias R = String
 
     private let EVENTS_KEY = "events"
     private let SDK_EVENTS_KEY = "sdk_events"
@@ -14,7 +14,7 @@ class PostBackModelToJsonStringConverter : Converter {
     /**
      * Convert [from] list of PostBackModel to json string
      */
-    func convert(from: Array<PostBackModel>) -> String {
+    public func convert(from: Array<PostBackModel>) -> String {
         let res = from.map { model in
             parameters(obj: model)
         }.joined(separator: ",")

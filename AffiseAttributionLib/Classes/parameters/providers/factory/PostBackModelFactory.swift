@@ -1,4 +1,4 @@
-internal class PostBackModelFactory {
+public class PostBackModelFactory {
     
     private var providers: [Provider]
     
@@ -11,7 +11,7 @@ internal class PostBackModelFactory {
      *
      * @return PostBackModel
      */
-    func create(
+    public func create(
         events: Array<SerializedEvent> = [],
         logs: Array<SerializedLog> = [],
         metrics: Array<SerializedEvent> = [],

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.35] - 2024-07-29
+
+### Fixed
+
+- Api `Affise.Module.getStatus`.
+
 ## [1.6.34] - 2024-07-26
 
 ### Added

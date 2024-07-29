@@ -9,11 +9,15 @@ internal class CheckStatusUseCaseImpl {
     
     let PATH: String = "check_status"
     var url: String = ""
+    var isPostBackSend: Bool = false
 
     let logsManager: LogsManager?
     let converter: ProvidersToJsonStringConverter
     let keyValueConverter: StringToKeyValueConverter
     let networkService: NetworkService
+    let postBackModelFactory: PostBackModelFactory
+    let postBackModelToJsonStringConverter: PostBackModelToJsonStringConverter
+    
     let providers: [Provider]
 
     init(
@@ -21,29 +25,42 @@ internal class CheckStatusUseCaseImpl {
         logsManager: LogsManager?,
         networkService: NetworkService,
         converter: ProvidersToJsonStringConverter,
-        keyValueConverter: StringToKeyValueConverter
+        keyValueConverter: StringToKeyValueConverter,
+        postBackModelFactory: PostBackModelFactory,
+        postBackModelToJsonStringConverter: PostBackModelToJsonStringConverter
     ) {
         self.logsManager = logsManager
         self.converter = converter
         self.keyValueConverter = keyValueConverter
         self.networkService = networkService
+        self.postBackModelFactory = postBackModelFactory
+        self.postBackModelToJsonStringConverter = postBackModelToJsonStringConverter
         self.providers = affiseModule.getRequestProviders()
         
         self.url = CloudConfig.getURL(PATH)
     }
 
-    private func createRequest() -> HttpResponse {
+    private func createRequest(_ data: String) -> HttpResponse {
         guard let httpsUrl = url.toURL() else { return HttpResponse(0, "", nil) }
         
         //Create request
         return networkService.executeRequest(
             httpsUrl: httpsUrl,
             method: .POST,
-            data: converter.convert(from: providers).toData(),
+            data: data.toData(),
             timeout: TIMEOUT_SEND,
             headers: CloudConfig.headers,
             redirect: true
         )
+    }
+    
+    func providersData() -> String {
+        return converter.convert(from: providers)
+    }
+    
+    func postBackData() -> String {
+        let data = postBackModelFactory.create(events: [], logs: [], metrics: [], internalEvents: [])
+        return postBackModelToJsonStringConverter.convert(from: [data])
     }
 }
 
@@ -66,9 +83,22 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
 
         //While has attempts and not send
         while (attempts != 0 && !send) {
-            let response = createRequest()
-            if isHttpValid(response.code) {
-                onComplete(keyValueConverter.convert(from: response.body))
+            var postBackResponse: HttpResponse? = nil
+            var response: HttpResponse? = nil
+            
+            if isPostBackSend == false {
+                postBackResponse = createRequest(postBackData())
+                if let postBackResponse = postBackResponse {
+                    isPostBackSend = postBackResponse.isHttpValid()
+                }
+            }
+            
+            if isPostBackSend == true {
+                response = createRequest(providersData())
+            }
+            
+            if isPostBackSend && response?.isHttpValid() == true {
+                onComplete(keyValueConverter.convert(from: response?.body ?? ""))
                 
                 //Send is ok
                 send = true
@@ -77,7 +107,9 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
                 //Check attempts
                 if (attempts == 0) {
                     onComplete([])
-                    let error = AffiseError.network(status: response.code, message: response.body)
+                    
+                    let httpResponse = response ?? postBackResponse
+                    let error = AffiseError.network(status: httpResponse?.code ?? 0, message: httpResponse?.body)
                     //Log error
                     logsManager?.addSdkError(error: AffiseError.cloud(url: url, error: error, attempts: ATTEMPTS_TO_SEND, retry: true))
                 } else {

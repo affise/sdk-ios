@@ -1,15 +1,7 @@
-//
-//  SerializedLog.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Serialized log contains [id] identification, [type] and log [data]
  */
-struct SerializedLog{
+public struct SerializedLog{
 
     /**
      * Log id

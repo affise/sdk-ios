@@ -48,7 +48,7 @@ extension CloudRepositoryImpl: CloudRepository {
             //Create request
             let response =  createRequest(url: url, data: data)
             
-            if isHttpValid(response.code) {
+            if response.isHttpValid() {
                 //Send is ok
                 send = true
             } else {

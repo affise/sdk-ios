@@ -1,7 +1,7 @@
 /**
  * Serialized event to store
  */
-struct SerializedEvent {
+public struct SerializedEvent {
     /**
      * Event id
      */

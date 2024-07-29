@@ -1,11 +1,3 @@
-//
-//  Converter.swift
-//  app
-//
-//  Created by Sergey Korney
-//
-
-
 /**
  * Interface for convert object to another object
  *

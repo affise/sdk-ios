@@ -5,15 +5,20 @@ import AffiseAttributionLib
 @objc(AffiseLinkModule)
 public final class LinkModule: AffiseModule {
     
-    public override var version: String { "1.6.34" }
+    public override var version: String { "1.6.35" }
     
     private var useCase: LinkResolveUseCase? = nil
         
     public override func start() {
-        guard let networkService: NetworkService = get() else { return }
+        let networkService: NetworkService? = get()
+        if networkService == nil
+        {
+            print(AffiseModuleError.initModule(name: .Link).localizedDescription)
+            return
+        }
 
         useCase = LinkResolveUseCaseImpl(
-            networkService: networkService
+            networkService: networkService!
         )
     }
 }

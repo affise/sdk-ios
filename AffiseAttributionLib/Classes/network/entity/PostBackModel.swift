@@ -1,4 +1,4 @@
-struct PostBackModel {
+public struct PostBackModel {
     let parameters: [(ProviderType, Any?)]
     
     let events: Array<SerializedEvent>?

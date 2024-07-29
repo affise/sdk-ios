@@ -5,7 +5,7 @@ import AffiseAttributionLib
 @objc(AffiseStatusModule)
 public final class StatusModule: AffiseModule {
     
-    public override var version: String { "1.6.34" }
+    public override var version: String { "1.6.35" }
     
     private var checkStatusUseCase: CheckStatusUseCase? = nil
     private var referrerUseCase: ReferrerUseCase? = nil
@@ -13,15 +13,28 @@ public final class StatusModule: AffiseModule {
     private lazy var stringToKeyValueConverter: StringToKeyValueConverter = StringToKeyValueConverter()
         
     public override func start() {
-        guard let providersToJsonStringConverter: ProvidersToJsonStringConverter = get() else { return }
-        guard let networkService: NetworkService = get() else { return }
+        let providersToJsonStringConverter: ProvidersToJsonStringConverter? = get()
+        let networkService: NetworkService? = get()
+        let postBackModelFactory: PostBackModelFactory? = get()
+        let postBackModelToJsonStringConverter: PostBackModelToJsonStringConverter? = get()
+        
+        if providersToJsonStringConverter == nil ||
+            networkService == nil ||
+            postBackModelFactory == nil ||
+            postBackModelToJsonStringConverter == nil
+        {
+            print(AffiseModuleError.initModule(name: .Status).localizedDescription)
+            return
+        }
 
         checkStatusUseCase = CheckStatusUseCaseImpl(
             affiseModule: self,
             logsManager: logsManager,
-            networkService: networkService,
-            converter: providersToJsonStringConverter,
-            keyValueConverter: stringToKeyValueConverter
+            networkService: networkService!,
+            converter: providersToJsonStringConverter!,
+            keyValueConverter: stringToKeyValueConverter,
+            postBackModelFactory: postBackModelFactory!,
+            postBackModelToJsonStringConverter: postBackModelToJsonStringConverter!
         )
 
         referrerUseCase = ReferrerUseCaseImpl(
