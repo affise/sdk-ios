@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.36] - 2024-07-30
+
+### Fixed
+
+- Fix `unsafe build flags`.
+
 ## [1.6.35] - 2024-07-29
 
 ### Fixed
@@ -74,6 +80,8 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.36]: https://github.com/affise/sdk-ios/compare/1.6.35...1.6.36
+[1.6.35]: https://github.com/affise/sdk-ios/compare/1.6.34...1.6.35
 [1.6.34]: https://github.com/affise/sdk-ios/compare/1.6.33...1.6.34
 [1.6.33]: https://github.com/affise/sdk-ios/compare/1.6.32...1.6.33
 [1.6.32]: https://github.com/affise/sdk-ios/compare/1.6.31...1.6.32

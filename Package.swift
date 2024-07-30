@@ -24,12 +24,6 @@ let package = Package(
             sources: [ "Classes" ],
             resources: [
                .process("Assets"),
-            ],
-            swiftSettings: [
-                .unsafeFlags([
-                    "-enable-library-evolution",
-                    // "-emit-module-interface",
-                ]),
             ]
         ),
         .target(

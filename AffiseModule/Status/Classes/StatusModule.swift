@@ -5,7 +5,7 @@ import AffiseAttributionLib
 @objc(AffiseStatusModule)
 public final class StatusModule: AffiseModule {
     
-    public override var version: String { "1.6.35" }
+    public override var version: String { "1.6.36" }
     
     private var checkStatusUseCase: CheckStatusUseCase? = nil
     private var referrerUseCase: ReferrerUseCase? = nil
