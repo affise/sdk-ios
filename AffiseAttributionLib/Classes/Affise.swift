@@ -249,14 +249,6 @@ public final class Affise: NSObject {
         return api?.moduleManager.getModules() ?? []
     }
 
-    /**
-     * Call deeplink handle manually
-     */
-    @objc
-    public static func handleDeeplink(_ url: URL) {
-        api?.deeplinkManager.handleDeeplink(url: url)
-    }
-
     internal static func getApi() -> AffiseApi? {
         return api
     }

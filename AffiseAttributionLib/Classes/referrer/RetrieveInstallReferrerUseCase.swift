@@ -2,8 +2,9 @@ import Foundation
 
 class RetrieveInstallReferrerUseCase {
 
-    let moduleManager: AffiseModuleManager
-    var referrerModule: ReferrerCallback?
+    private let moduleManager: AffiseModuleManager
+    private var referrerModule: ReferrerCallback?
+    private var referrerURL: URL?
 
     init(
         moduleManager: AffiseModuleManager
@@ -11,7 +12,7 @@ class RetrieveInstallReferrerUseCase {
         self.moduleManager = moduleManager
     }
 
-    func getReffererModule() -> ReferrerCallback? {
+    private func getReffererModule() -> ReferrerCallback? {
         if self.referrerModule != nil {
             return self.referrerModule
         }
@@ -21,22 +22,44 @@ class RetrieveInstallReferrerUseCase {
         return referrerModule
     }
 
-    func getQueryStringParameter(_ url: String, _ param: String) -> String? {
+    private func getQueryStringParameter(_ url: String?, _ param: String) -> String? {
+        guard let url = url else {
+            return nil
+        }
         guard let url = URLComponents(string: url) else { return nil }
         return url.queryItems?.first(where: { $0.name == param })?.value
-    }    
-    
-    func getReferrer(_ callback: @escaping OnReferrerCallback) {
-        getReffererModule()?.getReferrer(callback) ?? callback(nil)
     }
     
-    func getReferrerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
-        guard let module = getReffererModule() else {
-            callback(nil)
+    private func handleReferrer(_ callback: @escaping OnReferrerCallback) {
+        guard let referrer = referrerURL else {
+            getReffererModule()?.getReferrer(callback) ?? callback(nil)
             return
         }
-        module.getReferrer { value in
-            callback(self.getQueryStringParameter("https://referrer/?\(value ?? "")", key.value()))
+        callback(referrer.absoluteString)
+    }
+    
+    /**
+     * Set referrerURL
+     */
+    func setReferrer(_ url: URL?) {
+        referrerURL = url
+    }
+    
+    /**
+     * Return referrerURL
+     */
+    func getReferrer(_ callback: @escaping OnReferrerCallback) {
+        handleReferrer { value in
+            callback(value)
+        }
+    }
+    
+    /**
+     * Return referrerURL parameter by key
+     */
+    func getReferrerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
+        handleReferrer { value in
+            callback(self.getQueryStringParameter(value, key.value()))
         }
     }
 } 

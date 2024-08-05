@@ -68,7 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
+        // Handle Deeplink
         Affise.handleDeeplink(url)
+        return true
+    }
+    
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+    ) -> Bool {
+        // Handle AppLinks
+        Affise.handleUserActivity(userActivity)
         return true
     }
     
