@@ -158,19 +158,35 @@ public final class Affise: NSObject {
     }
     
     /**
-     * Get referrer
+     * Get referrer url
      */
     @objc
-    public static func getReferrer(_ callback: @escaping OnReferrerCallback) {
-        api?.retrieveInstallReferrerUseCase.getReferrer(callback)
+    public static func getReferrerUrl(_ callback: @escaping OnReferrerCallback) {
+        api?.retrieveReferrerUseCase.getReferrerUrl(callback)
     }
     
     /**
-     * Get referrer Value
+     * Get referrer url value
      */
     @objc
-    public static func getReferrerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
-        api?.retrieveInstallReferrerUseCase.getReferrerValue(key, callback)
+    public static func getReferrerUrlValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
+        api?.retrieveReferrerUseCase.getReferrerUrlValue(key, callback)
+    }
+
+    /**
+     * Get referrer on server
+     */
+    @objc
+    public static func getReferrerOnServer(_ callback: @escaping OnReferrerCallback) {
+        api?.retrieveReferrerOnServerUseCase.getReferrerOnServer(callback)
+    }
+    
+    /**
+     * Get referrer on server value
+     */
+    @objc
+    public static func getReferrerOnServerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
+        api?.retrieveReferrerOnServerUseCase.getReferrerOnServerValue(key, callback)
     }
 
     /**

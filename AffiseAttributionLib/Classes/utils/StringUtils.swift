@@ -29,6 +29,11 @@ public extension String {
     var isBlank: Bool {
         return allSatisfy { $0.isWhitespace }
     }
+
+    internal func getQueryStringParameter(_ param: String) -> String? {
+        guard let url = URLComponents(string: self) else { return nil }
+        return url.queryItems?.first(where: { $0.name == param })?.value
+    }
 }
 
 

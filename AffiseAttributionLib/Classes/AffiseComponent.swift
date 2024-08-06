@@ -164,10 +164,13 @@ internal class AffiseComponent: AffiseApi {
         logsManager: logsManager,
         deeplinkClickRepository: deeplinkClickRepository,
         deviceUseCase: deviceUseCase,
-        remarketingUseCase: remarketingUseCase
+        remarketingUseCase: remarketingUseCase,
+        retrieveReferrerUseCase: retrieveReferrerUseCase
     ).create()
 
-    lazy var retrieveInstallReferrerUseCase: RetrieveInstallReferrerUseCase = RetrieveInstallReferrerUseCase(
+    lazy var retrieveReferrerUseCase: RetrieveReferrerUseCase = RetrieveReferrerUseCase()
+    
+    lazy var retrieveReferrerOnServerUseCase: RetrieveReferrerOnServerUseCase = RetrieveReferrerOnServerUseCase(
         moduleManager: moduleManager
     )
 

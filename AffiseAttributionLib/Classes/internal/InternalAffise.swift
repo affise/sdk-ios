@@ -16,7 +16,7 @@ extension Affise {
      */
     @objc
     public static func handleReferrer(_ url: URL?) {
-        Affise.getApi()?.retrieveInstallReferrerUseCase.setReferrer(url)
+        Affise.getApi()?.retrieveReferrerUseCase.setReferrer(url)
     }
     
     /**

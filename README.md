@@ -4,11 +4,11 @@
 
 | Pod  | Version |
 | ---- |:-------:|
-| `AffiseAttributionLib` | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`    | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`  | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`  | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib` | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`    | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`  | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`  | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -47,7 +47,9 @@
   - [Is first run](#is-first-run)
   - [Get referrer](#get-referrer)
   - [Get referrer parameter](#get-referrer-parameter)
-    - [Referrer keys](#referrer-keys)
+  - [Get referrer on server](#get-referrer-on-server)
+  - [Get referrer on server parameter](#get-referrer-on-server-parameter)
+  - [Referrer keys](#referrer-keys)
   - [Get module state](#get-module-state)
   - [WebView tracking](#webview-tracking)
     - [Initialize WebView](#initialize-webview)
@@ -80,22 +82,22 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.37'
+pod 'AffiseAttributionLib', '~> 1.6.38'
 # Affise modules
-pod 'AffiseModule/Advertising', '~> 1.6.37'
-pod 'AffiseModule/Link', '~> 1.6.37'
-pod 'AffiseModule/Status', '~> 1.6.37'
+pod 'AffiseModule/Advertising', '~> 1.6.38'
+pod 'AffiseModule/Link', '~> 1.6.38'
+pod 'AffiseModule/Status', '~> 1.6.38'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.37'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.38'
 # Affise modules
-pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.37'
-pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.37'
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.37'
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.38'
+pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.38'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.38'
 ```
 
 ### Integrate as Swift Package Manager
@@ -197,9 +199,9 @@ Affise
 
 | Module        | Version                                                                              | Start    |
 | ------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising` | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Link`        | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Status`      | [`1.6.37`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising` | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Link`        | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`      | [`1.6.38`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -263,14 +265,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.37'
+pod 'AffiseSKAdNetwork', '~> 1.6.38'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.37'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.38'
 ```
 
 For `swift` use:
@@ -965,10 +967,6 @@ Affise.isFirstRun()
 
 ## Get referrer
 
-> **Note**
->
-> Requires [Affise Status Module](#modules)
-
 - Add referrer handler to `AppDelegate.swift`
 
 ```swift
@@ -985,16 +983,12 @@ func application(
 Use the next public method of SDK
 
 ```swift
-Affise.getReferrer { referrer in
+Affise.getReferrerUrl { referrer in
   // handle referrer
 }
 ```
 
 ## Get referrer parameter
-
-> **Note**
->
-> Requires [Affise Status Module](#modules)
 
 - Add referrer handler to `AppDelegate.swift`
 
@@ -1012,12 +1006,40 @@ func application(
 Use the next public method of SDK to get referrer parameter by
 
 ```swift
-Affise.getReferrerValue(ReferrerKey.CLICK_ID) { value in
+Affise.getReferrerUrlValue(ReferrerKey.CLICK_ID) { value in
   // handle referrer value
 }
 ```
 
-### Referrer keys
+## Get referrer on server
+
+> **Note**
+>
+> Requires [Affise Status Module](#modules)
+
+Use the next public method of SDK
+
+```swift
+Affise.getReferrerOnServer { referrer in
+  // handle referrer
+}
+```
+
+## Get referrer on server parameter
+
+> **Note**
+>
+> Requires [Affise Status Module](#modules)
+
+Use the next public method of SDK to get referrer parameter by
+
+```swift
+Affise.getReferrerOnServerValue(ReferrerKey.CLICK_ID) { value in
+  // handle referrer value
+}
+```
+
+## Referrer keys
 
 In examples above `ReferrerKey.CLICK_ID` is used, but many others is available:
 

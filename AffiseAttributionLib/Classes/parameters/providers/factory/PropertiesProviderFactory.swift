@@ -20,6 +20,7 @@ internal class PropertiesProviderFactory {
     private let deeplinkClickRepository: DeeplinkClickRepository
     private let deviceUseCase: DeviceUseCase
     private let remarketingUseCase: RemarketingUseCase
+    private let retrieveReferrerUseCase: RetrieveReferrerUseCase
     
     init(app: UIApplication,
          bundle: Bundle,
@@ -32,7 +33,8 @@ internal class PropertiesProviderFactory {
          logsManager: LogsManager,
          deeplinkClickRepository: DeeplinkClickRepository,
          deviceUseCase: DeviceUseCase,
-         remarketingUseCase: RemarketingUseCase
+         remarketingUseCase: RemarketingUseCase,
+         retrieveReferrerUseCase: RetrieveReferrerUseCase
     ) {
         self.app = app
         self.bundle = bundle
@@ -46,6 +48,7 @@ internal class PropertiesProviderFactory {
         self.deeplinkClickRepository = deeplinkClickRepository
         self.deviceUseCase = deviceUseCase
         self.remarketingUseCase = remarketingUseCase
+        self.retrieveReferrerUseCase = retrieveReferrerUseCase
     }
     
     func create() -> PostBackModelFactory {
@@ -119,7 +122,8 @@ internal class PropertiesProviderFactory {
                 PushTokenProvider(preferences: preferences),
                 OsAndVersionProvider(remarketingUseCase),
                 DeviceProvider(remarketingUseCase),
-                BuildProvider(remarketingUseCase)
+                BuildProvider(remarketingUseCase),
+                ReferrerProvider(retrieveReferrerUseCase)
             ]
         )
     }
