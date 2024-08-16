@@ -8,7 +8,7 @@ import Foundation
  * @property timeStampMillis the timestamp event in milliseconds.
  */
 @objc
-public class UserCustomEvent : NativeEvent {
+open class UserCustomEvent : NativeEvent {
 
     private var eventName: String = ""
 

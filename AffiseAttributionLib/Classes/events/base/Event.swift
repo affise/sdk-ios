@@ -5,7 +5,7 @@ import Foundation
  */
 
 @objc
-public class Event: NSObject {
+open class Event: NSObject {
 
     /**
      * Event predefined parameters
@@ -29,7 +29,7 @@ public class Event: NSObject {
      *
      * @return name
      */
-    public func getName() -> String { return "" }
+    open func getName() -> String { return "" }
 
     /**
      * Category of event

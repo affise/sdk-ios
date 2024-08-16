@@ -1,18 +1,24 @@
 # Changelog
 
+## [1.6.39] - 2024-08-16
+
+### Added
+
+- New internal events.
+
 ## [1.6.38] - 2024-08-06
 
 ### Added
 
--  Api `Affise.getReferrerUrl`.
--  Api `Affise.getReferrerUrlValue`.
--  Api `Affise.getReferrerOnServer`.
--  Api `Affise.getReferrerOnServerValue`.
+- Api `Affise.getReferrerUrl`.
+- Api `Affise.getReferrerUrlValue`.
+- Api `Affise.getReferrerOnServer`.
+- Api `Affise.getReferrerOnServerValue`.
 
 ### Removed
 
--  Api `Affise.getReferrer`.
--  Api `Affise.getReferrerValue`.
+- Api `Affise.getReferrer`.
+- Api `Affise.getReferrerValue`.
 
 ## [1.6.37] - 2024-08-05
 
@@ -100,6 +106,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.39]: https://github.com/affise/sdk-ios/compare/1.6.38...1.6.39
 [1.6.38]: https://github.com/affise/sdk-ios/compare/1.6.37...1.6.38
 [1.6.37]: https://github.com/affise/sdk-ios/compare/1.6.36...1.6.37
 [1.6.36]: https://github.com/affise/sdk-ios/compare/1.6.35...1.6.36

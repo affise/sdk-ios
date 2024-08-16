@@ -9,7 +9,7 @@ import Foundation
  * @property timeStampMillis the timestamp event in milliseconds.
  */
 @objc
-public class UserCustomSubscriptionEvent : BaseSubscriptionEvent {
+open class UserCustomSubscriptionEvent : BaseSubscriptionEvent {
 
     private var customType: String = ""
     private var customSubtype: String = ""

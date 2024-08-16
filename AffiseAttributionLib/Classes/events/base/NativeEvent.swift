@@ -2,7 +2,7 @@ import Foundation
 
 
 @objc
-public class NativeEvent : Event {
+open class NativeEvent : Event {
     
     private let userData: String?
     private let timeStampMillis: Int64

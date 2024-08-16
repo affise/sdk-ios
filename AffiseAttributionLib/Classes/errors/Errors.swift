@@ -13,9 +13,9 @@ extension AffiseError : LocalizedError {
     private var localized: String? {
         switch self {
         case .cloud(url: let url, error: let error, attempts: let attempts, retry: let retry):
-            return NSLocalizedString("AffiseError.cloud(url=\(url), error=\(error.localizedDescription), attempts=\(attempts), retry=\(retry))", comment: "")
+            return NSLocalizedString("AffiseError.cloud(url=\(url), error=\(error.localizedDescription.toJsonGuardString()), attempts=\(attempts), retry=\(retry))", comment: "")
         case .network(status: let status, message: let message):
-            return NSLocalizedString("AffiseError.network(status=\(status), message=\(message ?? ""))", comment: "")
+            return NSLocalizedString("AffiseError.network(status=\(status), message=\(message?.toJsonGuardString() ?? ""))", comment: "")
         case .offlineModeEnabled:
             return NSLocalizedString("AffiseError.offlineModeEnabled", comment: "")
         case .trackingDisabledException:
