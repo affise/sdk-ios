@@ -59,7 +59,7 @@ extension NetworkServiceImpl: NetworkService {
             Thread.sleep(forTimeInterval: 1)
         }
 
-        let httpResponse = HttpResponse(responseCode, responseMessage, responseBody, responseHeaders)
+        let httpResponse = HttpResponse(responseCode, responseMessage, responseBody?.toSinglQuote, responseHeaders)
         if let debugRequest = debugRequest {
             debugRequest(HttpRequest(httpsUrl, method, headers, data?.toString()), httpResponse)
         }

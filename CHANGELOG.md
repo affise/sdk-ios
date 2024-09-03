@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.40] - 2024-09-03
+
+### Fixed
+
+- Module `Subscription`.
+
+### Changed
+
+- Update `internal` library for crossplatform.
+
 ## [1.6.39] - 2024-08-16
 
 ### Added
@@ -106,6 +116,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.40]: https://github.com/affise/sdk-ios/compare/1.6.39...1.6.40
 [1.6.39]: https://github.com/affise/sdk-ios/compare/1.6.38...1.6.39
 [1.6.38]: https://github.com/affise/sdk-ios/compare/1.6.37...1.6.38
 [1.6.37]: https://github.com/affise/sdk-ios/compare/1.6.36...1.6.37

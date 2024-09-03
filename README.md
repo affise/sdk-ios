@@ -2,13 +2,14 @@
 
 [Change Log](CHANGELOG.md)
 
-| Pod  | Version |
-| ---- |:-------:|
-| `AffiseAttributionLib` | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`    | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`  | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`  | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| Pod                         | Version                   |
+| --------------------------- |:-------------------------:|
+| `AffiseAttributionLib`      | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`         | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -21,6 +22,8 @@
     - [Modules](#modules)
       - [Module Advertising](#module-advertising)
       - [Module Link](#module-link)
+      - [Module Status](#module-status)
+      - [Module Subscription](#module-subscription)
     - [Requirements](#requirements)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
@@ -82,22 +85,24 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '~> 1.6.39'
+pod 'AffiseAttributionLib', '~> 1.6.40'
 # Affise modules
-pod 'AffiseModule/Advertising', '~> 1.6.39'
-pod 'AffiseModule/Link', '~> 1.6.39'
-pod 'AffiseModule/Status', '~> 1.6.39'
+pod 'AffiseModule/Advertising', '~> 1.6.40'
+pod 'AffiseModule/Link', '~> 1.6.40'
+pod 'AffiseModule/Status', '~> 1.6.40'
+pod 'AffiseModule/Subscription', '~> 1.6.40'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.39'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.40'
 # Affise modules
-pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.39'
-pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.39'
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.39'
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.40'
+pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.40'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.40'
+pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.40'
 ```
 
 ### Integrate as Swift Package Manager
@@ -197,11 +202,12 @@ Affise
 >
 > 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
-| Module        | Version                                                                              | Start    |
-| ------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising` | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Link`        | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Status`      | [`1.6.39`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| Module         | Version                                                                              | Start    |
+| -------------- |:------------------------------------------------------------------------------------:|----------|
+| `Advertising`  | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Link`         | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`       | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Subscription` | [`1.6.40`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -243,6 +249,46 @@ Affise.Module.linkResolve("SITE_WITH_REDIRECTION") { redirectUrl in
 }
 ```
 
+#### Module Status
+
+```swift
+Affise.Module.getStatus(AffiseModules.STATUS) { response in 
+    // handle status response
+};
+```
+
+#### Module Subscription
+
+Get products by ids:
+
+```swift
+let ids = ["exampple.product.id_1", "exampple.product.id_2"]
+
+Affise.Module.fetchProducts(ids) { result in
+    switch result {
+    case .failure(let error):
+        print("\(error)")
+    case .success(let result):
+        let products: [AffiseProduct]  = result.products
+        let invalidIds: [String] = result.invalidIds
+    }
+}
+```
+
+Purchase product:
+
+```swift
+// Specify product type for correct affise event
+Affise.Module.purchase(product, .CONSUMABLE) { result in
+    switch result {
+    case .failure(let error):
+        print("\(error)")
+    case .success(let purchasedInfo):
+        let info: AffisePurchasedInfo = purchasedInfo
+    }
+}
+```
+
 ### Requirements
 
 Affise Advertising module uses `AppTrackingTransparency` framework to get `advertisingIdentifier`
@@ -265,14 +311,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '~> 1.6.39'
+pod 'AffiseSKAdNetwork', '~> 1.6.40'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.39'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.40'
 ```
 
 For `swift` use:
@@ -1080,6 +1126,8 @@ In examples above `ReferrerKey.CLICK_ID` is used, but many others is available:
 - `SUB_5`
 
 ## Get module state
+
+Get state of the module:
 
 ```swift
 Affise.Module.getStatus(AffiseModules.STATUS) { response in 

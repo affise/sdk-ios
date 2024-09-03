@@ -53,7 +53,7 @@ extension ProductManager: SKProductsRequestDelegate {
                     dict[product.productIdentifier] = product
                 }
                 
-                let products: [AffiseProduct] = self.products.map { AffiseProduct($0.value) }
+                let products: [AffiseProduct] = self.products.map { $0.value.toAffiseProduct() }
                 
                 for callback in callbacks {
                     callback(.success(AffiseProductsResult(products: products, invalid: invalid)))

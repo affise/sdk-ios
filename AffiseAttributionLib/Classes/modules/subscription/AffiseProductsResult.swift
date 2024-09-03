@@ -14,6 +14,6 @@ public class AffiseProductsResult: NSObject {
     }
 
     public override var description: String {
-        "AffiseProductsResult(products=[\(products.map { $0.productId ?? "" }.joined(separator: ", "))], invalidIds=[\(invalidIds.joined(separator: ", "))])"
+        "AffiseProductsResult(products=[\(products.map { $0.productId }.joined(separator: ", "))], invalidIds=[\(invalidIds.joined(separator: ", "))])"
     }
 }

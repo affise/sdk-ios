@@ -26,6 +26,10 @@ public extension String {
         return self.replacingOccurrences(of: "\"", with: "\\\"")
     }
     
+    var toSinglQuote: String {
+        return self.replacingOccurrences(of: "\\\"", with: "\'")
+    }
+    
     var isBlank: Bool {
         return allSatisfy { $0.isWhitespace }
     }

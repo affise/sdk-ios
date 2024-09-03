@@ -46,6 +46,9 @@ public enum AffiseApiMethod: Int {
     case GET_STATUS_CALLBACK
     // Link Module
     case MODULE_LINK_LINK_RESOLVE_CALLBACK
+    // Subscription Module
+    case MODULE_SUBS_FETCH_PRODUCTS_CALLBACK
+    case MODULE_SUBS_PURCHASE_CALLBACK
     ////////////////////////////////////////
     // modules
     ////////////////////////////////////////
@@ -91,7 +94,11 @@ public enum AffiseApiMethod: Int {
         case .MODULE_START: return "module_start"
         case .GET_MODULES_INSTALLED: return "get_modules_installed"
         case .GET_STATUS_CALLBACK: return "get_status_callback"
+        // Link Module
         case .MODULE_LINK_LINK_RESOLVE_CALLBACK: return "module_link_link_resolve_callback"
+        // Subscription Module
+        case .MODULE_SUBS_FETCH_PRODUCTS_CALLBACK: return "module_subs_fetch_products_callback"
+        case .MODULE_SUBS_PURCHASE_CALLBACK: return "module_subs_purchase_callback"
         ////////////////////////////////////////
         // modules
         ////////////////////////////////////////

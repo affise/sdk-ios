@@ -7,7 +7,7 @@ import AffiseAttributionLib
  * @property userData any custom data.
  * @property timeStampMillis the timestamp event in milliseconds.
  */
-@objc
+// @objc
 internal class AfPurchaseEvent : NativeEvent {
 
     override public func getName() -> String {

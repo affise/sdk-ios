@@ -1,6 +1,6 @@
+import AffiseAttributionLib
 import Foundation
 import UIKit
-import AffiseAttributionLib
 
 @objc
 public class AffiseApiWrapper: NSObject {
@@ -31,7 +31,7 @@ public class AffiseApiWrapper: NSObject {
         }
     }
 
-    public func setCallback(_ callback: @escaping OnCallback) { 
+    public func setCallback(_ callback: @escaping OnCallback) {
         self.callback = callback
     }
 
@@ -39,31 +39,31 @@ public class AffiseApiWrapper: NSObject {
     public func handleDeeplink(_ link: String?) {
         InternalCrossPlatform.deeplink(link ?? "")
     }
-    
+
     @objc(react)
     public func react() {
         InternalCrossPlatform.react()
     }
-    
+
     @objc(flutter)
     public func flutter() {
         InternalCrossPlatform.flutter()
     }
-    
+
     @objc(unity)
     public func unity() {
         InternalCrossPlatform.unity()
     }
 
     @objc(call:map:result:)
-    public func call(_ name: String, map: [String: AnyObject], result: AffiseResult?) {
+    public func call(_ name: String, map: [String: AnyObject], result: InternalResult?) {
         guard let api = AffiseApiMethod.from(name) else {
             return
         }
         call(api, map: map, result: result)
     }
-    
-    public func call(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+
+    public func call(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         switch api {
         case .INIT: callInit(api, map: map, result: result)
         case .IS_INITIALIZED: callIsInitialized(api, map: map, result: result)
@@ -105,6 +105,8 @@ public class AffiseApiWrapper: NSObject {
         case .GET_MODULES_INSTALLED: callGetModulesInstalled(api, map: map, result: result)
         case .GET_STATUS_CALLBACK: callGetStatusCallback(api, map: map, result: result)
         case .MODULE_LINK_LINK_RESOLVE_CALLBACK: callModuleLinkLinkResolveCallback(api, map: map, result: result)
+        case .MODULE_SUBS_FETCH_PRODUCTS_CALLBACK: callModuleSubsFetchProductsCallback(api, map: map, result: result)
+        case .MODULE_SUBS_PURCHASE_CALLBACK: callModuleSubsPurchaseCallback(api, map: map, result: result)
         ////////////////////////////////////////
         // modules
         ////////////////////////////////////////
@@ -113,8 +115,8 @@ public class AffiseApiWrapper: NSObject {
         }
     }
 
-    private func callInit(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
-        guard let app = self.app else {
+    private func callInit(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
+        guard let app = app else {
             result?.error("api [\(api.method)]: no application context")
             return
         }
@@ -123,12 +125,12 @@ public class AffiseApiWrapper: NSObject {
             result?.error("api [\(api.method)]: value not set")
             return
         }
-        
+
         if !data.isValid() {
             result?.error("api [\(api.method)]: affiseAppId or secretKey is not set")
             return
         }
-        
+
         let (affiseAppId, secretKey) = data.getAppIdAndSecretKey()
 
         Affise
@@ -142,11 +144,11 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callIsInitialized(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callIsInitialized(_: AffiseApiMethod, map _: [String: Any?], result: InternalResult?) {
         result?.success(Affise.isInitialized())
     }
 
-    private func callSendEvent(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSendEvent(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let data: [String: Any?] = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
@@ -161,7 +163,7 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callSendEventNow(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSendEventNow(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let data: [String: Any?] = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
@@ -171,7 +173,7 @@ public class AffiseApiWrapper: NSObject {
             result?.error("api [\(api.method)]: not valid event")
             return
         }
-        
+
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -199,7 +201,7 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callAddPushToken(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callAddPushToken(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let pushToken: String = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
@@ -209,17 +211,17 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callRegisterWebView(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callRegisterWebView(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         // Affise.registerWebView(webView)
         result?.notImplemented()
     }
 
-    private func callUnregisterWebView(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callUnregisterWebView(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         // Affise.unregisterWebView()
         result?.notImplemented()
     }
 
-    private func callSetSecretId(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSetSecretId(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let secretKey: String = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
@@ -229,11 +231,11 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callSetAutoCatchingTypes(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callSetAutoCatchingTypes(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.notImplemented()
     }
 
-    private func callSetOfflineModeEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSetOfflineModeEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let enabled: Bool = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
@@ -243,11 +245,11 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callIsOfflineModeEnabled(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callIsOfflineModeEnabled(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.success(Affise.isOfflineModeEnabled())
     }
 
-    private func callSetBackgroundTrackingEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSetBackgroundTrackingEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let enabled: Bool = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
@@ -257,11 +259,11 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    func callIsBackgroundTrackingEnabled(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    func callIsBackgroundTrackingEnabled(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.success(Affise.isBackgroundTrackingEnabled())
     }
 
-    private func callSetTrackingEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSetTrackingEnabled(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let enabled: Bool = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
@@ -271,42 +273,42 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callIsTrackingEnabled(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callIsTrackingEnabled(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.success(Affise.isTrackingEnabled())
     }
 
-    private func callForget(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callForget(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.notImplemented()
     }
 
-    private func callSetEnabledMetrics(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callSetEnabledMetrics(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.notImplemented()
     }
 
-    private func callCrashApplication(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callCrashApplication(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.notImplemented()
     }
 
-    private func callGetRandomUserId(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callGetRandomUserId(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.success(Affise.getRandomUserId())
     }
 
-    private func callGetRandomDeviceId(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
+    private func callGetRandomDeviceId(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
         result?.success(Affise.getRandomDeviceId())
     }
 
-    private func callGetProviders(_: AffiseApiMethod, map: [String: Any?]?, result: AffiseResult?) {
-        let data: [String:Any?] = Affise.getProviders().reduce(into: [:]) { dict, provider in
-            dict[provider.key.provider]=provider.value
+    private func callGetProviders(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {
+        let data: [String: Any?] = Affise.getProviders().reduce(into: [:]) { dict, provider in
+            dict[provider.key.provider] = provider.value
         }
         result?.success(data)
     }
 
-    private func callIsFirstRun(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callIsFirstRun(_: AffiseApiMethod, map _: [String: Any?], result: InternalResult?) {
         result?.success(Affise.isFirstRun())
     }
 
-    private func callGetReferrerUrl(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callGetReferrerUrl(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -323,7 +325,7 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callGetReferrerUrlValue(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callGetReferrerUrlValue(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -334,7 +336,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        guard let key: ReferrerKey = ReferrerKey.from(name) else {
+        guard let key = ReferrerKey.from(name) else {
             result?.error("api [\(api.method)]: no valid ReferrerKey")
             return
         }
@@ -349,8 +351,8 @@ public class AffiseApiWrapper: NSObject {
 
         result?.success(nil)
     }
-    
-    private func callGetReferrerOnServer(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+
+    private func callGetReferrerOnServer(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -367,7 +369,7 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callGetReferrerOnServerValue(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callGetReferrerOnServerValue(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -378,7 +380,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        guard let key: ReferrerKey = ReferrerKey.from(name) else {
+        guard let key = ReferrerKey.from(name) else {
             result?.error("api [\(api.method)]: no valid ReferrerKey")
             return
         }
@@ -393,24 +395,18 @@ public class AffiseApiWrapper: NSObject {
 
         result?.success(nil)
     }
-    
-    private func callRegisterDeeplinkCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+
+    private func callRegisterDeeplinkCallback(_ api: AffiseApiMethod, map _: [String: Any?], result: InternalResult?) {
         Affise.registerDeeplinkCallback { value in
             let data: [String: Any?] = [
-                api.method: [
-                    "deeplink": value.deeplink,
-                    "scheme": value.scheme as Any,
-                    "host": value.host as Any,
-                    "path": value.path as Any,
-                    "parameters": value.parameters,
-                ],
+                api.method: DataMapper.fromDeeplinkValue(value),
             ]
             self.callback?(api.method, data)
         }
         result?.success(nil)
     }
 
-    private func callSkadRegisterErrorCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSkadRegisterErrorCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -425,7 +421,7 @@ public class AffiseApiWrapper: NSObject {
         }
     }
 
-    private func callSkadPostbackErrorCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callSkadPostbackErrorCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -435,12 +431,12 @@ public class AffiseApiWrapper: NSObject {
             result?.error("api [\(api.method)]: value not set")
             return
         }
-     
+
         guard let fineValue: NSNumber = data.opt("fineValue") else {
             result?.error("api [\(api.method)]: fineValue not set")
             return
         }
-        
+
         let coarseValue: String? = data.opt("coarseValue")
 
         SKAdWrapper.postback(result, fineValue: fineValue.intValue, coarseValue: coarseValue) { error in
@@ -452,7 +448,7 @@ public class AffiseApiWrapper: NSObject {
         }
     }
 
-    private func callDebugValidateCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callDebugValidateCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -467,41 +463,32 @@ public class AffiseApiWrapper: NSObject {
         }
     }
 
-    private func callDebugNetworkCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callDebugNetworkCallback(_ api: AffiseApiMethod, map _: [String: Any?], result _: InternalResult?) {
         Affise.Debug.network { request, response in
             let data: [String: Any?] = [
                 api.method: [
-                    "request": [
-                        "method": request.method.rawValue,
-                        "url": request.url.absoluteString,
-                        "headers": request.headers,
-                        "body": "\(request.body?.toJsonGuardString() ?? "")",
-                    ],
-                    "response": [
-                        "code": response.code,
-                        "message": response.message,
-                        "body": "\(response.body?.toJsonGuardString() ?? "")",
-                    ],
-                ]
+                    "request": DataMapper.fromRequest(request),
+                    "response": DataMapper.fromResponse(response),
+                ],
             ]
             self.callback?(api.method, data)
         }
     }
 
-    private func callAffiseBuilder(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callAffiseBuilder(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         affiseBuilder.call(api, map, result)
     }
 
     ////////////////////////////////////////
     // modules
     ////////////////////////////////////////
-    private func callModuleStart(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
-         guard let name: String = map.opt(api) else {
+    private func callModuleStart(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
+        guard let name: String = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
         }
 
-        guard let module: AffiseModules = AffiseModules.from(name) else {
+        guard let module = AffiseModules.from(name) else {
             result?.error("api [\(api.method)]: no valid AffiseModules")
             return
         }
@@ -509,12 +496,12 @@ public class AffiseApiWrapper: NSObject {
         result?.success(Affise.Module.moduleStart(module))
     }
 
-    private func callGetModulesInstalled(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callGetModulesInstalled(_: AffiseApiMethod, map _: [String: Any?], result: InternalResult?) {
         let data: [String] = Affise.Module.getModulesInstalled().map { $0.description }
         result?.success(data)
     }
 
-    private func callGetStatusCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callGetStatusCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -525,7 +512,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        guard let module: AffiseModules = AffiseModules.from(name) else {
+        guard let module = AffiseModules.from(name) else {
             result?.error("api [\(api.method)]: no valid AffiseModules")
             return
         }
@@ -539,9 +526,9 @@ public class AffiseApiWrapper: NSObject {
         }
         result?.success(nil)
     }
-    
+
     // Link Module
-    private func callModuleLinkLinkResolveCallback(_ api: AffiseApiMethod, map: [String: Any?], result: AffiseResult?) {
+    private func callModuleLinkLinkResolveCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -556,6 +543,53 @@ public class AffiseApiWrapper: NSObject {
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: redirectUrl,
+            ]
+            self.callback?(api.method, data)
+        }
+        result?.success(nil)
+    }
+
+    // Subscription Module
+    private func callModuleSubsFetchProductsCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        guard let ids: [String] = map.opt(api) else {
+            result?.error("api [\(api.method)]: value not set")
+            return
+        }
+
+        Affise.Module.fetchProducts(ids) { fetchResult in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: DataMapper.fromFetchProductsResult(fetchResult),
+            ]
+            self.callback?(api.method, data)
+        }
+        result?.success(nil)
+    }
+
+    private func callModuleSubsPurchaseCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
+        guard let uuid: String = map.opt(UUID) else {
+            result?.error("api [\(api.method)]: no valid Callback UUID")
+            return
+        }
+
+        let data: [String: Any?]? = map.opt(api)
+
+        guard let product: AffiseProduct = DataMapper.toAffiseProduct(data?.opt("product")) else {
+            result?.error("api [\(api.method)]: product not set")
+            return
+        }
+        
+        let type: AffiseProductType? = DataMapper.toAffiseProductType(data?.opt("type"))
+
+        Affise.Module.purchase(product, type) { purchaseResult in
+            let data: [String: Any?] = [
+                self.UUID: uuid,
+                api.method: DataMapper.fromPurchaseResult(purchaseResult),
             ]
             self.callback?(api.method, data)
         }

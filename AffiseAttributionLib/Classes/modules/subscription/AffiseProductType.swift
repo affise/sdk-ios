@@ -18,3 +18,13 @@ public enum AffiseProductType: Int {
         }
     }
 }
+
+extension AffiseProductType: CaseIterable, CustomStringConvertible {
+    
+    public var description: String { enumValue }
+    
+    public static func from(_ name: String?) -> AffiseProductType? {
+        guard let name = name else { return nil }
+        return allCases.first { name == $0.enumValue }
+    }
+}

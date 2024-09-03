@@ -10,6 +10,7 @@ internal extension Date {
 }
 
 internal extension SKPaymentTransaction {
+    
     var toTimestamp: Int64 {
         if let transactionDate = self.transactionDate {
             return transactionDate.toTimestamp
@@ -20,18 +21,33 @@ internal extension SKPaymentTransaction {
 }
 
 internal extension SKProduct {
-    var isSubscription: Bool {
+    
+    var toAffiseSubscriptionType: AffiseProductType? {
         if #available(iOS 11.2, *) {
             if self.subscriptionPeriod != nil {
-                return true
+                return .RENEWABLE_SUBSCRIPTION
             }
         } else if #available(iOS 12.0, *) {
             if self.subscriptionGroupIdentifier != nil {
-                return true
+                return .RENEWABLE_SUBSCRIPTION
             }
         }
-        
-        return false
+        return nil
+    }
+    
+    var toAffiseProductPrice: AffiseProductPrice {
+        return AffiseProductPrice(value: self.price.decimalValue, priceLocale: self.priceLocale)
+    }
+    
+    var toAffiseProductSubscriptionDetail: AffiseProductSubscriptionDetail? {
+        var offerId: String? = nil
+        if #available(iOS 12.0, *) {
+            offerId = self.subscriptionGroupIdentifier
+        }
+        if #available(iOS 11.2, *) {
+            return self.subscriptionPeriod?.toAffiseProductSubscriptionDetail(offerId)
+        }
+        return nil
     }
     
     func endTimestap(start: Date) -> Int64 {
@@ -40,6 +56,18 @@ internal extension SKProduct {
         } else {
             return 0
         }
+    }
+      
+    func toAffiseProduct(_ type: AffiseProductType? = nil) -> AffiseProduct {
+        return AffiseProduct(
+            productId: self.productIdentifier,
+            title: self.localizedTitle,
+            productDescription: self.localizedDescription,
+            productType: type ?? self.toAffiseSubscriptionType,
+            price: self.toAffiseProductPrice,
+            subscription: self.toAffiseProductSubscriptionDetail,
+            productDetails: self
+        )
     }
 }
 
@@ -78,5 +106,13 @@ internal extension SKProductSubscriptionPeriod {
         default:
             return .DAY
         }
+    }
+    
+    func toAffiseProductSubscriptionDetail(_ offerId: String?) -> AffiseProductSubscriptionDetail? {
+        return AffiseProductSubscriptionDetail(
+            offerId: offerId,
+            timeUnit: self.unitType,
+            numberOfUnits: self.numberOfUnits
+        )
     }
 }

@@ -6,7 +6,7 @@ import AffiseAttributionLib
 public extension AffisePurchasedInfo {
     
     var skTransaction: SKPaymentTransaction? {
-        self.skData as? SKPaymentTransaction
+        self.purchase as? SKPaymentTransaction
     }
     
     internal convenience init(_ transaction: SKPaymentTransaction, _ product: AffiseProduct?) {

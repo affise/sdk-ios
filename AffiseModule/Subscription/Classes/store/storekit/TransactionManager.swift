@@ -21,7 +21,7 @@ internal class TransactionManager: NSObject {
     func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
         queue.async { [weak self] in
             guard let self = self else { return }
-            guard let productId = product.productId else { return }
+            let productId = product.productId
             
             guard let product = self.productManager?.products[productId] else {
                 callback(.failure(AffiseSubscriptionError.productNotFound([productId])))
@@ -47,13 +47,12 @@ internal class TransactionManager: NSObject {
             SKPaymentQueue.default().finishTransaction(transaction)
 
             let productId = transaction.payment.productIdentifier
-            let (product, type) = self.removeTransactionByProduct(productId)
-            
-            self.result(productId, .failure(AffiseSubscriptionError.purchaseFailed(transaction.error)))
-            
-            guard let product = product else {
+            guard let (product, type) = self.removeTransactionByProduct(productId) else {
+                // TODO
                 return
             }
+            
+            self.result(productId, .failure(AffiseSubscriptionError.purchaseFailed(transaction.error)))
                     
             OperationEvent.create(transaction, product: product, type: type, failed: true)?
                 .send()
@@ -66,29 +65,20 @@ internal class TransactionManager: NSObject {
             SKPaymentQueue.default().finishTransaction(transaction)
             
             let productId = transaction.payment.productIdentifier
-            let (product, type) = self.removeTransactionByProduct(productId)
-            
-            self.result(productId, .success(AffisePurchasedInfo(transaction, AffiseProduct(product, type))))
-            
-            guard let product = product else {
+            guard let (product, type) = self.removeTransactionByProduct(productId) else {
+                // TODO
                 return
             }
+            
+            self.result(productId, .success(AffisePurchasedInfo(transaction, product.toAffiseProduct(type))))
                         
             OperationEvent.create(transaction, product: product, type: type, failed: false)?
                 .send()
         }
     }
     
-    func removeTransactionByProduct(_ productId: String) -> (SKProduct?, AffiseProductType?) {
-        var product: SKProduct? = nil
-        var type: AffiseProductType? = nil
-        
-        if let (transactionProduct, transactionProductType) = transactionProducts.removeValue(forKey: productId) {
-            product = transactionProduct
-            type = transactionProductType
-        }
-        
-        return (product, type)
+    func removeTransactionByProduct(_ productId: String) -> (SKProduct, AffiseProductType?)? {
+        return transactionProducts.removeValue(forKey: productId)
     }
     
     func result(_ productId: String, _ result: AffiseResult<AffisePurchasedInfo>) {

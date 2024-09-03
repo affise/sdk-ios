@@ -68,8 +68,7 @@ struct Products: View {
     @State var products: [AffiseProduct] = []
     
     func typeMatch(_ product: AffiseProduct, _ type: AffiseProductType) -> Bool {
-        guard let id = product.productId else { return false }
-        return Product.all[type]?.contains(id) ?? false
+        return Product.all[type]?.contains(product.productId ) ?? false
     }
        
     var body: some View {
@@ -108,7 +107,7 @@ struct Products: View {
                 print("\(error)")
             case .success(let result):
                 products = result.products
-                    .sorted { $0.price ?? 0 < $1.price ?? 0 }
+                    .sorted { $0.price?.value ?? 0 < $1.price?.value ?? 0 }
 
                 // print("invalid ids: [\(result.invalidIds.joined(separator: ", "))]")
             }
@@ -139,16 +138,21 @@ struct ProductRowView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(product.localizedTitle ?? "-")
+                Text(product.title)
                     .font(.body)
-                Text(product.localizedDescription ?? "")
+                Text(product.productDescription)
                     .font(.footnote)
                     .foregroundColor(Color.gray)
+                
+                if let subscription = product.subscription {
+                    Text("\(subscription.numberOfUnits) \(subscription.timeUnit.description)")
+                        .font(.footnote)
+                }
             }
             .frame(maxWidth:.infinity, alignment: .leading)
             
             Text(
-                price(product.price, product.priceLocale) ?? "-"
+                product.price?.formattedPrice ?? "-"
             )
             
             Button("Buy") {
@@ -187,15 +191,15 @@ struct Products_Previews: PreviewProvider {
 }
 
 extension AffiseProduct {
-    convenience init(_ title: String, _ price: Decimal, _ description: String? = nil) {
+    convenience init(_ title: String, _ price: Decimal, _ productDescription: String? = nil) {
         self.init(
-            type: nil,
             productId: "test",
-            localizedTitle: title,
-            localizedDescription: description,
-            price: price,
-            priceLocale: Locale.current,
-            skData: nil
+            title: title,
+            productDescription: productDescription ?? "",
+            productType: nil,
+            price: AffiseProductPrice(value: price),
+            subscription: nil,
+            productDetails: nil
         )
     }
 }

@@ -5,10 +5,7 @@ import AffiseAttributionLib
 internal enum OperationEvent {
     static func create(_ transaction: SKPaymentTransaction, product: SKProduct, type: AffiseProductType?, failed: Bool) -> Event? {
         var event: Event?
-        var eventType: AffiseProductType = type ?? .CONSUMABLE
-        if product.isSubscription {
-            eventType = .RENEWABLE_SUBSCRIPTION
-        }
+        let eventType: AffiseProductType = type ?? product.toAffiseSubscriptionType ?? .CONSUMABLE
 
         let orderId: String? = transaction.transactionIdentifier
         let originalOrderId: String? = transaction.original?.transactionIdentifier

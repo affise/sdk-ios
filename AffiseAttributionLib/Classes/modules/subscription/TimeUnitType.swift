@@ -18,3 +18,13 @@ public enum TimeUnitType: Int {
         }
     }
 }
+
+extension TimeUnitType: CaseIterable, CustomStringConvertible  {
+    
+    public var description: String { return self.enumValue }
+    
+    public static func from(_ name: String?) -> TimeUnitType? {
+        guard let name = name else { return nil }
+        return allCases.first { name == $0.enumValue }
+    }
+}

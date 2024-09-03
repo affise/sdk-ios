@@ -2,7 +2,7 @@ import Foundation
 import AffiseAttributionLib
 
 internal class AffiseBuilder {
-    func call(_ api: AffiseApiMethod, _ map: [String: Any?], _ result: AffiseResult?) {
+    func call(_ api: AffiseApiMethod, _ map: [String: Any?], _ result: InternalResult?) {
         guard let data: [String: Any?] = map.opt(api) else {
             result?.error("api [\(api.method)]: builder data not set")
             return
@@ -21,7 +21,7 @@ internal class AffiseBuilder {
         callBuilder(name, map, result)
     }
 
-    func callBuilder(_ name: AffiseBuilderName, _ map: [String: Any?], _ result: AffiseResult?) {
+    func callBuilder(_ name: AffiseBuilderName, _ map: [String: Any?], _ result: InternalResult?) {
         switch name {
         case .AD_REVENUE: callAdRevenu(name, map, result)
 //        default:
@@ -29,7 +29,7 @@ internal class AffiseBuilder {
         }
     }
     
-    private func callAdRevenu(_ name: AffiseBuilderName, _ map: [String: Any?], _ result: AffiseResult?) {
+    private func callAdRevenu(_ name: AffiseBuilderName, _ map: [String: Any?], _ result: InternalResult?) {
         let sourceRaw: String? = map.opt(AffiseBuilderProperty.SOURCE)
         guard let source: AffiseAdSource = AffiseAdSource.from(sourceRaw) else {
             result?.error("api [\(name.method)]: no valid source \(sourceRaw ?? "")")
