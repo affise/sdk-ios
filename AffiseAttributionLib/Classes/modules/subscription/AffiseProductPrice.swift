@@ -29,10 +29,6 @@ public class AffiseProductPrice: NSObject {
         formatter.numberStyle = .currency
         
         let currencyCode = locale.currencyCode ?? ""
-        
-        // if #available(iOS 16, *) {
-        //    currencyCode = locale.currency?.identifier ?? "" // TODO
-        // }
 
         self.init(
             value: value,

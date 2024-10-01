@@ -64,7 +64,7 @@ public class DataMapper {
             DataName.PRODUCT: fromProduct(data.product),
             DataName.ORDER_ID: data.orderId,
             DataName.ORIGINAL_ORDER_ID: data.originalOrderId,
-//            DataName.PURCHASE: (data.purchase as? CustomStringConvertible)?.description, // TODO
+//            DataName.PURCHASE: data.purchase,
         ]
     }
 
@@ -81,7 +81,7 @@ public class DataMapper {
             DataName.PRODUCT_TYPE: product.productType?.enumValue,
             DataName.PRICE: fromPrice(product.price),
             DataName.SUBSCRIPTION: fromSubscription(product.subscription),
-//            DataName.PRODUCT_DETAILS: (product.productDetails as? CustomStringConvertible)?.description, // TODO
+//            DataName.PRODUCT_DETAILS: product.productDetails,
         ]
     }
     

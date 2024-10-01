@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.41] - 2024-10-01
+
+### Added
+
+- Module `Subscription` StoreKit2 support.
+
 ## [1.6.40] - 2024-09-03
 
 ### Fixed
@@ -116,6 +122,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.41]: https://github.com/affise/sdk-ios/compare/1.6.40...1.6.41
 [1.6.40]: https://github.com/affise/sdk-ios/compare/1.6.39...1.6.40
 [1.6.39]: https://github.com/affise/sdk-ios/compare/1.6.38...1.6.39
 [1.6.38]: https://github.com/affise/sdk-ios/compare/1.6.37...1.6.38

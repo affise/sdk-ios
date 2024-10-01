@@ -3,7 +3,7 @@ import StoreKit
 import AffiseAttributionLib
 
 
-internal class ProductManager: NSObject {
+internal class ProductManagerSK1: NSObject {
     
     private let queue = DispatchQueue(label: "Affise.ProductFetcher")
     
@@ -12,20 +12,6 @@ internal class ProductManager: NSObject {
     private var callbacks: [[String]: [AffiseResultCallback<AffiseProductsResult>]] = [:]
     
     private var requests: [SKRequest:[String]] = [:]
-
-    func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
-        queue.async { [weak self] in
-            guard let self = self else { return }
-            
-            if let callbacks = self.callbacks[productsIds] {
-                self.callbacks[productsIds] = callbacks + [callback]
-                return
-            }
-            
-            self.callbacks[productsIds] = [callback]
-            self.productsRequest(productsIds)
-        }
-    }
     
     func productsRequest(_ ids: [String]) {
         let request = SKProductsRequest(productIdentifiers: Set(ids))
@@ -36,7 +22,7 @@ internal class ProductManager: NSObject {
 }
 
 
-extension ProductManager: SKProductsRequestDelegate {
+extension ProductManagerSK1: SKProductsRequestDelegate {
         
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         queue.async { [weak self] in
@@ -97,5 +83,26 @@ extension ProductManager: SKProductsRequestDelegate {
         }
         
         return (ids, handlers)
+    }
+}
+
+extension ProductManagerSK1: ProductManager {
+
+    func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
+        queue.async { [weak self] in
+            guard let self = self else { return }
+            
+            if let callbacks = self.callbacks[productsIds] {
+                self.callbacks[productsIds] = callbacks + [callback]
+                return
+            }
+            
+            self.callbacks[productsIds] = [callback]
+            self.productsRequest(productsIds)
+        }
+    }
+
+    func product(_ id: String) -> Any {
+        return self.products[id]
     }
 }

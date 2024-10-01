@@ -15,6 +15,10 @@ public extension Array where Element == (String, Any?) {
                 return "\"\(key)\":[\"\(value.joined(separator: "\",\""))\"]"
             } else if let value = value as? [String] {
                 return "\"\(key)\":[\(value.joined(separator: ","))]"
+            } else if let value = value as? (String, Any?) {
+                return "\"\(key)\":\([value].jsonString())"
+//            } else if let value = value as? [String: Any?] {
+//                return "\"\(key)\":\(value.jsonString())"
             } else if let value = value as? [(String, Any?)] {
                 return "\"\(key)\":\(value.jsonString())"
             } else if let value = value as? [[(String, Any?)]] {

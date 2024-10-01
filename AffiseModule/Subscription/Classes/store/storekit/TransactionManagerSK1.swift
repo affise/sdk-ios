@@ -2,7 +2,7 @@ import Foundation
 import StoreKit
 import AffiseAttributionLib
 
-internal class TransactionManager: NSObject {
+internal class TransactionManagerSK1: NSObject {
     
     private let queue = DispatchQueue(label: "Affise.TransactionManager")
     
@@ -14,31 +14,8 @@ internal class TransactionManager: NSObject {
 
     init(productManager: ProductManager) {
         super.init()
-        SKPaymentQueue.default().add(self)
         self.productManager = productManager
-    }
-    
-    func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
-        queue.async { [weak self] in
-            guard let self = self else { return }
-            let productId = product.productId
-            
-            guard let product = self.productManager?.products[productId] else {
-                callback(.failure(AffiseSubscriptionError.productNotFound([productId])))
-                return
-            }
-            
-            if let (callbacks, type) = self.callbacks[productId] {
-                self.callbacks[productId] = (callbacks + [callback], type)
-                return
-            }
-
-            self.callbacks[productId] = ([callback], type)
-            self.transactionProducts[productId] = (product, type)
-
-            let payment = SKPayment(product: product)
-            SKPaymentQueue.default().add(payment)
-        }
+        SKPaymentQueue.default().add(self)
     }
 
     func failedTransaction(_ transaction: SKPaymentTransaction) {
@@ -48,7 +25,6 @@ internal class TransactionManager: NSObject {
 
             let productId = transaction.payment.productIdentifier
             guard let (product, type) = self.removeTransactionByProduct(productId) else {
-                // TODO
                 return
             }
             
@@ -66,7 +42,6 @@ internal class TransactionManager: NSObject {
             
             let productId = transaction.payment.productIdentifier
             guard let (product, type) = self.removeTransactionByProduct(productId) else {
-                // TODO
                 return
             }
             
@@ -99,7 +74,7 @@ internal class TransactionManager: NSObject {
 }
 
 
-extension TransactionManager: SKPaymentTransactionObserver {
+extension TransactionManagerSK1: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
@@ -132,6 +107,32 @@ extension TransactionManager: SKPaymentTransactionObserver {
             return true
         } else {
             return false
+        }
+    }
+}
+
+extension TransactionManagerSK1: TransactionManager {
+    
+    func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+        queue.async { [weak self] in
+            guard let self = self else { return }
+            let productId = product.productId
+            
+            guard let product = self.productManager?.product(productId) as? SKProduct else {
+                callback(.failure(AffiseSubscriptionError.productNotFound([productId])))
+                return
+            }
+            
+            if let (callbacks, type) = self.callbacks[productId] {
+                self.callbacks[productId] = (callbacks + [callback], type)
+                return
+            }
+
+            self.callbacks[productId] = ([callback], type)
+            self.transactionProducts[productId] = (product, type)
+
+            let payment = SKPayment(product: product)
+            SKPaymentQueue.default().add(payment)
         }
     }
 }

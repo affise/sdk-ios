@@ -18,4 +18,16 @@ public extension AffisePurchasedInfo {
             operationDate: transaction.transactionDate
         )
     }
+    
+    
+    @available(iOS 15, *)
+    internal convenience init(_ transaction: Transaction, _ product: AffiseProduct?) {
+        self.init(
+            transaction,
+            product,
+            orderId: "\(transaction.id)",
+            originalOrderId: "\(transaction.originalID)",
+            operationDate: transaction.purchaseDate
+        )
+    }
 }
