@@ -34,7 +34,6 @@ internal extension Product {
      }
       
     func toAffiseProduct(_ type: AffiseProductType? = nil) -> AffiseProduct {
-        self.price
         return AffiseProduct(
             productId: self.id,
             title: self.displayName,

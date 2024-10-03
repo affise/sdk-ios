@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.42] - 2024-10-03
+
+### Fixed
+
+- Fix `Affise.Module.getStatus` timing retry.
+
 ## [1.6.41] - 2024-10-01
 
 ### Added
@@ -122,6 +128,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.42]: https://github.com/affise/sdk-ios/compare/1.6.41...1.6.42
 [1.6.41]: https://github.com/affise/sdk-ios/compare/1.6.40...1.6.41
 [1.6.40]: https://github.com/affise/sdk-ios/compare/1.6.39...1.6.40
 [1.6.39]: https://github.com/affise/sdk-ios/compare/1.6.38...1.6.39

@@ -3,8 +3,8 @@ import AffiseAttributionLib
 
 internal class CheckStatusUseCaseImpl {
     
-    private static let TIME_DELAY_SENDING: TimeInterval = 5
-    private let ATTEMPTS_TO_SEND = 30
+    private static let TIME_DELAY_SENDING: TimeInterval = 1
+    private static let TIMINGS = Array([1,1,2,3,5,8,13].reversed())
     private let TIMEOUT_SEND: TimeInterval = 30
     
     let PATH: String = "check_status"
@@ -68,15 +68,19 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
 
     func send(_ onComplete: @escaping OnKeyValueCallback) {
         DispatchQueue.global(qos:.background).async { [weak self] in
-            self?.sendWithRepeat(onComplete) {
-                Thread.sleep(forTimeInterval: CheckStatusUseCaseImpl.TIME_DELAY_SENDING)
+            self?.sendWithRepeat(onComplete) { attempt in
+                var i = 1
+                if CheckStatusUseCaseImpl.TIMINGS.count > attempt {
+                    i = CheckStatusUseCaseImpl.TIMINGS[attempt]
+                }
+                Thread.sleep(forTimeInterval: CheckStatusUseCaseImpl.TIME_DELAY_SENDING * Double(i))
             }
         }
     }
     
-    func sendWithRepeat( _ onComplete: @escaping OnKeyValueCallback, onFailedAttempt: () -> Void) {
+    func sendWithRepeat( _ onComplete: @escaping OnKeyValueCallback, onFailedAttempt: (Int) -> Void) {
         //attempts to send
-        var attempts = ATTEMPTS_TO_SEND
+        var attempts = CheckStatusUseCaseImpl.TIMINGS.count + 1
         
         //Send or not
         var send = false
@@ -108,12 +112,12 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
                 if (attempts == 0) {
                     onComplete([])
                     
-                    let httpResponse = response ?? postBackResponse
-                    let error = AffiseError.network(status: httpResponse?.code ?? 0, message: httpResponse?.body)
-                    //Log error
-                    logsManager?.addSdkError(error: AffiseError.cloud(url: url, error: error, attempts: ATTEMPTS_TO_SEND, retry: true))
+//                    let httpResponse = response ?? postBackResponse
+//                    let error = AffiseError.network(status: httpResponse?.code ?? 0, message: httpResponse?.body)
+//                    //Log error
+//                    logsManager?.addSdkError(error: AffiseError.cloud(url: url, error: error, attempts: CheckStatusUseCaseImpl.TIMINGS.count + 1, retry: true))
                 } else {
-                    onFailedAttempt()
+                    onFailedAttempt(attempts - 1)
                 }
             }
         }
