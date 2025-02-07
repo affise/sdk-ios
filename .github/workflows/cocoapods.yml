@@ -1,4 +1,4 @@
-name: Publish CocoaPods
+name: 🏗️ Publish CocoaPods
 run-name: Publish CocoaPods ${{ github.ref_name }}
 
 on: 

@@ -73,8 +73,11 @@ internal class AffiseComponent: AffiseApi {
         sendDataToServerUseCase: sendDataToServerUseCase,
         appLifecycleEventsManager: appLifecycleEventsManager
     )
+    lazy var indexUseCase:IndexUseCase = IndexUseCaseImpl(
+        preferences: preferences
+    )
     lazy var eventsStorage:EventsStorage = EventsStorageImpl(logsManager: logsManager, fileManager: fileManager)
-    lazy var eventToSerializedEventConverter:EventToSerializedEventConverter = EventToSerializedEventConverter()
+    lazy var eventToSerializedEventConverter:EventToSerializedEventConverter = EventToSerializedEventConverter(indexUseCase: indexUseCase)
     lazy var eventsRepository:EventsRepository = EventsRepositoryImpl(
         converterToBase64: ConverterToBase64(),
         converterToSerializedEvent: eventToSerializedEventConverter,
@@ -92,7 +95,7 @@ internal class AffiseComponent: AffiseApi {
         eventsStorage: internalEventsStorage
     )
     lazy var networkService:NetworkService = NetworkServiceImpl(urlSession: urlSession)
-    lazy var postBackModelToJsonStringConverter:PostBackModelToJsonStringConverter = PostBackModelToJsonStringConverter()
+    lazy var postBackModelToJsonStringConverter:PostBackModelToJsonStringConverter = PostBackModelToJsonStringConverter(indexUseCase: indexUseCase)
     lazy var cloudRepository:CloudRepository = CloudRepositoryImpl(
         networkService: networkService,
         userAgentProvider: postBackModelFactory.getProvider(),
@@ -125,7 +128,8 @@ internal class AffiseComponent: AffiseApi {
         internalEventsRepository: internalEventsRepository,
         logsRepository: logsRepository,
         logsManager: logsManager,
-        preferencesUseCase: preferencesUseCase
+        preferencesUseCase: preferencesUseCase,
+        firstAppOpenUseCase: firstAppOpenUseCase
     )
     lazy var immediateSendToServerUseCase: ImmediateSendToServerUseCase = ImmediateSendToServerUseCaseImpl(
         cloudRepository: cloudRepository,

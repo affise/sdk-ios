@@ -11,7 +11,7 @@ class RetrieveReferrerOnServerUseCase {
         self.moduleManager = moduleManager
     }
 
-    private func getReffererModule() -> ReferrerCallback? {
+    private func getReferrerModule() -> ReferrerCallback? {
         if self.referrerModule != nil {
             return self.referrerModule
         }
@@ -22,7 +22,7 @@ class RetrieveReferrerOnServerUseCase {
     }
     
     private func handleReferrerOnServer(_ callback: @escaping OnReferrerCallback) {
-        getReffererModule()?.getReferrer(callback) ?? callback(nil)
+        getReferrerModule()?.getReferrer(callback) ?? callback(nil)
     }
         
     /**

@@ -9,7 +9,12 @@ internal class EventToSerializedEventConverter : Converter {
 
     typealias T = Event
     typealias R = SerializedEvent
+    
+    private let indexUseCase: IndexUseCase
 
+    init(indexUseCase: IndexUseCase) {
+        self.indexUseCase = indexUseCase
+    }
 
     /**
      * Convert [from] Event to SerializedEvent
@@ -28,6 +33,8 @@ internal class EventToSerializedEventConverter : Converter {
             (Parameters.AFFISE_EVENT_CATEGORY, from.getCategory()),
             //Add timestamp
             (Parameters.AFFISE_EVENT_TIMESTAMP, Int(Date().timeIntervalSince1970.timeInMillis)),
+            //Add id index
+            (Parameters.AFFISE_EVENT_ID_INDEX, indexUseCase.getAffiseEventIdIndex()),
             //Add is first for user Or not
             (Parameters.AFFISE_EVENT_FIRST_FOR_USER, from.isFirstForUser()),
             //Add user data

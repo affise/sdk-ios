@@ -1,4 +1,4 @@
-name: Publish Frameworks
+name: 🏗️ Publish Frameworks
 run-name: Publish Frameworks ${{ github.ref_name }}
 
 on: 

@@ -10,9 +10,11 @@ internal class FirstAppOpenUseCase {
     
     private let preferences: UserDefaults
     private var firstRun: Bool = false
+    private var isFirstOpenValue: Bool = true
     
     init(preferences: UserDefaults) {
         self.preferences = preferences
+        isFirstOpenValue = preferences.value(forKey: FIRST_OPENED) as? Bool ?? true
     }
 
     /**
@@ -54,16 +56,13 @@ internal class FirstAppOpenUseCase {
      * Get first open
      * @return is first open
      */
-    func isFirstOpen() -> Bool? {
-        guard let value = preferences.value(forKey: FIRST_OPENED) as? Bool else {
-            return nil
-        }
-        
-        if value {
-            preferences.set(false, forKey: FIRST_OPENED)
-        }
-        
-        return value
+    func isFirstOpen() -> Bool {        
+        return isFirstOpenValue
+    }
+
+    func completeFirstOpen() {
+        isFirstOpenValue = false
+        preferences.set(isFirstOpenValue, forKey: FIRST_OPENED)
     }
     
     /**

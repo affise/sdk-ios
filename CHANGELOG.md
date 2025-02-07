@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.43] - 2025-02-07
+
+### Added
+
+- New event index `affise_event_id_index`.
+- New postback index `uuid_index`.
+
+### Fixed
+
+- Fix `ProviderType.INSTALL_FIRST_EVENT`
+
 ## [1.6.42] - 2024-10-03
 
 ### Fixed
@@ -128,6 +139,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.43]: https://github.com/affise/sdk-ios/compare/1.6.42...1.6.43
 [1.6.42]: https://github.com/affise/sdk-ios/compare/1.6.41...1.6.42
 [1.6.41]: https://github.com/affise/sdk-ios/compare/1.6.40...1.6.41
 [1.6.40]: https://github.com/affise/sdk-ios/compare/1.6.39...1.6.40

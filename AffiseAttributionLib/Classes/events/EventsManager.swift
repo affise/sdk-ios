@@ -10,6 +10,8 @@ class EventsManager {
     
     static let TIME_SEND_REPEAT: TimeInterval = 15
     
+    static let SCHEDULER_SEND_REPEAT: TimeInterval = 15
+    
     private let sendDataToServerUseCase: SendDataToServerUseCase
     private let appLifecycleEventsManager: AppLifecycleEventsManager
 
@@ -24,6 +26,7 @@ class EventsManager {
     
     func initialize() {
         subscribeToActivityEvents()
+        sendEventsOnStop()
     }
     
     /**
@@ -35,6 +38,14 @@ class EventsManager {
      * Timer fo repeat send events
      */
     private var timer: Timer?
+    
+    private var scheduler: ScheduledTimer?
+
+    private func sendEventsOnStop() {
+        appLifecycleEventsManager.addDidEnterBackgroundListener { [weak self] userInfo in
+            self?.sendEvents(withDelay: false, sendEmpty: false)
+        }
+    }
 
     /**
      * Subscribe to change activity
@@ -46,9 +57,15 @@ class EventsManager {
         //Start timer fo repeat send events
         startTimer()
         
+        //Start Sheduler
+        startQueue()
+        
         appLifecycleEventsManager.addDidEnterBackgroundListener { [weak self] userInfo in
-            // Stop timer
+            //Stop timer
             self?.stopTimer()
+            
+            //Stop sheduler
+            self?.stopQueue()
         }
         
         appLifecycleEventsManager.addWillEnterForegroundListener { [weak self] userInfo in
@@ -57,16 +74,32 @@ class EventsManager {
             
             //Start timer fo repeat send events
             self?.startTimer()
+            
+            //Start Sheduler
+            self?.startQueue()
         }
     }
 
     /**
      * Send event
      */
-    func sendEvents(withDelay: Bool = true) {
+    func sendEvents(withDelay: Bool = true, sendEmpty: Bool = true) {
         DispatchQueue.global(qos:.background).sync {
-            sendDataToServerUseCase.send(withDelay: withDelay)
+            sendDataToServerUseCase.send(withDelay: withDelay, sendEmpty: sendEmpty)
         }
+    }
+    
+    /**
+     * Send events (if present) on shedule in case network failures
+     */
+    private func startQueue() {
+        scheduler = ScheduledTimer(interval: EventsManager.SCHEDULER_SEND_REPEAT, repeats: true) { [weak self] in
+            self?.sendEvents(withDelay: false, sendEmpty: false)
+        }
+    }
+    
+    private func stopQueue() {
+        scheduler?.stop()
     }
 
     /**

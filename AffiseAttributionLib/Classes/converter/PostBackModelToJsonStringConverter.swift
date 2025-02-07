@@ -10,6 +10,12 @@ public class PostBackModelToJsonStringConverter : Converter {
     private let SDK_EVENTS_KEY = "sdk_events"
     private let METRICS_EVENTS_KEY = "metrics_events"
     private let INTERNAL_EVENTS_KEY = "internal_events"
+
+    private let indexUseCase: IndexUseCase
+
+    init(indexUseCase: IndexUseCase) {
+        self.indexUseCase = indexUseCase
+    }
     
     /**
      * Convert [from] list of PostBackModel to json string
@@ -30,6 +36,9 @@ public class PostBackModelToJsonStringConverter : Converter {
         for item in obj.parameters {
             dict.append((item.0.provider, item.1))
         }
+
+        // PostBack index
+        dict.append((Parameters.UUID_INDEX_KEY, indexUseCase.getUuidIndex()))
 
         //Events
         let eventsArray = obj.events?.compactEvent() ?? []

@@ -7,9 +7,11 @@ public struct Parameters {
     public static let AFFISE_EVENT_USER_DATA = "affise_event_user_data"
     public static let AFFISE_EVENT_DATA = "affise_event_data"
     public static let AFFISE_PARAMETERS = "affise_parameters"
+    public static let AFFISE_EVENT_ID_INDEX = "affise_event_id_index"
    
     static let AFFISE_EVENTS_COUNT = "affise_events_count"
     static let AFFISE_SDK_EVENTS_COUNT = "affise_sdk_events_count"
     static let AFFISE_METRICS_EVENTS_COUNT = "affise_metrics_events_count"
     static let AFFISE_INTERNAL_EVENTS_COUNT = "affise_internal_events_count"
+    static let UUID_INDEX_KEY = "uuid_index"
 }
