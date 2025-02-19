@@ -55,7 +55,9 @@ internal class AffiseComponent: AffiseApi {
     lazy var fileManager: FileManager = FileManager.default
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
 
-    lazy var firstAppOpenUseCase:FirstAppOpenUseCase = FirstAppOpenUseCase(preferences: preferences)
+    lazy var persistentUseCase:PersistentUseCase = PersistentUseCaseImpl()
+    
+    lazy var firstAppOpenUseCase:FirstAppOpenUseCase = FirstAppOpenUseCase(preferences: preferences, persistentUseCase: persistentUseCase)
     lazy var webViewUseCase:WebViewUseCase = WebViewUseCase(preferences: preferences)
     lazy var appLifecycleEventsManager:AppLifecycleEventsManager = AppLifecycleEventsManagerImpl(
         notificationCenter: notificationCenter,

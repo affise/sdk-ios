@@ -57,14 +57,14 @@ class EventsManager {
         //Start timer fo repeat send events
         startTimer()
         
-        //Start Sheduler
+        //Start scheduler
         startQueue()
         
         appLifecycleEventsManager.addDidEnterBackgroundListener { [weak self] userInfo in
             //Stop timer
             self?.stopTimer()
             
-            //Stop sheduler
+            //Stop scheduler
             self?.stopQueue()
         }
         
@@ -75,7 +75,7 @@ class EventsManager {
             //Start timer fo repeat send events
             self?.startTimer()
             
-            //Start Sheduler
+            //Start Scheduler
             self?.startQueue()
         }
     }
@@ -90,7 +90,7 @@ class EventsManager {
     }
     
     /**
-     * Send events (if present) on shedule in case network failures
+     * Send events (if present) on schedule in case network failures
      */
     private func startQueue() {
         scheduler = ScheduledTimer(interval: EventsManager.SCHEDULER_SEND_REPEAT, repeats: true) { [weak self] in

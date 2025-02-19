@@ -9,11 +9,16 @@ internal class FirstAppOpenUseCase {
     private let AFF_ALT_DEVICE_ID = "AFF_ALT_DEVICE_ID"
     
     private let preferences: UserDefaults
+    private let persistentUseCase: PersistentUseCase
     private var firstRun: Bool = false
     private var isFirstOpenValue: Bool = true
     
-    init(preferences: UserDefaults) {
+    init(
+        preferences: UserDefaults,
+        persistentUseCase: PersistentUseCase
+    ) {
         self.preferences = preferences
+        self.persistentUseCase = persistentUseCase
         isFirstOpenValue = preferences.value(forKey: FIRST_OPENED) as? Bool ?? true
     }
 
@@ -36,7 +41,7 @@ internal class FirstAppOpenUseCase {
         let firstOpenDate = Date().timeIntervalSince1970
 
         //Create affDevId
-        let affDevId = generateUUID().uuidString.lowercased()
+        let affDevId = persistentUseCase.getOrCreate(AFF_DEVICE_ID, generateUUID().uuidString.lowercased())
 
         //Create affAltDevId
         let affAltDevId = generateUUID().uuidString.lowercased()

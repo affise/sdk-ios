@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.44] - 2025-02-19
+
+### Added
+
+- Persistent `AFFISE_DEVICE_ID`.
+
 ## [1.6.43] - 2025-02-07
 
 ### Added
@@ -139,6 +145,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.44]: https://github.com/affise/sdk-ios/compare/1.6.43...1.6.44
 [1.6.43]: https://github.com/affise/sdk-ios/compare/1.6.42...1.6.43
 [1.6.42]: https://github.com/affise/sdk-ios/compare/1.6.41...1.6.42
 [1.6.41]: https://github.com/affise/sdk-ios/compare/1.6.40...1.6.41
