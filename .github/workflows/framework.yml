@@ -15,7 +15,7 @@ on:
 jobs:
   publish:
     name: Publish Affise SDK Frameworks
-    runs-on: macOS-12
+    runs-on: macOS-13
 
     steps:
       - name: Checkout
@@ -41,7 +41,7 @@ jobs:
       - name: Create AffiseAttributionLib XCFramework
         uses: unsignedapps/swift-create-xcframework@v2.3.0
         with:
-          target: "AffiseAttributionLib, AffiseModuleAdvertising, AffiseModuleLink, AffiseModuleStatus, AffiseModuleSubscription"
+          target: "AffiseAttributionLib, AffiseModuleAdvertising, AffiseModuleLink, AffiseModulePersistent, AffiseModuleStatus, AffiseModuleSubscription"
       
       # Release
       - name: Release
@@ -57,7 +57,7 @@ jobs:
           prerelease: false
       
       # Upload AffiseAttributionLib
-      - name: Upload Release AffiseAttributionLib Framework 🗳
+      - name: Upload Release AffiseAttributionLib Framework 📦
         if: ${{ success() }}
         uses: actions/upload-release-asset@v1
         env:
@@ -69,7 +69,7 @@ jobs:
           asset_content_type: application/zip    
 
       # Upload AffiseModuleLink
-      - name: Upload Release AffiseModuleLink Framework 🗳
+      - name: Upload Release AffiseModuleLink Framework 📦
         if: ${{ success() }}
         uses: actions/upload-release-asset@v1
         env:
@@ -80,8 +80,20 @@ jobs:
           asset_name: AffiseModuleLink-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
           asset_content_type: application/zip
 
+      # Upload AffiseModulePersistent
+      - name: Upload Release AffiseModulePersistent Framework 📦
+        if: ${{ success() }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./AffiseModulePersistent.zip
+          asset_name: AffiseModulePersistent-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+          asset_content_type: application/zip
+
       # Upload AffiseModuleStatus
-      - name: Upload Release AffiseModuleStatus Framework 🗳
+      - name: Upload Release AffiseModuleStatus Framework 📦
         if: ${{ success() }}
         uses: actions/upload-release-asset@v1
         env:
@@ -93,7 +105,7 @@ jobs:
           asset_content_type: application/zip
 
       # Upload AffiseModuleAdvertising
-      - name: Upload Release AffiseModuleAdvertising Framework 🗳
+      - name: Upload Release AffiseModuleAdvertising Framework 📦
         if: ${{ success() }}
         uses: actions/upload-release-asset@v1
         env:
@@ -105,7 +117,7 @@ jobs:
           asset_content_type: application/zip
 
       # Upload AffiseModuleSubscription
-      - name: Upload Release AffiseModuleSubscription Framework 🗳
+      - name: Upload Release AffiseModuleSubscription Framework 📦
         if: ${{ success() }}
         uses: actions/upload-release-asset@v1
         env:
@@ -117,7 +129,7 @@ jobs:
           asset_content_type: application/zip
 
       # # Upload AffiseSKAdNetwork
-      # - name: Upload Release AffiseSKAdNetwork Framework 🗳
+      # - name: Upload Release AffiseSKAdNetwork Framework 📦
       #   if: ${{ success() }}
       #   uses: actions/upload-release-asset@v1
       #   env:

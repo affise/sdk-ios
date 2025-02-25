@@ -5,6 +5,7 @@ import Foundation
 public enum AffiseModules: Int {
     case Advertising
     case Link
+    case Persistent
     case Status
     case Subscription
     
@@ -12,6 +13,7 @@ public enum AffiseModules: Int {
         switch self {
         case .Advertising: return "Advertising"
         case .Link: return "Link"
+        case .Persistent: return "Persistent"
         case .Status: return "Status"
         case .Subscription: return "Subscription"
         }

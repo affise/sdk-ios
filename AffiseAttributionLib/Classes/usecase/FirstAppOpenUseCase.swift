@@ -9,17 +9,19 @@ internal class FirstAppOpenUseCase {
     private let AFF_ALT_DEVICE_ID = "AFF_ALT_DEVICE_ID"
     
     private let preferences: UserDefaults
-    private let persistentUseCase: PersistentUseCase
     private var firstRun: Bool = false
     private var isFirstOpenValue: Bool = true
+    private var persistentApi: AffisePersistentApi? = nil
     
     init(
-        preferences: UserDefaults,
-        persistentUseCase: PersistentUseCase
+        preferences: UserDefaults
     ) {
         self.preferences = preferences
-        self.persistentUseCase = persistentUseCase
         isFirstOpenValue = preferences.value(forKey: FIRST_OPENED) as? Bool ?? true
+    }
+
+    func initialize(moduleManager: AffiseModuleManager) {
+        persistentApi = moduleManager.api(.Persistent) as? AffisePersistentApi
     }
 
     /**
@@ -41,7 +43,8 @@ internal class FirstAppOpenUseCase {
         let firstOpenDate = Date().timeIntervalSince1970
 
         //Create affDevId
-        let affDevId = persistentUseCase.getOrCreate(AFF_DEVICE_ID, generateUUID().uuidString.lowercased())
+        // TODO check
+        let affDevId = persistentApi?.getOrCreate(AFF_DEVICE_ID, generateUUID().uuidString.lowercased()) ?? generateUUID().uuidString.lowercased()
 
         //Create affAltDevId
         let affAltDevId = generateUUID().uuidString.lowercased()

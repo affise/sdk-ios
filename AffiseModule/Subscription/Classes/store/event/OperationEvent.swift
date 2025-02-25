@@ -29,8 +29,8 @@ internal enum OperationEvent {
     
     @available(iOS 15, *)
     static func create(_ transaction: Transaction?, product: Product, type: AffiseProductType?, failed: Bool) -> Event? {
-        var timeUnit = product.subscription?.subscriptionPeriod.unitType.enumValue ?? ""
-        var numberOfUnits: Int = product.subscription?.subscriptionPeriod.value ?? 0
+        let timeUnit = product.subscription?.subscriptionPeriod.unitType.enumValue ?? ""
+        let numberOfUnits: Int = product.subscription?.subscriptionPeriod.value ?? 0
         var orderId: String? = nil
         var originalOrderId: String?  = nil
         
@@ -38,7 +38,10 @@ internal enum OperationEvent {
             orderId = "\(transaction.id)"
             originalOrderId = "\(transaction.originalID)"
         }
-        
+        var currencyCode = ""
+        #if compiler(>=5.7)
+        currencyCode = product.priceFormatStyle.currencyCode
+        #endif
         return create(
             orderId: orderId,
             originalOrderId: originalOrderId,
@@ -46,7 +49,7 @@ internal enum OperationEvent {
             timeUnit: timeUnit,
             numberOfUnits: Int64(numberOfUnits),
             price: NSDecimalNumber(decimal: product.price).floatValue,
-            currency:  product.priceFormatStyle.currencyCode,
+            currency: currencyCode,
             
             type: product.toAffiseSubscriptionType ?? type ?? .CONSUMABLE,
             failed: failed

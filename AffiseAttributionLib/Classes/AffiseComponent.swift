@@ -20,11 +20,9 @@ internal class AffiseComponent: AffiseApi {
         self.launchOptions = launchOptions;
 
 //        sendGDPREventUseCase.sendForgetMeEvent()
-        firstAppOpenUseCase.onAppCreated()
         webViewUseCase.initialize()
         setPropertiesWhenInitUseCase.initialize(initProperties: initProperties)
         sessionManager.initialize()
-        eventsManager.initialize()
 //        oaidManager.init(app)
 //        retrieveInstallReferrerUseCase.startInstallReferrerRetrieve()
         deeplinkManager.initialize(launchOptions: launchOptions)
@@ -41,6 +39,9 @@ internal class AffiseComponent: AffiseApi {
                 postBackModelToJsonStringConverter
             ]
         )
+        firstAppOpenUseCase.initialize(moduleManager: moduleManager)
+        firstAppOpenUseCase.onAppCreated()
+        eventsManager.initialize()
 
         isReady = true
     }
@@ -55,9 +56,7 @@ internal class AffiseComponent: AffiseApi {
     lazy var fileManager: FileManager = FileManager.default
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
 
-    lazy var persistentUseCase:PersistentUseCase = PersistentUseCaseImpl()
-    
-    lazy var firstAppOpenUseCase:FirstAppOpenUseCase = FirstAppOpenUseCase(preferences: preferences, persistentUseCase: persistentUseCase)
+    lazy var firstAppOpenUseCase:FirstAppOpenUseCase = FirstAppOpenUseCase(preferences: preferences)
     lazy var webViewUseCase:WebViewUseCase = WebViewUseCase(preferences: preferences)
     lazy var appLifecycleEventsManager:AppLifecycleEventsManager = AppLifecycleEventsManagerImpl(
         notificationCenter: notificationCenter,

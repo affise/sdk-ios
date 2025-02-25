@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.6.44"
+  s.version      = ENV["LIB_VERSION"] || "1.6.45"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
   s.homepage     = "https://github.com/affise/sdk-ios"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
      :submodules => true
   }
 
-  s.ios.deployment_target = "9.0"
+  s.ios.deployment_target = "12.0"
   s.swift_version = "5.7"
 
   s.dependency "AffiseAttributionLib", "#{s.version}"
@@ -31,6 +31,10 @@ Pod::Spec.new do |s|
 
   s.subspec "Link" do |sub|
     sub.source_files = "AffiseModule/Link/Classes/**/*.{swift}"
+  end
+  
+  s.subspec "Persistent" do |sub|
+    sub.source_files = "AffiseModule/Persistent/Classes/**/*.{swift}"
   end
 
   s.subspec "Status" do |sub|

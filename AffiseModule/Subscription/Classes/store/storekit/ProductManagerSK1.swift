@@ -103,6 +103,6 @@ extension ProductManagerSK1: ProductManager {
     }
 
     func product(_ id: String) -> Any {
-        return self.products[id]
+        return self.products[id] as Any
     }
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.45] - 2025-02-25
+
+### Added
+
+- New module `Persistent`.
+  
 ## [1.6.44] - 2025-02-19
 
 ### Added
@@ -145,6 +151,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.45]: https://github.com/affise/sdk-ios/compare/1.6.44...1.6.45
 [1.6.44]: https://github.com/affise/sdk-ios/compare/1.6.43...1.6.44
 [1.6.43]: https://github.com/affise/sdk-ios/compare/1.6.42...1.6.43
 [1.6.42]: https://github.com/affise/sdk-ios/compare/1.6.41...1.6.42
