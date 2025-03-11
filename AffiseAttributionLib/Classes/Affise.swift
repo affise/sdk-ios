@@ -176,16 +176,35 @@ public final class Affise: NSObject {
     /**
      * Get referrer on server
      */
+    @available(*, deprecated, message: "This method will be removed", renamed: "getDeferredDeeplink")
     @objc
     public static func getReferrerOnServer(_ callback: @escaping OnReferrerCallback) {
-        api?.retrieveReferrerOnServerUseCase.getReferrerOnServer(callback)
+        getDeferredDeeplink(callback)
     }
     
     /**
      * Get referrer on server value
      */
+    @available(*, deprecated, message: "This method will be removed", renamed: "getDeferredDeeplinkValue")
     @objc
     public static func getReferrerOnServerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
+        getDeferredDeeplinkValue(key, callback)
+    }
+
+
+    /**
+     * Get deferred deeplink on server
+     */
+    @objc
+    public static func getDeferredDeeplink(_ callback: @escaping OnReferrerCallback) {
+        api?.retrieveReferrerOnServerUseCase.getReferrerOnServer(callback)
+    }
+    
+    /**
+     * Get deferred deeplink value on server
+     */
+    @objc
+    public static func getDeferredDeeplinkValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
         api?.retrieveReferrerOnServerUseCase.getReferrerOnServerValue(key, callback)
     }
 

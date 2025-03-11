@@ -33,19 +33,18 @@ jobs:
             echo "VERSION=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Setup Swift 5.7
-        uses: swift-actions/setup-swift@v1
-        with:
-          swift-version: "5.7"
+      - name: Install swift-create-xcframework tool
+        run: |
+          git clone https://github.com/segment-integrations/swift-create-xcframework.git
+          cd swift-create-xcframework
+          make install
 
       - name: Create AffiseAttributionLib XCFramework
-        uses: unsignedapps/swift-create-xcframework@v2.3.0
-        with:
-          target: "AffiseAttributionLib, AffiseModuleAdvertising, AffiseModuleLink, AffiseModulePersistent, AffiseModuleStatus, AffiseModuleSubscription"
-      
+        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK -Xfrontend' --zip
+
       # Release
       - name: Release
-        if: ${{ success() }}
+        if: ${{ always() }}
         id: create_release
         uses: actions/create-release@v1
         env:

@@ -89,8 +89,8 @@ public class AffiseApiWrapper: NSObject {
         case .IS_FIRST_RUN: callIsFirstRun(api, map: map, result: result)
         case .GET_REFERRER_URL_CALLBACK: callGetReferrerUrl(api, map: map, result: result)
         case .GET_REFERRER_URL_VALUE_CALLBACK: callGetReferrerUrlValue(api, map: map, result: result)
-        case .GET_REFERRER_ON_SERVER_CALLBACK: callGetReferrerOnServer(api, map: map, result: result)
-        case .GET_REFERRER_ON_SERVER_VALUE_CALLBACK: callGetReferrerOnServerValue(api, map: map, result: result)
+        case .GET_DEFERRED_DEEPLINK_CALLBACK: callGetDeferredDeeplink(api, map: map, result: result)
+        case .GET_DEFERRED_DEEPLINK_VALUE_CALLBACK: callGetDeferredDeeplinkValue(api, map: map, result: result)
         case .REGISTER_DEEPLINK_CALLBACK: callRegisterDeeplinkCallback(api, map: map, result: result)
         case .SKAD_REGISTER_ERROR_CALLBACK: callSkadRegisterErrorCallback(api, map: map, result: result)
         case .SKAD_POSTBACK_ERROR_CALLBACK: callSkadPostbackErrorCallback(api, map: map, result: result)
@@ -352,13 +352,13 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callGetReferrerOnServer(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
+    private func callGetDeferredDeeplink(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
         }
 
-        Affise.getReferrerOnServer { referrer in
+        Affise.getDeferredDeeplink { referrer in
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: referrer,
@@ -369,7 +369,7 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
-    private func callGetReferrerOnServerValue(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
+    private func callGetDeferredDeeplinkValue(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
             result?.error("api [\(api.method)]: no valid Callback UUID")
             return
@@ -385,7 +385,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.getReferrerOnServerValue(key) { value in
+        Affise.getDeferredDeeplinkValue(key) { value in
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: value,

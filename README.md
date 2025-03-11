@@ -4,13 +4,13 @@
 
 | Pod                         | Version                   |
 | --------------------------- |:-------------------------:|
-| `AffiseAttributionLib`      | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`         | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`         | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Persistent`   | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`       | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Subscription` | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib`      | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`         | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Persistent`   | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -44,16 +44,17 @@
   - [Events buffering](#events-buffering)
   - [Push token tracking](#push-token-tracking)
   - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
-  - [Deeplinks](#deeplinks)
-  - [AppLinks](#applinks)
+  - [Links](#links)
+    - [Deeplinks](#deeplinks)
+    - [AppLinks](#applinks)
+    - [Get deferred deeplink](#get-deferred-deeplink)
+    - [Get deferred deeplink value](#get-deferred-deeplink-value)
   - [Get random user Id](#get-random-user-id)
   - [Get random device Id](#get-random-device-id)
   - [Get providers](#get-providers)
   - [Is first run](#is-first-run)
   - [Get referrer](#get-referrer)
   - [Get referrer parameter](#get-referrer-parameter)
-  - [Get referrer on server](#get-referrer-on-server)
-  - [Get referrer on server parameter](#get-referrer-on-server-parameter)
   - [Referrer keys](#referrer-keys)
   - [Get module state](#get-module-state)
   - [WebView tracking](#webview-tracking)
@@ -82,7 +83,7 @@ referrer.
 ### SDK compatibility
 
 - `Xcode` `14.2+`  
-- `iOS`   `12+`    
+- `iOS`   `12+`
 
 ## Integration
 
@@ -92,24 +93,24 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', '1.6.45'
+pod 'AffiseAttributionLib', '1.6.46'
 # Affise modules
-pod 'AffiseModule/Advertising', '1.6.45'
-pod 'AffiseModule/Link', '1.6.45'
-pod 'AffiseModule/Status', '1.6.45'
-pod 'AffiseModule/Subscription', '1.6.45'
+pod 'AffiseModule/Advertising', '1.6.46'
+pod 'AffiseModule/Link', '1.6.46'
+pod 'AffiseModule/Status', '1.6.46'
+pod 'AffiseModule/Subscription', '1.6.46'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.45'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.46'
 # Affise modules
-pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.45'
-pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.45'
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.45'
-pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.45'
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.46'
+pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.46'
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.46'
+pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.46'
 ```
 
 ### Integrate as Swift Package Manager
@@ -211,11 +212,11 @@ Affise
 
 | Module         | Version                                                                              | Start    |
 | -------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising`  | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Link`         | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Persistent`   | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Status`       | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Subscription` | [`1.6.45`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising`  | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Link`         | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Persistent`   | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`       | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Subscription` | [`1.6.46`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -319,14 +320,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.6.45'
+pod 'AffiseSKAdNetwork', '1.6.46'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.45'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.46'
 ```
 
 For `swift` use:
@@ -844,7 +845,9 @@ Affise automaticly track reinstall events by using silent-push technology, to ma
 Affise.addPushToken(token)
 ```
 
-## Deeplinks
+## Links
+
+### Deeplinks
 
 > **Warning**
 >
@@ -921,7 +924,7 @@ Test DeepLink via terminal command:
 xcrun simctl openurl booted "YOUR_SCHEME://YOUR_DOMAIN/somepath?param=1&list=some&list=other&list=1"
 ```
 
-## AppLinks
+### AppLinks
 
 > **Warning**
 >
@@ -989,6 +992,34 @@ Test DeepLink via terminal command:
 
 ```terminal
 xcrun simctl openurl booted "https://YOUR_DOMAIN/somepath?param=1&list=some&list=other&list=1"
+```
+
+### Get deferred deeplink
+
+> **Note**
+>
+> Requires [Affise Status Module](#modules)
+
+Use the next public method of SDK
+
+```swift
+Affise.getDeferredDeeplink { deferredDeeplink in
+  // handle deferred deeplink
+}
+```
+
+### Get deferred deeplink value
+
+> **Note**
+>
+> Requires [Affise Status Module](#modules)
+
+Use the next public method of SDK to get referrer parameter by
+
+```swift
+Affise.getDeferredDeeplinkValue(ReferrerKey.CLICK_ID) { deferredDeeplink in
+  // handle deferred deeplink value
+}
 ```
 
 ## Get random user Id
@@ -1065,34 +1096,6 @@ Use the next public method of SDK to get referrer parameter by
 
 ```swift
 Affise.getReferrerUrlValue(ReferrerKey.CLICK_ID) { value in
-  // handle referrer value
-}
-```
-
-## Get referrer on server
-
-> **Note**
->
-> Requires [Affise Status Module](#modules)
-
-Use the next public method of SDK
-
-```swift
-Affise.getReferrerOnServer { referrer in
-  // handle referrer
-}
-```
-
-## Get referrer on server parameter
-
-> **Note**
->
-> Requires [Affise Status Module](#modules)
-
-Use the next public method of SDK to get referrer parameter by
-
-```swift
-Affise.getReferrerOnServerValue(ReferrerKey.CLICK_ID) { value in
   // handle referrer value
 }
 ```

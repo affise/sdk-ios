@@ -28,8 +28,8 @@ public enum AffiseApiMethod: Int {
     // callback
     case GET_REFERRER_URL_CALLBACK
     case GET_REFERRER_URL_VALUE_CALLBACK
-    case GET_REFERRER_ON_SERVER_CALLBACK
-    case GET_REFERRER_ON_SERVER_VALUE_CALLBACK
+    case GET_DEFERRED_DEEPLINK_CALLBACK
+    case GET_DEFERRED_DEEPLINK_VALUE_CALLBACK
     case REGISTER_DEEPLINK_CALLBACK
     case SKAD_REGISTER_ERROR_CALLBACK
     case SKAD_POSTBACK_ERROR_CALLBACK
@@ -80,8 +80,8 @@ public enum AffiseApiMethod: Int {
         // callback
         case .GET_REFERRER_URL_CALLBACK: return "get_referrer_url_callback"
         case .GET_REFERRER_URL_VALUE_CALLBACK: return "get_referrer_url_value_callback"
-        case .GET_REFERRER_ON_SERVER_CALLBACK: return "get_referrer_on_server_callback"
-        case .GET_REFERRER_ON_SERVER_VALUE_CALLBACK: return "get_referrer_on_server_value_callback"
+        case .GET_DEFERRED_DEEPLINK_CALLBACK: return "get_deferred_deeplink_callback"
+        case .GET_DEFERRED_DEEPLINK_VALUE_CALLBACK: return "get_deferred_deeplink_value_callback"
         case .REGISTER_DEEPLINK_CALLBACK: return "register_deeplink_callback"
         case .SKAD_REGISTER_ERROR_CALLBACK: return "skad_register_error_callback"
         case .SKAD_POSTBACK_ERROR_CALLBACK: return "skad_postback_error_callback"

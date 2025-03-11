@@ -5,7 +5,7 @@ import AffiseAttributionLib
 @objc(AffiseLinkModule)
 public final class LinkModule: AffiseModule {
     
-    public override var version: String { "1.6.45" }
+    public override var version: String { "1.6.46" }
     
     private var useCase: LinkResolveUseCase? = nil
         
