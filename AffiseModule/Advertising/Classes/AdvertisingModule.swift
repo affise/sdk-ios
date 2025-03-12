@@ -4,7 +4,7 @@ import Foundation
 @objc(AffiseAdvertisingModule)
 public final class AdvertisingModule: AffiseModule {
 
-    public override var version: String { "1.6.46" }
+    public override var version: String { "1.6.47" }
 
     private lazy var advertisingIdManager: AdvertisingIdManager = AdvertisingIdManagerImpl()
     

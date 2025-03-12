@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.47] - 2025-03-12
+
+### Fixed
+
+- Fix `CI/CD`
+
 ## [1.6.46] - 2025-03-11
 
 ### Changed
@@ -158,6 +164,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.47]: https://github.com/affise/sdk-ios/compare/1.6.46...1.6.47
 [1.6.46]: https://github.com/affise/sdk-ios/compare/1.6.45...1.6.46
 [1.6.45]: https://github.com/affise/sdk-ios/compare/1.6.44...1.6.45
 [1.6.44]: https://github.com/affise/sdk-ios/compare/1.6.43...1.6.44

@@ -40,7 +40,7 @@ jobs:
           make install
 
       - name: Create AffiseAttributionLib XCFramework
-        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK -Xfrontend' --zip
+        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
 
       # Release
       - name: Release
