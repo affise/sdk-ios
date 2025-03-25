@@ -43,7 +43,6 @@ internal class FirstAppOpenUseCase {
         let firstOpenDate = Date().timeIntervalSince1970
 
         //Create affDevId
-        // TODO check
         let affDevId = persistentApi?.getOrCreate(AFF_DEVICE_ID, generateUUID().uuidString.lowercased()) ?? generateUUID().uuidString.lowercased()
 
         //Create affAltDevId

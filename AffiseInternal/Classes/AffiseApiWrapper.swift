@@ -87,6 +87,7 @@ public class AffiseApiWrapper: NSObject {
         case .GET_RANDOM_DEVICE_ID: callGetRandomDeviceId(api, map: map, result: result)
         case .GET_PROVIDERS: callGetProviders(api, map: map, result: result)
         case .IS_FIRST_RUN: callIsFirstRun(api, map: map, result: result)
+        // callback
         case .GET_REFERRER_URL_CALLBACK: callGetReferrerUrl(api, map: map, result: result)
         case .GET_REFERRER_URL_VALUE_CALLBACK: callGetReferrerUrlValue(api, map: map, result: result)
         case .GET_DEFERRED_DEEPLINK_CALLBACK: callGetDeferredDeeplink(api, map: map, result: result)
@@ -94,8 +95,11 @@ public class AffiseApiWrapper: NSObject {
         case .REGISTER_DEEPLINK_CALLBACK: callRegisterDeeplinkCallback(api, map: map, result: result)
         case .SKAD_REGISTER_ERROR_CALLBACK: callSkadRegisterErrorCallback(api, map: map, result: result)
         case .SKAD_POSTBACK_ERROR_CALLBACK: callSkadPostbackErrorCallback(api, map: map, result: result)
+        // debug
         case .DEBUG_VALIDATE_CALLBACK: callDebugValidateCallback(api, map: map, result: result)
         case .DEBUG_NETWORK_CALLBACK: callDebugNetworkCallback(api, map: map, result: result)
+        case .DEBUG_VERSION_NATIVE: callDebugVersionNative(api, map: map, result: result)
+        // builder
         case .AFFISE_BUILDER: callAffiseBuilder(api, map: map, result: result)
 
         ////////////////////////////////////////
@@ -138,6 +142,16 @@ public class AffiseApiWrapper: NSObject {
                 affiseAppId: affiseAppId,
                 secretKey: secretKey
             )
+            .setOnInitSuccess {
+                let data: [String: Any?] = [:]
+                self.callback?(AffiseApiMethod.ON_INIT_SUCCESS_HANDLER.method, data)
+            }
+            .setOnInitError{ error in
+                let data: [String: Any?] = [
+                    AffiseApiMethod.ON_INIT_ERROR_HANDLER.method: error.localizedDescription,
+                ]
+                self.callback?(AffiseApiMethod.ON_INIT_SUCCESS_HANDLER.method, data)
+            }
             .addSettings(data)
             .start(app: app, launchOptions: launchOptions)
 
@@ -473,6 +487,10 @@ public class AffiseApiWrapper: NSObject {
             ]
             self.callback?(api.method, data)
         }
+    }
+
+    private func callDebugVersionNative(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
+        result?.success(Affise.Debug.version())
     }
 
     private func callAffiseBuilder(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {

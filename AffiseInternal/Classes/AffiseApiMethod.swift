@@ -26,6 +26,8 @@ public enum AffiseApiMethod: Int {
     case GET_PROVIDERS
     case IS_FIRST_RUN
     // callback
+    case ON_INIT_SUCCESS_HANDLER
+    case ON_INIT_ERROR_HANDLER
     case GET_REFERRER_URL_CALLBACK
     case GET_REFERRER_URL_VALUE_CALLBACK
     case GET_DEFERRED_DEEPLINK_CALLBACK
@@ -36,6 +38,7 @@ public enum AffiseApiMethod: Int {
     // debug
     case DEBUG_VALIDATE_CALLBACK
     case DEBUG_NETWORK_CALLBACK
+    case DEBUG_VERSION_NATIVE
     // builder
     case AFFISE_BUILDER
     ////////////////////////////////////////
@@ -78,6 +81,8 @@ public enum AffiseApiMethod: Int {
         case .GET_PROVIDERS: return "get_providers"
         case .IS_FIRST_RUN: return "is_first_run"
         // callback
+        case .ON_INIT_SUCCESS_HANDLER: return "on_init_success_handler"
+        case .ON_INIT_ERROR_HANDLER: return "on_init_error_handler"
         case .GET_REFERRER_URL_CALLBACK: return "get_referrer_url_callback"
         case .GET_REFERRER_URL_VALUE_CALLBACK: return "get_referrer_url_value_callback"
         case .GET_DEFERRED_DEEPLINK_CALLBACK: return "get_deferred_deeplink_callback"
@@ -86,7 +91,10 @@ public enum AffiseApiMethod: Int {
         case .SKAD_REGISTER_ERROR_CALLBACK: return "skad_register_error_callback"
         case .SKAD_POSTBACK_ERROR_CALLBACK: return "skad_postback_error_callback"
         case .DEBUG_VALIDATE_CALLBACK: return "debug_validate_callback"
+        // debug
         case .DEBUG_NETWORK_CALLBACK: return "debug_network_callback"
+        case .DEBUG_VERSION_NATIVE: return "debug_version_native"
+        // builder
         case .AFFISE_BUILDER: return "affise_builder"
         ////////////////////////////////////////
         // modules

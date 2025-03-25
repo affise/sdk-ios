@@ -24,7 +24,7 @@ class EventsManager {
         self.appLifecycleEventsManager = appLifecycleEventsManager
     }
     
-    func initialize() {
+    func initialize() throws {
         subscribeToActivityEvents()
         sendEventsOnStop()
     }

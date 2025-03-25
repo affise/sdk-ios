@@ -11,6 +11,8 @@ public class AffiseSettings: NSObject {
     private var partParamNameToken: String?
     private var appToken: String?
     private var domain: String?
+    private var onInitSuccessHandler: OnInitSuccessHandler?
+    private var onInitErrorHandler: OnInitErrorHandler?
     
     @objc
     internal init(
@@ -66,6 +68,24 @@ public class AffiseSettings: NSObject {
         self.domain = domain
         return self
     }
+
+    /**
+     * Set [onInitSuccessHandler]
+     */
+    @objc
+    public func setOnInitSuccess(_ onInitSuccessHandler: @escaping OnInitSuccessHandler) -> AffiseSettings {
+        self.onInitSuccessHandler = onInitSuccessHandler
+        return self
+    }
+
+    /**
+     * Set [onInitErrorHandler]
+     */
+    @objc
+    public func setOnInitError(_ onInitErrorHandler: @escaping OnInitErrorHandler) -> AffiseSettings {
+        self.onInitErrorHandler = onInitErrorHandler
+        return self
+    }
     
     private func getInitProperties() -> AffiseInitProperties {
         return AffiseInitProperties(
@@ -75,7 +95,9 @@ public class AffiseSettings: NSObject {
             appToken: appToken,
             isProduction: isProduction,
             secretKey: secretKey,
-            domain: domain
+            domain: domain,
+            onInitSuccessHandler: onInitSuccessHandler,
+            onInitErrorHandler: onInitErrorHandler
         )
     }
     

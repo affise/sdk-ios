@@ -4,13 +4,13 @@
 
 | Pod                         | Version                   |
 | --------------------------- |:-------------------------:|
-| `AffiseAttributionLib`      | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`         | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`         | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Persistent`   | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`       | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Subscription` | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib`      | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`         | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Persistent`   | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -71,6 +71,7 @@
     - [ConversionId](#conversionid)
 - [Debug](#debug)
   - [Validate credentials](#validate-credentials)
+  - [Version](#version)
 - [Troubleshoots](#troubleshoots)
   
 # Description
@@ -92,25 +93,27 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
+affise_version = '1.6.48'
 # Affise SDK library
-pod 'AffiseAttributionLib', '1.6.47'
+pod 'AffiseAttributionLib', affise_version
 # Affise modules
-pod 'AffiseModule/Advertising', '1.6.47'
-pod 'AffiseModule/Link', '1.6.47'
-pod 'AffiseModule/Status', '1.6.47'
-pod 'AffiseModule/Subscription', '1.6.47'
+pod 'AffiseModule/Advertising', affise_version
+pod 'AffiseModule/Link', affise_version
+pod 'AffiseModule/Status', affise_version
+pod 'AffiseModule/Subscription', affise_version
 ```
 
 Get source directly from GitHub
 
 ```ruby
+affise_version = '1.6.48'
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.47'
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
 # Affise modules
-pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.47'
-pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.47'
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.47'
-pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.47'
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
 ```
 
 ### Integrate as Swift Package Manager
@@ -183,7 +186,15 @@ For `objective-c` use:
 Check if library is initialized
 
 ```swift
-Affise.isInitialized()
+Affise
+    .settings(
+        affiseAppId: "Your appId",
+        secretKey: "Your secretKey" 
+    )
+    .setOnInitSuccess {
+        // Called then library is initialized
+    }
+    .start(app: application, launchOptions: launchOptions)
 ```
 
 #### Domain
@@ -212,11 +223,11 @@ Affise
 
 | Module         | Version                                                                              | Start    |
 | -------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising`  | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Link`         | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Persistent`   | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Status`       | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Subscription` | [`1.6.47`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising`  | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Link`         | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Persistent`   | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`       | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Subscription` | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -320,14 +331,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.6.47'
+pod 'AffiseSKAdNetwork', '1.6.48'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.47'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.48'
 ```
 
 For `swift` use:
@@ -1470,6 +1481,14 @@ Affise
 Affise.Debug.validate { status in
     // Handle validation status
 }
+```
+
+## Version
+
+Get Affise library version
+
+```swift
+Affise.Debug.version()
 ```
 
 # Troubleshoots

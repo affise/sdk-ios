@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.48] - 2025-03-25
+
+### Added
+
+- Api `Affise.settings.setOnInitSuccess`.
+- Api `Affise.settings.setOnInitError`.
+- Api `Affise.Debug.version`.
+
 ## [1.6.47] - 2025-03-12
 
 ### Fixed
@@ -164,6 +172,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.48]: https://github.com/affise/sdk-ios/compare/1.6.47...1.6.48
 [1.6.47]: https://github.com/affise/sdk-ios/compare/1.6.46...1.6.47
 [1.6.46]: https://github.com/affise/sdk-ios/compare/1.6.45...1.6.46
 [1.6.45]: https://github.com/affise/sdk-ios/compare/1.6.44...1.6.45

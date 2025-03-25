@@ -14,36 +14,40 @@ internal class AffiseComponent: AffiseApi {
         initProperties: AffiseInitProperties,
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) {
-        
-        self.app = app;
-        self.initProperties = initProperties;
-        self.launchOptions = launchOptions;
+        do {
+            self.app = app;
+            self.initProperties = initProperties;
+            self.launchOptions = launchOptions;
 
-//        sendGDPREventUseCase.sendForgetMeEvent()
-        webViewUseCase.initialize()
-        setPropertiesWhenInitUseCase.initialize(initProperties: initProperties)
-        sessionManager.initialize()
-//        oaidManager.init(app)
-//        retrieveInstallReferrerUseCase.startInstallReferrerRetrieve()
-        deeplinkManager.initialize(launchOptions: launchOptions)
-//        autoCatchingClickProvider.init(initProperties.autoCatchingClickEvents)
-//        metricsManager.setEnabledMetrics(initProperties.enabledMetrics)
+    //        sendGDPREventUseCase.sendForgetMeEvent()
+            webViewUseCase.initialize()
+            setPropertiesWhenInitUseCase.initialize(initProperties: initProperties)
+            sessionManager.initialize()
+    //        oaidManager.init(app)
+    //        retrieveInstallReferrerUseCase.startInstallReferrerRetrieve()
+            deeplinkManager.initialize(launchOptions: launchOptions)
+    //        autoCatchingClickProvider.init(initProperties.autoCatchingClickEvents)
+    //        metricsManager.setEnabledMetrics(initProperties.enabledMetrics)
 
-        moduleManager.initialize(
-            app: app,
-            dependencies: [
-                stringToSha256Converter,
-                networkService,
-                providersToJsonStringConverter,
-                postBackModelFactory,
-                postBackModelToJsonStringConverter
-            ]
-        )
-        firstAppOpenUseCase.initialize(moduleManager: moduleManager)
-        firstAppOpenUseCase.onAppCreated()
-        eventsManager.initialize()
+            moduleManager.initialize(
+                app: app,
+                dependencies: [
+                    stringToSha256Converter,
+                    networkService,
+                    providersToJsonStringConverter,
+                    postBackModelFactory,
+                    postBackModelToJsonStringConverter
+                ]
+            )
+            firstAppOpenUseCase.initialize(moduleManager: moduleManager)
+            firstAppOpenUseCase.onAppCreated()
+            try eventsManager.initialize()
 
-        isReady = true
+            isReady = true
+            initProperties.onInitSuccessHandler?()
+        } catch {
+            initProperties.onInitErrorHandler?(error)
+        }
     }
 
     func isInitialized() -> Bool {

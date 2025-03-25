@@ -9,5 +9,6 @@ target 'app' do
     pod 'AffiseAttributionLib', :path => '../../'
     pod 'AffiseSKAdNetwork', :path => '../../'
     pod 'AffiseModule', :path => '../../'
-    # pod 'AffiseInternal', :path => '../../'
+    # debug crossplatform
+    pod 'AffiseInternal', :path => '../../'
 end

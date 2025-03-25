@@ -40,6 +40,7 @@ public final class Affise: NSObject {
         }
     }
 
+    @available(*, deprecated, message: "Use Affise.settings().setOnInitSuccess { }")
     @objc
     public static func isInitialized() -> Bool {
         return api?.isInitialized() ?? false
@@ -353,6 +354,14 @@ public final class Affise: NSObject {
         @objc
         public static func network(_ callback: @escaping DebugOnNetworkCallback) {
             api?.debugNetworkUseCase.onRequest(callback)
+        }
+
+        /**
+         * Show version
+         */
+        @objc
+        public static func version() -> String {
+            return BuildConfig.AFFISE_VERSION
         }
     }
     

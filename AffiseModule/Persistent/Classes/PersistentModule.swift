@@ -4,7 +4,7 @@ import AffiseAttributionLib
 @objc(AffisePersistentModule)
 public final class PersistentModule: AffiseModule {
     
-    public override var version: String { "1.6.47" }
+    public override var version: String { "1.6.48" }
     
     lazy var persistentUseCase:PersistentUseCase = PersistentUseCaseImpl()
 }

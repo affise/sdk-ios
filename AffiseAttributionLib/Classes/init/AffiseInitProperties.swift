@@ -9,6 +9,8 @@ public class AffiseInitProperties: NSObject {
     let isProduction: Bool
     let secretKey: String?
     let domain: String?
+    let onInitSuccessHandler: OnInitSuccessHandler?
+    let onInitErrorHandler: OnInitErrorHandler?
     
     @objc
     public init(
@@ -18,7 +20,9 @@ public class AffiseInitProperties: NSObject {
         appToken: String? = nil,
         isProduction: Bool = true,
         secretKey: String? = nil,
-        domain: String? = nil
+        domain: String? = nil,
+        onInitSuccessHandler: OnInitSuccessHandler? = nil,
+        onInitErrorHandler: OnInitErrorHandler? = nil
     ) {
         self.affiseAppId = affiseAppId
         self.partParamName = partParamName
@@ -27,6 +31,8 @@ public class AffiseInitProperties: NSObject {
         self.isProduction = isProduction
         self.secretKey = secretKey
         self.domain = domain
+        self.onInitSuccessHandler = onInitSuccessHandler
+        self.onInitErrorHandler = onInitErrorHandler
         
         CloudConfig.setupDomain(domain)
     }
@@ -43,7 +49,9 @@ public class AffiseInitProperties: NSObject {
             appToken: nil,
             isProduction: true,
             secretKey: secretKey,
-            domain: nil
+            domain: nil,
+            onInitSuccessHandler: nil,
+            onInitErrorHandler: nil
         )
     }
 
@@ -60,7 +68,9 @@ public class AffiseInitProperties: NSObject {
             appToken: nil,
             isProduction: isProduction,
             secretKey: secretKey,
-            domain: nil
+            domain: nil,
+            onInitSuccessHandler: nil,
+            onInitErrorHandler: nil
         )
     }
 }
