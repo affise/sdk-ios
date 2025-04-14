@@ -30,7 +30,7 @@ internal class TransactionManagerSK1: NSObject {
             
             self.result(productId, .failure(AffiseSubscriptionError.purchaseFailed(transaction.error)))
                     
-            OperationEvent.create(transaction, product: product, type: type, failed: true)?
+            OperationEvent.createSK1(transaction, product: product, type: type, failed: true)?
                 .send()
         }
     }
@@ -47,7 +47,7 @@ internal class TransactionManagerSK1: NSObject {
             
             self.result(productId, .success(AffisePurchasedInfo(transaction, product.toAffiseProduct(type))))
                         
-            OperationEvent.create(transaction, product: product, type: type, failed: false)?
+            OperationEvent.createSK1(transaction, product: product, type: type, failed: false)?
                 .send()
         }
     }

@@ -37,7 +37,7 @@ class EventsManager {
     /**
      * Timer fo repeat send events
      */
-    private var timer: Timer?
+    private var timer: ScheduledTimer?
     
     private var scheduler: ScheduledTimer?
 
@@ -75,7 +75,7 @@ class EventsManager {
             //Start timer fo repeat send events
             self?.startTimer()
             
-            //Start Scheduler
+            //Start scheduler
             self?.startQueue()
         }
     }
@@ -93,6 +93,7 @@ class EventsManager {
      * Send events (if present) on schedule in case network failures
      */
     private func startQueue() {
+        scheduler?.stop()
         scheduler = ScheduledTimer(interval: EventsManager.SCHEDULER_SEND_REPEAT, repeats: true) { [weak self] in
             self?.sendEvents(withDelay: false, sendEmpty: false)
         }
@@ -106,33 +107,11 @@ class EventsManager {
      * Start timer fo repeat send events
      */
     private func startTimer() {
-        DispatchQueue.main.async { [weak self] in
-            //Stop timer if running
-            self?.stopTimer()
-            
-            //Create timer
-            guard let timer = self?.scheduledTimer() else { return }
-            self?.timer = timer
-            RunLoop.current.add(timer, forMode: .common)
-        }
-    }
-    
-    private func scheduledTimer() -> Timer {
-        if #available(iOS 10.0, *) {
-            return Timer.scheduledTimer(
-                withTimeInterval: EventsManager.TIME_SEND_REPEAT,
-                repeats: true
-            ) { [weak self] _ in
-                self?.fireTimer()
-            }
-        } else {
-            return Timer.scheduledTimer(
-                timeInterval: EventsManager.TIME_SEND_REPEAT,
-                target: self,
-                selector: #selector(self.fireTimer),
-                userInfo: nil,
-                repeats: true
-            )
+        //Stop timer if running
+        timer?.stop()
+        //Create timer
+        timer = ScheduledTimer(interval: EventsManager.TIME_SEND_REPEAT, repeats: true) { [weak self] in
+            self?.fireTimer()
         }
     }
 
@@ -140,10 +119,8 @@ class EventsManager {
      * Stop timer fo repeat send events
      */
     private func stopTimer() {
-        if timer == nil { return }
         //Stop timer
-        timer?.invalidate()
-        timer = nil
+        timer?.stop()
     }
 
     @objc

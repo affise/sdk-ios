@@ -24,9 +24,7 @@ extension Affise {
      */
     @objc
     public static func handleUserActivity(_ userActivity: NSUserActivity) {
-        if #available(iOS 11.0, *) {
-            Affise.handleReferrer(userActivity.referrerURL)
-        }
+        Affise.handleReferrer(userActivity.referrerURL)
         
         // Get URL components from the incoming user activity.
         Affise.handleDeeplink(userActivity.webpageURL)

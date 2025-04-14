@@ -21,20 +21,23 @@ internal class PropertiesProviderFactory {
     private let deviceUseCase: DeviceUseCase
     private let remarketingUseCase: RemarketingUseCase
     private let retrieveReferrerUseCase: RetrieveReferrerUseCase
+    private let networkInfoUseCase: NetworkInfoUseCase
     
-    init(app: UIApplication,
-         bundle: Bundle,
-         firstAppOpenUseCase: FirstAppOpenUseCase,
-         webViewUseCase: WebViewUseCase,
-         sessionManager: SessionManager,
-         preferences: UserDefaults,
-         initPropertiesStorage: InitPropertiesStorage,
-         stringToSha256Converter: StringToSHA256Converter,
-         logsManager: LogsManager,
-         deeplinkClickRepository: DeeplinkClickRepository,
-         deviceUseCase: DeviceUseCase,
-         remarketingUseCase: RemarketingUseCase,
-         retrieveReferrerUseCase: RetrieveReferrerUseCase
+    init(
+        app: UIApplication,
+        bundle: Bundle,
+        firstAppOpenUseCase: FirstAppOpenUseCase,
+        webViewUseCase: WebViewUseCase,
+        sessionManager: SessionManager,
+        preferences: UserDefaults,
+        initPropertiesStorage: InitPropertiesStorage,
+        stringToSha256Converter: StringToSHA256Converter,
+        logsManager: LogsManager,
+        deeplinkClickRepository: DeeplinkClickRepository,
+        deviceUseCase: DeviceUseCase,
+        remarketingUseCase: RemarketingUseCase,
+        retrieveReferrerUseCase: RetrieveReferrerUseCase,
+        networkInfoUseCase: NetworkInfoUseCase
     ) {
         self.app = app
         self.bundle = bundle
@@ -49,6 +52,7 @@ internal class PropertiesProviderFactory {
         self.deviceUseCase = deviceUseCase
         self.remarketingUseCase = remarketingUseCase
         self.retrieveReferrerUseCase = retrieveReferrerUseCase
+        self.networkInfoUseCase = networkInfoUseCase
     }
     
     func create() -> PostBackModelFactory {
@@ -90,9 +94,9 @@ internal class PropertiesProviderFactory {
                 RefTokenProvider(preferences: preferences),
                 RefTokensProvider(preferences: preferences),
                 UserAgentProvider(useCase: webViewUseCase),
-                MCCProvider(),
-                MNCProvider(),
-                IspNameProvider(),
+                MCCProvider(useCase: networkInfoUseCase),
+                MNCProvider(useCase: networkInfoUseCase),
+                IspNameProvider(useCase: networkInfoUseCase),
                 IsEmulatorProvider(useCase: deviceUseCase),
                 RegionProvider(),
                 CountryProvider(),

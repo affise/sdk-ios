@@ -25,15 +25,11 @@ class NetworkTypeProvider: StringPropertyProvider {
         if isReachable {
             if isWWAN {
                 let networkInfo = CTTelephonyNetworkInfo()
-                var serviceCurrentRadioAccessTechnology: [String : String]?
-                if #available(iOS 12.0, *) {
-                    serviceCurrentRadioAccessTechnology = networkInfo.serviceCurrentRadioAccessTechnology
-                }
+                let serviceCurrentRadioAccessTechnology: [String : String]?  = networkInfo.serviceCurrentRadioAccessTechnology                
                 
                 guard let carrierTypeName = serviceCurrentRadioAccessTechnology?.first?.value else {
                     return nil
                 }
-                
                 
                 if #available(iOS 14.1, *) {
                     if carrierTypeName == CTRadioAccessTechnologyNRNSA {

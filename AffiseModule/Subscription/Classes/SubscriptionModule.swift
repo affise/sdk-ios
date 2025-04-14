@@ -6,7 +6,7 @@ import AffiseAttributionLib
 @objc(AffiseSubscriptionModule)
 public final class SubscriptionModule: AffiseModule {
     
-    public override var version: String { "1.6.48" }
+    public override var version: String { "1.6.49" }
     
     lazy var storeManager: StoreManager = StoreManager()
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.49] - 2025-04-14
+
+### Removed
+
+- Remove code support for `iOS` version lesser then `12`
+
+### Changed
+
+- Update EventsManager scheduler
+
 ## [1.6.48] - 2025-03-25
 
 ### Added
@@ -172,6 +182,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.49]: https://github.com/affise/sdk-ios/compare/1.6.48...1.6.49
 [1.6.48]: https://github.com/affise/sdk-ios/compare/1.6.47...1.6.48
 [1.6.47]: https://github.com/affise/sdk-ios/compare/1.6.46...1.6.47
 [1.6.46]: https://github.com/affise/sdk-ios/compare/1.6.45...1.6.46

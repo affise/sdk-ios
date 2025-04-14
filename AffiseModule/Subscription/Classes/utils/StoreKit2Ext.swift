@@ -5,6 +5,14 @@ import AffiseAttributionLib
 
 @available(iOS 15, *)
 internal extension Product {
+
+    var currencyCode: String {
+    #if compiler(>=5.7)
+        return self.priceFormatStyle.currencyCode
+    #else
+        return ""
+    #endif
+    }
     
     var toAffiseSubscriptionType: AffiseProductType? {
         switch self.type {
@@ -21,16 +29,11 @@ internal extension Product {
         }
     }
 
-    var toAffiseProductPrice: AffiseProductPrice {
-        var currencyCode = ""
-    #if compiler(>=5.7)
-        currencyCode = self.priceFormatStyle.currencyCode
-    #endif
-        
+    var toAffiseProductPrice: AffiseProductPrice {       
         return AffiseProductPrice(
-        value: self.price,
-        currencyCode: currencyCode,
-        formattedPrice: self.displayPrice
+            value: self.price,
+            currencyCode: currencyCode,
+            formattedPrice: self.displayPrice
         )
     }
 

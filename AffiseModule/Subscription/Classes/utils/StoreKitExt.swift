@@ -23,14 +23,11 @@ internal extension SKPaymentTransaction {
 internal extension SKProduct {
     
     var toAffiseSubscriptionType: AffiseProductType? {
-        if #available(iOS 11.2, *) {
-            if self.subscriptionPeriod != nil {
-                return .RENEWABLE_SUBSCRIPTION
-            }
-        } else if #available(iOS 12.0, *) {
-            if self.subscriptionGroupIdentifier != nil {
-                return .RENEWABLE_SUBSCRIPTION
-            }
+        if self.subscriptionPeriod != nil {
+            return .RENEWABLE_SUBSCRIPTION
+        }
+        if self.subscriptionGroupIdentifier != nil {
+            return .RENEWABLE_SUBSCRIPTION
         }
         return nil
     }
@@ -40,22 +37,12 @@ internal extension SKProduct {
     }
     
     var toAffiseProductSubscriptionDetail: AffiseProductSubscriptionDetail? {
-        var offerId: String? = nil
-        if #available(iOS 12.0, *) {
-            offerId = self.subscriptionGroupIdentifier
-        }
-        if #available(iOS 11.2, *) {
-            return self.subscriptionPeriod?.toAffiseProductSubscriptionDetail(offerId)
-        }
-        return nil
+        let offerId: String? = self.subscriptionGroupIdentifier
+        return self.subscriptionPeriod?.toAffiseProductSubscriptionDetail(offerId)
     }
     
     func endTimestap(start: Date) -> Int64 {
-        if #available(iOS 11.2, *) {
-            return self.subscriptionPeriod?.add(to: start).toTimestamp ?? 0
-        } else {
-            return 0
-        }
+        return self.subscriptionPeriod?.add(to: start).toTimestamp ?? 0
     }
       
     func toAffiseProduct(_ type: AffiseProductType? = nil) -> AffiseProduct {
@@ -71,7 +58,7 @@ internal extension SKProduct {
     }
 }
 
-@available(iOS 11.2, *)
+
 internal extension SKProductSubscriptionPeriod {
     
     func add(to: Date) -> Date {

@@ -4,13 +4,13 @@
 
 | Pod                         | Version                   |
 | --------------------------- |:-------------------------:|
-| `AffiseAttributionLib`      | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`         | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`         | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Persistent`   | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`       | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Subscription` | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib`      | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`         | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Persistent`   | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -31,6 +31,7 @@
 - [Features](#features)
   - [ProviderType identifiers collection](#providertype-identifiers-collection)
     - [Attribution](#attribution)
+    - [Advertising](#advertising)
   - [Event send control](#event-send-control)
   - [Events tracking](#events-tracking)
   - [Custom events tracking](#custom-events-tracking)
@@ -93,7 +94,7 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.6.48'
+affise_version = '1.6.49'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
@@ -106,7 +107,7 @@ pod 'AffiseModule/Subscription', affise_version
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.6.48'
+affise_version = '1.6.49'
 # Affise SDK library
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
 # Affise modules
@@ -223,11 +224,11 @@ Affise
 
 | Module         | Version                                                                              | Start    |
 | -------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising`  | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Link`         | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Persistent`   | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Status`       | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Subscription` | [`1.6.48`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising`  | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `Link`         | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Persistent`   | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`       | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Subscription` | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -331,14 +332,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.6.48'
+pod 'AffiseSKAdNetwork', '1.6.49'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.48'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.49'
 ```
 
 For `swift` use:
@@ -463,7 +464,6 @@ To match users with events and data library is sending, these `ProviderType` ide
 - `DEVICE_ATLAS_ID`
 - `AFFISE_DEVICE_ID`
 - `AFFISE_ALT_DEVICE_ID`
-- `ADID`
 - `ANDROID_ID`
 - `ANDROID_ID_MD5`
 - `MAC_SHA1`
@@ -512,6 +512,10 @@ To match users with events and data library is sending, these `ProviderType` ide
 - `AFFISE_APP_OPENED`
 - `PUSHTOKEN`
 - `IS_EMULATOR`
+
+### Advertising
+
+- `ADID`
 
 ## Event send control
 

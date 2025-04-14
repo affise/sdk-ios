@@ -31,7 +31,6 @@ internal class ProductManagerSK2: NSObject {
         } catch {
             return .failure(error)
         }
-        return .failure(AffiseSubscriptionError.productNotFound(productsIds))
     }
 }
 

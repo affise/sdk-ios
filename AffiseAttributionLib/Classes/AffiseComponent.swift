@@ -157,6 +157,7 @@ internal class AffiseComponent: AffiseApi {
     lazy var providersToJsonStringConverter: ProvidersToJsonStringConverter = ProvidersToJsonStringConverter()
     lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()
     lazy var remarketingUseCase: RemarketingUseCase = RemarketingUseCaseImpl()
+    lazy var networkInfoUseCase: NetworkInfoUseCase = NetworkInfoUseCaseImpl()
 
     /**
      * PostBackModelFactory
@@ -174,7 +175,8 @@ internal class AffiseComponent: AffiseApi {
         deeplinkClickRepository: deeplinkClickRepository,
         deviceUseCase: deviceUseCase,
         remarketingUseCase: remarketingUseCase,
-        retrieveReferrerUseCase: retrieveReferrerUseCase
+        retrieveReferrerUseCase: retrieveReferrerUseCase,
+        networkInfoUseCase: networkInfoUseCase
     ).create()
 
     lazy var retrieveReferrerUseCase: RetrieveReferrerUseCase = RetrieveReferrerUseCase()

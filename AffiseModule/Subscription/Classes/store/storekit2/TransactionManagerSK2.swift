@@ -54,13 +54,13 @@ internal class TransactionManagerSK2: NSObject {
     
     func onFailed(_ transaction: Transaction?, _ product: Product, _ type: AffiseProductType? = nil) {
         let productType = product.toAffiseSubscriptionType ?? type
-        OperationEvent.create(transaction, product: product, type: productType, failed: true)?
+        OperationEvent.createSK2(transaction, product: product, type: productType, failed: true)?
             .send()
     }
     
     func onSuccess(_ transaction: Transaction, _ product: Product, _ type: AffiseProductType? = nil) {
         let productType = product.toAffiseSubscriptionType ?? type
-        OperationEvent.create(transaction, product: product, type: productType, failed: false)?
+        OperationEvent.createSK2(transaction, product: product, type: productType, failed: false)?
             .send()
     }
     
@@ -72,7 +72,7 @@ internal class TransactionManagerSK2: NSObject {
                     await transaction.finish()
                     onSuccess(transaction, product, type)
                     return .success(AffisePurchasedInfo(transaction, product.toAffiseProduct(type)))
-                case .success(.unverified(let transaction, let error)):
+                case .success(.unverified(let transaction, _)):
                     onSuccess(transaction, product, type)
                     return .success(AffisePurchasedInfo(transaction, product.toAffiseProduct(type)))
                 case .pending:

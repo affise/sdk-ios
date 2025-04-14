@@ -9,7 +9,6 @@ class AdvertisingIdManagerImpl : AdvertisingIdManager {
     var advertisingId: String?
     
     func initialize() {
-        
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization { [weak self] status in
                 guard let self = self else {

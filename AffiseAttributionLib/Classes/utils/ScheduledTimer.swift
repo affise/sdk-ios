@@ -29,21 +29,11 @@ internal class ScheduledTimer {
     }
 
     private func scheduledTimer(interval: TimeInterval, repeats: Bool) -> Timer {
-        if #available(iOS 10.0, *) {
-            return Timer.scheduledTimer(
-                withTimeInterval: interval,
-                repeats: repeats
-            ) { [weak self] _ in
-                self?.onTimerExecute()
-            }
-        } else {
-            return Timer.scheduledTimer(
-                timeInterval: interval,
-                target: self,
-                selector: #selector(self.onTimerExecute),
-                userInfo: nil,
-                repeats: repeats
-            )
+        return Timer.scheduledTimer(
+            withTimeInterval: interval,
+            repeats: repeats
+        ) { [weak self] _ in
+            self?.onTimerExecute()
         }
     }
 }

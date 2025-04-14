@@ -6,9 +6,14 @@ import CoreTelephony
  */
 class MCCProvider: StringPropertyProvider {
     
+    private let useCase: NetworkInfoUseCase
+    
+    init(useCase: NetworkInfoUseCase) {
+        self.useCase = useCase
+    }
+
     override func provide() -> String? {
-        let networkInfo = CTTelephonyNetworkInfo()
-        let carrier = networkInfo.subscriberCellularProvider
+        let carrier = useCase.firstCarrier()
 
         // Get carrier name
         let carrierName = carrier?.mobileCountryCode
