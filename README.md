@@ -244,6 +244,18 @@ Affise.Module.getModulesInstalled()
 
 #### Module Advertising
 
+> **Warning**
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> [Start module **Manually**](#modules)
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+```swift
+Affise.Module.moduleStart(.Advertising)
+```
+
 This module required to Use [`IDFA`](https://developer.apple.com/documentation/adsupport/asidentifiermanager/advertisingidentifier) (Identifier for advertisers)
 
 > **Warning**
