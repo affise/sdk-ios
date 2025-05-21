@@ -49,7 +49,7 @@ func titleByType(_ type: AffiseProductType) -> String {
 @available(iOS 13.0, *)
 struct StoreView: View {
     
-    @State var hasSubscriptionModule: Bool = Affise.Module.hasSubscriptionModule()
+    @State var hasSubscriptionModule: Bool = Affise.Module.Subscription.hasModule()
        
     var body: some View {
         VStack {
@@ -101,7 +101,7 @@ struct Products: View {
     }
     
     func initProducts() {
-        Affise.Module.fetchProducts(Product.allIds) { result in
+        Affise.Module.Subscription.fetchProducts(Product.allIds) { result in
             switch result {
             case .failure(let error):
                 print("\(error)")
@@ -165,7 +165,7 @@ struct ProductRowView: View {
     }
     
     func purchase(_ product: AffiseProduct) {
-        Affise.Module.purchase(product, Product.getType(product.productId)) { result in
+        Affise.Module.Subscription.purchase(product, Product.getType(product.productId)) { result in
             switch result {
             case .failure(let error):
                 print("\(error)")

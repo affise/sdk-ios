@@ -1,41 +1,61 @@
-class AffiseSubscription {
-    private static var api: AffiseSubscriptionApi? {
-        get {
-            if module != nil {
-                return module
-            } else {
-                module = Affise.Module.getApi(.Subscription) as? AffiseSubscriptionApi
-            }
-            return module
-        }
-    }
+import Foundation
 
-    private static var module: AffiseSubscriptionApi? = nil
-    
-    public static func hasSubscriptionModule() -> Bool {
-        return api != nil
-    }
-    
-    public static func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
-        api?.fetchProducts(productsIds, callback)
-    }
 
-    public static func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
-        api?.purchase(product, type, callback)
+class AffiseSubscription : NSObject, AffiseModuleApiWrapper {
+    typealias API = AffiseSubscriptionApi
+    var api: API?
+    var module: AffiseModules = .Subscription
+    var moduleManager: AffiseModuleManager?
+    
+    init(_ moduleManager: AffiseModuleManager?) {
+        self.moduleManager = moduleManager
     }
 }
 
-
-extension Affise.Module {
-    public static func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
-        AffiseSubscription.fetchProducts(productsIds, callback)
-    }
-
-    public static func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
-        AffiseSubscription.purchase(product, type, callback)
+extension AffiseSubscription : AffiseSubscriptionApi {
+    
+    func hasModule() -> Bool { api != nil }
+    
+    func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
+        moduleApi?.fetchProducts(productsIds, callback)
     }
     
+    func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+        moduleApi?.purchase(product, type, callback)
+    }
+}
+
+extension AffiseSubscription {
+    @available(*, deprecated, message: "Method moved to Affise.Module.Subscription", renamed: "Module.Subscription.hasModule")
     public static func hasSubscriptionModule() -> Bool {
-        return AffiseSubscription.hasSubscriptionModule()
+        return Affise.Module.Subscription.hasModule()
+    }
+    
+    @available(*, deprecated, message: "Method moved to Affise.Module.Subscription", renamed: "Module.Subscription.fetchProducts")
+    public static func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
+        Affise.Module.Subscription.fetchProducts(productsIds, callback)
+    }
+    
+    @available(*, deprecated, message: "Method moved to Affise.Module.Subscription", renamed: "Module.Subscription.purchase")
+    public static func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+        Affise.Module.Subscription.purchase(product, type, callback)
+    }
+}
+
+extension Affise.Module {
+    
+    @available(*, deprecated, message: "Method moved to Affise.Module.Subscription", renamed: "Module.Subscription.hasModule")
+    public static func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
+        Affise.Module.Subscription.fetchProducts(productsIds, callback)
+    }
+    
+    @available(*, deprecated, message: "Method moved to Affise.Module.Subscription", renamed: "Module.Subscription.fetchProducts")
+    public static func purchase(_ product: AffiseProduct, _ type: AffiseProductType?, _ callback: @escaping AffiseResultCallback<AffisePurchasedInfo>) {
+        Affise.Module.Subscription.purchase(product, type, callback)
+    }
+    
+    @available(*, deprecated, message: "Method moved to Affise.Module.Subscription", renamed: "Module.Subscription.purchase")
+    public static func hasSubscriptionModule() -> Bool {
+        return Affise.Module.Subscription.hasModule()
     }
 }

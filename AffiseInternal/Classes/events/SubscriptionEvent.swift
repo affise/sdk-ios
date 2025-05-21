@@ -14,7 +14,14 @@ internal class SubscriptionEvent {
         let userData = map.getUserData()
         var dataMap = map.getEventData()
         let data = dataMap.removeSubtypeFields(type).toArray()
+        let category = map.getCategory()
 
-        return UserCustomSubscriptionEvent(type: type, subtype: subType, data: data, userData: userData)
+        return UserCustomSubscriptionEvent(
+            type: type, 
+            subtype: subType,
+            data: data, 
+            userData: userData,
+            category: category
+        )
     }
 }

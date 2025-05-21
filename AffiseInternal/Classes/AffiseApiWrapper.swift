@@ -108,7 +108,14 @@ public class AffiseApiWrapper: NSObject {
         case .MODULE_START: callModuleStart(api, map: map, result: result)
         case .GET_MODULES_INSTALLED: callGetModulesInstalled(api, map: map, result: result)
         case .GET_STATUS_CALLBACK: callGetStatusCallback(api, map: map, result: result)
+        
+        // AppsFlyer Module
+        case .MODULE_APPSFLYER_LOG_EVENT: callModuleAppsFlyerLogEvent(api, map: map, result: result)
+
+        // Link Module
         case .MODULE_LINK_LINK_RESOLVE_CALLBACK: callModuleLinkLinkResolveCallback(api, map: map, result: result)
+        
+        // Subscription Module
         case .MODULE_SUBS_FETCH_PRODUCTS_CALLBACK: callModuleSubsFetchProductsCallback(api, map: map, result: result)
         case .MODULE_SUBS_PURCHASE_CALLBACK: callModuleSubsPurchaseCallback(api, map: map, result: result)
         ////////////////////////////////////////
@@ -196,17 +203,17 @@ public class AffiseApiWrapper: NSObject {
         event.sendNow({
             let data: [String: Any?] = [
                 self.UUID: uuid,
-                self.TAG: "success",
+                self.TAG: DataName.SUCCESS,
             ]
             self.callback?(api.method, data)
         }) { response in
             let data: [String: Any?] = [
                 self.UUID: uuid,
-                self.TAG: "failed",
+                self.TAG: DataName.FAILED,
                 api.method: [
-                    "code": response.code,
-                    "message": response.message,
-                    "body": "\(response.body?.toJsonGuardString() ?? "")",
+                    DataName.CODE: response.code,
+                    DataName.MESSAGE: response.message,
+                    DataName.BODY: "\(response.body?.toJsonGuardString() ?? "")",
                 ],
             ]
             self.callback?(api.method, data)
@@ -446,12 +453,12 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        guard let fineValue: NSNumber = data.opt("fineValue") else {
+        guard let fineValue: NSNumber = data.opt(DataName.FINE_VALUE) else {
             result?.error("api [\(api.method)]: fineValue not set")
             return
         }
 
-        let coarseValue: String? = data.opt("coarseValue")
+        let coarseValue: String? = data.opt(DataName.COARSE_VALUE)
 
         SKAdWrapper.postback(result, fineValue: fineValue.intValue, coarseValue: coarseValue) { error in
             let data: [String: Any?] = [
@@ -481,8 +488,8 @@ public class AffiseApiWrapper: NSObject {
         Affise.Debug.network { request, response in
             let data: [String: Any?] = [
                 api.method: [
-                    "request": DataMapper.fromRequest(request),
-                    "response": DataMapper.fromResponse(response),
+                    DataName.REQUEST: DataMapper.fromRequest(request),
+                    DataName.RESPONSE: DataMapper.fromResponse(response),
                 ],
             ]
             self.callback?(api.method, data)
@@ -545,6 +552,24 @@ public class AffiseApiWrapper: NSObject {
         result?.success(nil)
     }
 
+    // AppsFlyer Module
+    private func callModuleAppsFlyerLogEvent(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) { 
+        guard let data: [String: Any?] = map.opt(api) else {
+            result?.error("api [\(api.method)]: no valid data")
+            return
+        }
+
+        guard let eventName: String = data.opt(DataName.EVENT_NAME) else {
+            result?.error("api [\(api.method)]: eventName not set")
+            return
+        }
+
+        let eventValues: [String:Any]? = data.opt(DataName.EVENT_VALUES)
+
+        Affise.Module.AppsFlyer.logEvent(eventName, eventValues ?? [:])
+        result?.success(nil)
+    }
+
     // Link Module
     private func callModuleLinkLinkResolveCallback(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         guard let uuid: String = map.opt(UUID) else {
@@ -557,7 +582,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.Module.linkResolve(url) { redirectUrl in
+        Affise.Module.Link.resolve(url) { redirectUrl in
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: redirectUrl,
@@ -579,7 +604,7 @@ public class AffiseApiWrapper: NSObject {
             return
         }
 
-        Affise.Module.fetchProducts(ids) { fetchResult in
+        Affise.Module.Subscription.fetchProducts(ids) { fetchResult in
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: DataMapper.fromFetchProductsResult(fetchResult),
@@ -597,14 +622,14 @@ public class AffiseApiWrapper: NSObject {
 
         let data: [String: Any?]? = map.opt(api)
 
-        guard let product: AffiseProduct = DataMapper.toAffiseProduct(data?.opt("product")) else {
+        guard let product: AffiseProduct = DataMapper.toAffiseProduct(data?.opt(DataName.PRODUCT)) else {
             result?.error("api [\(api.method)]: product not set")
             return
         }
         
-        let type: AffiseProductType? = DataMapper.toAffiseProductType(data?.opt("type"))
+        let type: AffiseProductType? = DataMapper.toAffiseProductType(data?.opt(DataName.TYPE))
 
-        Affise.Module.purchase(product, type) { purchaseResult in
+        Affise.Module.Subscription.purchase(product, type) { purchaseResult in
             let data: [String: Any?] = [
                 self.UUID: uuid,
                 api.method: DataMapper.fromPurchaseResult(purchaseResult),

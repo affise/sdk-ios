@@ -2,14 +2,14 @@ import Foundation
 import AffiseAttributionLib
 
 @objc(AffisePersistentModule)
-public final class PersistentModule: AffiseModule {
+public final class PersistentModule: AffiseModule, AffisePersistentApi {
     
-    public override var version: String { "1.6.49" }
+    public override var version: String { "1.6.50" }
     
     lazy var persistentUseCase:PersistentUseCase = PersistentUseCaseImpl()
-}
-
-extension PersistentModule : AffisePersistentApi  {
+    
+    public func hasModule() -> Bool { true }
+    
     public func set(_ tag: String, _ value: String) -> Bool {
         return persistentUseCase.set(tag, value)
     }

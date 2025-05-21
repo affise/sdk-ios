@@ -4,13 +4,14 @@
 
 | Pod                         | Version                   |
 | --------------------------- |:-------------------------:|
-| `AffiseAttributionLib`      | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`         | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/Advertising`  | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`         | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Persistent`   | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`       | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Subscription` | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib`      | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`         | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/Advertising`  | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/AppsFlyer`    | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Persistent`   | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -23,6 +24,7 @@
       - [Domain](#domain)
     - [Modules](#modules)
       - [Module Advertising](#module-advertising)
+      - [Module AppsFlyer](#module-appsflyer)
       - [Module Link](#module-link)
       - [Module Status](#module-status)
       - [Module Subscription](#module-subscription)
@@ -94,7 +96,7 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.6.49'
+affise_version = '1.6.50'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
@@ -107,7 +109,7 @@ pod 'AffiseModule/Subscription', affise_version
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.6.49'
+affise_version = '1.6.50'
 # Affise SDK library
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
 # Affise modules
@@ -224,11 +226,12 @@ Affise
 
 | Module         | Version                                                                              | Start    |
 | -------------- |:------------------------------------------------------------------------------------:|----------|
-| `Advertising`  | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `Link`         | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Persistent`   | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Status`       | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Subscription` | [`1.6.49`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising`  | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `AppsFlyer`    | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Link`         | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Persistent`   | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`       | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Subscription` | [`1.6.50`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -270,6 +273,27 @@ This module required to Use [`IDFA`](https://developer.apple.com/documentation/a
 
 Open `info.plist` and add key `NSUserTrackingUsageDescription` with string value. For more information [read requirements](#requirements)
 
+#### Module AppsFlyer
+
+Send AppsFlyer event data to Affise 
+
+[AppsFlyer In-App Events Docs](https://dev.appsflyer.com/hc/docs/in-app-events-ios#example-send-add-to-wishlist-event)
+
+```swift
+//AppsFlyer event data
+let eventValues: [String: Any] = [
+    AFEventParamPrice: 1234.56,
+    AFEventParamContentId : "1234567",
+]
+// Send AppsFlyer event
+AppsFlyerLib.shared().logEvent(
+    name: AFEventAddToWishlist, 
+    values: eventValues
+)
+// Send AppsFlyer data to Affise
+Affise.Module.AppsFlyer.logEvent(AFEventAddToWishlist, withValues: eventValues)
+```
+
 #### Module Link
 
 Return last url in chan of redirection
@@ -277,7 +301,7 @@ Return last url in chan of redirection
 🟥Support MAX 10 redirections🟥
 
 ```swift
-Affise.Module.linkResolve("SITE_WITH_REDIRECTION") { redirectUrl in
+Affise.Module.Link.resolve("SITE_WITH_REDIRECTION") { redirectUrl in
     // handle redirect url
 }
 ```
@@ -297,7 +321,7 @@ Get products by ids:
 ```swift
 let ids = ["exampple.product.id_1", "exampple.product.id_2"]
 
-Affise.Module.fetchProducts(ids) { result in
+Affise.Module.Subscription.fetchProducts(ids) { result in
     switch result {
     case .failure(let error):
         print("\(error)")
@@ -312,7 +336,7 @@ Purchase product:
 
 ```swift
 // Specify product type for correct affise event
-Affise.Module.purchase(product, .CONSUMABLE) { result in
+Affise.Module.Subscription.purchase(product, .CONSUMABLE) { result in
     switch result {
     case .failure(let error):
         print("\(error)")
@@ -344,14 +368,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.6.49'
+pod 'AffiseSKAdNetwork', '1.6.50'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.49'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.50'
 ```
 
 For `swift` use:

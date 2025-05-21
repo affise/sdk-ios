@@ -4,18 +4,16 @@ import AffiseAttributionLib
 
 
 @objc(AffiseSubscriptionModule)
-public final class SubscriptionModule: AffiseModule {
+public final class SubscriptionModule: AffiseModule, AffiseSubscriptionApi {
     
-    public override var version: String { "1.6.49" }
+    public override var version: String { "1.6.50" }
     
     lazy var storeManager: StoreManager = StoreManager()
 
     override public func start() {
     }
-}
-
-
-extension SubscriptionModule: AffiseSubscriptionApi {
+    
+    public func hasModule() -> Bool { true }
     
     public func fetchProducts(_ productsIds: [String], _ callback: @escaping AffiseResultCallback<AffiseProductsResult>) {
         storeManager.fetchProducts(productsIds, callback)

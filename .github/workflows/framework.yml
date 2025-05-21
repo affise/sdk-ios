@@ -40,7 +40,7 @@ jobs:
           make install
 
       - name: Create AffiseAttributionLib XCFramework
-        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleAppsFlyer AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
 
       # Release
       - name: Release
@@ -65,7 +65,31 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           asset_path: ./AffiseAttributionLib.zip
           asset_name: AffiseAttributionLib-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip    
+          asset_content_type: application/zip  
+
+      # Upload AffiseModuleAdvertising
+      - name: Upload Release AffiseModuleAdvertising Framework 📦
+        if: ${{ success() }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./AffiseModuleAdvertising.zip
+          asset_name: AffiseModuleAdvertising-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+          asset_content_type: application/zip
+
+      # Upload AffiseModuleAppsFlyer
+      - name: Upload Release AffiseModuleAppsFlyer Framework 📦
+        if: ${{ success() }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./AffiseModuleAppsFlyer.zip
+          asset_name: AffiseModuleAppsFlyer-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+          asset_content_type: application/zip
 
       # Upload AffiseModuleLink
       - name: Upload Release AffiseModuleLink Framework 📦
@@ -101,18 +125,6 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           asset_path: ./AffiseModuleStatus.zip
           asset_name: AffiseModuleStatus-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
-
-      # Upload AffiseModuleAdvertising
-      - name: Upload Release AffiseModuleAdvertising Framework 📦
-        if: ${{ success() }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleAdvertising.zip
-          asset_name: AffiseModuleAdvertising-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
           asset_content_type: application/zip
 
       # Upload AffiseModuleSubscription

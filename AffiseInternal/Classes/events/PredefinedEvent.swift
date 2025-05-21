@@ -8,7 +8,13 @@ internal class PredefinedEvent {
 
         let timeStamp = map.getTimeStamp() ?? timestamp()
         let userData = map.getUserData()
+        let category = map.getCategory()
 
-        return UserCustomEvent(eventName: eventName, userData: userData, timeStampMillis: timeStamp)
+        return UserCustomEvent(
+            eventName: eventName, 
+            userData: userData, 
+            timeStampMillis: timeStamp,
+            category: category
+        )
     }
 }

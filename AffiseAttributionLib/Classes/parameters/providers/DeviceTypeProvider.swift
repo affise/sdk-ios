@@ -20,7 +20,8 @@ class DeviceTypeProvider: StringPropertyProvider {
             return "car"
         case .mac:
             return "mac"
-        @unknown default:
+//        @unknown
+        default:
             return "smartphone"
         }
     }

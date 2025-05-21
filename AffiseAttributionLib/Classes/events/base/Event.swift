@@ -168,4 +168,10 @@ open class Event: NSObject {
     public func customPredefined() -> PredefinedCustom {
         return predefinedCustom
     }
+
+    func addRawParameters(_ parameters: [String:Any]) {
+        for (key, value) in parameters {
+            predefinedParameters.append(("\(PredefinedConstants.PREFIX)\(key)", value))
+        }
+    }
 }

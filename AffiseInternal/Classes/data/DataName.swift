@@ -1,8 +1,16 @@
 import Foundation
 
 internal class DataName {
+    static let TYPE = "type"
+    static let REQUEST = "request"
+    static let RESPONSE = "response"
+
+    static let FAILED = "failed"
     static let SUCCESS = "success"
     static let ERROR = "error"
+
+    static let FINE_VALUE = "fineValue"
+    static let COARSE_VALUE = "coarseValue"
 
     static let PRODUCTS = "products"
     static let INVALID_IDS = "invalidIds"
@@ -38,4 +46,7 @@ internal class DataName {
     static let TIME_UNIT = "timeUnit"
     static let NUMBER_OF_UNITS = "numberOfUnits"
     static let PRODUCT_DETAILS = "productDetails"
+
+    static let EVENT_NAME = "eventName"
+    static let EVENT_VALUES = "eventValues"
 }

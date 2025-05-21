@@ -46,7 +46,9 @@ public enum AffiseApiMethod: Int {
     ////////////////////////////////////////
     case MODULE_START
     case GET_MODULES_INSTALLED
-    case GET_STATUS_CALLBACK
+    case GET_STATUS_CALLBACK   
+    // AppsFlyer Module
+    case MODULE_APPSFLYER_LOG_EVENT
     // Link Module
     case MODULE_LINK_LINK_RESOLVE_CALLBACK
     // Subscription Module
@@ -102,6 +104,8 @@ public enum AffiseApiMethod: Int {
         case .MODULE_START: return "module_start"
         case .GET_MODULES_INSTALLED: return "get_modules_installed"
         case .GET_STATUS_CALLBACK: return "get_status_callback"
+        // AppsFlyer Module
+        case .MODULE_APPSFLYER_LOG_EVENT: return "module_appsflyer_log_event"
         // Link Module
         case .MODULE_LINK_LINK_RESOLVE_CALLBACK: return "module_link_link_resolve_callback"
         // Subscription Module

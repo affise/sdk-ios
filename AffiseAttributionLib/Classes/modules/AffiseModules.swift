@@ -4,6 +4,7 @@ import Foundation
 @objc
 public enum AffiseModules: Int {
     case Advertising
+    case AppsFlyer
     case Link
     case Persistent
     case Status
@@ -12,6 +13,7 @@ public enum AffiseModules: Int {
     internal var enumValue: String {
         switch self {
         case .Advertising: return "Advertising"
+        case .AppsFlyer: return "AppsFlyer"
         case .Link: return "Link"
         case .Persistent: return "Persistent"
         case .Status: return "Status"
@@ -31,6 +33,6 @@ extension AffiseModules: CaseIterable, CustomStringConvertible {
     public var description: String { enumValue }
     
     public static func from(_ name: String) -> AffiseModules? {
-        return allCases.first { $0.className().contains(name)  }
+        return allCases.first { $0.enumValue.contains(name)  }
     }
 }

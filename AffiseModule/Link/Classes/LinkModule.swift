@@ -3,9 +3,9 @@ import UIKit
 import AffiseAttributionLib
 
 @objc(AffiseLinkModule)
-public final class LinkModule: AffiseModule {
+public final class LinkModule: AffiseModule, AffiseLinkApi {
     
-    public override var version: String { "1.6.49" }
+    public override var version: String { "1.6.50" }
     
     private var useCase: LinkResolveUseCase? = nil
         
@@ -21,11 +21,10 @@ public final class LinkModule: AffiseModule {
             networkService: networkService!
         )
     }
-}
-
-extension LinkModule : AffiseLinkApi {
-
-    public func linkResolve(_ url: String, _ callback: @escaping AffiseLinkCallback) {
+    
+    public func hasModule() -> Bool { true }
+    
+    public func resolve(_ url: String, _ callback: @escaping AffiseLinkCallback) {
         useCase?.linkResolve(url, callback) ?? callback("")
     }
 }

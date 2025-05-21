@@ -333,6 +333,14 @@ public final class Affise: NSObject {
         internal static func getApi(_ module: AffiseModules) -> AffiseModuleApi? {
             return api?.moduleManager.api(module)
         }
+
+        @objc
+        public static let AppsFlyer: AffiseAppsFlyerApi = AffiseAppsFlyer(api?.moduleManager)
+
+        @objc
+        public static let Link: AffiseLinkApi = AffiseLink(api?.moduleManager)
+        
+        public static let Subscription: AffiseSubscriptionApi = AffiseSubscription(api?.moduleManager)
     }
 
     public class Debug {

@@ -1,33 +1,40 @@
 import Foundation
 
-class AffiseLink {
-    private static var api: AffiseLinkApi? {
-        get {
-            if module != nil {
-                return module
-            } else {
-                module = Affise.Module.getApi(.Link) as? AffiseLinkApi
-            }
-            return module
-        }
-    }
-    
-    private static var module: AffiseLinkApi? = nil
 
-   /**
-    * Module Link url Resolve
-    */
-    public static func linkResolve(_ url: String, _ callback: @escaping AffiseLinkCallback) {
-        api?.linkResolve(url, callback) ?? callback("")
+class AffiseLink : NSObject, AffiseModuleApiWrapper {
+    typealias API = AffiseLinkApi
+    var api: API?
+    var module: AffiseModules = .Link
+    var moduleManager: AffiseModuleManager?
+    
+    init(_ moduleManager: AffiseModuleManager?) {
+        self.moduleManager = moduleManager
     }
 }
 
-extension Affise.Module {
+extension AffiseLink : AffiseLinkApi {
+    
+    func hasModule() -> Bool { api != nil }
     
     /**
      * Module Link url Resolve
      */
+    func resolve(_ url: String, _ callback: @escaping AffiseLinkCallback) {
+        moduleApi?.resolve(url, callback) ?? callback("")
+    }
+}
+
+extension Affise.Module {
+    @available(*, deprecated, message: "Method moved to Affise.Module.Link", renamed: "Module.Link.resolve")
+    @objc
     public static func linkResolve(_ url: String, _ callback: @escaping AffiseLinkCallback) {
-        AffiseLink.linkResolve(url, callback)
+        Affise.Module.Link.resolve(url, callback)
+    }
+}
+
+extension AffiseLink {
+    @available(*, deprecated, message: "Method moved to Affise.Module.Link", renamed: "Module.Link.resolve")
+    public static func linkResolve(_ url: String, _ callback: @escaping AffiseLinkCallback) {
+        Affise.Module.Link.resolve(url, callback)
     }
 }

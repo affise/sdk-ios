@@ -13,17 +13,20 @@ open class UserCustomSubscriptionEvent : BaseSubscriptionEvent {
 
     private var customType: String = ""
     private var customSubtype: String = ""
+    private var category: String? = nil
 
     public init(
         type: String,
         subtype: String,
         data: [(String, Any?)],
-        userData: String? = nil
+        userData: String? = nil,
+        category: String? = nil
     ) {
         super.init(userData)
         self.data = data
         self.customType = type
         self.customSubtype = subtype
+        self.category = category
     }
     
     @objc
@@ -45,4 +48,14 @@ open class UserCustomSubscriptionEvent : BaseSubscriptionEvent {
      * Subtype of event
      */
     public override func subtype() -> String? { return customSubtype }
+
+    override public func getCategory() -> String { return category ?? super.getCategory() }
+    
+    /**
+     * For internal use only
+     */
+    public func internalAddRawParameters(_ parameters: [String:Any]) -> Event {
+        addRawParameters(parameters)
+        return self
+    }
 }

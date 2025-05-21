@@ -1,5 +1,7 @@
 import Foundation
 
+
+@objc
 public protocol AffiseLinkApi: AffiseModuleApi {
-    func linkResolve(_ url: String, _ callback: @escaping AffiseLinkCallback)
+    func resolve(_ url: String, _ callback: @escaping AffiseLinkCallback)
 }

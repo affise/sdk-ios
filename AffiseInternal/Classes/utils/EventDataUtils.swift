@@ -17,6 +17,10 @@ internal extension Dictionary where Key == String, Value == Any? {
         return self[Parameters.AFFISE_EVENT_USER_DATA] as? String
     }
     
+    func getCategory() -> String? {
+        return self[Parameters.AFFISE_EVENT_CATEGORY] as? String
+    }
+    
     func getEventData() -> [String: Any?] {
         guard let value: [String: Any?] = self[Parameters.AFFISE_EVENT_DATA] as? [String: Any?] else {
             return [:]
