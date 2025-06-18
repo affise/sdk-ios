@@ -8,7 +8,7 @@ extension Affise {
      */
     @objc
     public static func handleDeeplink(_ url: URL?) {
-        Affise.getApi()?.deeplinkManager.handleDeeplink(url: url)
+        Affise.api?.deeplinkManager.handleDeeplink(url: url)
     }
     
     /**
@@ -16,7 +16,7 @@ extension Affise {
      */
     @objc
     public static func handleReferrer(_ url: URL?) {
-        Affise.getApi()?.retrieveReferrerUseCase.setReferrer(url)
+        Affise.api?.retrieveReferrerUseCase.setReferrer(url)
     }
     
     /**

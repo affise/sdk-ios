@@ -4,16 +4,11 @@ internal class AffiseAppsFlyer : NSObject, AffiseModuleApiWrapper {
     typealias API = AffiseAppsFlyerApi
     var api: API?
     var module: AffiseModules = .AppsFlyer
-    var moduleManager: AffiseModuleManager?
-    
-    init(_ moduleManager: AffiseModuleManager?) {
-        self.moduleManager = moduleManager
-    }
 }
 
-extension AffiseAppsFlyer : AffiseAppsFlyerApi {
+extension AffiseAppsFlyer : AffiseModuleAppsFlyerApi {
     
-    func hasModule() -> Bool { api != nil }
+    func hasModule() -> Bool { hasModule }
     
     func logEvent(_ eventName: String, _ eventValues: [String : Any]) {
         moduleApi?.logEvent(eventName, eventValues)

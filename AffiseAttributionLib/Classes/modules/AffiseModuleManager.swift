@@ -68,6 +68,10 @@ internal class AffiseModuleManager {
         modules[name]
     }
     
+    func hasModule(_ name: AffiseModules) -> Bool {
+        return getModule(name) != nil
+    }
+    
     private func initAffiseModules(_ callback: (_ module: AffiseModule) -> Void) {
         for name in AffiseModules.values() {
             guard let cls = classType(name) else { continue }

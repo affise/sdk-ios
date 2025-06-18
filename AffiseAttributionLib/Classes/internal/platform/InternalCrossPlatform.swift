@@ -2,14 +2,18 @@ import Foundation
 
 public class InternalCrossPlatform {
     
-    private static func getApi() -> AffiseApi? { return Affise.getApi() }
+    private static var api: AffiseApi? {
+        get {
+            Affise.api
+        }
+    }
 
     public static func deeplink(_ uri: String) {
-        getApi()?.deeplinkManager.handleDeeplink(url: URL(string: uri))
+        api?.deeplinkManager.handleDeeplink(url: URL(string: uri))
     }
 
     public static func start() {
-        getApi()?.sessionManager.sessionStart()
+        api?.sessionManager.sessionStart()
     }
 
     public static func react() {

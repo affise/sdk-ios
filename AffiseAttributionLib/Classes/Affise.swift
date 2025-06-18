@@ -12,7 +12,7 @@ public final class Affise: NSObject {
     /**
      * Api to communication with Affise
      */
-    private static var api: AffiseApi?
+    private(set) internal static var api: AffiseApi?
 
     /**
      * Affise SDK settings builder
@@ -285,10 +285,6 @@ public final class Affise: NSObject {
         return api?.moduleManager.getModules() ?? []
     }
 
-    internal static func getApi() -> AffiseApi? {
-        return api
-    }
-
     /**
      * Store internal send
      */
@@ -297,80 +293,9 @@ public final class Affise: NSObject {
         api?.storeInternalEventUseCase.storeInternalEvent(event: event)
     }
     
-    public class Module {
-        /**
-        * Get module status
-        */
-        @objc
-        public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
-            api?.moduleManager.status(module, onComplete)
-        }
-        
-        /**
-        * Manual module start
-        */
-        @objc
-        @discardableResult
-        public static func moduleStart(_ module: AffiseModules) -> Bool {
-            return api?.moduleManager.manualStart(module) ?? false
-        }
-
-        /**
-        * Get installed modules
-        */
-        @objc
-        public static func getModulesInstalledObjc() -> [String] {
-            return api?.moduleManager.getModules().map { $0.description } ?? []
-        }
-        
-        /**
-        * Get installed modules
-        */
-        public static func getModulesInstalled() -> [AffiseModules] {
-            return api?.moduleManager.getModules() ?? []
-        }
-
-        internal static func getApi(_ module: AffiseModules) -> AffiseModuleApi? {
-            return api?.moduleManager.api(module)
-        }
-
-        @objc
-        public static let AppsFlyer: AffiseAppsFlyerApi = AffiseAppsFlyer(api?.moduleManager)
-
-        @objc
-        public static let Link: AffiseLinkApi = AffiseLink(api?.moduleManager)
-        
-        public static let Subscription: AffiseSubscriptionApi = AffiseSubscription(api?.moduleManager)
-    }
-
-    public class Debug {
-        /**
-         * Won't work on Production
-         *
-         * Validate credentials
-         */
-        @objc
-        public static func validate(_ callback: @escaping DebugOnValidateCallback) {
-            api?.debugValidateUseCase.validate(callback)
-        }
-
-        /**
-         * Won't work on Production
-         *
-         * Show request-response data
-         */
-        @objc
-        public static func network(_ callback: @escaping DebugOnNetworkCallback) {
-            api?.debugNetworkUseCase.onRequest(callback)
-        }
-
-        /**
-         * Show version
-         */
-        @objc
-        public static func version() -> String {
-            return BuildConfig.AFFISE_VERSION
-        }
-    }
+    @objc
+    public static let Module: AffiseAttributionModule = AffiseAttributionModule()  
     
+    @objc
+    public static let Debug: AffiseDebugApi = AffiseDebug()    
 }
