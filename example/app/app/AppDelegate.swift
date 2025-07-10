@@ -60,9 +60,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            debugPrint("Affise: \(request)")
            debugPrint("Affise: \(response)")
         }
+        UIApplication.shared.registerForRemoteNotifications()
         return true
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let pushToken = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        Affise.addPushToken(pushToken, .APPLE)
+    }
+
     func application(
         _ app: UIApplication,
         open url: URL,

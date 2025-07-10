@@ -1,11 +1,11 @@
 import Foundation
 
 /**
- * Provider for parameter [ProviderType.PUSHTOKEN]
+ * Provider for parameter [ProviderType.PUSHTOKEN_SERVICE]
  *
- * @property useCase to retrieve reftoken
+ * @property useCase to retrieve reftoken service
  */
-class PushTokenProvider: StringPropertyProvider {
+class PushTokenServiceProvider: StringPropertyProvider {
     
     private let useCase: PushTokenUseCase
     
@@ -14,14 +14,14 @@ class PushTokenProvider: StringPropertyProvider {
     }
     
     override func provide() -> String? {
-        return useCase.getPushToken()
+        return useCase.getPushTokenService()
     }
     
     public override func getOrder() -> Float {
-        65.0
+        65.1
     }
 
     public override func getKey() -> ProviderType? {
-        ProviderType.PUSHTOKEN
+        ProviderType.PUSHTOKEN_SERVICE
     }
 }

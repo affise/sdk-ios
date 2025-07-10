@@ -223,13 +223,27 @@ public class AffiseApiWrapper: NSObject {
     }
 
     private func callAddPushToken(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
-        guard let pushToken: String = map.opt(api) else {
+        guard let data: [String: Any?] = map.opt(api) else {
             result?.error("api [\(api.method)]: value not set")
             return
         }
 
-        Affise.addPushToken(pushToken)
-        result?.success(nil)
+        guard let pushToken: String = data.opt(DataName.PUSH_TOKEN) else {
+            result?.error("api [\(api.method)]: push token not set")
+            return
+        }
+
+        guard let pushTokenService: PushTokenService = PushTokenService.from(data.opt(DataName.PUSH_TOKEN_SERVICE)) else {
+            result?.error("api [\(api.method)]: push token service not set")
+            return
+        }
+
+        if pushToken.isEmpty {
+            result?.error("api [\(api.method)]: push token value not set")
+        } else {
+            Affise.addPushToken(pushToken, pushTokenService)
+            result?.success(nil)
+        }
     }
 
     private func callRegisterWebView(_: AffiseApiMethod, map _: [String: Any?]?, result: InternalResult?) {

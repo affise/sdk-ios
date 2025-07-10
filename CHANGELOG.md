@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.52] - 2025-07-00
+
+### Added
+
+- Provider `PUSHTOKEN_SERVICE`
+
 ## [1.6.51] - 2025-06-18
 
 ### Added
@@ -203,6 +209,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.52]: https://github.com/affise/sdk-ios/compare/1.6.51...1.6.52
 [1.6.51]: https://github.com/affise/sdk-ios/compare/1.6.50...1.6.51
 [1.6.50]: https://github.com/affise/sdk-ios/compare/1.6.49...1.6.50
 [1.6.49]: https://github.com/affise/sdk-ios/compare/1.6.48...1.6.49

@@ -22,6 +22,7 @@ internal class PropertiesProviderFactory {
     private let remarketingUseCase: RemarketingUseCase
     private let retrieveReferrerUseCase: RetrieveReferrerUseCase
     private let networkInfoUseCase: NetworkInfoUseCase
+    private let pushTokenUseCase: PushTokenUseCase
     
     init(
         app: UIApplication,
@@ -37,7 +38,8 @@ internal class PropertiesProviderFactory {
         deviceUseCase: DeviceUseCase,
         remarketingUseCase: RemarketingUseCase,
         retrieveReferrerUseCase: RetrieveReferrerUseCase,
-        networkInfoUseCase: NetworkInfoUseCase
+        networkInfoUseCase: NetworkInfoUseCase,
+        pushTokenUseCase: PushTokenUseCase
     ) {
         self.app = app
         self.bundle = bundle
@@ -53,6 +55,7 @@ internal class PropertiesProviderFactory {
         self.remarketingUseCase = remarketingUseCase
         self.retrieveReferrerUseCase = retrieveReferrerUseCase
         self.networkInfoUseCase = networkInfoUseCase
+        self.pushTokenUseCase = pushTokenUseCase
     }
     
     func create() -> PostBackModelFactory {
@@ -123,7 +126,8 @@ internal class PropertiesProviderFactory {
                 AffAppTokenPropertyProvider(storage: initPropertiesStorage, stringToSHA256Converter: stringToSha256Converter),
                 // AffSDKSecretIdProvider(storage: initPropertiesStorage),
                 EmptyStringProvider(ProviderType.LABEL, order: 62.0),
-                PushTokenProvider(preferences: preferences),
+                PushTokenProvider(pushTokenUseCase),
+                PushTokenServiceProvider(pushTokenUseCase),
                 OsAndVersionProvider(remarketingUseCase),
                 DeviceProvider(remarketingUseCase),
                 BuildProvider(remarketingUseCase),

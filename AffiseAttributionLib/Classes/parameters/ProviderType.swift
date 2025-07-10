@@ -77,6 +77,7 @@ public enum ProviderType: Int {
     case UUID
     case AFFISE_APP_OPENED
     case PUSHTOKEN
+    case PUSHTOKEN_SERVICE
     case AFFISE_EVENTS_COUNT
     case AFFISE_SDK_EVENTS_COUNT
     case AFFISE_METRICS_EVENTS_COUNT
@@ -186,6 +187,7 @@ public enum ProviderType: Int {
         case .UUID: return "uuid"
         case .AFFISE_APP_OPENED: return "affise_app_opened"
         case .PUSHTOKEN: return "pushtoken"
+        case .PUSHTOKEN_SERVICE: return "pushtoken_service"
         case .AFFISE_EVENTS_COUNT: return "affise_events_count"
         case .AFFISE_SDK_EVENTS_COUNT: return "affise_sdk_events_count"
         case .AFFISE_METRICS_EVENTS_COUNT: return "affise_metrics_events_count"

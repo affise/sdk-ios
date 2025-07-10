@@ -65,8 +65,8 @@ public final class Affise: NSObject {
      * Add [pushToken]
      */
     @objc
-    public static func addPushToken(_ pushToken: String) {
-        api?.preferences.set(pushToken, forKey: PushTokenProvider.KEY)
+    public static func addPushToken(_ pushToken: String, _ service: PushTokenService) {
+        api?.pushTokenUseCase.addPushToken(pushToken: pushToken, service: service)
     }
     
     /**

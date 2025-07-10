@@ -142,6 +142,9 @@ internal class AffiseComponent: AffiseApi {
         converterToSerializedEvent: eventToSerializedEventConverter,
         logsManager: logsManager
     )
+    lazy var pushTokenUseCase: PushTokenUseCase = PushTokenUseCaseImpl(
+        preferences: preferences
+    )
     lazy var deeplinkClickRepository: DeeplinkClickRepository = DeeplinkClickRepositoryImpl()
     lazy var deeplinkManager: DeeplinkManager = DeeplinkManagerImpl(
         isDeeplinkRepository: deeplinkClickRepository,
@@ -176,7 +179,8 @@ internal class AffiseComponent: AffiseApi {
         deviceUseCase: deviceUseCase,
         remarketingUseCase: remarketingUseCase,
         retrieveReferrerUseCase: retrieveReferrerUseCase,
-        networkInfoUseCase: networkInfoUseCase
+        networkInfoUseCase: networkInfoUseCase,
+        pushTokenUseCase: pushTokenUseCase
     ).create()
 
     lazy var retrieveReferrerUseCase: RetrieveReferrerUseCase = RetrieveReferrerUseCase()
