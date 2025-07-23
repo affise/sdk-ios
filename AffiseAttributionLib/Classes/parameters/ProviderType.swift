@@ -90,6 +90,9 @@ public enum ProviderType: Int {
     case DEVICE
     case BUILD
 
+    // adservice
+    case AD_SERVICE_ATTRIBUTION
+
     // advertising
     case GAID_ADID
     case GAID_ADID_MD5
@@ -200,6 +203,9 @@ public enum ProviderType: Int {
         case .DEVICE: return "device"
         case .BUILD: return "build"
 
+        // adservice
+        case .AD_SERVICE_ATTRIBUTION: return "ad_service_attribution"
+
         // advertising
         case .GAID_ADID: return "gaid_adid"
         case .GAID_ADID_MD5: return "gaid_adid_md5"
@@ -209,6 +215,7 @@ public enum ProviderType: Int {
         case .ALTSTR_ADID: return "altstr_adid"
         case .FIREOS_ADID: return "fireos_adid"
         case .COLOROS_ADID: return "coloros_adid"
+
             
         // network
         case .MAC_SHA1: return "mac_sha1"

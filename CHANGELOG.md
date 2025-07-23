@@ -1,6 +1,13 @@
 # Changelog
 
-## [1.6.52] - 2025-07-00
+## [1.6.53] - 2025-07-23
+
+### Added
+
+- New module `AdServices`
+- Provider `AD_SERVICE_ATTRIBUTION`
+  
+## [1.6.52] - 2025-07-10
 
 ### Added
 
@@ -209,6 +216,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.53]: https://github.com/affise/sdk-ios/compare/1.6.52...1.6.53
 [1.6.52]: https://github.com/affise/sdk-ios/compare/1.6.51...1.6.52
 [1.6.51]: https://github.com/affise/sdk-ios/compare/1.6.50...1.6.51
 [1.6.50]: https://github.com/affise/sdk-ios/compare/1.6.49...1.6.50

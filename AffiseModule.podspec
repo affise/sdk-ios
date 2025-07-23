@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.6.52"
+  s.version      = ENV["LIB_VERSION"] || "1.6.53"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
   s.homepage     = "https://github.com/affise/sdk-ios"
@@ -25,6 +25,11 @@ Pod::Spec.new do |s|
 
   s.dependency "AffiseAttributionLib", "#{s.version}"
   
+  s.subspec "AdService" do |sub|
+    sub.source_files = "AffiseModule/AdService/Classes/**/*.{swift}"
+    sub.frameworks  = "AdServices"
+  end
+
   s.subspec "Advertising" do |sub|
     sub.source_files = "AffiseModule/Advertising/Classes/**/*.{swift}"
   end

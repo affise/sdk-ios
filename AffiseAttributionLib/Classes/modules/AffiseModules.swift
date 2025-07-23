@@ -3,6 +3,7 @@ import Foundation
 
 @objc
 public enum AffiseModules: Int {
+    case AdService
     case Advertising
     case AppsFlyer
     case Link
@@ -12,6 +13,7 @@ public enum AffiseModules: Int {
     
     internal var enumValue: String {
         switch self {
+        case .AdService: return "AdService"
         case .Advertising: return "Advertising"
         case .AppsFlyer: return "AppsFlyer"
         case .Link: return "Link"

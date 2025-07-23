@@ -40,7 +40,7 @@ jobs:
           make install
 
       - name: Create AffiseAttributionLib XCFramework
-        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleAppsFlyer AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleAdService AffiseModuleAppsFlyer AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
 
       # Release
       - name: Release
@@ -66,6 +66,18 @@ jobs:
           asset_path: ./AffiseAttributionLib.zip
           asset_name: AffiseAttributionLib-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
           asset_content_type: application/zip  
+
+      # Upload AffiseModuleAdService
+      - name: Upload Release AffiseModuleAdService Framework 📦
+        if: ${{ success() }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./AffiseModuleAdService.zip
+          asset_name: AffiseModuleAdService-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+          asset_content_type: application/zip
 
       # Upload AffiseModuleAdvertising
       - name: Upload Release AffiseModuleAdvertising Framework 📦
