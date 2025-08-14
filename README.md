@@ -1,5 +1,16 @@
 # Affise Attribution iOS Library
 
+> **Warning**
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> This is archived repository for compatibility
+>
+> Please use [`https://github.com/affise/affise-mmp-sdk-ios`](https://github.com/affise/affise-mmp-sdk-ios) repository
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
 [Change Log](CHANGELOG.md)
 
 | Pod                         | Version                   |
